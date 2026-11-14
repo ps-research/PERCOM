@@ -1,8 +1,16 @@
 # Paper 1 plan
 
-- **Status:** draft, not approved
-- **Approved by PI on:** (empty until approved; no brief is written before that)
+- **Status:** approved
+- **Approved by PI on:** 2026-11-15
 - **Track:** IEEE PerCom Work-in-Progress, 4 pages in IEEE two-column format, including figures, tables and references
+
+**PI decisions recorded with the approval.**
+
+1. The comparison with Locaris's published few-shot numbers (E4) is optional. It goes in only if it strengthens the paper's narrative; the paper keeps one straight narrative.
+2. The paper does not mention the problems in Locaris's baseline table.
+3. The title stays neutral for now and is decided after the results.
+
+Section 10 lists every detail that changed after the approval.
 
 ## 1. Claim and contributions
 
@@ -66,7 +74,7 @@ If the results support it, the title becomes "Do We Need an LLM to Localize?". W
 | E1 | With the full survey, how do the models compare? | SODIndoorLoc, default sheets, three buildings | Model | 5 seeds | Table I |
 | E2 | How does error grow as fewer reference points are surveyed? | SODIndoorLoc | Share of reference points kept: 5, 10, 25, 50, 100% | 10 random draws | Fig. 2a |
 | E3 | How does error grow when access points go missing after the survey? | SODIndoorLoc | Share of access points switched off at test time: 0 to 60% in steps of 10. Missing values written as "missing" or as a placeholder number | 10 random draws | Fig. 2b |
-| E4 | How close is it to a fine-tuned LLM when little target data is available? | Wi-Fi RSS & RTT, three environments | Share of target training data, at the shares Locaris reports. Our models get the target share only | 5 seeds | Table II |
+| E4 (optional) | How close is it to a fine-tuned LLM when little target data is available? | Wi-Fi RSS & RTT, three environments | Share of target training data, at the shares Locaris reports. Our models get the target share only | 5 seeds | Table II |
 | E5 | What does it cost? | All of the above | Nothing; wall-clock time and peak GPU memory are logged in every run | | One column in Table I |
 
 **Details that the briefs will pin down.**
@@ -82,8 +90,8 @@ If the results support it, the title becomes "Do We Need an LLM to Localize?". W
 
 | Asset | Source | Licence | Status |
 |---|---|---|---|
-| SODIndoorLoc | github.com/bijingxue/SODIndoorLoc; Bi et al., Satellite Navigation 2022 | Not yet read | Node records it at download |
-| Wi-Fi RSS & RTT | Zenodo, 10.5281/zenodo.11558791 | CC BY 4.0 | Confirmed |
+| SODIndoorLoc | github.com/bijingxue/SODIndoorLoc; Bi et al., Satellite Navigation 2022 | No licence file in the repository; the README asks for a citation of the dataset paper | Node records the commit at download |
+| Wi-Fi RSS & RTT (only if E4 is run) | Zenodo, 10.5281/zenodo.11558791 | CC BY 4.0 | Confirmed |
 | TabPFN v2 weights | Prior Labs, Hugging Face | Prior Labs License 1.1 (Apache 2.0 plus an attribution clause) | Confirmed |
 | TabICLv2 | `tabicl` package | Code released; licence of the v2 weights not yet read | Node records it at download |
 | scikit-learn, LightGBM, Optuna, GPyTorch | PyPI | BSD-3 / MIT / MIT / MIT | Node records versions |
@@ -97,7 +105,7 @@ Not used: TabPFN 2.5 and later. Their licence is non-commercial and excludes res
 | Fig. 1 | Schematic: the surveyed fingerprints are the context, a new scan is the query, the output is a position. A small inset contrasts this with fine-tuning an LLM | One column |
 | Table I | Full survey. Rows: methods. Columns: mean error per building, average, median, 95th percentile, time. Published numbers in separate rows, marked "as reported, different protocol" | One column |
 | Fig. 2 | (a) error against share of reference points; (b) error against share of access points missing. Lines per method, bands showing spread over draws | Two columns |
-| Table II | Few-shot results on Wi-Fi RSS & RTT next to the numbers Locaris reports | One column |
+| Table II (only if E4 is run) | Few-shot results on Wi-Fi RSS & RTT next to the numbers Locaris reports | One column |
 
 One headline number goes in the abstract. Which one is decided after the results.
 
@@ -118,20 +126,38 @@ An informal single run in the planning sandbox had the tabular model ahead of kN
 
 ## 7. Compute estimate
 
-Under one GPU-day in total on a single GPU, a few gigabytes of disk. Most of the time goes to tuning the baselines on CPU.
+One to two GPU-days at most on a single GPU, a few gigabytes of disk. Most of the time goes to tuning the baselines on CPU. (The approved draft said under one GPU-day; see section 10.)
 
 ## 8. What follows approval
 
-Three briefs, each run by the compute node only when its status is `approved`:
+Two briefs, each run by the compute node only when its status is `approved`:
 
 1. `P1-E01`: environment, data, pipeline check (E0), full survey (E1), cost logging (E5).
 2. `P1-E02`: few reference points (E2) and missing access points (E3).
-3. `P1-E03`: comparison on Wi-Fi RSS & RTT (E4).
+
+A third brief, `P1-E03` (comparison on Wi-Fi RSS & RTT, E4), is written only if the PI decides the narrative needs it.
 
 ## 9. Decisions for the PI
 
-| Decision | Recommendation |
-|---|---|
-| Include the head-to-head with Locaris's published few-shot numbers (E4)? | Yes. Without it the "LLM" question has no direct evidence. We report it whichever way it goes |
-| Mention the problems in Locaris's baseline table? | No |
-| Title | Neutral working title now; decide after results |
+| Decision | Recommendation | PI decision, 2026-11-15 |
+|---|---|---|
+| Include the head-to-head with Locaris's published few-shot numbers (E4)? | Yes | Optional; only if it strengthens the narrative |
+| Mention the problems in Locaris's baseline table? | No | No |
+| Title | Neutral working title now; decide after results | Neutral for now; decide after results |
+
+## 10. Changes after the approval
+
+Each item is a detail the briefs pin down, or a fact read from the dataset files while writing them. None changes the claim or the experiments.
+
+| # | Change | Reason |
+|---|---|---|
+| 1 | E4 is deferred. No brief is written for it and the Wi-Fi RSS & RTT data is not downloaded. After E1 to E3 are in, the PI decides whether the paper's narrative needs it. The decision is made before E4 is run, not on its outcome. If it is run, it is reported. Table II exists only in that case | PI decision 1 |
+| 2 | Briefs are `P1-E01` (pipeline check, full survey, cost) and `P1-E02` (few reference points, missing access points). `P1-E03` is not written | Follows from 1 |
+| 3 | In CETC331, all 84 test locations are also reference-point locations (different scans, same places). In HCXY none are, in SYL one is. The paper states this; results are shown per building as well as averaged | Read from the dataset files |
+| 4 | CETC331 covers three floors; HCXY and SYL one floor each. Error stays 2-D, as in the dataset paper | Read from the dataset files |
+| 5 | The dataset's ready-made averaged sheets (`_Avg`) are not used. They write "not detected" differently from the other sheets, and one has a corrupted column. Where a method needs one fingerprint per reference point, we average the 30 scans ourselves | Read from the dataset files |
+| 6 | The pipeline check (E0) has three anchors, one per building, and compares the percentiles as well as the mean | Stronger check at no cost |
+| 7 | Gaussian process regression is fitted on one averaged fingerprint per reference point and tuned by its own marginal likelihood, not by Optuna | Standard for this method; avoids a very large kernel matrix |
+| 8 | LightGBM is run twice: with the placeholder number and with native missing values | Answers "trees handle missing values too" |
+| 9 | The SODIndoorLoc repository has no licence file. Its README asks users to cite the dataset paper | Read from the repository |
+| 10 | Compute estimate raised to one to two GPU-days at most, with most of the time on CPU | Re-tuning five baselines on every reduced survey is the costly part |
