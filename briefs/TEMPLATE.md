@@ -1,7 +1,9 @@
 # P<paper>-E<nn>: <title>
 
 - **Paper:** 1 or 2
-- **Status:** proposed (this pull request) → approved (merged) → done (results merged)
+- **Revision:** 1
+- **Status:** draft
+- **Approved by PI on:** (empty until approved; the compute node runs this brief only when the status is `approved`)
 
 ## Question
 The one question this experiment answers.
