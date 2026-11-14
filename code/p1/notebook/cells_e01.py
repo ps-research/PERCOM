@@ -221,13 +221,14 @@ mo.vstack(
 
     cell("results", '''
 progress_refresh
-_finished = (Path("/tmp/p1e01_partb.done")).exists()
+_rc = p1nb.job_exit_code("/tmp/p1e01_partb.log")
+_finished = _rc is not None
 _table = p1nb.runs_table(runs)
 mo.vstack(
     [
         mo.md(
             "### Results on this node\\n"
-            + ("The Part B job has finished. " if _finished else "The Part B job is still running; the table fills in as runs finish. ")
+            + (f"The Part B job has finished with exit code {_rc}. " if _finished else "The Part B job is still running; the table fills in as runs finish. ")
             + "Mean positioning error on the test file, averaged over seeds (std over seeds where there are five)."
         ),
         _table.pivot(index="model", columns="config", values="mean_error_m").reset_index() if len(_table) else _table,

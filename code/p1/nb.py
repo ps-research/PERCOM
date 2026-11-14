@@ -27,8 +27,18 @@ def job_script(command: str, repo: str | Path, node: str) -> str:
         f"print('command:', {command!r}, flush=True)\n"
         f"rc = subprocess.run(shlex.split({command!r}), cwd={str(repo)!r}, env=env).returncode\n"
         "print('exit code:', rc, flush=True)\n"
-        "sys.exit(rc)\n"
     )
+
+
+def job_exit_code(log: str | Path) -> int | None:
+    """Exit code printed at the end of a job's log, or None while it runs."""
+    log = Path(log)
+    if not log.exists():
+        return None
+    for line in reversed(log.read_text(errors="replace").splitlines()):
+        if line.startswith("exit code:"):
+            return int(line.split(":", 1)[1])
+    return None
 
 
 def job_alive(pattern: str) -> bool:
