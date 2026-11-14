@@ -17,7 +17,7 @@ Audited on 2026-11-14 (UTC) by the planning session. Scripts are in this folder;
 | Every tag in the review points to a ledger row | tag scan of `review.md` | 143 rows used, none missing | 145 rows used, none missing | 149 rows used, none missing |
 | Cited papers exist as described | `recheck_arxiv.py`: fresh arXiv API fetch, title and first author compared | 16 of 16 | 46 of 46 | 17 of 17 (P007: arXiv title abbreviates "LLMs" and "RL"; same paper) |
 | Cited DOIs resolve to the same title | `recheck_doi.py`: Crossref, DataCite as fallback | 22 of 22 | 5 of 5 | 8 of 8 |
-| Sources with neither a DOI nor an arXiv id in the index | `recheck_titles.py`: Crossref title search; arXiv title search for the rest | none (3 non-paper sources: dataset repository, model-hub metadata) | none | 24 of 24 papers found. Not checkable this way: P003 (conference listing page), P012 (software documentation) |
+| Sources with neither a DOI nor an arXiv id in the index | `recheck_titles.py`: Crossref title search; arXiv title search for the rest | none (3 non-paper sources: dataset repository, model-hub metadata) | none | 25 of 25 papers found. Not checkable this way: P003 (conference listing page), P012 (software documentation) |
 | The claim follows from the passage | passage around the anchor read by the auditor (`show_context.py`) for the rows the conclusions rest on | 27 rows, all supported | 22 rows, all supported | 25 rows, all supported |
 | Arithmetic stated as "our arithmetic" | recomputed | Locaris Table III reconstruction correct; split sums 21,205 / 2,720 correct | not applicable | not applicable |
 
