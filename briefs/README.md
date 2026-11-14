@@ -6,5 +6,5 @@ One file per experiment, written by the planning session. A brief starts as `dra
 
 | Brief | Paper | What it covers | Status |
 |---|---|---|---|
-| `P1-E01.md` | 1 | Pipeline check, full-survey comparison, cost | draft |
-| `P1-E02.md` | 1 | Fewer reference points; access points that go missing | draft |
+| `P1-E01.md` | 1 | Pipeline check, full-survey comparison, cost | approved 2026-11-15 |
+| `P1-E02.md` | 1 | Fewer reference points; access points that go missing | approved 2026-11-15 |
