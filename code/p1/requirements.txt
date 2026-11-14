@@ -1,0 +1,13 @@
+# Pinned by briefs/P1-E01.md
+tabpfn==10.0.0
+tabicl==2.2.0
+# Current versions at run time; the exact versions used are recorded in env.txt of each results package
+torch
+scikit-learn
+lightgbm
+optuna
+numpy
+pandas
+matplotlib
+threadpoolctl
+joblib
