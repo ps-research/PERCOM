@@ -1,0 +1,160 @@
+eid,pid,status,anchor_words,access,anchor
+E001,P001,EXACT,9,FULLTEXT,guidance as a continuous Gaussian distribution and integrate it
+E002,P001,EXACT,11,FULLTEXT,linearly decaying it from 1.0 to 0.01 over the first 2000
+E003,P001,EXACT,7,FULLTEXT,is a fixed hyperparameter in this study
+E004,P001,EXACT,5,FULLTEXT,expert HVAC control AI assistant
+E005,P001,EXACT,8,FULLTEXT,for each state s in a minibatch sampled
+E006,P001,EXACT,8,FULLTEXT,We set the weighting coefficient we = 0.25
+E007,P001,EXACT,7,FULLTEXT,"for the winter scenario and [23.0◦C, 26.0◦C]"
+E008,P001,EXACT,10,FULLTEXT,We used the energy analysis tool EnergyPlus via the Siner
+E009,P001,EXACT,8,FULLTEXT,the LLM teacher (gpt-5-mini) operating in a few
+E010,P001,EXACT,5,FULLTEXT,"Tokyo winter (training: Nov.-Feb., evaluation:"
+E011,P001,EXACT,8,FULLTEXT,Performance is evaluated using the learning curve (mean
+E012,P001,EXACT,7,FULLTEXT,initial performance baseline (mean reward of -0.1868)
+E013,P001,EXACT,5,FULLTEXT,It achieves in just 200
+E014,P001,EXACT,8,FULLTEXT,A temporary performance drop is observed around 2000
+E015,P001,EXACT,8,FULLTEXT,"approximately 287,000 timesteps (nearly 16 years of simulated"
+E016,P001,EXACT,3,FULLTEXT,sensitivity to inappro
+E017,P001,EXACT,11,FULLTEXT,we employ an annealing schedule for α inspired by Zhou et
+E018,P002,EXACT,10,FULLTEXT,L(θ) = LRL (θ) + λEs∼πθ H (πT (·|s)||πθ (·|s))
+E019,P002,EXACT,10,FULLTEXT,we query the LLM multiple times with the same prompt
+E020,P002,EXACT,11,FULLTEXT,indicates the point at which the connection to the LLM-based teacher
+E021,P002,EXACT,10,FULLTEXT,enables the student agent to identify and correct any mistakes
+E022,P002,EXACT,10,FULLTEXT,"We use ChatGLM-turbo [Du et al., 2022] as the LLM"
+E023,P002,EXACT,6,FULLTEXT,LLM soly only achieves an average
+E024,P002,EXACT,10,FULLTEXT,We have identified three major categories for the error policies
+E025,P002,EXACT,8,FULLTEXT,utilizing uncertainty-aware instructions improves the overall sample efficiency
+E026,P002,EXACT,6,FULLTEXT,Accepted and Published by IJCAI 2024
+E027,P003,EXACT,6,ABSTRACT,We propose an LLM-to-agent handoff framework
+E028,P003,EXACT,8,ABSTRACT,critic-based filtering determines when teacher guidance remains beneficial
+E029,P003,EXACT,9,ABSTRACT,up to 27$\times$ fewer environment interactions than standard SAC
+E030,P003,EXACT,10,ABSTRACT,"after 15 days of online learning, it improves comfort control"
+E031,P003,EXACT,7,ABSTRACT,AI Benchmark and Application for Enterprise Tasks
+E032,P004,EXACT,11,FULLTEXT,the learner queries the VLM teacher and executes the returned action
+E033,P004,EXACT,9,FULLTEXT,Teacher-guided transitions are excluded from the PPO policy loss
+E034,P004,EXACT,6,FULLTEXT,clip weights to 20 for stability
+E035,P004,EXACT,8,FULLTEXT,blindly cloning this action can sharpen the learner
+E036,P004,EXACT,6,FULLTEXT,AWBC initially behaves similarly to unweighted
+E037,P004,EXACT,4,FULLTEXT,shows no consistent benefit
+E038,P004,EXACT,6,FULLTEXT,Random actions never improve over PPO
+E039,P004,EXACT,7,FULLTEXT,SAGE therefore targets imperfect but informative teachers
+E040,P004,EXACT,4,FULLTEXT,SAGE may distill systematic
+E041,P004,EXACT,3,FULLTEXT,mean peak episodic
+E042,P004,EXACT,3,FULLTEXT,EMNLP 2026 Findings
+E043,P005,EXACT,8,FULLTEXT,codes 66 peer-reviewed studies on large language models
+E044,P005,EXACT,11,FULLTEXT,No study qualified as ready-now; 3 were near-term and 63 research-only
+E045,P005,EXACT,6,FULLTEXT,"excluding rapidly changing preprints, vendor demonstrations"
+E046,P005,EXACT,7,FULLTEXT,Because the coding was performed by one
+E047,P005,EXACT,8,FULLTEXT,12 of 15 papers evaluated in simulation only
+E048,P005,EXACT,3,FULLTEXT,Both remain human-in-the-loop
+E049,P005,EXACT,7,FULLTEXT,because prompt engineering alone cannot enforce comfort
+E050,P005,EXACT,5,FULLTEXT,remain sensitive to prompt formulation
+E051,P005,EXACT,9,FULLTEXT,still depend on uncalibrated assumptions about how well synthetic
+E052,P005,EXACT,10,FULLTEXT,the LLM issues commands with immediate effect in low-stakes domains
+E053,P005,EXACT,9,FULLTEXT,all autonomous deployments in the corpus are confined to
+E054,P005,EXACT,7,FULLTEXT,none of which appear in current prototypes
+E055,P005,EXACT,6,FULLTEXT,guard against adversarial or injected instructions
+E056,P005,EXACT,8,FULLTEXT,the corpus reveals six recurring failure modes (FM)
+E057,P005,EXACT,7,FULLTEXT,repeatability across prompt variants and model versions
+E058,P005,EXACT,6,FULLTEXT,already has standardised community-scale benchmark environments
+E059,P005,EXACT,5,FULLTEXT,Submitted to Energy and Buildings
+E060,P006,EXACT,11,ABSTRACT,rewards an agent for achieving goals suggested by a language model
+E061,P007,EXACT,5,FULLTEXT,generates state-dependent feasible action masks
+E062,P007,EXACT,6,FULLTEXT,achieves a mean PPD of 7.30%
+E063,P008,EXACT,9,FULLTEXT,"occupants’ subjective thermal comfort feedback, and historical context as"
+E064,P008,EXACT,6,FULLTEXT,feedback from office workers sent to
+E065,P008,EXACT,6,FULLTEXT,using a seven-point scale ranging from
+E066,P008,EXACT,11,FULLTEXT,predicting optimal set temperatures for each HVAC unit every 2 h
+E067,P008,EXACT,10,FULLTEXT,The final HVAC setting value occurring most frequently over 10
+E068,P008,EXACT,12,FULLTEXT,my comfort level is 5 on a scale of 1 to 10
+E069,P008,EXACT,5,FULLTEXT,A total of 30 office
+E070,P008,EXACT,6,FULLTEXT,Comfort feedback was aggregated using the
+E071,P008,EXACT,7,FULLTEXT,LLMs alone achieved a higher energy efficiency
+E072,P008,EXACT,11,FULLTEXT,a control frequency of 2 h was selected for this experiment
+E073,P008,EXACT,9,FULLTEXT,absence of feedback prevents the LLMs from considering occupancy
+E074,P009,EXACT,10,FULLTEXT,employs LLM agents to mimic the behaviors and thermal preferences
+E075,P009,EXACT,6,FULLTEXT,"number of votes for ""temperature increase"""
+E076,P009,EXACT,11,FULLTEXT,These perceptions are based on the thermal comfort ranges for each
+E077,P009,EXACT,5,FULLTEXT,by setting the temperature of
+E078,P010,EXACT,9,FULLTEXT,The prompt includes a description of the current state
+E079,P010,EXACT,6,FULLTEXT,"we use BEAR (Zhang et al.,"
+E080,P011,EXACT,6,FULLTEXT,response accuracy in device control (86%)
+E081,P011,EXACT,6,FULLTEXT,Set the AC to 20 degrees.
+E082,P011,EXACT,6,FULLTEXT,indicating challenges in interpreting vague requests
+E083,P012,EXACT,7,FULLTEXT,Environment names follow the format Eplus-<building-id>-<weather-id>-<control_type>-<stochastic (optional)>-v1
+E084,P012,EXACT,10,FULLTEXT,This feature utilizes an Ornstein-Uhlenbeck process to introduce random noise
+E085,P012,EXACT,8,FULLTEXT,must be a continuous space ( gym.spaces.Box )
+E086,P012,EXACT,9,FULLTEXT,5ZoneAutoDXVAV.epJSON is a single-story building divided into 5 zones
+E087,P012,EXACT,4,FULLTEXT,Zone People Occupant Count
+E088,P012,EXACT,9,FULLTEXT,ASHRAE9012016_OfficeMedium.epJSON is a 4979.6 m2; building with 3 floors
+E089,P012,EXACT,9,FULLTEXT,OfficeGridStorageSmoothing.epJSON is a large office building with 12 floors
+E090,P012,EXACT,7,FULLTEXT,The default setting is the LinearReward function
+E091,P012,EXACT,7,FULLTEXT,is the weight assigned to power consumption
+E092,P012,EXACT,12,FULLTEXT,MultiZoneReward : a linear reward function for environments with different comfort ranges
+E093,P012,EXACT,1,FULLTEXT,JPN_Tokyo.Hyakuri.477150_IWEC
+E094,P013,EXACT,9,ABSTRACT,we deploy a Soft Actor-Critic agent in CityLearn v2
+E095,P013,EXACT,8,ABSTRACT,elderly female occupants consistently experience the lowest satisfaction
+E096,P014,EXACT,11,ABSTRACT,grounds large language model agents in the American Time Use Survey
+E097,P014,EXACT,5,ABSTRACT,establishing internal consistency across strata
+E098,P015,EXACT,10,ABSTRACT,can the agent tell a genuine user command from ambient
+E099,P015,EXACT,4,ABSTRACT,every MLLM configuration over-refuses
+E100,P016,EXACT,5,ABSTRACT,control of home automation devices
+E101,P017,EXACT,10,ABSTRACT,We implement two thoughtful things (a lamp and a thermostat)
+E102,P018,EXACT,7,ABSTRACT,Thermal Sensation Vote (TSV) {-3(cold) ~ +3(hot)}
+E103,P018,EXACT,5,ABSTRACT,"Age, gender, BMI, clothing insulation"
+E104,P018,EXACT,4,ABSTRACT,Population: 50 occupants overall.
+E105,P018,EXACT,7,ABSTRACT,Validate external validity using real occupant data.
+E106,P018,EXACT,8,ABSTRACT,3rd Annual Buildsys 2025 Int’l Workshop on CPSIS
+E107,P019,EXACT,11,ABSTRACT,"infers occupant and building states, and feeds them into the MPC's"
+E108,P019,EXACT,11,ABSTRACT,reduced unmet degree hours by 48.1% and heat-pump electricity by 60.4%
+E109,P020,EXACT,7,ABSTRACT,achieves up to 5.1\% higher mean reward
+E110,P020,EXACT,7,ABSTRACT,decoding hyperparameter regions (temperature and nucleus sampling)
+E111,P021,EXACT,10,ABSTRACT,the setpoint changes were executed upon hot and cold complaints
+E112,P021,EXACT,11,ABSTRACT,increase the default 22 °C temperature setpoints during the cooling season
+E113,P021,EXACT,5,ABSTRACT,registered 24 times more frequently
+E114,P021,EXACT,12,ABSTRACT,operators tend to make greater setpoint changes upon hot and cold complaints
+E115,P022,EXACT,10,ABSTRACT,have exhausted all coping behaviors available to alleviate their discomfort
+E116,P023,EXACT,6,ABSTRACT,negatively correlated with a moderate magnitude
+E117,P024,EXACT,11,ABSTRACT,office temperatures are less comfortable for women largely due to overcooling
+E118,P025,EXACT,12,ABSTRACT,The PMV method suggested that only 4% of the occupants were dissatisfied
+E119,P026,EXACT,10,ABSTRACT,Office workers offered thermal complaints in a wide range of
+E120,P027,EXACT,10,ABSTRACT,The accuracy of PMV in predicting OTS was only 34%
+E121,P028,EXACT,11,ABSTRACT,both models only predict Thermal Sensation Vote (TSV) correctly only one-third
+E122,P028,EXACT,11,ABSTRACT,68% of participants who were ‘slightly warm’ wanted to be ‘cooler’
+E123,P032,EXACT,10,ABSTRACT,"includes approximately 81,846 complete sets of objective indoor climatic observations"
+E124,P033,EXACT,10,ABSTRACT,"predicts an individual's thermal comfort response, instead of the average"
+E125,P034,EXACT,9,ABSTRACT,produced the median accuracy of 0.73 among all subjects
+E126,P035,EXACT,8,ABSTRACT,Emulators use Modelica to represent realistic physical dynamics
+E127,P036,EXACT,4,ABSTRACT,with dynamic occupant feedback
+E128,P037,EXACT,10,ABSTRACT,model-free RL approaches poorly perform when tested in building environments
+E129,P038,EXACT,9,ABSTRACT,"However, such methods might be unfair to some participants"
+E130,P039,EXACT,7,ABSTRACT,can save up to 60% of energy
+E131,P040,EXACT,8,ABSTRACT,The first strategy relies on majority thermal votes
+E132,P029,EXACT,6,ABSTRACT,"five adversarial threat vectors—prompt injection, persuasion"
+E133,P029,EXACT,5,ABSTRACT,especially under sustained multi-turn pressure
+E134,P029,EXACT,7,ABSTRACT,Evilness Rates range from 0.8% to 54.0%
+E135,P030,EXACT,9,ABSTRACT,they experience patterns of failure that diminish their usefulness
+E136,P031,EXACT,7,ABSTRACT,post-LLM gating inhibits more complex prompt-based threats
+E137,P041,EXACT,7,ABSTRACT,Based on 541 studies from these fields
+E138,P041,EXACT,3,ABSTRACT,personalization versus negotiation
+E139,P042,EXACT,8,ABSTRACT,LLM-generated PMV distributions diverge markedly from human data
+E140,P042,EXACT,8,ABSTRACT,agents perform near-randomly in discrete thermal comfort classification
+E141,P005,EXACT,8,FULLTEXT,comfort requests can be routed to regression or
+E142,P005,EXACT,7,FULLTEXT,The A5 corpus comprises seven primary-coded papers
+E143,P046,EXACT,6,FULLTEXT,If using teacher supervision improves performance
+E144,P046,EXACT,9,FULLTEXT,can lead to excessive reliance on a sub-optimal teacher
+E145,P046,EXACT,7,FULLTEXT,"with a sub-optimal teacher, TGRL learns the"
+E146,P046,EXACT,9,FULLTEXT,Proceedings of the 40 th International Conference on Machine
+E147,P047,EXACT,8,ABSTRACT,incorporates teacher intervention based on trajectory-based value estimation
+E148,P048,EXACT,11,ABSTRACT,according to an estimate of the teacher's usefulness in each state
+E149,P049,EXACT,10,ABSTRACT,the expert's share of control is a single learnable parameter
+E150,P049,EXACT,10,ABSTRACT,they adapt it with additional learned components such as critics
+E151,P050,EXACT,9,ABSTRACT,up to 40% of the teacher feedback being incorrect
+E152,P051,EXACT,9,ABSTRACT,coordinated through a self-consistency classifier that routes user queries
+E153,P051,EXACT,6,ABSTRACT,LLM-as-simulated-user methodology with 23 objective metrics
+E154,P026,EXACT,7,ABSTRACT,"In the summer, the mean temperature for"
+E155,P012,EXACT,12,FULLTEXT,"these actuators can be modified at any time, outside the control flow"
+E156,P012,EXACT,9,FULLTEXT,"such as people occupant , timesteps per simulation hour"
+E157,P012,EXACT,9,FULLTEXT,control is managed by the default building model schedulers
+E158,P012,EXACT,12,FULLTEXT,The heating and cooling setpoint values are applied simultaneously to both zones
+E159,P005,EXACT,7,FULLTEXT,"may produce text that is coherent, persuasive"
