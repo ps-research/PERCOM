@@ -1,0 +1,160 @@
+eid,pid,statement,locator,anchor,access_level
+E001,P001,Locaris uses a frozen Llama-3.2-1B decoder-only backbone.,"Sec. I Introduction, p.1",a compact decoder-only language model based on Meta's Llama-3.2-1B,FULLTEXT
+E002,P001,Adaptation is via LoRA modules in the attention projections; backbone frozen.,"Sec. II-B Transformer Backbone, p.2",Rank Adaptation (LoRA) modules inserted into the attention,FULLTEXT
+E003,P001,Each AP measurement is encoded as a text token sequence (e.g. AP1 RTT:v AP2 RSS:v).,"Sec. II-A Telemetry Input, p.2",where each access-point observation forms a token,FULLTEXT
+E004,P001,Locaris is trained with MSE loss on coordinates; LoRA adapters and regression head updated (<1% of parameters).,"Sec. II-D Training Overview, p.2",trained using mean squared error (MSE) loss,FULLTEXT
+E005,P001,On SODIndoorLoc the WiP says baselines are adopted from the dataset paper [5].,"Sec. III, p.2",We compare Locaris against state-of-the-art regression methods,FULLTEXT
+E006,P001,Table I lists SODIndoorLoc train samples 955/11370/8880 and test 840/860/1020 for CETC331/HCXY/SYL.,"Table I, p.2",SODINDOORLOC DATASET CHARACTERISTICS,FULLTEXT
+E007,P001,"Table III reports averages across the three SODIndoorLoc buildings: Locaris MAE 2.840 m, RMSE 6.140, 50th 3.880, 75th 7.540, 95th 10.280; KNR 3.758/4.178/2.703/4.768/10.293; KNC 4.116/4.664/2.201/4.874/16.247.","Table III, p.3","AVERAGE STATISTICS OF REGRESSION METHODS ACROSS CETC331, SYL, AND HCXY",FULLTEXT
+E008,P001,"The text claims lowest MAE and RMSE, although Table III shows KNR and KNC with lower RMSE, median and 75th percentile.","Sec. IV-A, p.3",It achieves the lowest MAE (2.84 m) and RMSE (6.14 m),FULLTEXT
+E009,P001,Cross-environment few-shot on RSS-RTT: lecture target 0.88 m with 3% of target data vs best baseline 1.88 m.,"Sec. IV-B.1, p.3",yielding 0.88 meter error with only 3% of the target data,FULLTEXT
+E010,P001,Paper claims near-optimal performance with 5-10% of target data vs 50-75% for baselines.,"Sec. IV-B.1, p.3",Locaris reaches near opti-,FULLTEXT
+E011,P001,Abstract claims robustness under missing APs.,"Abstract, p.1",robust performance under missing APs,FULLTEXT
+E012,P001,RSSI-only ablation on RSS-RTT dataset: Locaris MAE 2.86-4.71 m per text.,"Sec. IV-B.2 RSSI-only, p.4",with MAE ranging from 2.86 to 4.71,FULLTEXT
+E013,P002,The DiT paper generates synthetic fingerprints from limited real measurements to reduce site-survey cost.,"Abstract, p.1",generating synthetic fingerprints from limited real measurements,FULLTEXT
+E014,P002,"Indoor dataset: UCI WiFi Localization, 2,000 samples, 7 APs, 4 rooms (classification).","Sec. III-A.1, p.3","which contains 2,000 RSS measurements from seven WiFi ac-",FULLTEXT
+E015,P002,"With 1% real data, DiT-augmented training raises UCI room accuracy from 78.3% to 98.5%.","Sec. III-B, p.3",augmented training increases accuracy from 78.3% to 98.5%,FULLTEXT
+E016,P002,The generators are first trained on training samples before real-data fractions are drawn (possible leakage noted by us).,"Sec. III-A.2, p.3","For each dataset, we first train the DiT and GAN using train-",FULLTEXT
+E017,P002,The paper claims DiTs had not been applied to fingerprinting.,"Sec. I, p.1",DiTs have not,FULLTEXT
+E018,P003,"README: 'All' sheets use all detected MACs; 'AP' sheets use only MACs of pre-installed APs; '_30' keeps 30 samples per RP, 'Avg' one averaged sample.","README Sec. 4(2), HCXY files",training models in the HCXY building with all detected MACs,FULLTEXT
+E019,P003,Undetected MACs are encoded as +100 in the RSS columns.,README Sec. 5 Attribute Information,Positive value 100 used if MAC001 was not detected,FULLTEXT
+E020,P003,RSS dimensions: All sheets 52/347/363 (CETC331/HCXY/SYL); pre-installed-AP sheets 52/56/46.,"Description PDF, Table V",DIMENSIONS OF RSS VECTOR IN SIMPLIFIED SHEETS,FULLTEXT
+E021,P003,"Each record carries UserID (1-10) and PhoneID (1-9), enabling device-heterogeneity splits.",README Sec. 5 Attribute Information,"Range from 1 to 9, which smartphone was used for WiFi collection",FULLTEXT
+E022,P004,"Locaris (long) uses the default SODIndoorLoc train/test split from the dataset paper and regresses X,Y.",Sec. IV-B.1 SODIndoor Dataset,followed the default train/test split specified by [37],FULLTEXT
+E023,P004,"Locaris input on SODIndoorLoc appends valid RSSI values plus vendor identifiers, scene descriptions and building labels as text.",Sec. IV-B.1 SODIndoor Dataset,"valid RSSI values together with vendor identifiers, scene descriptions",FULLTEXT
+E024,P004,SODIndoorLoc results averaged over three random seeds.,Sec. IV-A.1,All tests were conducted using three distinct,FULLTEXT
+E025,P004,Baselines on SODIndoorLoc are reported following the dataset paper's evaluation protocol.,Sec. IV-B.1,following the evaluation protocol of [37],FULLTEXT
+E026,P004,Locaris defines MAE in metres as the average distance error between predicted and actual locations.,Sec. IV-B.3 Performance Metrics,which reflect the average distance error,FULLTEXT
+E027,P004,"Few-shot protocol on RSS-RTT: train on two source environments, then fine-tune with 1-100% of held-out target training data.",Sec. IV-B.2 Cross-Environment Transfer,models are trained on two source environments and then provided a fraction,FULLTEXT
+E028,P004,AP-dropout ablation removes one (or two) of the five APs at a time on the RSS-RTT dataset.,Sec. IV-B.2 Access Point Ablation,"For the 1-AP dropout case, we",FULLTEXT
+E029,P004,"With 2 APs dropped (lecture, office), Locaris MAE 2.5-3.5 m vs CNN/KNN above 7-9 m.",Sec. V-C.3,Locaris sustains low MAE of 2.5–3.5 meters,FULLTEXT
+E030,P004,"Baselines represent missing telemetry with placeholder values (e.g. -200 dBm), whereas Locaris omits missing APs.",Sec. IV-B.2 Telemetry Ablation,assigning extreme placeholders such as –200 dBm,FULLTEXT
+E031,P004,Locaris claims to be the first system to repurpose decoder-only LLMs for indoor localization.,Sec. I contributions,Locaris is the first system,FULLTEXT
+E032,P005,WiFiGPT is a GPT/LLM-based WiFi telemetry localization system (Bhatia and Obraczka).,Abstract,"present WiFiGPT, a Generative Pretrained Transformer (GPT)",FULLTEXT
+E033,P005,WiFiGPT fine-tunes LLaMA-3 models (1B/3B/8B) with LoRA supervised fine-tuning.,Sec. III-C.2 Fine Tuning,supervised fine-tuning (SFT) [51] using LoRA,FULLTEXT
+E034,P005,WiFiGPT outputs a numeric distance as text via greedy decoding.,Sec. III,greedy decoding to output a single numeric distance prediction,FULLTEXT
+E035,P005,"CSI 'few-shot' setting uses 10% train, 10% validation, 80% test on a custom ESP32 hallway dataset.",Sec. V-A Few Shot Learning-CSI,assigning 10%,FULLTEXT
+E036,P005,WiFiGPT is trained separately for each dataset and environment.,Sec. III-C.2,We train the LLM model separately for each dataset and environment,FULLTEXT
+E037,P005,Authors state performance may degrade in a new environment without prior training.,Sec. VI,performance may degrade in a new environment without any prior training,FULLTEXT
+E038,P009,Dataset paper: eight ML variants evaluated; best average positioning accuracy about 2.3 m.,Abstract,the best average positioning accuracy is about 2.3 m,FULLTEXT
+E039,P009,"Dataset-paper baselines (scikit-learn) use default/hand-set parameters, no tuning; KNN k=5, distance weighting, Euclidean.",Sec. Experiments,no parameter optimization is carried out,FULLTEXT
+E040,P009,"Metrics: MAE, RMSE, 50th, 75th (IPIN score) and 95th percentile error, in metres.",Sec. Experiments,the 75th percentile error (suggested by IPIN competition,FULLTEXT
+E041,P009,"Table 11 (HCXY): sheet 1 = All_30, sheet 2 = AP_30; KNC/KNR/SVC/SVR/RFC/RFR/MLPC/MLPR. e.g. sheet 1 KNC MAE 2.339, RMSE 2.096; sheet 2 KNC MAE 5.893, RMSE 7.232.",Table 11 (table page),Statistics of different methods based on the two sheets,FULLTEXT
+E042,P009,"HCXY All_30 RFC: MAE 6.242, RMSE 10.057, 50th 1.879, 75th 5.433, 95th 30.606.",Table 11 (table page),RFC | 6.242 | 10.057 | 1.879 | 5.433 | 30.606,FULLTEXT
+E043,P009,Table 11 sheet 1 is Training_HCXY_All_30; sheet 2 is Training_HCXY_AP_30.,Sec. Positioning experiment with all MACs,"Training_HCXY_All_30 sheet, i.e., the 1st sheet",FULLTEXT
+E044,P009,"In SYL only regression methods were run (four sheets, Table 12); best MAE 3.844 (SVR, All_30), 3.787 (RFR, AP_30), 3.782 (KNR, All_Avg), 4.048 (KNR, AP_Avg).",Sec. Positioning experiments in the SYL building,Only regression methods are used for investigating positioning performance,FULLTEXT
+E045,P009,"CETC331 (regression only, Table 13): best KNR MAE 2.876 m.",Sec. Positioning experiments in the CETC331 building,achieves the best positioning performance with the MAE of 2.876 m,FULLTEXT
+E046,P009,HCXY and SYL training keep 30 samples per RP; CETC331 training keeps one averaged sample; each TP has 10 test samples.,Sec. Description of data sheets,"two buildings with one floor, training data has thirty samples",FULLTEXT
+E047,P009,Test points are at locations different from reference points.,Sec. Introduction,Testing (or validation) Points (TPs) are different from those of RPs,FULLTEXT
+E048,P009,Going from all MACs (347) to pre-installed APs (56) in HCXY raised KNR MAE by 59.3%.,Sec. Positioning accuracy and MACs per unit area,The number of MACs is changed from 347 to 56,FULLTEXT
+E049,P009,The dataset paper documents RSS range differences across the nine phones (device heterogeneity).,Sec. Phone identifier,there are differences in RSS values due to device heterogeneity,FULLTEXT
+E050,P010,IndoorCART is an encoder-only transformer for RSSI coordinate regression with missing-signal-aware attention.,Abstract,"IndoorCART (Indoor Context-Aware RSSI Transformer), an encoder-only transformer",FULLTEXT
+E051,P010,"IndoorCART MAE: 4.79 m UJIIndoorLoc, 0.18 m TUJI1, 1.33 m SODIndoorLoc.",Abstract,"mean absolute errors of 4.79 m, 0.18 m, and 1.33 m",FULLTEXT
+E052,P010,"IndoorCART uses SODIndoorLoc with 21,205 training and 2,720 test samples.",Sec. 3.1.3 SODIndoorLoc,"split into 21,205 training and 2,720 test samples",FULLTEXT
+E053,P010,"IndoorCART Table 2 lists 364 detected APs for SODIndoorLoc and features 'Floor, BuildingID, coordinates, RSSI'.",Table 2,Detected APs | 520 | 310 | 364,FULLTEXT
+E054,P010,IndoorCART keeps the original train-test partitions.,Sec. 3.2.3,"The original train–test partitions of UJIIndoorLoc, TUJI1, and SODIndoorLoc are preserved",FULLTEXT
+E055,P010,One model per dataset (SODIndoorLoc treated as one dataset spanning three buildings).,Sec. 3.7,"Models are trained separately on UJIIndoorLoc, TUJI1, and SODIndoorLoc",FULLTEXT
+E056,P010,"Missing-AP placeholders are mapped to a common missing value and imputed column-wise, then Min-Max scaled.",Sec. 3.2,Missing entries are then imputed column-wise,FULLTEXT
+E057,P010,Primary metrics are MAE (metres) and R2; no explicit Euclidean definition is given in the metrics section.,Sec. 3.8,using mean absolute error (MAE) and the coefficient of determination,FULLTEXT
+E058,P010,The worst-case analysis uses per-sample Euclidean coordinate error.,Sec. 4.5.6,we compute the per-sample Euclidean coordinate error,FULLTEXT
+E059,P010,"Table 6 SOD column: IndoorCART MSE 4.42, RMSE 2.10, MAE 1.33; KNNR 2.66; RFR 2.15; XGBR 2.41; MLPR 3.50; GRU 2.05.",Table 6,IndoorCART (proposed) | 87.50 | 9.35 | 4.79,FULLTEXT
+E060,P010,In Table 6 some rows report RMSE below MAE (e.g. UJI LR RMSE 32.48 vs MAE 33.04).,Table 6,LR | 1055.48 | 32.48 | 33.04,FULLTEXT
+E061,P010,"IndoorCART attributes its SODIndoorLoc gain to the multi-building, multi-floor layout (35.12% over strongest reproduced baseline).",Sec. 5.2,"which spans three buildings, six floors",FULLTEXT
+E062,P010,IndoorCART does not enforce leave-location-out or leave-device-out splits; warns dense splits make sub-metre errors easier.,Sec. 3.1.2 TUJI1,we follow the dataset partition summarized in Table 2,FULLTEXT
+E063,P010,"TUJI1: 8,899 samples, 310 APs (6,752 train / 2,147 test per Table 2).",Sec. 3.1.2 TUJI1,"It includes 8,899 samples from 310 access points",FULLTEXT
+E064,P009,"HCXY AP_30 KNC: MAE 5.893, RMSE 7.232, 50th 3.059, 75th 6.689, 95th 25.807.","Table 11 (table page), sheet 2",KNC | 5.893 | 7.232 | 3.059 | 6.689 | 25.807,FULLTEXT
+E065,P009,"HCXY AP_30 RFC: MAE 7.227, RMSE 10.931, 50th 1.942, 75th 5.532, 95th 35.405.","Table 11 (table page), sheet 2",RFC | 7.227 | 10.931 | 1.942 | 5.532 | 35.405,FULLTEXT
+E066,P009,"HCXY All_30 MLPC: MAE 29.411, RMSE 25.435, 95th 79.122.","Table 11 (table page), sheet 1",MLPC | 29.411 | 25.435 | 21.054 | 42.957 | 79.122,FULLTEXT
+E067,P009,"HCXY AP_30 MLPC: MAE 6.955, RMSE 9.531, 95th 30.606.","Table 11 (table page), sheet 2",MLPC | 6.955 | 9.531 | 3.547 | 7.58 | 30.606,FULLTEXT
+E068,P009,HCXY All_30 KNC: MAE 2.339 but RMSE 2.096 (RMSE below MAE in the dataset paper's table).,"Table 11 (table page), sheet 1",KNC | 2.339 | 2.096 | 1.342 | 3.059 | 6.686,FULLTEXT
+E069,P009,"Classification baselines (coordinates converted to labels) gave MAEs of hundreds of metres on HCXY 'Avg' sheets, so those results were not reported.",Sec. Positioning accuracy and the conversion between coordinate and label,MAEs of classification methods are usually hundreds,FULLTEXT
+E070,P006,TabPFN-3 is pretrained exclusively on synthetic data from the authors' prior.,Abstract/front page,Pretrained exclusively on,FULLTEXT
+E071,P006,TabPFN-3 targets datasets up to 1M training rows; reports wins up to 1M rows and 200 features.,Front page,scale state-of-the-art performance to datasets with,FULLTEXT
+E072,P006,"Report's lineage: v1 ~1,000 rows of clean numerical data; v2 10,000 rows with categorical features and missing values; v2.5 100,000 rows and 2,000 features.",Sec. 1 Introduction,"TabPFN v2 [17] scaled this to 10,000 rows",FULLTEXT
+E073,P006,TabPFN-3 handles NaN natively via a per-cell missing indicator concatenated before embedding.,Sec. 2.1 architecture,Native missing-value handling. For each cell that is NaN,FULLTEXT
+E074,P006,Each TabPFN-3 estimator uses at most 200 input features by default; Real-TabPFN-2.5 uses up to 500 per estimator; more estimators cover more features.,Sec. 3.2.3 Many Features,restricted to at most 200 input features per,FULLTEXT
+E075,P006,"When rows and features are both very large, TabPFN-3's early feature compression can become a bottleneck.",Sec. 3.2.1,the early compression,FULLTEXT
+E076,P006,TabPFN-3 adds an out-of-distribution prior intended to keep performance under distribution shift and enable extrapolation.,"Sec. 2.5 prior, item 8",Out-of-distribution prior. We add out-of-distribution prediction tasks,FULLTEXT
+E077,P006,"Many-features evaluation uses six classification datasets (100-320 samples, 1,100-22,200 features); no regression in that slice.",Sec. 3.2.3 Many Features,six real-world classification datasets with,FULLTEXT
+E078,P006,"TABPFN-3.0 licence: model, derivatives and outputs cannot be used for commercial or production purposes; research and internal evaluation allowed.",Sec. 5 License and Availability,cannot be used for commercial,FULLTEXT
+E079,P006,The report lists 200+ published TabPFN applications (Appendix I); none matches localization/positioning/RSSI/Wi-Fi terms (our text search).,Sec. 4.4 Research Adoption,more than 200 published research applications,FULLTEXT
+E080,P006,TabPFN-3 regression outputs a full predictive distribution (bar distribution).,Sec. 3.3 Quantile Regression,full predictive distributions via a bar-distribution regression,FULLTEXT
+E081,P007,BeyondArena: open-source TFMs competitive or best up to 100k rows; tree-based and deep models still dominate on grouped or large data.,Abstract,competitive or excel on datasets up to 100k rows,FULLTEXT
+E082,P007,"TFMs perform best on small, tiny and IID datasets.",Sec. 5 results,TFMs perform best on,FULLTEXT
+E083,P007,A multivariate analysis finds only >100k rows and grouped splits significantly predict worse TFM rank.,Sec. 5 results,only two properties are significant,FULLTEXT
+E084,P007,Using IID splits on grouped data can drastically distort rankings and performance estimates.,Sec. 5 ablations,inappropriate outer splits can drastically distort,FULLTEXT
+E085,P007,BeyondArena defines Tiny as 100-1k training rows and Small as 1k-10k.,Sec. 4 sub-benchmarks,Tiny for datasets with 100 ≤ n ≤ 1k training rows,FULLTEXT
+E086,P008,"TabICL (v1) is a classification-only tabular foundation model pretrained on synthetic data, handling up to 500K samples.",Abstract,"tabular foundation model for classification, pretrained on synthetic datasets",FULLTEXT
+E087,P008,TabICL handles up to 500K samples and 500 features with about 20 GB GPU memory.,Sec. 1,500K samples and 500 features with around 20GB,FULLTEXT
+E088,P008,TabICL authors state it is limited to classification.,Limitations,"Currently, TabICL is limited to classification",FULLTEXT
+E089,P008,TabICL paper summarises TabPFN v1 as up to 1K samples/100 features and TabPFNv2 as up to 10K samples/500 features.,Sec. 1,small tables with up to 1K,FULLTEXT
+E090,P011,TabPFN v2 weights (TabPFN-v2-clf/-reg) use Prior Labs License 1.1: Apache 2.0 plus an attribution clause.,TabPFN v2 LICENSE.txt header,This license is a derivative of the Apache 2.0 license,FULLTEXT
+E091,P011,The v2 licence requires prominently displaying 'Built with PriorLabs-TabPFN' when distributing.,TabPFN v2 LICENSE.txt para 10,prominently display,FULLTEXT
+E092,P011,"TabPFN-2.5 weights are licensed for non-commercial, non-production use only.",TabPFN-2.5 LICENSE header,freely available for your non-commercial and non-production use,FULLTEXT
+E093,P011,"The 2.5/2.6/3/3.5 licences prohibit use for surveillance, including research relating to surveillance.",TabPFN-2.5/3 LICENSE Sec. 4(a),"purposes of surveillance, including any research or development relating to surveillance",FULLTEXT
+E094,P011,The 2.5+ licences are not available to consumers; licensee confirms acting for professional purposes.,TabPFN-2.5/3 LICENSE preamble,This License is not available to consumers,FULLTEXT
+E095,P011,Hugging Face API reported gated=false for all six Prior-Labs model repos on 2026-11-14.,HF API metadata tabpfn_3,"""gated"":false",FULLTEXT
+E096,P011,A TabPFN-3.5 repo exists (created 2026-09-09) under 'tabpfn-3-5-license-v1.0'.,HF API metadata tabpfn_3_5,tabpfn-3-5-license-v1.0,FULLTEXT
+E097,P012,TabICL Hugging Face checkpoints are tagged BSD-3-Clause and not gated.,HF API metadata TabICL,"""license"":""bsd-3-clause""",FULLTEXT
+E098,P013,"TabPFN v2 (Nature 2025) outperforms prior methods on datasets up to 10,000 samples.",Abstract,"outperforms all previous methods on datasets with up to 10,000 samples",FULLTEXT
+E099,P013,"TabPFN v2 supports regression, categorical data and missing values.",Introduction,"supports regression tasks, categorical data and missing values",FULLTEXT
+E100,P013,Regression targets in pretraining are a single chosen continuous feature (single-target).,"Methods, synthetic data","To generate target labels for regression tasks, we select a randomly chosen",FULLTEXT
+E101,P013,TabPFN v2 classification is natively limited to 10 classes.,"Methods, synthetic data",natively our method is limited to predicting at most 10 classes,FULLTEXT
+E102,P013,"Authors: for larger datasets and highly non-smooth regression datasets, CatBoost/XGB/AutoGluon are likely to outperform TabPFN.",Discussion,For larger datasets and highly non-smooth regression datasets,FULLTEXT
+E103,P013,"Limitations: slower inference, memory linear in dataset size, evaluation limited to 10,000 samples and 500 features.",Limitations of TabPFN,"our evaluation focused on datasets with up to 10,000 samples",FULLTEXT
+E104,P013,TabPFN v2 matches default CatBoost accuracy with half the training samples.,Fig. 5a caption,reproduces the accuracy of CatBoost (default) with only half the training samples,FULLTEXT
+E105,P013,"Subgroup analysis (categorical, missing values, sample and feature counts) shows no strong effect on relative performance.","Results, data characteristics",none of these characteristics strongly affect the performance of TabPFN,FULLTEXT
+E106,P013,TabPFN v2 encodes missingness with an extra per-cell indicator.,"Methods, missing values",extra input for each cell that indicates whether the input was missing,FULLTEXT
+E107,P013,The paper argues tree models give poor out-of-distribution predictions without modification.,Introduction,they yield poor out-of-distribution predictions,FULLTEXT
+E108,P013,TabPFN v2 is not optimized for real-time inference (0.2 s per sample at 10k rows x 10 columns vs 0.0002 s for CatBoost).,Limitations,it is not optimized for real-time inference tasks,FULLTEXT
+E109,P014,RA-LWLM achieves training-free cross-scene adaptation by externalising scene information into a per-scene fingerprint database.,Abstract,achieves training-free cross-scene adaptation by externalizing,FULLTEXT
+E110,P014,"RA-LWLM uses a frozen wireless FM encoder on raw CSI, retrieval of references, and a transformer ICL module with mixture of experts.",Abstract,a frozen wireless foundation model,FULLTEXT
+E111,P014,The ICL module and selector are trained on labelled CSI-position pairs from a set of training scenes.,Sec. IV-B,are trained on labeled CSI samples,FULLTEXT
+E112,P014,"Evaluation uses Sionna ray-tracing channel data (simulated), single-BS CSI.",Sec. V setup,We use the Sionna [42] ray-tracing simulator to generate channel data,FULLTEXT
+E113,P014,Authors list real-world measurement campaigns as future work.,Sec. VI,real-world measurement campaigns would further validate,FULLTEXT
+E114,P015,OmniLoc claims to be the first foundation-model approach on wireless measurements for anchor-free indoor UE localization.,Abstract,OmniLoc is the first foundation-model-based approach built directly on wireless measurements,ABSTRACT
+E115,P015,"OmniLoc is evaluated on a large in-house dataset and one public benchmark, with cross-environment tests.",Abstract,a large-scale in-house dataset and a public benchmark dataset,ABSTRACT
+E116,P016,"Radio Foundation Models: self-supervised pretraining on 5G channel measurements, then fine-tuning per environment with ten times less reference data.",Abstract,requires ten times less reference data,ABSTRACT
+E117,P017,EnvCoLoc: environment-conditioned diffusion meta-learning; up to 20% lower mean error in NLOS with 10 support samples.,Abstract,only 10 support samples,ABSTRACT
+E118,P017,EnvCoLoc requires 3D point-cloud descriptors of the environment.,Abstract,extracts structured descriptors from 3D point clouds,ABSTRACT
+E119,P018,GenMetaLoc meta-learns diffusion-based fingerprint generation conditioned on 3D point clouds; CSI-based.,Abstract,incorporate 3D point cloud data from the first Fresnel zone,ABSTRACT
+E120,P019,"MetaLoc (MAML) meta-trains on historical well-calibrated environments, then adapts to new environments.",Abstract,trained on historical data sourced from well-calibrated environments,ABSTRACT
+E121,P019,MetaLoc is published in IEEE JSAC 2023.,Consensus record,IEEE Journal on Selected Areas in Communications,ABSTRACT
+E122,P020,"FeMLoc: federated meta-training on diverse datasets, then minimal fine-tuning in the new environment.",Abstract,requiring only minimal fine-tuning with a small amount of new data,ABSTRACT
+E123,P021,LWLM: SSL-pretrained wireless localization foundation model with lightweight downstream decoders.,Abstract,self-supervised learning (SSL) tasks,ABSTRACT
+E124,P022,TabPFN (v1) does in-context learning from labelled examples without parameter updates; trained offline on synthetic data from a prior.,Abstract,"performs in-context learning (ICL), it learns to make predictions",ABSTRACT
+E125,P022,"TabPFN v1 evaluation: up to 1,000 training points, 100 numerical features without missing values, 10 classes; classification only.",Abstract,up to 100 purely numerical features without missing values,ABSTRACT
+E126,P023,"CR-AP (Sci. Rep. 2026) reports SODIndoorLoc mean error 2.07 m, P90 3.94 m.",Abstract,CR-AP achieves a mean error of 2.07 m and a P90,FULLTEXT
+E127,P023,AP-missing protocol: randomly mask a proportion (10-60%) of available APs.,Sec. Robustness under AP missing,A proportion of originally available APs is randomly masked as missing,FULLTEXT
+E128,P023,"Above 40% AP-missing, plain KNN surpasses CR-AP on several metrics.",Sec. Robustness under AP missing,"When the missing rate exceeds 40%, KNN surpasses CR-AP",FULLTEXT
+E129,P023,CR-AP's ablations are reported on HCXY; its main experiment figure uses the HCXY floor plan.,Sec. Ablation,Mean error bar chart of each ablation experiment on HCXY,FULLTEXT
+E130,P023,CR-AP reports Bagged Trees degrade quickly under AP missing.,Sec. Robustness under AP missing,"tree-based partitioning is unstable for high-dimensional, sparse RSS features",FULLTEXT
+E131,P024,"Zenodo record lists lecture theatre 5,400 train / 1,800 test and corridor 5,130 / 1,710; office 4,860 / 1,620.",Zenodo description,"Number of training samples: 5,400",FULLTEXT
+E132,P024,"RSS-RTT dataset: training and testing points do not overlap; 60 scans per RP; Google AC-1304 APs, Pixel 3.",Zenodo description,training points and testing points will not overlap,FULLTEXT
+E133,P024,Zenodo RSS-RTT dataset is CC BY 4.0.,Zenodo record,cc-by-4.0,FULLTEXT
+E134,P025,"Few-shot Sensors 2023: prototypical network with TCN encoder plus Kalman filter, fewer labelled samples.",Abstract,prototypical network-based positioning system,ABSTRACT
+E135,P026,LESS: few-shot relation networks with fingerprint augmentation; adapts to changed surroundings without network updating.,Abstract,even without the network updating,ABSTRACT
+E136,P027,Singh et al. 2021 overview surveys ML Wi-Fi RSSI fingerprinting and open datasets.,Abstract,discussion of dataset collection and open-source datasets,ABSTRACT
+E137,P028,"Zholamanov et al. 2025 review covers radiomap creation, preprocessing, ML/DL, device differences.",Abstract,differences between devices and system scalability issues,ABSTRACT
+E138,P029,SSD fingerprint is robust when the testing device differs from the training device.,Abstract,Signal Strength Difference (SSD),ABSTRACT
+E139,P030,Park et al.: AP detection (negative evidence) hurts under device diversity; signal strength alone works better.,Abstract,"using only signal strength, without incorporating negative evidence",ABSTRACT
+E140,P031,"RADAR locates users from signal strength at multiple base stations, combining measurements with propagation modelling.",Abstract,recording and processing signal strength information at multiple base stations,ABSTRACT
+E141,P032,Horus: probabilistic WLAN location with clustering; <0.6 m average error on its testbeds.,Abstract,It has an error of less than 0.6 meter on the average,ABSTRACT
+E142,P033,"Ferris et al.: Gaussian processes as likelihood model for signal strength, hyperparameters learned from data.",Abstract,Gaussian processes can be used to generate a likelihood model,ABSTRACT
+E143,P034,"UJIIndoorLoc: multi-building multi-floor public WLAN fingerprint database, >20 users, 25 devices.",Abstract,more than 20 users and by means of 25 devices,ABSTRACT
+E144,P035,"TUJI1: Wi-Fi RSSI dataset from 5 devices on a fine grid, with fixed train/test split.",Abstract,collected using 5 different commercial devices in a fine-grained grid,ABSTRACT
+E145,P036,Feng et al. J-ISPIN 2024: dynamic model selection on RSS+RTT; up to 1.8 m improvement.,Abstract,dynamically selects the most optimal Wi-Fi positioning model for each location,ABSTRACT
+E146,P037,"UCI Wireless Indoor Localization: 2,000 instances, 7 WiFi signal strengths, label is one of four rooms (classification, no coordinates).",UCI page,The decision variable is one of the four rooms,FULLTEXT
+E147,P037,"UCI dataset licensed CC BY 4.0, DOI 10.24432/C51880.",UCI page,Creative Commons Attribution 4.0 International,FULLTEXT
+E148,P038,"TabPFN-2.5 abstract: built for up to 50,000 data points and 2,000 features.",Abstract,"built for datasets with up to 50,000 data points and 2,000 features",ABSTRACT
+E149,P038,TabPFN-2.5 default: 87% win rate vs XGBoost up to 100K samples/2K features (85% for regression).,Abstract,up to 100K samples and 2K features (85% for regression),ABSTRACT
+E150,P039,"TabICLv2 supports regression and classification; code for inference, pretraining and data generation released.",Abstract,foundation model for regression and classification,ABSTRACT
+E151,P039,TabICLv2 scales to million-row datasets under 50 GB GPU memory.,Abstract,generalizes effectively to million-scale datasets under 50 GB GPU memory,ABSTRACT
+E152,P010,"IndoorCART's reproduced transformer baselines on SOD: HyTra 1.89, L-SwiGLU 1.97, Siamese 2.08, VITAL 2.14, VTIL 2.31, AATS 2.45 m.",Table 7,HyTra (reproduced) | 5.12 | 0.22 | 1.89,FULLTEXT
+E153,P002,DiT paper uses a stratified train-test split on UCI WiFi (classification accuracy metric).,Sec. III-A.1,perform a stratified train–test split,FULLTEXT
+E154,P004,"Locaris Table II lists RSS-RTT training samples 5,280/4,860/5,110 and testing 1,920/1,620/1,740 (lecture/office/corridor).",Table II,"Training samples 5,280 4,860 5,110",FULLTEXT
+E155,P004,RSS-RTT results use five random seeds.,Sec. IV-A.2,All tests were conducted using five distinct random seeds,FULLTEXT
+E156,P004,"RSS-RTT baselines (CNN, KNN, MLP, LGBM, transformer) tuned with 30 Optuna trials and given an environment indicator bit.",Sec. IV-B.2,through 30 Optuna [39] trials,FULLTEXT
+E157,P005,"WiFiGPT on RSS-RTT (per-environment training): 3B model MAE 1.12 m corridor, 0.90 m theatre; 1B 1.16 m office.",Table IV,Corridor 1.8553 1.1166,FULLTEXT
+E158,P009,HCXY AP_30: RFR is best with MAE 3.198 m.,Sec. Positioning experiment with pre-installed APs,other seven methods with the MAE of 3.198 m,FULLTEXT
+E159,P009,HCXY All_30: SVC MAE 2.259 m (lowest MAE in Table 11).,"Table 11 (table page), sheet 1",SVC | 2.259 | 1.966 | 1.342 | 3.081 | 6.627,FULLTEXT

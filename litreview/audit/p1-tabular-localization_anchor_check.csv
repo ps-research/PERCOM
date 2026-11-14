@@ -1,0 +1,160 @@
+eid,pid,status,anchor_words,access,anchor
+E001,P001,EXACT,9,FULLTEXT,a compact decoder-only language model based on Meta's Llama-3.2-1B
+E002,P001,EXACT,8,FULLTEXT,Rank Adaptation (LoRA) modules inserted into the attention
+E003,P001,EXACT,7,FULLTEXT,where each access-point observation forms a token
+E004,P001,EXACT,7,FULLTEXT,trained using mean squared error (MSE) loss
+E005,P001,EXACT,7,FULLTEXT,We compare Locaris against state-of-the-art regression methods
+E006,P001,EXACT,3,FULLTEXT,SODINDOORLOC DATASET CHARACTERISTICS
+E007,P001,EXACT,10,FULLTEXT,"AVERAGE STATISTICS OF REGRESSION METHODS ACROSS CETC331, SYL, AND HCXY"
+E008,P001,EXACT,11,FULLTEXT,It achieves the lowest MAE (2.84 m) and RMSE (6.14 m)
+E009,P001,EXACT,11,FULLTEXT,yielding 0.88 meter error with only 3% of the target data
+E010,P001,LOOSE,4,FULLTEXT,Locaris reaches near opti-
+E011,P001,EXACT,5,FULLTEXT,robust performance under missing APs
+E012,P001,EXACT,7,FULLTEXT,with MAE ranging from 2.86 to 4.71
+E013,P002,EXACT,7,FULLTEXT,generating synthetic fingerprints from limited real measurements
+E014,P002,LOOSE,9,FULLTEXT,"which contains 2,000 RSS measurements from seven WiFi ac-"
+E015,P002,EXACT,8,FULLTEXT,augmented training increases accuracy from 78.3% to 98.5%
+E016,P002,LOOSE,12,FULLTEXT,"For each dataset, we first train the DiT and GAN using train-"
+E017,P002,EXACT,3,FULLTEXT,DiTs have not
+E018,P003,EXACT,10,FULLTEXT,training models in the HCXY building with all detected MACs
+E019,P003,EXACT,9,FULLTEXT,Positive value 100 used if MAC001 was not detected
+E020,P003,EXACT,7,FULLTEXT,DIMENSIONS OF RSS VECTOR IN SIMPLIFIED SHEETS
+E021,P003,EXACT,12,FULLTEXT,"Range from 1 to 9, which smartphone was used for WiFi collection"
+E022,P004,EXACT,8,FULLTEXT,followed the default train/test split specified by [37]
+E023,P004,EXACT,9,FULLTEXT,"valid RSSI values together with vendor identifiers, scene descriptions"
+E024,P004,EXACT,7,FULLTEXT,All tests were conducted using three distinct
+E025,P004,EXACT,6,FULLTEXT,following the evaluation protocol of [37]
+E026,P004,EXACT,6,FULLTEXT,which reflect the average distance error
+E027,P004,EXACT,12,FULLTEXT,models are trained on two source environments and then provided a fraction
+E028,P004,EXACT,6,FULLTEXT,"For the 1-AP dropout case, we"
+E029,P004,EXACT,7,FULLTEXT,Locaris sustains low MAE of 2.5–3.5 meters
+E030,P004,EXACT,7,FULLTEXT,assigning extreme placeholders such as –200 dBm
+E031,P004,EXACT,5,FULLTEXT,Locaris is the first system
+E032,P005,EXACT,7,FULLTEXT,"present WiFiGPT, a Generative Pretrained Transformer (GPT)"
+E033,P005,EXACT,6,FULLTEXT,supervised fine-tuning (SFT) [51] using LoRA
+E034,P005,EXACT,9,FULLTEXT,greedy decoding to output a single numeric distance prediction
+E035,P005,EXACT,2,FULLTEXT,assigning 10%
+E036,P005,EXACT,11,FULLTEXT,We train the LLM model separately for each dataset and environment
+E037,P005,EXACT,11,FULLTEXT,performance may degrade in a new environment without any prior training
+E038,P009,EXACT,9,FULLTEXT,the best average positioning accuracy is about 2.3 m
+E039,P009,EXACT,6,FULLTEXT,no parameter optimization is carried out
+E040,P009,EXACT,8,FULLTEXT,the 75th percentile error (suggested by IPIN competition
+E041,P009,EXACT,9,FULLTEXT,Statistics of different methods based on the two sheets
+E042,P009,EXACT,11,FULLTEXT,RFC | 6.242 | 10.057 | 1.879 | 5.433 | 30.606
+E043,P009,EXACT,6,FULLTEXT,"Training_HCXY_All_30 sheet, i.e., the 1st sheet"
+E044,P009,EXACT,9,FULLTEXT,Only regression methods are used for investigating positioning performance
+E045,P009,EXACT,11,FULLTEXT,achieves the best positioning performance with the MAE of 2.876 m
+E046,P009,EXACT,10,FULLTEXT,"two buildings with one floor, training data has thirty samples"
+E047,P009,EXACT,11,FULLTEXT,Testing (or validation) Points (TPs) are different from those of RPs
+E048,P009,EXACT,10,FULLTEXT,The number of MACs is changed from 347 to 56
+E049,P009,EXACT,10,FULLTEXT,there are differences in RSS values due to device heterogeneity
+E050,P010,EXACT,8,FULLTEXT,"IndoorCART (Indoor Context-Aware RSSI Transformer), an encoder-only transformer"
+E051,P010,EXACT,11,FULLTEXT,"mean absolute errors of 4.79 m, 0.18 m, and 1.33 m"
+E052,P010,EXACT,8,FULLTEXT,"split into 21,205 training and 2,720 test samples"
+E053,P010,EXACT,8,FULLTEXT,Detected APs | 520 | 310 | 364
+E054,P010,EXACT,11,FULLTEXT,"The original train–test partitions of UJIIndoorLoc, TUJI1, and SODIndoorLoc are preserved"
+E055,P010,EXACT,9,FULLTEXT,"Models are trained separately on UJIIndoorLoc, TUJI1, and SODIndoorLoc"
+E056,P010,EXACT,6,FULLTEXT,Missing entries are then imputed column-wise
+E057,P010,EXACT,10,FULLTEXT,using mean absolute error (MAE) and the coefficient of determination
+E058,P010,EXACT,7,FULLTEXT,we compute the per-sample Euclidean coordinate error
+E059,P010,EXACT,8,FULLTEXT,IndoorCART (proposed) | 87.50 | 9.35 | 4.79
+E060,P010,EXACT,7,FULLTEXT,LR | 1055.48 | 32.48 | 33.04
+E061,P010,EXACT,6,FULLTEXT,"which spans three buildings, six floors"
+E062,P010,EXACT,9,FULLTEXT,we follow the dataset partition summarized in Table 2
+E063,P010,EXACT,8,FULLTEXT,"It includes 8,899 samples from 310 access points"
+E064,P009,EXACT,11,FULLTEXT,KNC | 5.893 | 7.232 | 3.059 | 6.689 | 25.807
+E065,P009,EXACT,11,FULLTEXT,RFC | 7.227 | 10.931 | 1.942 | 5.532 | 35.405
+E066,P009,EXACT,11,FULLTEXT,MLPC | 29.411 | 25.435 | 21.054 | 42.957 | 79.122
+E067,P009,EXACT,11,FULLTEXT,MLPC | 6.955 | 9.531 | 3.547 | 7.58 | 30.606
+E068,P009,EXACT,11,FULLTEXT,KNC | 2.339 | 2.096 | 1.342 | 3.059 | 6.686
+E069,P009,EXACT,7,FULLTEXT,MAEs of classification methods are usually hundreds
+E070,P006,EXACT,3,FULLTEXT,Pretrained exclusively on
+E071,P006,EXACT,6,FULLTEXT,scale state-of-the-art performance to datasets with
+E072,P006,EXACT,8,FULLTEXT,"TabPFN v2 [17] scaled this to 10,000 rows"
+E073,P006,EXACT,9,FULLTEXT,Native missing-value handling. For each cell that is NaN
+E074,P006,EXACT,8,FULLTEXT,restricted to at most 200 input features per
+E075,P006,EXACT,3,FULLTEXT,the early compression
+E076,P006,EXACT,7,FULLTEXT,Out-of-distribution prior. We add out-of-distribution prediction tasks
+E077,P006,EXACT,5,FULLTEXT,six real-world classification datasets with
+E078,P006,EXACT,5,FULLTEXT,cannot be used for commercial
+E079,P006,EXACT,6,FULLTEXT,more than 200 published research applications
+E080,P006,EXACT,7,FULLTEXT,full predictive distributions via a bar-distribution regression
+E081,P007,EXACT,9,FULLTEXT,competitive or excel on datasets up to 100k rows
+E082,P007,EXACT,4,FULLTEXT,TFMs perform best on
+E083,P007,EXACT,5,FULLTEXT,only two properties are significant
+E084,P007,EXACT,6,FULLTEXT,inappropriate outer splits can drastically distort
+E085,P007,EXACT,11,FULLTEXT,Tiny for datasets with 100 ≤ n ≤ 1k training rows
+E086,P008,EXACT,9,FULLTEXT,"tabular foundation model for classification, pretrained on synthetic datasets"
+E087,P008,EXACT,8,FULLTEXT,500K samples and 500 features with around 20GB
+E088,P008,EXACT,6,FULLTEXT,"Currently, TabICL is limited to classification"
+E089,P008,EXACT,6,FULLTEXT,small tables with up to 1K
+E090,P011,EXACT,10,FULLTEXT,This license is a derivative of the Apache 2.0 license
+E091,P011,EXACT,2,FULLTEXT,prominently display
+E092,P011,EXACT,8,FULLTEXT,freely available for your non-commercial and non-production use
+E093,P011,EXACT,11,FULLTEXT,"purposes of surveillance, including any research or development relating to surveillance"
+E094,P011,EXACT,7,FULLTEXT,This License is not available to consumers
+E095,P011,EXACT,1,FULLTEXT,"""gated"":false"
+E096,P011,EXACT,1,FULLTEXT,tabpfn-3-5-license-v1.0
+E097,P012,EXACT,1,FULLTEXT,"""license"":""bsd-3-clause"""
+E098,P013,EXACT,11,FULLTEXT,"outperforms all previous methods on datasets with up to 10,000 samples"
+E099,P013,EXACT,8,FULLTEXT,"supports regression tasks, categorical data and missing values"
+E100,P013,EXACT,12,FULLTEXT,"To generate target labels for regression tasks, we select a randomly chosen"
+E101,P013,EXACT,11,FULLTEXT,natively our method is limited to predicting at most 10 classes
+E102,P013,EXACT,8,FULLTEXT,For larger datasets and highly non-smooth regression datasets
+E103,P013,EXACT,10,FULLTEXT,"our evaluation focused on datasets with up to 10,000 samples"
+E104,P013,EXACT,12,FULLTEXT,reproduces the accuracy of CatBoost (default) with only half the training samples
+E105,P013,EXACT,10,FULLTEXT,none of these characteristics strongly affect the performance of TabPFN
+E106,P013,EXACT,12,FULLTEXT,extra input for each cell that indicates whether the input was missing
+E107,P013,EXACT,5,FULLTEXT,they yield poor out-of-distribution predictions
+E108,P013,EXACT,8,FULLTEXT,it is not optimized for real-time inference tasks
+E109,P014,EXACT,6,FULLTEXT,achieves training-free cross-scene adaptation by externalizing
+E110,P014,EXACT,5,FULLTEXT,a frozen wireless foundation model
+E111,P014,EXACT,6,FULLTEXT,are trained on labeled CSI samples
+E112,P014,EXACT,11,FULLTEXT,We use the Sionna [42] ray-tracing simulator to generate channel data
+E113,P014,EXACT,6,FULLTEXT,real-world measurement campaigns would further validate
+E114,P015,EXACT,11,ABSTRACT,OmniLoc is the first foundation-model-based approach built directly on wireless measurements
+E115,P015,EXACT,9,ABSTRACT,a large-scale in-house dataset and a public benchmark dataset
+E116,P016,EXACT,6,ABSTRACT,requires ten times less reference data
+E117,P017,EXACT,4,ABSTRACT,only 10 support samples
+E118,P017,EXACT,7,ABSTRACT,extracts structured descriptors from 3D point clouds
+E119,P018,EXACT,10,ABSTRACT,incorporate 3D point cloud data from the first Fresnel zone
+E120,P019,EXACT,8,ABSTRACT,trained on historical data sourced from well-calibrated environments
+E121,P019,EXACT,7,ABSTRACT,IEEE Journal on Selected Areas in Communications
+E122,P020,EXACT,11,ABSTRACT,requiring only minimal fine-tuning with a small amount of new data
+E123,P021,EXACT,4,ABSTRACT,self-supervised learning (SSL) tasks
+E124,P022,EXACT,9,ABSTRACT,"performs in-context learning (ICL), it learns to make predictions"
+E125,P022,EXACT,9,ABSTRACT,up to 100 purely numerical features without missing values
+E126,P023,EXACT,11,FULLTEXT,CR-AP achieves a mean error of 2.07 m and a P90
+E127,P023,EXACT,11,FULLTEXT,A proportion of originally available APs is randomly masked as missing
+E128,P023,EXACT,9,FULLTEXT,"When the missing rate exceeds 40%, KNN surpasses CR-AP"
+E129,P023,EXACT,10,FULLTEXT,Mean error bar chart of each ablation experiment on HCXY
+E130,P023,EXACT,9,FULLTEXT,"tree-based partitioning is unstable for high-dimensional, sparse RSS features"
+E131,P024,EXACT,5,FULLTEXT,"Number of training samples: 5,400"
+E132,P024,EXACT,8,FULLTEXT,training points and testing points will not overlap
+E133,P024,EXACT,1,FULLTEXT,cc-by-4.0
+E134,P025,EXACT,4,ABSTRACT,prototypical network-based positioning system
+E135,P026,EXACT,5,ABSTRACT,even without the network updating
+E136,P027,EXACT,7,ABSTRACT,discussion of dataset collection and open-source datasets
+E137,P028,EXACT,7,ABSTRACT,differences between devices and system scalability issues
+E138,P029,EXACT,4,ABSTRACT,Signal Strength Difference (SSD)
+E139,P030,EXACT,8,ABSTRACT,"using only signal strength, without incorporating negative evidence"
+E140,P031,EXACT,10,ABSTRACT,recording and processing signal strength information at multiple base stations
+E141,P032,EXACT,12,ABSTRACT,It has an error of less than 0.6 meter on the average
+E142,P033,EXACT,10,ABSTRACT,Gaussian processes can be used to generate a likelihood model
+E143,P034,EXACT,10,ABSTRACT,more than 20 users and by means of 25 devices
+E144,P035,EXACT,10,ABSTRACT,collected using 5 different commercial devices in a fine-grained grid
+E145,P036,EXACT,11,ABSTRACT,dynamically selects the most optimal Wi-Fi positioning model for each location
+E146,P037,EXACT,9,FULLTEXT,The decision variable is one of the four rooms
+E147,P037,EXACT,5,FULLTEXT,Creative Commons Attribution 4.0 International
+E148,P038,EXACT,12,ABSTRACT,"built for datasets with up to 50,000 data points and 2,000 features"
+E149,P038,EXACT,10,ABSTRACT,up to 100K samples and 2K features (85% for regression)
+E150,P039,EXACT,6,ABSTRACT,foundation model for regression and classification
+E151,P039,EXACT,10,ABSTRACT,generalizes effectively to million-scale datasets under 50 GB GPU memory
+E152,P010,EXACT,8,FULLTEXT,HyTra (reproduced) | 5.12 | 0.22 | 1.89
+E153,P002,EXACT,5,FULLTEXT,perform a stratified train–test split
+E154,P004,EXACT,5,FULLTEXT,"Training samples 5,280 4,860 5,110"
+E155,P004,EXACT,9,FULLTEXT,All tests were conducted using five distinct random seeds
+E156,P004,EXACT,5,FULLTEXT,through 30 Optuna [39] trials
+E157,P005,EXACT,3,FULLTEXT,Corridor 1.8553 1.1166
+E158,P009,EXACT,9,FULLTEXT,other seven methods with the MAE of 3.198 m
+E159,P009,EXACT,11,FULLTEXT,SVC | 2.259 | 1.966 | 1.342 | 3.081 | 6.627

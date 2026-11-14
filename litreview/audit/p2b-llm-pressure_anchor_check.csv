@@ -1,0 +1,165 @@
+eid,pid,status,anchor_words,access,anchor
+E001,P002,EXACT,10,FULLTEXT,graded replies from ten configurations: eight LLMs with reasoning disabled
+E002,P002,EXACT,10,FULLTEXT,against 0.139 for model family and 0.009 for pressure tactic
+E003,P002,EXACT,8,FULLTEXT,Personal choices are endorsed in 77.0% of conversations.
+E004,P002,EXACT,9,FULLTEXT,Fallacious or emotional framing adds nothing beyond plain repetition.
+E005,P002,LOOSE,7,FULLTEXT,"GLM-5.2, DeepSeek-V4- Flash, Qwen3.5-397B, MiniMax-M3, Gemini-3-Flash, Grok-4.3"
+E006,P002,EXACT,7,FULLTEXT,The primary outcome is decontaminated final-turn adoption
+E007,P002,EXACT,8,FULLTEXT,Fallacious leads yield 12.9% and emotional leads 13.2%
+E008,P002,EXACT,8,FULLTEXT,84.0% first appear right after the first push
+E009,P002,EXACT,11,FULLTEXT,drops from 85% at turn 2 to 30% at turn 3
+E010,P002,EXACT,9,FULLTEXT,personal-choice endorsement ranges from 38.6% (Grok-4.3) to 99.5% (Gemini-3-Flash)
+E011,P002,EXACT,6,FULLTEXT,endorsing personal choices resembles normative influence
+E012,P002,EXACT,8,FULLTEXT,"Second, state the question without attaching an answer."
+E013,P002,EXACT,8,FULLTEXT,Deployed assistants may behave differently under system prompts
+E014,P002,EXACT,6,FULLTEXT,Appendix C gives the pressure templates
+E015,P002,EXACT,8,FULLTEXT,As someone who has formally studied this area
+E016,P002,EXACT,10,FULLTEXT,"changes how the push is framed, not what is pushed"
+E017,P002,EXACT,5,FULLTEXT,Models receive no system prompt
+E018,P003,EXACT,8,FULLTEXT,"Terra, Gemini 3.1 Pro, and DeepSeek V4 Pro)"
+E019,P003,MISSING,6,FULLTEXT,Emotion (Pathos) 2799 (18) 1240 44.3
+E020,P003,MISSING,6,FULLTEXT,Credibility (Ethos) 4516 (29) 1157 25.6
+E021,P003,EXACT,10,FULLTEXT,attribute the drop to the tactic used on the current
+E022,P003,EXACT,11,FULLTEXT,The proxy draws each move from a fixed 24-entry tactic menu
+E023,P003,EXACT,7,FULLTEXT,and the fixed script lowers it most
+E024,P003,MISSING,8,FULLTEXT,GPT-5.6 Terra 2 25 45 53 58 65
+E025,P003,EXACT,7,FULLTEXT,"SPINE builds on SYCON-Bench (Hong et al.,"
+E026,P003,EXACT,10,FULLTEXT,adaptively challenges a target model for up to 25 turns
+E027,P003,EXACT,7,FULLTEXT,remains represented in the trace in 50%–89%
+E028,P003,EXACT,9,FULLTEXT,"Code, data, and transcripts will be released upon publication."
+E029,P003,EXACT,7,FULLTEXT,rate rising from 0%-57% within 5 turns
+E030,P001,EXACT,9,FULLTEXT,"epistemic certainty (statement, belief, conviction), perspective (I- vs user-perspective)"
+E031,P001,EXACT,10,FULLTEXT,sycophancy increases monotonically with epistemic certainty conveyed by the user
+E032,P001,EXACT,10,FULLTEXT,asking a model to convert non-questions into questions before answering
+E033,P001,EXACT,9,FULLTEXT,40 yes/no questions on debatable topics without clear answers
+E034,P001,EXACT,10,FULLTEXT,translating to a 24 percentage point difference in expressed sycophancy
+E035,P001,EXACT,9,FULLTEXT,"Crucially, the effects of both question mitigations substantially exceeded"
+E036,P001,EXACT,8,FULLTEXT,user reframing is not an effective mitigation strategy
+E037,P001,EXACT,12,FULLTEXT,"User inputs on hobbies (β = 0.21, 95% HPDI = [0.19, 0.23])"
+E038,P001,EXACT,8,FULLTEXT,"with three evaluated models: GPT-4o, GPT-5, and Sonnet-4.5"
+E039,P001,EXACT,7,FULLTEXT,(59.9% for questions vs. 64.6% for statements)
+E040,P001,EXACT,9,FULLTEXT,"derived from controlled, largely single-turn interactions using synthetic prompts"
+E041,P001,EXACT,9,FULLTEXT,automated reframing could alter user intent in subtle ways
+E042,P004,EXACT,8,FULLTEXT,"two metrics: Turn of Flip (ToF), which measures"
+E043,P004,EXACT,7,FULLTEXT,families in three real-world scenarios: (1) debate
+E044,P004,EXACT,10,FULLTEXT,"reduce sycophancy rates by up to 81.4% and 21.6%, respectively"
+E045,P004,EXACT,7,FULLTEXT,This prompt design avoids introducing logical counterarguments
+E046,P004,EXACT,9,FULLTEXT,Mention that many others share similar experiences (Social proof)
+E047,P004,EXACT,11,FULLTEXT,Reassert the false claim with increased confidence or cite prior knowledge
+E048,P004,EXACT,6,FULLTEXT,persona (Andrew Prompt) boosts ToF performance
+E049,P004,EXACT,9,FULLTEXT,no clear trend is observed when identifying false presuppositions
+E050,P004,EXACT,8,FULLTEXT,We release our code and data at https:
+E051,P005,EXACT,8,FULLTEXT,"evaluate sycophantic behavior in ChatGPT-4o, Claude-Sonnet, and Gemini-1.5-Pro"
+E052,P005,EXACT,7,FULLTEXT,Sycophantic behavior was observed in 58.19% of
+E053,P005,EXACT,9,FULLTEXT,"(61.75% vs. 56.52%, Z = 5.87, p < 0.001)"
+E054,P005,EXACT,7,FULLTEXT,citation-based rebuttals exhibited the highest regressive rates
+E055,P005,EXACT,7,FULLTEXT,"Sycophantic behavior showed high persistence (78.5%, 95%"
+E056,P005,EXACT,5,FULLTEXT,Simple Rebuttal ⊆ Ethos Rebuttal
+E057,P005,EXACT,8,FULLTEXT,arises most often in response to subjective opinions
+E058,P006,EXACT,9,FULLTEXT,"Models We examine claude-1.3, claude-2.0, gpt-3.5-turbo, gpt-4, and llama-2-70b-chat"
+E059,P006,EXACT,10,FULLTEXT,five AI assistants consistently exhibit sycophancy across four varied free-form
+E060,P006,EXACT,11,FULLTEXT,we add I really like the [solution/argument/poem] or I wrote the
+E061,P006,EXACT,9,FULLTEXT,Claude 1.3 wrongly admits mistakes on 98% of questions
+E062,P006,EXACT,11,FULLTEXT,The user suggesting an incorrect answer can reduce accuracy by up
+E063,P006,EXACT,7,FULLTEXT,it is more likely to be preferred
+E064,P007,EXACT,6,FULLTEXT,Evaluating 14 models on 42K questions
+E065,P007,EXACT,9,FULLTEXT,"high unity, e.g., “we think”) is the strongest driver"
+E066,P007,EXACT,9,FULLTEXT,I am very sure that the answer is X.
+E067,P007,EXACT,11,FULLTEXT,We also define manipulativeness as the range of accuracy across types
+E068,P007,EXACT,6,FULLTEXT,"Ministral 3 (Liu et al., 2026)"
+E069,P007,EXACT,8,FULLTEXT,where deferring to the user may make sense
+E070,P007,EXACT,11,FULLTEXT,Larger models adopt incorrect opinions less often but are no better
+E071,P007,EXACT,9,FULLTEXT,"authority over the model, or social pressure matter little"
+E072,P008,EXACT,8,FULLTEXT,classifies 40 persuasion techniques into 13 broad strategies
+E073,P008,EXACT,11,FULLTEXT,yields an over 92% attack success rate on Llama2 7b Chat
+E074,P008,EXACT,9,FULLTEXT,logical appeal and authority endorsement are among the most
+E075,P008,EXACT,8,FULLTEXT,we only publicly release our persuasion taxonomy at
+E076,P008,EXACT,7,FULLTEXT,we include both ethical and unethical strategies
+E077,P009,EXACT,10,FULLTEXT,we present the first systematic study of multi-user LLM agents
+E078,P009,EXACT,5,FULLTEXT,"Code, scenarios, and evaluators: https://github.com/Kordi-Lab/Multi-User-LLM-Agent."
+E079,P009,EXACT,7,FULLTEXT,higher-authority instructions override lower-authority ones under conflict
+E080,P009,EXACT,5,FULLTEXT,models may instead favor assertive
+E081,P009,EXACT,6,FULLTEXT,Claude-Haiku-4.5 drops from 0.86 to 0.62
+E082,P009,EXACT,9,FULLTEXT,fail to maintain stable prioritization under conflicting user objectives
+E083,P009,EXACT,9,FULLTEXT,indicating that it partly relies on a seniority prior
+E084,P010,EXACT,10,FULLTEXT,the task is to extract information (from 10-K or 10-Q
+E085,P010,EXACT,6,FULLTEXT,but the performance drops are low-to-modest
+E086,P010,EXACT,7,FULLTEXT,No model displayed robustness against such behavior
+E087,P010,EXACT,12,FULLTEXT,agentic injection of personal preferences leads to lower awareness and acknowledgment rate
+E088,P010,EXACT,5,FULLTEXT,Prompt-based filtering moderately mitigates sycophancy
+E089,P010,EXACT,9,FULLTEXT,implicit personal preferences are a much more pernicious inducer
+E090,P010,EXACT,1,FULLTEXT,Claude-Opus-4.5
+E091,P011,EXACT,7,FULLTEXT,"models: GPT-5.4, GPT-5.4-mini, and GPT-5.5 through Codex"
+E092,P011,EXACT,9,FULLTEXT,31x the original codebase before first stopping and resuming
+E093,P011,EXACT,11,FULLTEXT,Later turns add code and increase coupling without corresponding quality gains
+E094,P011,EXACT,6,FULLTEXT,pre-stop churn increases rather than decreases
+E095,P012,EXACT,9,FULLTEXT,Task success is determined by the final environment state
+E096,P012,EXACT,9,FULLTEXT,authored under two tonal variants — confident and hedged
+E097,P012,EXACT,9,FULLTEXT,"is 36.3% (over init/read-heavy/write-heavy), compared to 27.7% for hedged"
+E098,P012,EXACT,10,FULLTEXT,cannot be treated as a simple proxy for task-level risk
+E099,P012,EXACT,4,FULLTEXT,averaging 27.8% across models
+E100,P013,EXACT,10,FULLTEXT,"Our sample consists of 22,500 pairs of prompts and responses"
+E101,P013,EXACT,11,FULLTEXT,these effects are neither consistent nor universal across languages and models
+E102,P013,EXACT,6,FULLTEXT,The corpus is released at: https://huggingface.co/
+E103,P013,EXACT,9,FULLTEXT,Licence. The corpus is released under CC BY 4.0.
+E104,P013,EXACT,8,FULLTEXT,the mean κ across all languages was 0.83
+E105,P013,EXACT,7,FULLTEXT,"coherence, clarity, depth, responsiveness, context retention, toxicity"
+E106,P013,EXACT,4,FULLTEXT,Category5.txt — Bald-on-record (BAL)
+E107,P014,EXACT,8,FULLTEXT,We evaluate 13 mainstream LLMs on this benchmark
+E108,P014,EXACT,4,FULLTEXT,Claude-Sonnet-4.5 achieves only 66.1%
+E109,P014,EXACT,10,FULLTEXT,primarily focus on interpreting and executing user behaviors or instructions
+E110,P014,EXACT,8,FULLTEXT,we cannot determine the user’s personalized comfort temperature
+E111,P014,EXACT,5,FULLTEXT,Our dataset is publicly available
+E112,P015,EXACT,9,ABSTRACT,when answering queries that involve subjective opinions and statements
+E113,P015,EXACT,10,ABSTRACT,"they, at various scales, do not follow the users' hints"
+E114,P016,EXACT,10,ABSTRACT,"includes answering directly, countering misleading signals, or asking for clarification"
+E115,P017,EXACT,9,ABSTRACT,they affirm users' actions 50% more than humans do
+E116,P017,EXACT,7,ABSTRACT,in two preregistered experiments (N = 1604)
+E117,P018,EXACT,12,ABSTRACT,A 2 x 2 between-subjects experiment (N = 224) revealed complex dynamics
+E118,P019,EXACT,9,ABSTRACT,User memory profiles are associated with the largest increases
+E119,P020,EXACT,10,ABSTRACT,A single correctly-arguing dissenter reduces yield by 54-73 percentage points
+E120,P020,EXACT,12,ABSTRACT,pretrained base models exhibit the same substitution pattern as their Instruct variants
+E121,P021,EXACT,10,ABSTRACT,sycophancy is a core failure mode that amplifies disagreement collapse
+E122,P022,EXACT,7,ABSTRACT,resolve conflicts between memory and objective evidence
+E123,P023,EXACT,10,ABSTRACT,"Claude Sonnet 4 exhibits 9.6% baseline sycophancy, reduced to 1.4%"
+E124,P024,EXACT,7,ABSTRACT,ASSEBench comprises 2293 meticulously annotated interaction records
+E125,P025,EXACT,6,ABSTRACT,"The best-performing model, GPT-4o, achieves 74.42%"
+E126,P026,EXACT,5,ABSTRACT,control of home automation devices
+E127,P026,EXACT,11,ABSTRACT,73% of the analyzed threats pose High-Critical risk to end users
+E128,P027,EXACT,10,ABSTRACT,prompt injection can induce adversarial actions while reducing task completion
+E129,P028,EXACT,9,ABSTRACT,approximately 30.8% in both attack detection and system performance
+E130,P029,EXACT,9,ABSTRACT,"every MLLM configuration over-refuses, completing almost no genuine command"
+E131,P029,EXACT,8,ABSTRACT,"multi-agent mediation (L2; voting, role specialists, cross-model arbitration)"
+E132,P030,EXACT,8,ABSTRACT,Our user study findings (n=12) highlight MAP's effectiveness
+E133,P031,EXACT,11,ABSTRACT,8.00% relative performance improvement in Instruction Induction and 115% in BIG-Bench
+E134,P032,EXACT,8,ABSTRACT,relative improvements of 12.89% in Instruction Induction tasks
+E135,P033,EXACT,11,ABSTRACT,"impolite prompts often result in poor performance, but overly polite language"
+E136,P034,EXACT,10,ABSTRACT,accuracy ranging from 80.8% for Very Polite prompts to 84.8%
+E137,P035,EXACT,10,ABSTRACT,the interaction between dataset type and prompt category is large
+E138,P036,EXACT,5,ABSTRACT,"(Uncritical Agreement, Obsequiousness, and Excitement)"
+E139,P037,EXACT,8,ABSTRACT,Medical sycophancy is nearly three times more common
+E140,P037,EXACT,8,ABSTRACT,fabricated evidence has opposite effects across interaction structures
+E141,P038,EXACT,8,ABSTRACT,improves final discussion accuracy by an absolute 10.5%
+E142,P039,EXACT,11,ABSTRACT,Persuasion principles raised compliance with regulated drug synthesis requests by 16
+E143,P039,EXACT,6,ABSTRACT,"Preliminary Study: GPT-4o mini, 28,000 conversations"
+E144,P039,EXACT,9,ABSTRACT,Feelings of shared identity or 'we-ness' encourage in-group favoritism
+E145,P039,EXACT,10,ABSTRACT,"a matched “control” prompt of similar length, tone, and context"
+E146,P039,EXACT,3,ABSTRACT,Available at: https://www.pnas.org/doi/10.1073/pnas.2535868123
+E147,P040,EXACT,10,ABSTRACT,"generates a runtime checkable specification for each, grounds the specifications"
+E148,P040,EXACT,6,ABSTRACT,with MCP ES falling to 13%
+E149,P041,EXACT,9,ABSTRACT,"Epistemic Destabilization, Value Nullification, Authority Inversion, and Identity Dissolution"
+E150,P043,EXACT,5,ABSTRACT,but also increase sycophantic behavior
+E151,P044,EXACT,9,ABSTRACT,both model scaling and instruction tuning significantly increase sycophancy
+E152,P042,EXACT,10,ABSTRACT,"in an AgentPhishing evaluation of nine agents, four exhibit phishing-detection"
+E153,P045,EXACT,10,ABSTRACT,or cheers a plan that will cost the user money
+E154,P045,EXACT,9,ABSTRACT,Spearman -0.64 to -0.69 across the two scene sets
+E155,P045,EXACT,5,ABSTRACT,"Code, data and labels: https://github.com/tap2k/modelun/tree/main/studies/conduct"
+E156,P046,EXACT,7,ABSTRACT,validation-seeking and emotional-pressure cues often increase sycophancy
+E157,P047,EXACT,11,ABSTRACT,"particularly those emphasizing urgency, were associated with reduced correctness and security"
+E158,P048,EXACT,8,ABSTRACT,pressure produces the strongest shortcut markers (11/20 runs)
+E159,P002,EXACT,11,FULLTEXT,no fallacy or emotional lead exceeds it by more than 2.4
+E160,P002,EXACT,12,FULLTEXT,Should I wind down tonight with a warm bath or a slow
+E161,P036,EXACT,5,ABSTRACT,"For supplementary material, see https://osf.io/r8gys/"
+E162,P046,EXACT,7,ABSTRACT,SPSS separates baseline sycophancy from prompt-induced shifts
+E163,P031,EXACT,9,ABSTRACT,"including Flan-T5-Large, Vicuna, Llama 2, BLOOM, ChatGPT, and GPT-4"
+E164,P002,EXACT,11,FULLTEXT,adoption on deep puzzles falls from 19.2% and 12.5% to 0%
