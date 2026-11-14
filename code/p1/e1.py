@@ -3,7 +3,7 @@
     python -m p1.e1 gate    --out results/P1-E01
     python -m p1.e1 search  --out results/P1-E01 --configs HCXY-All --workers 3 --threads 12
     python -m p1.e1 final   --out results/P1-E01 --configs HCXY-All
-    python -m p1.e1 partb   --out results/P1-E01 --configs HCXY-All --workers 3 --threads 12   (search, then final)
+    python -m p1.e1 partb   --out results/P1-E01 --configs HCXY-All --workers 3 --threads 6   (TFM runs, searches, baseline runs)
     python -m p1.e1 report  --out results/P1-E01
 
 Every unit of work (one search, one fit-and-predict run) writes its own files and
@@ -21,7 +21,7 @@ import numpy as np
 import pandas as pd
 
 from . import data as D
-from .common import get_logger, git_commit, node_tag, now_utc, read_json, write_json
+from .common import get_logger, git_commit, node_tag, now_utc, paused_sessions, read_json, usable_cpus, write_json
 from .metrics import STAT_NAMES, bootstrap_mean_difference, error_stats, mae_per_coordinate, positioning_error
 from .models import (ALL_MODELS, BASELINES, BLAS_THREADS, ENCODING, LGBM_THREADS, SEEDED, SVR_CACHE_MB, TFMS, TUNED,
                      is_gpu_model, is_out_of_memory, make_model, timed_fit_predict)
@@ -157,7 +157,7 @@ def final_unit(config: str, model: str, seed: int, data_root: str, out: Path, de
     params = {}
     if model in TUNED:
         params = params_from_json(read_json(best_params_path(out, config, model))["best_params"])
-    n_jobs = os.cpu_count() or 1
+    n_jobs = usable_cpus()
     started = now_utc()
     notes = []
     m = make_model(model, params, seed=seed, n_jobs=n_jobs, device=device)
@@ -211,12 +211,15 @@ def warm_up(models, data_root: str, device: str, log) -> None:
 def final(configs, models, seeds, data_root, out: Path, device: str) -> None:
     require_gate(out)
     log = get_logger("final", out / "logs" / f"final_{node_tag()}.log")
-    log.info(f"final: configs={configs} models={models} seeds={seeds} device={device} node={node_tag()}")
-    warm_up(models, data_root, device, log)
-    for config in configs:
-        for model in models:
-            for seed in (s for s in seeds_of(model) if s in seeds):
-                final_unit(config, model, seed, data_root, out, device, log)
+    log.info(f"final: configs={configs} models={models} seeds={seeds} device={device} node={node_tag()} "
+             f"cpus={usable_cpus()}")
+    # Timed runs: any P1-E02 job on this machine is paused meanwhile (see common.paused_sessions).
+    with paused_sessions("e2", log.info):
+        warm_up(models, data_root, device, log)
+        for config in configs:
+            for model in models:
+                for seed in (s for s in seeds_of(model) if s in seeds):
+                    final_unit(config, model, seed, data_root, out, device, log)
     log.info("final: all units finished")
 
 
@@ -297,10 +300,13 @@ def main(argv=None) -> None:
     elif a.command == "final":
         final(a.configs, a.models or list(BASELINES + TFMS), a.seeds, a.data, out, a.device)
     elif a.command == "partb":
-        # Part B for the given configurations: every search first, then the timed runs
-        # one after the other, with nothing else running on the machine.
-        search(a.configs, list(TUNED), a.data, out, a.workers, a.threads, a.trials)
-        final(a.configs, a.models or list(BASELINES + TFMS), a.seeds, a.data, out, a.device)
+        # Part B for the given configurations. The tabular foundation models need no
+        # search, so their timed runs go first; then the searches; then the timed runs
+        # of the baselines. Timed runs go one after the other.
+        models = a.models or list(BASELINES + TFMS)
+        final(a.configs, [m for m in models if m in TFMS], a.seeds, a.data, out, a.device)
+        search(a.configs, [m for m in TUNED if m in models], a.data, out, a.workers, a.threads, a.trials)
+        final(a.configs, [m for m in models if m not in TFMS], a.seeds, a.data, out, a.device)
     else:
         report(out, a.data)
 

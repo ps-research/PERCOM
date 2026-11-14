@@ -23,7 +23,7 @@ def job_script(command: str, repo: str | Path, node: str) -> str:
     code_dir = str(Path(repo) / "code")
     return (
         "import os, shlex, subprocess, sys\n"
-        f"env = dict(os.environ, PYTHONPATH={code_dir!r}, P1_NODE={node!r}, PYTHONUNBUFFERED='1')\n"
+        f"env = dict(os.environ, PYTHONPATH={code_dir!r}, P1_NODE={node!r}, PYTHONUNBUFFERED='1', OMP_WAIT_POLICY='PASSIVE')\n"
         f"print('command:', {command!r}, flush=True)\n"
         f"rc = subprocess.run(shlex.split({command!r}), cwd={str(repo)!r}, env=env).returncode\n"
         "print('exit code:', rc, flush=True)\n"

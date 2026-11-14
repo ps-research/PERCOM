@@ -80,9 +80,7 @@ run(f"git checkout --quiet {{DATASET_COMMIT}}", cwd=str(DATA), check=True)
 
 _run_id_file = WORK / "RUN_ID"
 if not _run_id_file.exists():
-    _run_id_file.write_text(
-        f"{{os.environ.get('CW_SANDBOX_ID', 'nb')[:8]}}-{{time.strftime('%Y%m%dT%H%M%SZ', time.gmtime())}}"
-    )
+    _run_id_file.write_text(f"{{NODE}}-{{time.strftime('%Y%m%dT%H%M%SZ', time.gmtime())}}")
 RUN_ID = _run_id_file.read_text().strip()
 DRIVE_RUN = f"molab/PERCOM/runs/{{RUN_ID}}"
 OUT.mkdir(parents=True, exist_ok=True)
@@ -218,6 +216,34 @@ mo.vstack(
         p1nb.runs_table(runs),
         mo.md("```\\n" + p1nb.tail(OUT / "logs" / f"final_{NODE}.log", 5) + "\\n```"),
     ]
+)
+''')
+
+    cell("results", '''
+progress_refresh
+_finished = (Path("/tmp/p1e01_partb.done")).exists()
+_table = p1nb.runs_table(runs)
+mo.vstack(
+    [
+        mo.md(
+            "### Results on this node\\n"
+            + ("The Part B job has finished. " if _finished else "The Part B job is still running; the table fills in as runs finish. ")
+            + "Mean positioning error on the test file, averaged over seeds (std over seeds where there are five)."
+        ),
+        _table.pivot(index="model", columns="config", values="mean_error_m").reset_index() if len(_table) else _table,
+    ]
+)
+''')
+
+    cell("writeup", '''
+mo.md(
+    r"""
+### Write-up
+
+*Filled in when the job on this node has finished.* The complete comparison across all five configurations,
+with the bootstrap interval and the cost table, is assembled from the three nodes into `results/P1-E01/RESULTS.md`
+of the repository.
+"""
 )
 ''')
 

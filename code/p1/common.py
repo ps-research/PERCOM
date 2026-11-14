@@ -24,6 +24,69 @@ def node_tag() -> str:
     return os.environ.get("P1_NODE") or socket.gethostname()
 
 
+def usable_cpus() -> int:
+    """Cores this process may use: the smaller of the affinity mask and the cgroup quota."""
+    n = len(os.sched_getaffinity(0)) if hasattr(os, "sched_getaffinity") else (os.cpu_count() or 1)
+    try:
+        quota, period = Path("/sys/fs/cgroup/cpu.max").read_text().split()[:2]
+        if quota != "max":
+            n = min(n, max(1, int(int(quota) / int(period))))
+    except (OSError, ValueError):
+        pass
+    return n
+
+
+# ----------------------------------------------------------------------------- pausing other jobs
+# A P1-E02 job registers its session id here. P1-E01's timed runs stop those
+# sessions while they run, so that the fit and predict times of P1-E01 are not
+# measured on a machine shared with another job.
+JOB_REGISTRY = Path("/tmp/p1_jobs")
+
+
+def register_session(kind: str) -> Path:
+    JOB_REGISTRY.mkdir(parents=True, exist_ok=True)
+    path = JOB_REGISTRY / f"{kind}_{os.getpid()}.sid"
+    path.write_text(str(os.getsid(0)))
+    return path
+
+
+def _sessions(kind: str) -> list[int]:
+    out = []
+    for path in JOB_REGISTRY.glob(f"{kind}_*.sid"):
+        pid = int(path.stem.split("_")[-1])
+        if Path(f"/proc/{pid}").exists():
+            sid = int(path.read_text())
+            if sid != os.getsid(0):
+                out.append(sid)
+        else:
+            path.unlink(missing_ok=True)
+    return out
+
+
+class paused_sessions:
+    """Context manager: SIGSTOP every process of the registered sessions of ``kind``, SIGCONT on exit."""
+
+    def __init__(self, kind: str, log=None):
+        self.kind, self.log, self.sids = kind, log, []
+
+    def _signal(self, sig: str) -> None:
+        for sid in self.sids:
+            subprocess.run(["pkill", f"-{sig}", "-s", str(sid)], capture_output=True)
+
+    def __enter__(self):
+        self.sids = _sessions(self.kind)
+        self._signal("STOP")
+        if self.log and self.sids:
+            self.log(f"paused {self.kind} sessions {self.sids} for the timed runs")
+        return self
+
+    def __exit__(self, *exc):
+        self._signal("CONT")
+        if self.log and self.sids:
+            self.log(f"resumed {self.kind} sessions {self.sids}")
+        return False
+
+
 def get_logger(name: str, logfile: str | Path | None = None) -> logging.Logger:
     logger = logging.getLogger(name)
     if logger.handlers:
@@ -114,6 +177,8 @@ def env_report(data_root: str | Path | None = None) -> str:
         "cpu_quota_cgroup: " + (_sh("cat /sys/fs/cgroup/cpu.max 2>/dev/null") or "n/a"),
         "memory: " + _sh("free -g | awk 'NR==2{print $2\" GiB total\"}'"),
         "gpu: " + (_sh("nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv,noheader") or "none"),
+        f"usable_cpus: {usable_cpus()}",
+        f"OMP_WAIT_POLICY: {os.environ.get('OMP_WAIT_POLICY', '(unset)')}",
     ]
     try:
         import torch
