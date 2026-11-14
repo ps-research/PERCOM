@@ -1,0 +1,21 @@
+# Data and model weights never go in the repository
+data/
+datasets/
+weights/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.h5
+*.onnx
+# Credentials
+.env
+.env.*
+*.token
+*.key
+# Local clutter
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+wandb/
