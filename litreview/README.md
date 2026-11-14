@@ -5,8 +5,8 @@ Each review comes with its search log, an index of the sources it relied on, and
 | Folder | Covers | Status |
 |---|---|---|
 | `p1-tabular-localization/` | Paper 1: tabular foundation models as Wi-Fi fingerprint localizers | audited |
-| `p2b-llm-pressure/` | Paper 2, language side: how the phrasing of a request changes what an LLM does | audited |
-| `p2a-building-control/` | Paper 2, control side: LLM-guided RL and LLM building control | audited |
+| `p2b-llm-pressure/` | Paper 2 (dropped), language side: how the phrasing of a request changes what an LLM does | audited; kept for reference |
+| `p2a-building-control/` | Paper 2 (dropped), control side: LLM-guided RL and LLM building control | audited; kept for reference |
 | `audit/` | Audit report and the scripts behind it | |
 
 ## Files in each review

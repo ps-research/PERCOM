@@ -37,7 +37,8 @@ The node runs a brief as written. If a step cannot be done as written, it stops 
 | Path | Contents | Written by |
 | --- | --- | --- |
 | `litreview/` | Reviews with their search logs, source index and evidence ledger | Planning session |
-| `paper1/`, `paper2/` | Plan, outline, drafts and figures for each paper | Planning session |
+| `paper1/` | Plan, outline, drafts and figures for the paper | Planning session |
+| `paper2/` | Dropped on 2026-11-15; a note only | Planning session |
 | `briefs/` | One file per experiment, named `P<paper>-E<nn>-<short-name>.md` | Planning session |
 | `code/` | Experiment code | Compute node |
 | `results/<brief-id>/` | What the node returns for that brief | Compute node |

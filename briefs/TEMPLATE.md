@@ -1,6 +1,6 @@
 # P<paper>-E<nn>: <title>
 
-- **Paper:** 1 or 2
+- **Paper:** 1
 - **Revision:** 1
 - **Status:** draft
 - **Approved by PI on:** (empty until approved; the compute node runs this brief only when the status is `approved`)
