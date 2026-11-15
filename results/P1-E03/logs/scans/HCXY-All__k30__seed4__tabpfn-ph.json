@@ -1,0 +1,29 @@
+{
+  "code_commit": "6d16af4904e8c14cdf1ca77346939c375ab3c10e",
+  "config": "HCXY-All",
+  "context_rows": 11370,
+  "cost": {
+    "fit_s": 33.55733681699894,
+    "peak_gpu_mem_mb": 10319.82421875,
+    "peak_gpu_reserved_mb": 19392.0,
+    "predict_s": 23.959729815000173
+  },
+  "finished_utc": "2026-11-15T02:16:18Z",
+  "info": {
+    "context_capped": false,
+    "context_rows": 11370,
+    "ignore_pretraining_limits": true
+  },
+  "model": "tabpfn-ph",
+  "node": "nodeA",
+  "params": {},
+  "scans_per_point": 30,
+  "seed": 4,
+  "stats": {
+    "mean": 1.6192658340813015,
+    "median": 1.2506223853668474,
+    "p75": 1.9763908117631366,
+    "p95": 4.2118192305890645,
+    "rmse": 2.2434120794500245
+  }
+}

@@ -92,9 +92,24 @@ def e_table(out: Path, e1_out: Path, data_root: str) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def write_configs(out: Path) -> None:
+    """config/run_configs.json: the exact configuration of every run of this brief."""
+    from .common import write_json
+
+    runs = {}
+    for kind in ("uncertainty", "scans", "runs", "e3more"):
+        for p in sorted((out / "logs" / kind).glob("*.json")) if (out / "logs" / kind).exists() else []:
+            r = read_json(p)
+            runs[f"{kind}/{p.stem}"] = {k: r.get(k) for k in (
+                "config", "model", "seed", "scans_per_point", "context_rows", "params", "encoding", "info", "draws",
+                "quantiles", "node", "code_commit", "finished_utc") if k in r}
+    write_json(out / "config" / "run_configs.json", runs)
+
+
 def write_report(out: Path, e1_out: Path, e2_out: Path, data_root: str) -> None:
     out = Path(out)
     (out / "metrics").mkdir(parents=True, exist_ok=True)
+    write_configs(out)
     A, B, C, Dd, E = a_table(out), b_table(out), c_table(out, e1_out), d_table(out, e2_out), e_table(out, e1_out, data_root)
     for name, df in (("a_uncertainty", A), ("b_scans", B), ("c_seeds", C), ("d_e3_more", Dd), ("e_phone_user", E)):
         df.to_csv(out / "metrics" / f"{name}.csv", index=False)
@@ -143,9 +158,11 @@ def write_report(out: Path, e1_out: Path, e2_out: Path, data_root: str) -> None:
             c = c.reset_index()
             c = c[c["model"].isin(TFMS)]
             add("Cost of the foundation models by context size:\n")
-            add(_md(c.round(2).rename(columns={"model": "Model", "scans_per_point": "k", "context_rows": "Context rows",
-                                               "fit_s": "Fit (s)", "predict_s": "Predict (s)",
-                                               "peak_gpu_mem_mb": "Peak GPU (MB)"})) + "\n")
+            c = pd.DataFrame({"Model": c["model"].map(lambda v: f"`{v}`"), "k": c["scans_per_point"].astype(int),
+                              "Context rows": c["context_rows"].map(lambda v: f"{v:,.0f}"),
+                              "Fit (s)": c["fit_s"].map("{:.2f}".format), "Predict (s)": c["predict_s"].map("{:.2f}".format),
+                              "Peak GPU (MB)": c["peak_gpu_mem_mb"].map("{:,.0f}".format)})
+            add(_md(c) + "\n")
         lim = B[B["ignore_pretraining_limits"]]
         if len(lim):
             add(f"{len(lim)} TabPFN runs (HCXY-All, k = 30, 11,370 rows) used `ignore_pretraining_limits=True`.\n")

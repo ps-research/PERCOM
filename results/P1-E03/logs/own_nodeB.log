@@ -1,0 +1,12 @@
+2026-11-15T00:58:27 own: configs=['SYL-All'] parts=['A', 'B', 'C'] node=nodeB
+2026-11-15T01:08:46 done D SYL-All__tabpfn-nan share60_mean=4.994
+2026-11-15T01:18:34 done D SYL-All__tabpfn-ph share60_mean=5.791
+2026-11-15T01:21:44 done D SYL-All__tabicl share60_mean=4.283
+2026-11-15T01:22:09 done D SYL-All__knn share60_mean=13.205
+2026-11-15T01:22:16 done D SYL-All__rf share60_mean=10.052
+2026-11-15T01:24:19 done D SYL-All__lgbm-ph share60_mean=10.190
+2026-11-15T01:26:17 done D SYL-All__lgbm-nan share60_mean=10.693
+2026-11-15T01:28:43 done D SYL-All__svr share60_mean=11.851
+2026-11-15T01:28:48 done D SYL-All__mlp share60_mean=8.061
+2026-11-15T01:29:02 done D SYL-All__gp share60_mean=12.414
+2026-11-15T01:29:02 own: finished

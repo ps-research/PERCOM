@@ -1,0 +1,42 @@
+{
+  "code_commit": "6d16af4904e8c14cdf1ca77346939c375ab3c10e",
+  "config": "SYL-AP",
+  "cost": {
+    "fit_s": 853.732938307,
+    "peak_gpu_mem_mb": 2451.36474609375,
+    "peak_gpu_reserved_mb": 4236.0,
+    "predict_s": 3.8347873229995457
+  },
+  "device": "cuda",
+  "encoding": "missing",
+  "finished_utc": "2026-11-15T01:33:32Z",
+  "info": {
+    "context_capped": false,
+    "context_rows": 8880,
+    "model_path": "/home/marimo/.cache/tabpfn/tabpfn-v2-regressor.ckpt"
+  },
+  "model": "tabpfn-nan",
+  "n_features": 46,
+  "node": "nodeC",
+  "notes": [],
+  "params": {},
+  "run_id": "SYL-AP__tabpfn-nan__seed10",
+  "seed": 10,
+  "single_run": false,
+  "started_utc": "2026-11-15T01:19:14Z",
+  "stats": {
+    "mean": 3.3663448810441583,
+    "median": 2.600530350787897,
+    "p75": 3.8639735661408143,
+    "p95": 7.243684136040259,
+    "rmse": 5.964041995027913
+  },
+  "test_rows": 1020,
+  "threads": {
+    "blas": 4,
+    "lgbm": 4,
+    "n_jobs": 20,
+    "svr_cache_mb": 1000
+  },
+  "train_rows": 8880
+}

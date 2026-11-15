@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\caption{Pipeline check: untuned kNN ($k{=}5$) against the dataset paper, and the cost of the foundation models on HCXY (11{,}370 training rows; TabPFN context capped at 9{,}854).}
+\label{tab:setup}
+\setlength{\tabcolsep}{3.5pt}
+\footnotesize
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Check & CETC & HCXY & SYL \\
+\midrule
+Mean, ours/paper (m) & 2.868/2.876 & 2.366/2.365 & 4.656/4.656 \\
+95th, ours/paper (m) & 6.306/6.307 & 6.627/6.627 & 8.485/8.521 \\
+\midrule
+Model (HCXY) & Fit (s) & Predict (s) & GPU (GB) \\
+\midrule
+TabPFN v2, NaN & 18.5 & 18.9 & 8.7 \\
+TabPFN v2, $-$105 & 20.7 & 18.8 & 8.7 \\
+TabICLv2, NaN & 5.7 & 7.5 & 52.3 \\
+\bottomrule
+\end{tabular}
+\end{table}

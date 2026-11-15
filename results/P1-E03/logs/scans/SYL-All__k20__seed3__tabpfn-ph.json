@@ -1,0 +1,29 @@
+{
+  "code_commit": "6d16af4904e8c14cdf1ca77346939c375ab3c10e",
+  "config": "SYL-All",
+  "context_rows": 5920,
+  "cost": {
+    "fit_s": 14.119654385999638,
+    "peak_gpu_mem_mb": 4799.1923828125,
+    "peak_gpu_reserved_mb": 12890.0,
+    "predict_s": 8.975205697000092
+  },
+  "finished_utc": "2026-11-15T01:36:41Z",
+  "info": {
+    "context_capped": false,
+    "context_rows": 5920,
+    "model_path": "/home/marimo/.cache/tabpfn/tabpfn-v2-regressor.ckpt"
+  },
+  "model": "tabpfn-ph",
+  "node": "nodeB",
+  "params": {},
+  "scans_per_point": 20,
+  "seed": 3,
+  "stats": {
+    "mean": 3.1272205157524686,
+    "median": 2.439835128177661,
+    "p75": 3.40639039422686,
+    "p95": 6.848505759384103,
+    "rmse": 5.8159586470421765
+  }
+}

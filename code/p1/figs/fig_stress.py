@@ -61,7 +61,7 @@ def panel_a(ax, R: Results, log=print) -> dict:
     ax.set_ylabel("Mean error / tuned kNN on the full survey")
     ax.set_xlim(shares[0] * 0.85, shares[-1] * 1.15)
     sub = curve[curve["model"].isin(shown)]
-    ax.set_ylim(min(0.6, sub["min"].min() * 0.92), sub["max"].max() * 1.04)  # never clip a band
+    ax.set_ylim(min(0.6, sub["min"].min() * 0.92), sub["max"].max() * 1.5)  # never clip a band; head room for legends
 
     def pct(v):
         try:
@@ -80,7 +80,7 @@ def panel_a(ax, R: Results, log=print) -> dict:
             head = f"{x:.0f}% (mean)" if x is not None else "never (mean)"
             per_s = " · ".join(f"{S.CONFIG_SHORT[c]} {pct(v)}" for c, v in per.items() if c in configs)
             return f"{S.MODEL[m]['label']}: {head}" + (f"\n{per_s}" if per_s else "")
-        return f"{S.MODEL[m]['label']}: {num(o['at5'])} at 5%, {num(o['at100'])} at 100%"
+        return f"{S.SHORT[m]}: {num(o['at5'])} → {num(o['at100'])}"
 
     from matplotlib.lines import Line2D
 
@@ -89,8 +89,8 @@ def panel_a(ax, R: Results, log=print) -> dict:
     ax.add_artist(l1)
     rest = ["knn"] + best_other
     S.legend_box(ax, [S.handle(m) for m in rest] + [Line2D([0], [0], color=S.INK2, ls="--", lw=2.4)],
-                 [fmt(m) for m in rest] + ["1.0: tuned kNN, full survey"],
-                 title="Tuned baselines, re-tuned per survey", loc="upper right", bbox_to_anchor=(1.0, 0.50))
+                 [fmt(m) for m in rest] + ["1.0: kNN, full survey"],
+                 title="Re-tuned, 5% → 100%", loc="upper right", bbox_to_anchor=(1.0, 0.66))
     return out
 
 
@@ -133,8 +133,9 @@ def panel_b(ax, R: Results, log=print) -> dict:
     from matplotlib.patches import Patch
 
     gap = [Patch(facecolor=S.BLUE, alpha=0.20, lw=0), Patch(facecolor=S.MAGENTA, alpha=0.20, lw=0)]
-    gap_lbl = [f"shaded, TabPFN $-$105 minus NaN: {out['tabpfn-ph']['at60'] - out['tabpfn-nan']['at60']:+.2f} at 60%",
-               f"shaded, LightGBM $-$105 minus NaN: {out['lgbm-ph']['at60'] - out['lgbm-nan']['at60']:+.2f} at 60%"]
+    sgn = lambda v: f"{v:+.2f}".replace("-", "\u2212")
+    gap_lbl = [f"shaded, TabPFN $-$105 minus NaN: {sgn(out['tabpfn-ph']['at60'] - out['tabpfn-nan']['at60'])} at 60%",
+               f"shaded, LightGBM $-$105 minus NaN: {sgn(out['lgbm-ph']['at60'] - out['lgbm-nan']['at60'])} at 60%"]
     S.legend_box(ax, [S.handle(m) for m in shown] + gap, [fmt(m) for m in shown] + gap_lbl,
                  title=f"Mean error (m), 0%→60% off, {n_draws} draws", loc="upper left")
     return out
