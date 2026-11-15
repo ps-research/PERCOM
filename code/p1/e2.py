@@ -207,7 +207,8 @@ def tfm_lane(units, data_root: str, out: Path, device: str, log) -> None:
     log.info("tfm lane finished")
 
 
-def parta(configs, draws, shares, data_root, out: Path, workers: int, threads: int, n_trials: int, device: str):
+def parta(configs, draws, shares, data_root, out: Path, workers: int, threads: int, n_trials: int, device: str,
+          with_tfm: bool = True):
     register_session("e2")
     log = get_logger("e2a", out / "logs" / f"parta_{node_tag()}.log")
     bad = check_kept_table()
@@ -225,7 +226,7 @@ def parta(configs, draws, shares, data_root, out: Path, workers: int, threads: i
         except BaseException as exc:  # noqa: BLE001
             errors.append(exc)
 
-    gpu = threading.Thread(target=_gpu, name="tfm-lane")
+    gpu = threading.Thread(target=_gpu if with_tfm else (lambda: None), name="tfm-lane")
     gpu.start()
     order = {"mlp": 0, "lgbm-ph": 1, "lgbm-nan": 2, "svr": 3, "rf": 4, "knn": 5}
     searches = deque((u, m) for u in units for m in sorted(TUNED, key=order.get))
@@ -280,13 +281,13 @@ def tfm_only(configs, draws, shares, data_root, out: Path, device: str) -> None:
 
 
 # ----------------------------------------------------------------------------- 100% share, seeds 5 to 9
-def full(configs, data_root, out: Path, e1_out: Path, device: str) -> None:
+def full(configs, data_root, out: Path, e1_out: Path, device: str, models=None) -> None:
     """The 100% share: P1-E01 has seeds 0 to 4; draws 5 to 9 need seeds 5 to 9 of the seeded models."""
     register_session("e2")
     log = get_logger("e2f", out / "logs" / f"full_{node_tag()}.log")
     for config in configs:
         s = D.load_config(config, data_root)
-        for model in SEEDED:
+        for model in (m for m in SEEDED if models is None or m in models):
             params = {}
             if model in TUNED:
                 params = params_from_json(read_json(e1_out / "config" / "best_params" / f"{config}__{model}.json")["best_params"])
@@ -307,7 +308,7 @@ def altered_sets(s: D.Survey) -> list[tuple[int, int, np.ndarray]]:
     return sets
 
 
-def e3(configs, data_root, out: Path, e1_out: Path, device: str) -> None:
+def e3(configs, data_root, out: Path, e1_out: Path, device: str, models=None) -> None:
     register_session("e2")
     log = get_logger("e3", out / "logs" / f"e3_{node_tag()}.log")
     for config in configs:
@@ -319,7 +320,7 @@ def e3(configs, data_root, out: Path, e1_out: Path, device: str) -> None:
             X[:, off] = D.NOT_DETECTED  # the model then writes it as NaN or -105, as it expects
             stacked.append(X)
         X_all = np.vstack(stacked)
-        for model in ALL_MODELS:
+        for model in (m for m in ALL_MODELS if models is None or m in models):
             rid = f"{config}__{model}"
             path = out / "logs" / "e3" / f"{rid}.json"
             if path.exists():
@@ -375,7 +376,7 @@ def e3(configs, data_root, out: Path, e1_out: Path, device: str) -> None:
 # ----------------------------------------------------------------------------- command line
 def main(argv=None) -> None:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("command", choices=["parta", "tfm", "full", "e3", "report"])
+    p.add_argument("command", choices=["parta", "tfm", "gpu", "own", "full", "e3", "report"])
     p.add_argument("--out", default="results/P1-E02")
     p.add_argument("--e1-out", default="results/P1-E01")
     p.add_argument("--data", default=D.DEFAULT_ROOT)
@@ -386,16 +387,34 @@ def main(argv=None) -> None:
     p.add_argument("--threads", type=int, default=6)
     p.add_argument("--trials", type=int, default=N_TRIALS)
     p.add_argument("--device", default="cuda")
+    p.add_argument("--models", nargs="+", default=None, help="full and e3: only these models")
+    p.add_argument("--no-tfm", action="store_true", help="parta: leave the foundation models to the gpu job")
+    p.add_argument("--own", nargs="+", default=[], choices=CONFIGS,
+                   help="gpu: configurations whose P1-E01 results are on this node (for e3 and full)")
     a = p.parse_args(argv)
     out, e1_out = Path(a.out), Path(a.e1_out)
     if a.command == "parta":
-        parta(a.configs, a.draws, a.shares, a.data, out, a.workers, a.threads, a.trials, a.device)
+        parta(a.configs, a.draws, a.shares, a.data, out, a.workers, a.threads, a.trials, a.device,
+              with_tfm=not a.no_tfm)
+    elif a.command == "gpu":
+        # Every GPU part of P1-E02 that needs no baseline search: Part A foundation-model runs
+        # for the given draws, then Part B and the 100% seeds 5 to 9 of the foundation models
+        # for the configurations whose P1-E01 results are on this node.
+        tfm_only(a.configs, a.draws, a.shares, a.data, out, a.device)
+        if a.own:
+            e3(a.own, a.data, out, e1_out, a.device, models=list(TFMS))
+            full(a.own, a.data, out, e1_out, a.device, models=list(TFMS))
+    elif a.command == "own":
+        # The baseline parts that need this node's P1-E01 best values: Part B, then the
+        # 100% share with seeds 5 to 9.
+        e3(a.configs, a.data, out, e1_out, a.device, models=list(BASELINES))
+        full(a.configs, a.data, out, e1_out, a.device, models=[m for m in SEEDED if m in BASELINES])
     elif a.command == "tfm":
         tfm_only(a.configs, a.draws, a.shares, a.data, out, a.device)
     elif a.command == "full":
-        full(a.configs, a.data, out, e1_out, a.device)
+        full(a.configs, a.data, out, e1_out, a.device, models=a.models)
     elif a.command == "e3":
-        e3(a.configs, a.data, out, e1_out, a.device)
+        e3(a.configs, a.data, out, e1_out, a.device, models=a.models)
     else:
         from .report_e2 import write_report
 

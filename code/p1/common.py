@@ -186,5 +186,6 @@ def env_report(data_root: str | Path | None = None) -> str:
         lines.append(f"torch: {torch.__version__}; cuda build {torch.version.cuda}; cuda available {torch.cuda.is_available()}")
     except Exception as exc:  # noqa: BLE001
         lines.append(f"torch: not importable ({exc})")
-    lines += ["", "## pip freeze", _sh(f"{sys.executable} -m pip freeze 2>/dev/null") or _sh("uv pip freeze 2>/dev/null")]
+    freeze = _sh(f"{sys.executable} -m pip freeze 2>/dev/null") or _sh(f"uv pip freeze --python {sys.executable} 2>/dev/null")
+    lines += ["", f"## installed packages ({sys.executable})", freeze]
     return "\n".join(lines) + "\n"
