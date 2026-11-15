@@ -25,8 +25,8 @@ import pandas as pd
 from . import data as D
 from .common import get_logger, git_commit, node_tag, now_utc, read_json, register_session, usable_cpus, write_json
 from .metrics import error_stats, positioning_error
-from .models import (ALL_MODELS, BASELINES, ENCODING, SEEDED, TFMS, TUNED, is_gpu_model, make_model,
-                     timed_fit_predict)
+from .models import (ALL_MODELS, BASELINES, BLAS_THREADS, ENCODING, LGBM_THREADS, SEEDED, TFMS, TUNED, is_gpu_model,
+                     make_model, timed_fit_predict)
 from .tuning import N_TRIALS, params_from_json, params_to_json, run_search
 
 CONFIGS = D.MAIN_CONFIGS
@@ -131,7 +131,8 @@ def fit_one(config: str, share: int, draw: int, model: str, params: dict, data_r
     record = dict(run_id=rid, config=config, share=share, draw=draw, seed=draw, model=model,
                   n_ref_points=int(len(kept)), train_rows=int(len(X)), n_features=len(s.mac_cols),
                   test_rows=len(s.X_test), params=params_to_json(params), encoding=m.encoding, info=m.info,
-                  cost=cost, device=device if is_gpu_model(model) else "cpu", n_jobs=n_jobs, started_utc=started)
+                  cost=cost, device=device if is_gpu_model(model) else "cpu", n_jobs=n_jobs,
+                  lgbm_threads=LGBM_THREADS, blas_threads=BLAS_THREADS, started_utc=started)
     return _save_run(out, rid, s, pred, in_kept, record)
 
 
@@ -158,7 +159,8 @@ def search_task(config, share, draw, model, data_root, out, threads, n_trials) -
                           train_rows=int(len(X)), best_params=params_to_json(res["best_params"]),
                           best_value=res["best_value"], best_trial=res["best_trial"], n_trials=res["n_trials"],
                           search_seconds=res["search_seconds"], settings=res["settings"], encoding=ENCODING[model],
-                          threads=threads, node=node_tag(), code_commit=git_commit(), started_utc=started,
+                          threads=threads, lgbm_threads=LGBM_THREADS, blas_threads=BLAS_THREADS, node=node_tag(),
+                          code_commit=git_commit(), started_utc=started,
                           finished_utc=now_utc()))
     log.info(f"done search {rid} best={res['best_value']:.4f} seconds={res['search_seconds']:.0f}")
     return f"done search {rid} best={res['best_value']:.4f} in {res['search_seconds']:.0f}s"

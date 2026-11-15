@@ -44,6 +44,7 @@ def main() -> None:
     ap.add_argument("--node", required=True)
     ap.add_argument("--configs", nargs="*", default=[])
     ap.add_argument("--commit", required=True)
+    ap.add_argument("--commit-cpu", default=None, help="e02: commit of the CPU job's checkout")
     ap.add_argument("--workers", type=int, default=3)
     ap.add_argument("--threads", type=int, default=6)
     ap.add_argument("--only", nargs="*", default=None, help="send only the cells with these names")
@@ -59,7 +60,7 @@ def main() -> None:
     else:
         from p1.notebook.cells_e02 import cells
 
-        specs = cells(a.node, a.draws, a.own, a.commit, a.workers, a.threads)
+        specs = cells(a.node, a.draws, a.own, a.commit, a.workers, a.threads, commit_cpu=a.commit_cpu)
     if a.helpers:
         specs.insert(2, dict(name="helpers", code=Path(a.helpers).read_text(), hide=True, run=True))
     if a.only is not None:

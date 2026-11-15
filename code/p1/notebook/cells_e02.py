@@ -10,7 +10,7 @@ ALL = ["CETC331", "HCXY-All", "SYL-All"]
 
 
 def cells(node: str, draws: list[int], own: list[str], commit: str, workers: int = 4, threads: int = 6,
-          branch: str = "exp/P1-E02") -> list[dict]:
+          branch: str = "exp/P1-E02", commit_cpu: str | None = None) -> list[dict]:
     C = []
 
     def cell(name, code, hide=False, run=True):
@@ -68,13 +68,20 @@ mo.md(
 ''')
 
     cell("e2_launch", f'''
+E2B_COMMIT = "{commit_cpu or commit}"
 E2_GPU_CMD = (
     f"{{sys.executable}} -m p1.e2 gpu --out {{OUT2}} --e1-out {{OUT}} --data {{DATA}} --configs {{' '.join(E2_CONFIGS)}} "
     f"--draws {{' '.join(map(str, E2_DRAWS))}} --own {{' '.join(E2_OWN)}}"
 )
+# LightGBM single-threaded (identical predictions to 4 threads, measured on a node) and more workers:
+# no OpenMP oversubscription. Runs from its own checkout so the GPU job's tree is never touched.
+REPO2B = WORK / "PERCOM-e2b"
+if not (REPO2B / ".git").exists():
+    run(f"git clone --quiet --branch exp/P1-E02 {{REPO_URL}} {{REPO2B}}", cwd=str(WORK), timeout=55, check=True)
+run(f"git fetch --quiet origin exp/P1-E02 && git checkout --quiet {{E2B_COMMIT}}", cwd=str(REPO2B), timeout=55, check=True)
 E2_CPU_CMD = (
-    f"{{sys.executable}} -m p1.e2 parta --no-tfm --out {{OUT2}} --data {{DATA}} --configs {{' '.join(E2_CONFIGS)}} "
-    f"--draws {{' '.join(map(str, E2_DRAWS))}} --workers {workers} --threads {threads}"
+    f"env P1_LGBM_THREADS=1 {{sys.executable}} -m p1.e2 parta --no-tfm --out {{OUT2}} --data {{DATA}} "
+    f"--configs {{' '.join(E2_CONFIGS)}} --draws {{' '.join(map(str, E2_DRAWS))}} --workers {workers} --threads {threads}"
 )
 e2_jobs = {{}}
 # The CPU job starts only after this node's P1-E01 job has exited: running both at once oversubscribes
@@ -87,7 +94,7 @@ for _tag, _cmd, _pat, _gate in (("p1e02_gpu", E2_GPU_CMD, "p1.e2 gpu", True),
     elif not _gate:
         e2_jobs[_tag] = "waiting for the P1-E01 job on this node to finish"
     else:
-        e2_jobs[_tag] = bg_run(p1nb.job_script(_cmd, REPO2, NODE), tag=_tag)["log"]
+        e2_jobs[_tag] = bg_run(p1nb.job_script(_cmd, REPO2B if _tag == "p1e02_parta" else REPO2, NODE), tag=_tag)["log"]
 mo.md(
     "### P1-E02 jobs\\n"
     f"- GPU job (foundation models, Part A draws {{E2_DRAWS}}, then Part B and 100% seeds 5 to 9 for {{E2_OWN}}):\\n  `{{E2_GPU_CMD}}`\\n"
