@@ -51,6 +51,7 @@ def main() -> None:
     ap.add_argument("--no-run", action="store_true", help="create or edit the cells without running them")
     ap.add_argument("--helpers", default=None, help="file with the notebook helper cell (sent first, hidden)")
     ap.add_argument("--draws", nargs="*", type=int, default=[], help="e02: Part A draws of this node")
+    ap.add_argument("--extra-draws", nargs="*", type=int, default=[], help="e02: draws moved here from another node")
     ap.add_argument("--own", nargs="*", default=[], help="e02: configurations whose P1-E01 results are on this node")
     a = ap.parse_args()
     if a.brief == "e01":
@@ -60,7 +61,8 @@ def main() -> None:
     elif a.brief == "e02":
         from p1.notebook.cells_e02 import cells
 
-        specs = cells(a.node, a.draws, a.own, a.commit, a.workers, a.threads, commit_cpu=a.commit_cpu)
+        specs = cells(a.node, a.draws, a.own, a.commit, a.workers, a.threads, commit_cpu=a.commit_cpu,
+                      extra_draws=a.extra_draws)
     else:
         from p1.notebook.cells_e03 import cells
 

@@ -10,7 +10,8 @@ ALL = ["CETC331", "HCXY-All", "SYL-All"]
 
 
 def cells(node: str, draws: list[int], own: list[str], commit: str, workers: int = 4, threads: int = 6,
-          branch: str = "exp/P1-E02", commit_cpu: str | None = None) -> list[dict]:
+          branch: str = "exp/P1-E02", commit_cpu: str | None = None, extra_draws: list[int] | None = None) -> list[dict]:
+    extra_draws = list(extra_draws or [])
     C = []
 
     def cell(name, code, hide=False, run=True):
@@ -101,6 +102,24 @@ mo.md(
     f"- CPU job (baseline searches and refits, Part A draws {{E2_DRAWS}}): **{{e2_jobs['p1e02_parta'] if isinstance(e2_jobs['p1e02_parta'], str) and not e2_jobs['p1e02_parta'].startswith('/tmp') else 'launched'}}**\\n  `{{E2_CPU_CMD}}`\\n\\n"
     "A P1-E01 timed run on this node pauses both jobs while it runs."
 )
+''')
+
+    cell("e2_launch_extra", f'''
+progress_refresh
+# Draws moved to this node from a slower one; they start once this node's first Part A job has finished.
+E2_EXTRA_DRAWS = {extra_draws!r}
+E2_CPU_CMD2 = E2_CPU_CMD.split(" --draws ")[0] + " --draws " + " ".join(map(str, E2_EXTRA_DRAWS)) + \\
+    " --workers " + E2_CPU_CMD.split(" --workers ")[1]
+if not E2_EXTRA_DRAWS:
+    e2_extra_state = "no extra draws on this node"
+elif p1nb.job_alive("p1.e2 parta") or p1nb.job_exit_code("/tmp/p1e02_parta2.log") == 0:
+    e2_extra_state = "running or finished"
+elif p1nb.job_exit_code("/tmp/p1e02_parta.log") != 0:
+    e2_extra_state = "waiting for the first Part A job on this node"
+else:
+    bg_run(p1nb.job_script(E2_CPU_CMD2, REPO2B, NODE), tag="p1e02_parta2")
+    e2_extra_state = "launched"
+mo.md(f"Extra Part A draws {{E2_EXTRA_DRAWS}}: **{{e2_extra_state}}**" + (f"\\n\\n`{{E2_CPU_CMD2}}`" if E2_EXTRA_DRAWS else ""))
 ''')
 
     cell("e2_launch_own", f'''

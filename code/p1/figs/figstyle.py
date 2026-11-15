@@ -21,7 +21,8 @@ PRINT_TEXT_W, PRINT_COL_W = 7.16, 3.5          # IEEE two-column, inches
 CANVAS = 2.0                                     # drawn at twice the printed size
 TWO_COL_W, ONE_COL_W = PRINT_TEXT_W * CANVAS, PRINT_COL_W * CANVAS
 PNG_DPI = int(900 / CANVAS)                      # 900 dpi at the printed size
-PREVIEW_DPI = 80                                 # small copies for the review page
+PREVIEW_DPI = 80                                 # thumbnails
+REVIEW_DPI = 125                                 # copies shown on the review page
 
 # ----------------------------------------------------------------------------- colour: one hue per model family
 # Validated with the dataviz skill's validate_palette.js (light mode, adjacent pairs): all checks pass;
@@ -138,7 +139,8 @@ def save(fig, out_dir: Path, name: str, panels: dict | None = None, log=print) -
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     targets = [(out_dir / f"{name}.pdf", {}), (out_dir / f"{name}.png", {"dpi": PNG_DPI}),
-               (out_dir / "preview" / f"{name}.png", {"dpi": PREVIEW_DPI})]
+               (out_dir / "preview" / f"{name}.png", {"dpi": PREVIEW_DPI}),
+               (out_dir / "preview_hi" / f"{name}.png", {"dpi": REVIEW_DPI})]
     for path, _ in targets:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.unlink(missing_ok=True)
@@ -157,5 +159,5 @@ def save(fig, out_dir: Path, name: str, panels: dict | None = None, log=print) -
     missing = [p for p in written if not p.exists()]
     if missing:
         raise RuntimeError(f"figure outputs missing after save: {missing}")
-    log(f"  wrote {name}: {', '.join(p.name for p in written[:3])}" + (f" + {len(written) - 3} panel files" if len(written) > 3 else ""))
+    log(f"  wrote {name}: {', '.join(p.name for p in written[:2])} + previews" + (f" + {len(written) - 4} panel files" if len(written) > 4 else ""))
     return written
