@@ -101,9 +101,17 @@ def e3_summary(out: Path) -> pd.DataFrame:
 
 # ----------------------------------------------------------------------------- predictions
 def consolidate_predictions(out: Path, e1_out: Path, report_dir: Path) -> list[str]:
-    """One compressed CSV per (part, configuration, model) instead of one per run."""
+    """One compressed CSV per (part, configuration, model) instead of one per run.
+
+    Needs the per-run files; if they are gone (already consolidated and removed), the existing
+    consolidated files are kept untouched rather than rewritten from the 100% rows alone.
+    """
     pdir = report_dir / "metrics" / "predictions"
     pdir.mkdir(parents=True, exist_ok=True)
+    if not (out / "metrics" / "predictions" / "parta").exists():
+        kept = sorted(p.name for p in pdir.glob("e[23]_*.csv.gz"))
+        print(f"  per-run predictions not present; keeping {len(kept)} consolidated files as they are")
+        return kept
     written = []
     for config in CONFIGS:
         for model in ALL_MODELS:
