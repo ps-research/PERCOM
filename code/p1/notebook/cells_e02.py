@@ -191,9 +191,11 @@ mo.vstack(
 
     cell("e2_results", '''
 progress_refresh
+import json as _json_e3
+
 _e3 = []
 for _p in sorted((OUT2 / "logs" / "e3").glob("*.json")) if (OUT2 / "logs" / "e3").exists() else []:
-    _r = _json.loads(_p.read_text())
+    _r = _json_e3.loads(_p.read_text())
     for _s in _r["per_set"]:
         _e3.append(dict(config=_r["config"], model=_r["model"], share=_s["share"], mean_m=_s["mean"]))
 e2_e3 = pd.DataFrame(_e3, columns=["config", "model", "share", "mean_m"])
