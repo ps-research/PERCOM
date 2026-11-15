@@ -52,7 +52,7 @@ def main(argv=None):
     ax.set_ylim(-(n_rows * row_h) - 0.05, head_h)
     ax.axis("off")
     heads = ["Model"] + [S.CONFIG_LABEL[c].replace(" (", "\n(") for c in configs] + ["Mean\nrank", "Fit + pred.\n(s, median)",
-                                                                                    "Tuning\n(s, median)"]
+                                                                                    "Tuning\n(s, upper bd.)"]
     for i, h in enumerate(heads):
         ax.text(xs[i] + (0.15 if i == 0 else widths[i] / 2), head_h / 2, h, ha="left" if i == 0 else "center",
                 va="center", fontsize=S.FS.legend, fontweight="bold", color=S.INK)

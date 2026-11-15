@@ -2,11 +2,11 @@
 
     python -m p1.figs.fig_cost [--out results/figures]
 
-x: seconds to fit and predict the test file (median over the five configurations, log axis).
-y: mean error relative to tuned kNN in the same configuration (median over configurations);
-   whiskers span the five configurations.
-Tuned baselines also carry a thin arrow to the right: their median Optuna search time
-(30 trials, 3 folds) added, the training step a foundation model does not have.
+x: seconds to fit and predict one test file (log axis). y: mean error relative to tuned kNN in the
+same configuration (log axis). Small marks: every model in every configuration (mean over seeds);
+large haloed marks: each model's median over the five configurations. Tuned baselines also carry an
+open mark joined by a dotted line at fit + predict + median search time: the training step a
+foundation model does not have. Search times are upper bounds (other jobs shared the nodes).
 """
 from __future__ import annotations
 
@@ -35,47 +35,45 @@ def main(argv=None):
     tune = search.groupby("model")["search_seconds"].median() if len(search) else {}
     import matplotlib.pyplot as plt
 
-    fig, ax = plt.subplots(figsize=(S.ONE_COL_W, 6.4))
+    fig, ax = plt.subplots(figsize=(S.ONE_COL_W, 8.4))
     rows = {}
-    xmin, xmax, ymin, ymax = np.inf, 0.0, np.inf, 0.0
+    lo_x, hi_x, hi_y = np.inf, 0.0, 0.0
     for m in [m for m in S.ORDER if m in set(e1["model"])]:
         d = g.xs(m, level="model").dropna(subset=["rel"])
         if d.empty:
             continue
-        x, y = d["cost"].median(), d["rel"].median()
-        kw = S.mark_kw(m, size=17)
-        ax.plot([x, x], [d["rel"].min(), d["rel"].max()], color=kw["color"], lw=2.2, alpha=0.6, zorder=2)
-        ax.plot([d["cost"].min(), d["cost"].max()], [y, y], color=kw["color"], lw=2.2, alpha=0.6, zorder=2)
-        if m in tune:  # with tuning: an open marker at fit + predict + median search time, joined by a dotted line
-            xt = x + tune[m]
-            ax.plot([x, xt], [y, y], color=kw["color"], ls=":", lw=2.4, zorder=2)
-            ht, = ax.plot([xt], [y], ls="none", marker=kw["marker"], ms=13, mfc=S.PAPER, mec=kw["color"], mew=2.2, zorder=4)
-            xmax = max(xmax, xt)
-        xmax = max(xmax, d["cost"].max())
-        xmin = min(xmin, d["cost"].min())
-        ymin, ymax = min(ymin, d["rel"].min()), max(ymax, d["rel"].max())
-        h, = ax.plot([x], [y], ls="none", marker=kw["marker"], ms=17, mfc=kw["mfc"], mec=kw["mec"], mew=2.6, zorder=5)
+        kw = S.mark_kw(m)
+        ax.plot(d["cost"], d["rel"], ls="none", marker=kw["marker"], ms=8, mfc=kw["mfc"], mec=kw["mec"], mew=1.6,
+                alpha=0.55, zorder=3)
+        x, y = float(d["cost"].median()), float(d["rel"].median())
+        t = float(tune[m]) if hasattr(tune, "index") and m in tune.index else None
+        if t:
+            ax.plot([x, x + t], [y, y], color=kw["color"], ls=":", lw=2.4, zorder=2)
+            ax.plot([x + t], [y], ls="none", marker=kw["marker"], ms=13, mfc=S.PAPER, mec=kw["color"], mew=2.2, zorder=4)
+        h, = ax.plot([x], [y], ls="none", marker=kw["marker"], ms=18, mfc=kw["mfc"], mec=kw["mec"], mew=2.6, zorder=5)
         S.halo(h, 5)
-        rows[m] = (x, y, tune.get(m) if hasattr(tune, "get") else None)
-    S.ref_line(ax, y=1.0, color=S.GUIDE, lw=1.6)
+        rows[m] = (x, y, t)
+        lo_x, hi_x = min(lo_x, d["cost"].min()), max(hi_x, d["cost"].max(), x + (t or 0))
+        hi_y = max(hi_y, d["rel"].max())
+    S.ref_line(ax, y=1.0, color=S.GUIDE, lw=1.8)
     ax.set_xscale("log")
-    ax.set_xlim(xmin / 2.0, xmax * 2.0)
-    pad = 0.08 * (ymax - ymin)
-    ax.set_ylim(ymin - 3.8 * pad, ymax + 3.4 * pad)  # room above and below the data for the two legend boxes
-    ax.set_xlabel("Fit + predict one test file (s); open marker: + baseline tuning")
-    ax.set_ylabel("Mean error / tuned kNN")
+    ax.set_yscale("log")
+    ax.set_xlim(lo_x / 2.5, hi_x * 2.5)
+    ax.set_ylim(0.75, hi_y * 9.0)  # head room above every point for the legend box
+    ticks = [t for t in (0.8, 1, 1.5, 2, 3, 4, 6) if t <= hi_y * 1.2]
+    ax.set_yticks(ticks)
+    ax.set_yticklabels([f"{t:g}" for t in ticks])
+    ax.minorticks_off()
+    ax.set_xlabel("Fit + predict one test file (s)")
+    ax.set_ylabel("Mean error / tuned kNN (log)")
 
     def fmt(m):
         x, y, t = rows[m]
-        extra = f", +{t:.0f} s tuning" if t else (", no tuning" if m in S.TFMS or m == "gp" else "")
-        return f"{S.MODEL[m]['label']}: {y:.2f}× in {x:.1f} s{extra}"
+        return f"{S.SHORT[m]}: {y:.2f}×, {x:.1f} s" + (f" (+{t:.0f})" if t else "")
 
-    tf = [m for m in rows if m in S.TFMS]
-    bl = [m for m in rows if m not in S.TFMS]
-    l1 = S.legend_box(ax, [S.handle(m, 13) for m in tf], [fmt(m) for m in tf], title="Foundation models (median of 5 configs)",
-                      loc="upper left")
-    ax.add_artist(l1)
-    S.legend_box(ax, [S.handle(m, 13) for m in bl], [fmt(m) for m in bl], title="Tuned baselines", loc="lower right")
+    order = [m for m in rows if m in S.TFMS] + [m for m in rows if m not in S.TFMS]
+    S.legend_box(ax, [S.handle(m, 12) for m in order], [fmt(m) for m in order],
+                 title="Median of 5 configs (+ search s, upper bound)", loc="upper right")
     S.save(fig, Path(a.out), "fig_cost_accuracy")
     for m, (x, y, t) in rows.items():
         print(f"  {m}: rel {y:.3f}, cost {x:.2f} s" + (f", tuning {t:.0f} s" if t else ""))
