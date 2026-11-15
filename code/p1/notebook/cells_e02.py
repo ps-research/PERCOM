@@ -10,7 +10,8 @@ ALL = ["CETC331", "HCXY-All", "SYL-All"]
 
 
 def cells(node: str, draws: list[int], own: list[str], commit: str, workers: int = 4, threads: int = 6,
-          branch: str = "exp/P1-E02", commit_cpu: str | None = None) -> list[dict]:
+          branch: str = "exp/P1-E02", commit_cpu: str | None = None, extra_draws: list[int] | None = None) -> list[dict]:
+    extra_draws = list(extra_draws or [])
     C = []
 
     def cell(name, code, hide=False, run=True):
@@ -103,6 +104,24 @@ mo.md(
 )
 ''')
 
+    cell("e2_launch_extra", f'''
+progress_refresh
+# Draws moved to this node from a slower one; they start once this node's first Part A job has finished.
+E2_EXTRA_DRAWS = {extra_draws!r}
+E2_CPU_CMD2 = E2_CPU_CMD.split(" --draws ")[0] + " --draws " + " ".join(map(str, E2_EXTRA_DRAWS)) + \\
+    " --workers " + E2_CPU_CMD.split(" --workers ")[1]
+if not E2_EXTRA_DRAWS:
+    e2_extra_state = "no extra draws on this node"
+elif p1nb.job_alive("p1.e2 parta") or p1nb.job_exit_code("/tmp/p1e02_parta2.log") == 0:
+    e2_extra_state = "running or finished"
+elif p1nb.job_exit_code("/tmp/p1e02_parta.log") != 0:
+    e2_extra_state = "waiting for the first Part A job on this node"
+else:
+    bg_run(p1nb.job_script(E2_CPU_CMD2, REPO2B, NODE), tag="p1e02_parta2")
+    e2_extra_state = "launched"
+mo.md(f"Extra Part A draws {{E2_EXTRA_DRAWS}}: **{{e2_extra_state}}**" + (f"\\n\\n`{{E2_CPU_CMD2}}`" if E2_EXTRA_DRAWS else ""))
+''')
+
     cell("e2_launch_own", f'''
 progress_refresh
 _tuned = ["knn", "rf", "lgbm-ph", "lgbm-nan", "svr", "mlp"]
@@ -172,9 +191,11 @@ mo.vstack(
 
     cell("e2_results", '''
 progress_refresh
+import json as _json_e3
+
 _e3 = []
 for _p in sorted((OUT2 / "logs" / "e3").glob("*.json")) if (OUT2 / "logs" / "e3").exists() else []:
-    _r = _json.loads(_p.read_text())
+    _r = _json_e3.loads(_p.read_text())
     for _s in _r["per_set"]:
         _e3.append(dict(config=_r["config"], model=_r["model"], share=_s["share"], mean_m=_s["mean"]))
 e2_e3 = pd.DataFrame(_e3, columns=["config", "model", "share", "mean_m"])

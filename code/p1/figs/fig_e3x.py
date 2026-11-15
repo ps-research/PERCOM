@@ -50,15 +50,15 @@ def fig_uncertainty(R: Results, out: Path):
         ax.plot(LEVELS, mean, zorder=4, **kw)
         rows_a[m] = (mean[1], d["width80_m"].mean())
     ax.set_xlim(45, 100)
-    ax.set_ylim(min(30, min(v[0] for v in rows_a.values()) - 5), 100)
+    ax.set_ylim(12, 100)  # room under the curves for the legend
     ax.set_xticks(LEVELS)
     ax.set_xlabel("Nominal level of the central interval (%)")
     ax.set_ylabel("Test rows inside the interval (%)")
     from matplotlib.lines import Line2D
 
     S.legend_box(ax, [S.handle(m) for m in models] + [Line2D([0], [0], color=S.INK2, ls="--", lw=2.2)],
-                 [f"{S.MODEL[m]['label']}: 80% interval holds {rows_a[m][0]:.0f}% (width {rows_a[m][1]:.1f} m)" for m in models]
-                 + ["calibrated: holds its nominal share"], title="Coverage, mean of 5 configs", loc="upper left")
+                 [f"{S.SHORT[m]}: {rows_a[m][0]:.0f}% · {rows_a[m][1]:.1f} m" for m in models]
+                 + ["calibrated"], title="80% interval: holds · width", loc="lower right")
     S.tag(ax, "a")
 
     # (b) error by decile of predicted spread
@@ -81,13 +81,14 @@ def fig_uncertainty(R: Results, out: Path):
         d = per_cfg.xs(m, level="model")
         rows_b[m] = (d["spearman_spread80_error"].mean(), c.mean(axis=0)[0], c.mean(axis=0)[-1])
     S.ref_line(bx, y=1.0, color=S.INK2, lw=2.0)
+    bx.set_ylim(0, bx.get_ylim()[1] * 1.42)  # head room above every band for the legend
     bx.set_xticks(range(1, 11))
     bx.set_xlabel("Decile of predicted spread (1 = most confident)")
-    bx.set_ylabel("Mean error of the decile / overall mean")
+    bx.set_ylabel("Decile mean error / overall mean")
     bm = [m for m in models if m in rows_b]
     S.legend_box(bx, [S.handle(m) for m in bm],
-                 [f"{S.MODEL[m]['label']}: Spearman {rows_b[m][0]:.2f}; decile 1 {rows_b[m][1]:.2f}×, decile 10 {rows_b[m][2]:.2f}×"
-                  for m in bm], title="Does the spread flag bad fixes?", loc="upper left")
+                 [f"{S.SHORT[m]}: ρ {rows_b[m][0]:.2f}, decile 10 {rows_b[m][2]:.2f}×" for m in bm],
+                 title="Spread against error (Spearman ρ)", loc="upper left")
     S.tag(bx, "b")
     S.save(fig, out, "fig_uncertainty", panels={"a": ax, "b": bx})
     print("  uncertainty:", {m: f"80% holds {v[0]:.1f}%" for m, v in rows_a.items()},
@@ -105,12 +106,13 @@ def fig_scans(R: Results, out: Path):
     g = B.groupby(["config", "model", "scans_per_point"])["mean"].mean()
     fig, (ax, bx) = plt.subplots(1, 2, figsize=(S.TWO_COL_W, 6.4), gridspec_kw=dict(wspace=0.24))
     rows = {}
+    REF_K = 26  # inside TabPFN v2's 10,000-row limit in both buildings; the HCXY cap of P1-E01
     for m in models:
         rel = []
         for c in sorted(B["config"].unique()):
             s = g.xs((c, m), level=("config", "model"))
-            if 30 in s.index:
-                rel.append(s / s.loc[30])
+            if REF_K in s.index:
+                rel.append(s / s.loc[REF_K])
         if not rel:
             continue
         r = pd.concat(rel, axis=1)
@@ -120,18 +122,20 @@ def fig_scans(R: Results, out: Path):
         ax.plot(ks, r.mean(axis=1), zorder=4 if m in S.TFMS else 3, **kw)
         rows[m] = (float(r.mean(axis=1).loc[ks[0]]), float(r.mean(axis=1).loc[10]) if 10 in r.index else np.nan)
     S.ref_line(ax, y=1.0, color=S.INK2, lw=2.0)
-    S.ref_line(ax, x=26, color=S.GUIDE, ls=":", lw=2.0, label="HCXY cap (26)")
+    S.ref_line(ax, x=REF_K, color=S.GUIDE, ls=":", lw=2.0, label="26: reference")
     ax.set_xscale("log")
-    ks = sorted(B["scans_per_point"].unique())
+    ks = [k for k in sorted(B["scans_per_point"].unique()) if k != REF_K]
     ax.set_xticks(ks)
     ax.set_xticklabels([str(k) for k in ks])
     ax.minorticks_off()
     ax.set_xlabel("Scans per reference point in the context")
-    ax.set_ylabel("Mean error / same model with 30 scans")
+    ax.set_ylabel("Mean error / same model with 26 scans")
+    lo, hi = ax.get_ylim()
+    ax.set_ylim(lo, hi + 0.85 * (hi - lo))  # head room above the bands for the legend
     cap = B[(B["config"] == "HCXY-All") & B["model"].str.startswith("tabpfn")].groupby(["model", "scans_per_point"])["mean"].mean()
     S.legend_box(ax, [S.handle(m) for m in rows],
-                 [f"{S.MODEL[m]['label']}: {rows[m][0]:.2f}× at 1 scan, {rows[m][1]:.2f}× at 10" for m in rows],
-                 title="Mean of HCXY and SYL (band: the two)", loc="upper right")
+                 [f"{S.SHORT[m]}: {rows[m][0]:.2f}× at 1 scan, {rows[m][1]:.2f}× at 10" for m in rows],
+                 title="Mean of HCXY and SYL (band: the two)", loc="upper left")
     S.tag(ax, "a")
     # (b) cost against context rows
     cost = B[B["model"].isin(S.TFMS)].groupby(["model", "config", "context_rows"]).agg(
@@ -143,22 +147,31 @@ def fig_scans(R: Results, out: Path):
         kw = S.mark_kw(m)
         for c, dc in d.groupby("config"):
             bx.plot(dc["context_rows"], dc["total"], color=kw["color"], ls=kw["ls"], lw=2.0, zorder=3)
-            bx.scatter(dc["context_rows"], dc["total"], s=dc["mem"] / 25, marker=S.CONFIG_MARKER[c],
+            bx.scatter(dc["context_rows"], dc["total"], s=30 + dc["mem"] / 140, marker=S.CONFIG_MARKER[c],
                        facecolors=kw["mfc"], edgecolors=kw["color"], linewidths=2.0, zorder=4)
         top = d.sort_values("context_rows").iloc[-1]
         rows_b[m] = (int(top["context_rows"]), float(top["total"]), float(top["mem"]) / 1024)
     S.ref_line(bx, x=10_000, color=S.GUIDE, ls=":", lw=2.0, label="10k rows (TabPFN v2 limit)")
     bx.set_xscale("log")
     bx.set_yscale("log")
+    from matplotlib.ticker import FuncFormatter, NullFormatter
+
+    lo, hi = bx.get_ylim()
+    bx.set_ylim(lo, hi * 4.0)  # head room above the points for the legend
+    yt = [t for t in (2, 5, 10, 20, 50) if lo <= t <= hi]
+    bx.set_yticks(yt)
+    bx.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:g}"))
+    bx.yaxis.set_minor_formatter(NullFormatter())
+    bx.xaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:,.0f}"))
     bx.set_xlabel("Context rows (reference-point scans)")
     bx.set_ylabel("Fit + predict, both coordinates (s)")
     hs = [S.handle(m) for m in rows_b]
-    ls = [f"{S.MODEL[m]['label']}: {rows_b[m][1]:.1f} s, {rows_b[m][2]:.1f} GB at {rows_b[m][0]:,} rows" for m in rows_b]
+    ls = [f"{S.SHORT[m]}: {rows_b[m][1]:.0f} s, {rows_b[m][2]:.1f} GB at {rows_b[m][0]:,}" for m in rows_b]
     from matplotlib.lines import Line2D
 
     for c in sorted(cost["config"].unique()):
         hs.append(Line2D([0], [0], ls="none", marker=S.CONFIG_MARKER[c], ms=12, mfc="white", mec=S.INK2, mew=2))
-        ls.append(f"{S.CONFIG_LABEL[c]} (marker area: peak GPU memory)")
+        ls.append(f"{S.CONFIG_SHORT[c]}; marker area: peak GPU memory")
     S.legend_box(bx, hs, ls, title="Cost of the context", loc="upper left")
     S.tag(bx, "b")
     S.save(fig, out, "fig_scans_cost", panels={"a": ax, "b": bx})

@@ -18,7 +18,12 @@ class Results:
 
     def csv(self, folder: Path, name: str) -> pd.DataFrame:
         p = folder / "metrics" / name
-        return pd.read_csv(p) if p.exists() else pd.DataFrame()
+        if not p.exists() or p.stat().st_size < 2:
+            return pd.DataFrame()
+        try:
+            return pd.read_csv(p)
+        except pd.errors.EmptyDataError:
+            return pd.DataFrame()
 
     # P1-E01
     def e1_summary(self): return self.csv(self.e1, "e1_summary.csv")
