@@ -40,7 +40,7 @@ async with cm.get_context(skip_staleness_check=True) as ctx:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--brief", default="e01", choices=["e01", "e02"])
+    ap.add_argument("--brief", default="e01", choices=["e01", "e02", "e03"])
     ap.add_argument("--node", required=True)
     ap.add_argument("--configs", nargs="*", default=[])
     ap.add_argument("--commit", required=True)
@@ -56,10 +56,14 @@ def main() -> None:
         from p1.notebook.cells_e01 import cells
 
         specs = cells(a.node, a.configs, a.commit, a.workers, a.threads)
-    else:
+    elif a.brief == "e02":
         from p1.notebook.cells_e02 import cells
 
         specs = cells(a.node, a.draws, a.own, a.commit, a.workers, a.threads)
+    else:
+        from p1.notebook.cells_e03 import cells
+
+        specs = cells(a.node, a.configs, a.own, a.commit)
     if a.helpers:
         specs.insert(2, dict(name="helpers", code=Path(a.helpers).read_text(), hide=True, run=True))
     if a.only is not None:

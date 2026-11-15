@@ -139,7 +139,14 @@ def scan_rows(rp_ids: np.ndarray, k: int, seed: int) -> np.ndarray:
 def run_scans(configs, data_root, out: Path, e1_out: Path, device: str, log) -> None:
     for config in (c for c in configs if c in SCAN_CONFIGS):
         s = D.load_config(config, data_root)
-        knn_params = params_from_json(read_json(e1_out / "config" / "best_params" / f"{config}__knn.json")["best_params"])
+        knn_file = e1_out / "config" / "best_params" / f"{config}__knn.json"
+        waited = 0
+        while not knn_file.exists() and waited < 3 * 3600:  # the P1-E01 knn search may still be running
+            if waited == 0:
+                log.info(f"B {config}: waiting for {knn_file}")
+            time.sleep(60)
+            waited += 60
+        knn_params = params_from_json(read_json(knn_file)["best_params"])
         for k in SCANS:
             for seed in SEEDS_A:
                 rows = scan_rows(s.rp_train, k, seed)
@@ -248,10 +255,10 @@ def main(argv=None) -> None:
     if a.command == "gpu":
         if "A" in a.parts:
             run_uncertainty(a.configs, a.data, out, a.device, log)
-        if "B" in a.parts:
-            run_scans(a.configs, a.data, out, e1_out, a.device, log)
         if "C" in a.parts:
             run_seeds(a.configs, a.data, out, a.device, log)
+        if "B" in a.parts:  # last: its knn reference needs the P1-E01 knn search of this node
+            run_scans(a.configs, a.data, out, e1_out, a.device, log)
     else:
         run_more_e3([c for c in a.configs if c in D.MAIN_CONFIGS], a.data, out, e1_out, a.device, list(ALL_MODELS), log)
     log.info(f"{a.command}: finished")
