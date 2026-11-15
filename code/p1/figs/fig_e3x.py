@@ -50,15 +50,15 @@ def fig_uncertainty(R: Results, out: Path):
         ax.plot(LEVELS, mean, zorder=4, **kw)
         rows_a[m] = (mean[1], d["width80_m"].mean())
     ax.set_xlim(45, 100)
-    ax.set_ylim(min(30, min(v[0] for v in rows_a.values()) - 5), 100)
+    ax.set_ylim(12, 100)  # room under the curves for the legend
     ax.set_xticks(LEVELS)
     ax.set_xlabel("Nominal level of the central interval (%)")
     ax.set_ylabel("Test rows inside the interval (%)")
     from matplotlib.lines import Line2D
 
     S.legend_box(ax, [S.handle(m) for m in models] + [Line2D([0], [0], color=S.INK2, ls="--", lw=2.2)],
-                 [f"{S.MODEL[m]['label']}: 80% interval holds {rows_a[m][0]:.0f}% (width {rows_a[m][1]:.1f} m)" for m in models]
-                 + ["calibrated: holds its nominal share"], title="Coverage, mean of 5 configs", loc="upper left")
+                 [f"{S.SHORT[m]}: {rows_a[m][0]:.0f}% · {rows_a[m][1]:.1f} m" for m in models]
+                 + ["calibrated"], title="80% interval: holds · width", loc="lower right")
     S.tag(ax, "a")
 
     # (b) error by decile of predicted spread
@@ -81,13 +81,14 @@ def fig_uncertainty(R: Results, out: Path):
         d = per_cfg.xs(m, level="model")
         rows_b[m] = (d["spearman_spread80_error"].mean(), c.mean(axis=0)[0], c.mean(axis=0)[-1])
     S.ref_line(bx, y=1.0, color=S.INK2, lw=2.0)
+    bx.set_ylim(0, bx.get_ylim()[1] * 1.42)  # head room above every band for the legend
     bx.set_xticks(range(1, 11))
     bx.set_xlabel("Decile of predicted spread (1 = most confident)")
-    bx.set_ylabel("Mean error of the decile / overall mean")
+    bx.set_ylabel("Decile mean error / overall mean")
     bm = [m for m in models if m in rows_b]
     S.legend_box(bx, [S.handle(m) for m in bm],
-                 [f"{S.MODEL[m]['label']}: Spearman {rows_b[m][0]:.2f}; decile 1 {rows_b[m][1]:.2f}×, decile 10 {rows_b[m][2]:.2f}×"
-                  for m in bm], title="Does the spread flag bad fixes?", loc="upper left")
+                 [f"{S.SHORT[m]}: ρ {rows_b[m][0]:.2f}, decile 10 {rows_b[m][2]:.2f}×" for m in bm],
+                 title="Spread against error (Spearman ρ)", loc="upper left")
     S.tag(bx, "b")
     S.save(fig, out, "fig_uncertainty", panels={"a": ax, "b": bx})
     print("  uncertainty:", {m: f"80% holds {v[0]:.1f}%" for m, v in rows_a.items()},
