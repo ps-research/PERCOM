@@ -48,6 +48,8 @@ MODEL = {
     "mlp": dict(color=VIOLET, ls="-", marker="X", filled=True, label="MLP"),
     "gp": dict(color=RED, ls="-", marker="h", filled=True, label="Gaussian process"),
 }
+SHORT = {"tabpfn-nan": "TabPFN NaN", "tabpfn-ph": "TabPFN $-$105", "tabicl": "TabICL NaN", "knn": "kNN", "rf": "RF",
+         "lgbm-nan": "LightGBM NaN", "lgbm-ph": "LightGBM $-$105", "svr": "SVR", "mlp": "MLP", "gp": "GP"}
 TFMS = ("tabpfn-nan", "tabpfn-ph", "tabicl")
 ORDER = ["tabpfn-nan", "tabpfn-ph", "tabicl", "knn", "rf", "lgbm-nan", "lgbm-ph", "svr", "mlp", "gp"]
 
@@ -102,9 +104,10 @@ def handle(model: str, size: float = 11.0) -> Line2D:
 
 
 def legend_box(ax, handles, labels, title=None, loc="best", ncol=1, **kw):
+    opts = dict(handlelength=2.8, borderpad=0.6, labelspacing=0.45, columnspacing=1.2)
+    opts.update(kw)
     lg = ax.legend(handles, labels, title=title, loc=loc, ncol=ncol, frameon=True, fancybox=False,
-                   framealpha=0.94, edgecolor="#b9b7b0", handlelength=2.8, borderpad=0.6, labelspacing=0.45,
-                   columnspacing=1.2, **kw)
+                   framealpha=0.94, edgecolor="#b9b7b0", **opts)
     lg.get_frame().set_linewidth(1.0)
     if title:
         lg.get_title().set_fontweight("bold")

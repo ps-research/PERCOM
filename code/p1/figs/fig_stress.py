@@ -57,29 +57,40 @@ def panel_a(ax, R: Results, log=print) -> dict:
     ax.set_xticks(shares)
     ax.set_xticklabels([f"{s}%" for s in shares])
     ax.minorticks_off()
-    ax.set_xlabel("Reference points surveyed (share of the full survey)")
-    ax.set_ylabel("Mean error / tuned kNN, full survey")
+    ax.set_xlabel("Share of reference points surveyed")
+    ax.set_ylabel("Mean error / tuned kNN on the full survey")
     ax.set_xlim(shares[0] * 0.85, shares[-1] * 1.15)
-    ax.set_ylim(bottom=min(0.45, curve[curve["model"].isin(shown)]["min"].min() * 0.95))
+    sub = curve[curve["model"].isin(shown)]
+    ax.set_ylim(min(0.6, sub["min"].min() * 0.92), sub["max"].max() * 1.04)  # never clip a band
+
+    def pct(v):
+        try:
+            return f"{float(v):.0f}%"
+        except (TypeError, ValueError):
+            return "never"
+
+    def num(v, suffix="×"):
+        return "n/a" if v is None or not np.isfinite(v) else f"{v:.2f}{suffix}"
 
     def fmt(m):
         o = out[m]
         if m in S.TFMS:
             x = o.get("cross")
             per = o.get("per_config", {})
-            per_s = ", ".join(f"{S.CONFIG_SHORT[c]} {v if isinstance(v, str) else f'{float(v):.0f}%'}"
-                              for c, v in per.items() if c in configs)
-            head = f"kNN level at {x:.0f}% of the survey" if x is not None else "never reaches the kNN level"
-            return f"{S.MODEL[m]['label']}: {head}" + (f" ({per_s})" if per_s else "")
-        return f"{S.MODEL[m]['label']}: {o['at5']:.2f}× at 5%, {o['at100']:.2f}× at 100%"
+            head = f"{x:.0f}% (mean)" if x is not None else "never (mean)"
+            per_s = " · ".join(f"{S.CONFIG_SHORT[c]} {pct(v)}" for c, v in per.items() if c in configs)
+            return f"{S.MODEL[m]['label']}: {head}" + (f"\n{per_s}" if per_s else "")
+        return f"{S.MODEL[m]['label']}: {num(o['at5'])} at 5%, {num(o['at100'])} at 100%"
+
+    from matplotlib.lines import Line2D
 
     l1 = S.legend_box(ax, [S.handle(m) for m in S.TFMS], [fmt(m) for m in S.TFMS],
-                      title="Foundation models, no training", loc="upper right")
+                      title="Survey share to match tuned kNN", loc="upper right")
     ax.add_artist(l1)
     rest = ["knn"] + best_other
-    ref = __import__("matplotlib.lines", fromlist=["Line2D"]).Line2D([0], [0], color=S.INK2, ls="--", lw=2.4)
-    S.legend_box(ax, [S.handle(m) for m in rest] + [ref], [fmt(m) for m in rest] + ["1.0 = tuned kNN on the full survey"],
-                 title="Tuned baselines, re-tuned per survey", loc="center right", bbox_to_anchor=(1.0, 0.42))
+    S.legend_box(ax, [S.handle(m) for m in rest] + [Line2D([0], [0], color=S.INK2, ls="--", lw=2.4)],
+                 [fmt(m) for m in rest] + ["1.0: tuned kNN, full survey"],
+                 title="Tuned baselines, re-tuned per survey", loc="upper right", bbox_to_anchor=(1.0, 0.50))
     return out
 
 
@@ -106,25 +117,26 @@ def panel_b(ax, R: Results, log=print) -> dict:
         ax.fill_between(c["share"], c["min"], c["max"], color=kw["color"], alpha=0.07, lw=0, zorder=1)
         ax.plot(c["share"], c["mean"], zorder=4 if m in S.TFMS else 3, **kw)
         out[m] = dict(at0=float(c["mean"].iloc[0]), at60=float(c["mean"].iloc[-1]))
-    ax.set_xlabel("Access points switched off after the survey (share of MACs)")
-    ax.set_ylabel("Mean error, average of the 3 buildings (m)")
+    ax.set_xlabel("Share of access points switched off after the survey")
+    ax.set_ylabel("Mean error, mean of 3 buildings (m)")
     xs = sorted(curve["share"].unique())
     ax.set_xticks(xs)
     ax.set_xticklabels([f"{x}%" for x in xs])
     ax.set_xlim(-2, xs[-1] + 2)
-    ax.set_ylim(bottom=0)
+    top = curve[curve["model"].isin(shown)]["max"].max()
+    ax.set_ylim(0, top * 2.0)  # head room for the legend, above every band
 
     def fmt(m):
         o = out[m]
-        return f"{S.MODEL[m]['label']}: {o['at0']:.2f} m at 0%, {o['at60']:.2f} m at 60%"
+        return f"{S.SHORT[m]}: {o['at0']:.2f}→{o['at60']:.2f}"
 
     from matplotlib.patches import Patch
 
     gap = [Patch(facecolor=S.BLUE, alpha=0.20, lw=0), Patch(facecolor=S.MAGENTA, alpha=0.20, lw=0)]
-    gap_lbl = [f"TabPFN gap at 60%: {out['tabpfn-ph']['at60'] - out['tabpfn-nan']['at60']:+.2f} m ($-$105 minus NaN)",
-               f"LightGBM gap at 60%: {out['lgbm-ph']['at60'] - out['lgbm-nan']['at60']:+.2f} m"]
+    gap_lbl = [f"shaded, TabPFN $-$105 minus NaN: {out['tabpfn-ph']['at60'] - out['tabpfn-nan']['at60']:+.2f} at 60%",
+               f"shaded, LightGBM $-$105 minus NaN: {out['lgbm-ph']['at60'] - out['lgbm-nan']['at60']:+.2f} at 60%"]
     S.legend_box(ax, [S.handle(m) for m in shown] + gap, [fmt(m) for m in shown] + gap_lbl,
-                 title=f"Mean over {n_draws} draws of switched-off MACs", loc="upper left")
+                 title=f"Mean error (m), 0%→60% off, {n_draws} draws", loc="upper left")
     return out
 
 
@@ -137,7 +149,7 @@ def main(argv=None):
     R = Results(a.e1, a.e2, a.e3)
     import matplotlib.pyplot as plt
 
-    fig, (axa, axb) = plt.subplots(1, 2, figsize=(S.TWO_COL_W, 6.6), gridspec_kw=dict(wspace=0.22))
+    fig, (axa, axb) = plt.subplots(1, 2, figsize=(S.TWO_COL_W, 7.4), gridspec_kw=dict(wspace=0.26))
     oa = panel_a(axa, R)
     ob = panel_b(axb, R)
     S.tag(axa, "a")
