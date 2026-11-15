@@ -1,0 +1,41 @@
+{
+  "code_commit": "0f526ead990ececd0c06d004781317f51b0286d5",
+  "config": "CETC331",
+  "cost": {
+    "fit_s": 0.7420019729997875,
+    "peak_gpu_mem_mb": 379.62744140625,
+    "peak_gpu_reserved_mb": 518.0,
+    "predict_s": 0.48441044599985617
+  },
+  "device": "cuda",
+  "draw": 7,
+  "encoding": "placeholder",
+  "finished_utc": "2026-11-15T00:21:04Z",
+  "in_kept_rows": 240,
+  "info": {
+    "context_capped": false,
+    "context_rows": 239,
+    "model_path": "/home/marimo/.cache/tabpfn/tabpfn-v2-regressor.ckpt"
+  },
+  "mean_error_in_kept": 2.622429428151688,
+  "mean_error_not_in_kept": 2.890000578935336,
+  "model": "tabpfn-ph",
+  "n_features": 52,
+  "n_jobs": 1,
+  "n_ref_points": 239,
+  "node": "nodeC",
+  "params": {},
+  "run_id": "CETC331__s025__d7__tabpfn-ph",
+  "seed": 7,
+  "share": 25,
+  "started_utc": "2026-11-15T00:21:03Z",
+  "stats": {
+    "mean": 2.813551678711436,
+    "median": 2.235328716428687,
+    "p75": 3.7536653069571884,
+    "p95": 5.423169609463017,
+    "rmse": 3.8127902166238625
+  },
+  "test_rows": 840,
+  "train_rows": 239
+}

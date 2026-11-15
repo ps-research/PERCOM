@@ -1,0 +1,43 @@
+{
+  "blas_threads": 4,
+  "code_commit": "4393db1dad12ca685c83679aceebe096f49cb49f",
+  "config": "HCXY-All",
+  "cost": {
+    "fit_s": 0.0008957879999798024,
+    "peak_gpu_mem_mb": null,
+    "peak_gpu_reserved_mb": null,
+    "predict_s": 0.007638929999302491
+  },
+  "device": "cpu",
+  "draw": 4,
+  "encoding": "placeholder",
+  "finished_utc": "2026-11-15T02:13:06Z",
+  "in_kept_rows": 0,
+  "info": {},
+  "lgbm_threads": 1,
+  "mean_error_in_kept": null,
+  "mean_error_not_in_kept": 4.357402221757432,
+  "model": "knn",
+  "n_features": 347,
+  "n_jobs": 3,
+  "n_ref_points": 19,
+  "node": "nodeB",
+  "params": {
+    "metric": "euclidean",
+    "n_neighbors": 30,
+    "weights": "uniform"
+  },
+  "run_id": "HCXY-All__s005__d4__knn",
+  "seed": 4,
+  "share": 5,
+  "started_utc": "2026-11-15T02:13:06Z",
+  "stats": {
+    "mean": 4.357402221757432,
+    "median": 3.2403857795019855,
+    "p75": 5.98066324081196,
+    "p95": 11.397291531081208,
+    "rmse": 5.595798508670537
+  },
+  "test_rows": 860,
+  "train_rows": 570
+}

@@ -1,0 +1,42 @@
+{
+  "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+  "config": "SYL-AP",
+  "cost": {
+    "fit_s": 2.93022132599981,
+    "peak_gpu_mem_mb": null,
+    "peak_gpu_reserved_mb": null,
+    "predict_s": 0.27219401199999993
+  },
+  "device": "cpu",
+  "encoding": "placeholder",
+  "finished_utc": "2026-11-15T01:32:58Z",
+  "info": {},
+  "model": "svr",
+  "n_features": 46,
+  "node": "nodeC",
+  "notes": [],
+  "params": {
+    "C": 486.0476383913027,
+    "epsilon": 0.13166680523069607,
+    "gamma": 0.0197010768959304
+  },
+  "run_id": "SYL-AP__svr__seed0",
+  "seed": 0,
+  "single_run": true,
+  "started_utc": "2026-11-15T01:32:55Z",
+  "stats": {
+    "mean": 4.348223272924479,
+    "median": 3.2741449266242997,
+    "p75": 5.359853351664161,
+    "p95": 10.34591931049106,
+    "rmse": 6.761733830488662
+  },
+  "test_rows": 1020,
+  "threads": {
+    "blas": 4,
+    "lgbm": 4,
+    "n_jobs": 20,
+    "svr_cache_mb": 1000
+  },
+  "train_rows": 8880
+}

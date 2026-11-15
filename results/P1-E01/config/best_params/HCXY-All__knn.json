@@ -1,0 +1,28 @@
+{
+  "best_params": {
+    "metric": "manhattan",
+    "n_neighbors": 30,
+    "weights": "distance"
+  },
+  "best_trial": 17,
+  "best_value": 1.743633338420863,
+  "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+  "config": "HCXY-All",
+  "encoding": "placeholder",
+  "finished_utc": "2026-11-15T00:30:55Z",
+  "model": "knn",
+  "n_trials": 30,
+  "node": "nodeA",
+  "search_seconds": 29.185310314999697,
+  "settings": {
+    "cv": "GroupKFold by reference point",
+    "model_seed_in_search": 0,
+    "n_folds": 3,
+    "n_trials": 30,
+    "objective": "mean positioning error averaged over folds",
+    "sampler": "TPESampler",
+    "sampler_seed": 0
+  },
+  "started_utc": "2026-11-15T00:30:26Z",
+  "threads": 6
+}

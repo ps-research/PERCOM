@@ -1,0 +1,32 @@
+2026-11-15T02:06:02 start search SYL-All__s005__d2__knn ref_points=15 rows=450 threads=3 node=nodeA
+2026-11-15T02:06:05 trial  0 value=8.6098 params={'n_neighbors': 17, 'weights': 'uniform', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial  1 value=8.5265 params={'n_neighbors': 20, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial  2 value=8.5061 params={'n_neighbors': 24, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial  3 value=10.4919 params={'n_neighbors': 3, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T02:06:05 trial  4 value=8.5554 params={'n_neighbors': 30, 'weights': 'uniform', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial  5 value=8.5265 params={'n_neighbors': 20, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial  6 value=9.5970 params={'n_neighbors': 8, 'weights': 'uniform', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial  7 value=8.5560 params={'n_neighbors': 19, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial  8 value=9.6617 params={'n_neighbors': 11, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T02:06:05 trial  9 value=9.0808 params={'n_neighbors': 21, 'weights': 'uniform', 'metric': 'manhattan'}
+2026-11-15T02:06:05 trial 10 value=9.2189 params={'n_neighbors': 10, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial 11 value=8.5355 params={'n_neighbors': 29, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial 12 value=8.8694 params={'n_neighbors': 28, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T02:06:05 trial 13 value=8.7986 params={'n_neighbors': 14, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial 14 value=8.5061 params={'n_neighbors': 24, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial 15 value=8.5061 params={'n_neighbors': 24, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial 16 value=8.5015 params={'n_neighbors': 24, 'weights': 'uniform', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial 17 value=8.5015 params={'n_neighbors': 24, 'weights': 'uniform', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial 18 value=8.5064 params={'n_neighbors': 25, 'weights': 'uniform', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial 19 value=8.4988 params={'n_neighbors': 23, 'weights': 'uniform', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial 20 value=8.8496 params={'n_neighbors': 29, 'weights': 'uniform', 'metric': 'manhattan'}
+2026-11-15T02:06:05 trial 21 value=8.4988 params={'n_neighbors': 23, 'weights': 'uniform', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial 22 value=8.5024 params={'n_neighbors': 21, 'weights': 'uniform', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial 23 value=8.5134 params={'n_neighbors': 26, 'weights': 'uniform', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial 24 value=9.4574 params={'n_neighbors': 13, 'weights': 'uniform', 'metric': 'manhattan'}
+2026-11-15T02:06:05 trial 25 value=8.6098 params={'n_neighbors': 17, 'weights': 'uniform', 'metric': 'euclidean'}
+2026-11-15T02:06:05 trial 26 value=8.9218 params={'n_neighbors': 26, 'weights': 'uniform', 'metric': 'manhattan'}
+2026-11-15T02:06:05 trial 27 value=9.1787 params={'n_neighbors': 18, 'weights': 'uniform', 'metric': 'manhattan'}
+2026-11-15T02:06:05 trial 28 value=9.9343 params={'n_neighbors': 1, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T02:06:06 trial 29 value=8.5024 params={'n_neighbors': 21, 'weights': 'uniform', 'metric': 'euclidean'}
+2026-11-15T02:06:06 done search SYL-All__s005__d2__knn best=8.4988 seconds=4

@@ -1,0 +1,34 @@
+{
+  "best_params": {
+    "metric": "manhattan",
+    "n_neighbors": 3,
+    "weights": "distance"
+  },
+  "best_trial": 3,
+  "best_value": 1.9034447714681761,
+  "blas_threads": 4,
+  "code_commit": "4393db1dad12ca685c83679aceebe096f49cb49f",
+  "config": "CETC331",
+  "draw": 2,
+  "encoding": "placeholder",
+  "finished_utc": "2026-11-15T01:41:29Z",
+  "lgbm_threads": 1,
+  "model": "knn",
+  "n_ref_points": 239,
+  "n_trials": 30,
+  "node": "nodeA",
+  "search_seconds": 3.6800837829996453,
+  "settings": {
+    "cv": "GroupKFold by reference point",
+    "model_seed_in_search": 0,
+    "n_folds": 3,
+    "n_trials": 30,
+    "objective": "mean positioning error averaged over folds",
+    "sampler": "TPESampler",
+    "sampler_seed": 0
+  },
+  "share": 25,
+  "started_utc": "2026-11-15T01:41:25Z",
+  "threads": 3,
+  "train_rows": 239
+}

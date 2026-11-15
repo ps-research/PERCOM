@@ -1,0 +1,48 @@
+{
+  "blas_threads": 4,
+  "code_commit": "4393db1dad12ca685c83679aceebe096f49cb49f",
+  "config": "CETC331",
+  "cost": {
+    "fit_s": 1.067328286000702,
+    "peak_gpu_mem_mb": null,
+    "peak_gpu_reserved_mb": null,
+    "predict_s": 0.012334544999248465
+  },
+  "device": "cpu",
+  "draw": 6,
+  "encoding": "placeholder",
+  "finished_utc": "2026-11-15T02:13:21Z",
+  "in_kept_rows": 460,
+  "info": {
+    "n_iter": 41
+  },
+  "lgbm_threads": 1,
+  "mean_error_in_kept": 3.348227930129237,
+  "mean_error_not_in_kept": 4.0069003199372935,
+  "model": "mlp",
+  "n_features": 52,
+  "n_jobs": 3,
+  "n_ref_points": 478,
+  "node": "nodeA",
+  "params": {
+    "alpha": 0.00021544053571689035,
+    "hidden_layer_sizes": [
+      512,
+      256
+    ],
+    "learning_rate_init": 0.004355652488740809
+  },
+  "run_id": "CETC331__s050__d6__mlp",
+  "seed": 6,
+  "share": 50,
+  "started_utc": "2026-11-15T02:13:20Z",
+  "stats": {
+    "mean": 3.646198773137643,
+    "median": 3.0853637553791744,
+    "p75": 4.967222769648037,
+    "p95": 8.665611192286594,
+    "rmse": 4.68917623102623
+  },
+  "test_rows": 840,
+  "train_rows": 478
+}

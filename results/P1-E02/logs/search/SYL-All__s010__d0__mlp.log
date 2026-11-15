@@ -1,0 +1,32 @@
+2026-11-15T01:50:58 start search SYL-All__s010__d0__mlp ref_points=30 rows=900 threads=3 node=nodeA
+2026-11-15T01:51:01 trial  0 value=10.6228 params={'hidden_layer_sizes': (256, 128), 'alpha': 4.9501595537331986e-05, 'learning_rate_init': 0.0019578897201213002}
+2026-11-15T01:51:03 trial  1 value=7.1855 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.001468588598920087, 'learning_rate_init': 0.0011423254155608373}
+2026-11-15T01:51:04 trial  2 value=12.6221 params={'hidden_layer_sizes': (256, 128), 'alpha': 1.2046852412030323e-06, 'learning_rate_init': 0.0046263628414755864}
+2026-11-15T01:51:05 trial  3 value=7.5749 params={'hidden_layer_sizes': (512, 256), 'alpha': 7.013219779945803e-05, 'learning_rate_init': 0.0036396393567863887}
+2026-11-15T01:51:06 trial  4 value=10.5432 params={'hidden_layer_sizes': (256, 128, 64), 'alpha': 0.00012229065947034367, 'learning_rate_init': 0.0006750312521595928}
+2026-11-15T01:51:06 trial  5 value=16.3480 params={'hidden_layer_sizes': (256, 128), 'alpha': 1.1889379831773014e-06, 'learning_rate_init': 0.0017189806743319388}
+2026-11-15T01:51:08 trial  6 value=11.1757 params={'hidden_layer_sizes': (512, 256), 'alpha': 2.7417736752420992e-05, 'learning_rate_init': 0.0007482796037620795}
+2026-11-15T01:51:08 trial  7 value=23.4688 params={'hidden_layer_sizes': (256,), 'alpha': 6.942729492430145e-06, 'learning_rate_init': 0.00018107254066631083}
+2026-11-15T01:51:10 trial  8 value=11.0060 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.008984529773922553, 'learning_rate_init': 0.00015998881492631506}
+2026-11-15T01:51:12 trial  9 value=11.5488 params={'hidden_layer_sizes': (512, 256), 'alpha': 7.332348382056165e-05, 'learning_rate_init': 0.000308213164144295}
+2026-11-15T01:51:13 trial 10 value=13.1854 params={'hidden_layer_sizes': (256, 128), 'alpha': 0.008207154957391688, 'learning_rate_init': 0.000441514310959052}
+2026-11-15T01:51:15 trial 11 value=7.1878 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.0013186140016040115, 'learning_rate_init': 0.0034073141278867223}
+2026-11-15T01:51:16 trial 12 value=7.3001 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.002590285286587506, 'learning_rate_init': 0.002766872744310855}
+2026-11-15T01:51:18 trial 13 value=6.3109 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.0008552024082389532, 'learning_rate_init': 0.006319353073118537}
+2026-11-15T01:51:18 trial 14 value=7.2167 params={'hidden_layer_sizes': (256, 128), 'alpha': 0.007386859132067279, 'learning_rate_init': 0.009575990634117893}
+2026-11-15T01:51:20 trial 15 value=8.1421 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.001501089149973985, 'learning_rate_init': 0.0006210006736116771}
+2026-11-15T01:51:22 trial 16 value=10.6077 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.000904892259974118, 'learning_rate_init': 0.0002267742335280514}
+2026-11-15T01:51:22 trial 17 value=11.7721 params={'hidden_layer_sizes': (256,), 'alpha': 0.0004141623225658368, 'learning_rate_init': 0.0011644846791013903}
+2026-11-15T01:51:23 trial 18 value=6.1766 params={'hidden_layer_sizes': (256, 128, 64), 'alpha': 0.00025501730259238584, 'learning_rate_init': 0.006736278034816374}
+2026-11-15T01:51:24 trial 19 value=6.6645 params={'hidden_layer_sizes': (256, 128, 64), 'alpha': 0.000298800787240919, 'learning_rate_init': 0.006029177102690701}
+2026-11-15T01:51:25 trial 20 value=9.4183 params={'hidden_layer_sizes': (256, 128, 64), 'alpha': 1.489526795359921e-05, 'learning_rate_init': 0.0027913170754256013}
+2026-11-15T01:51:26 trial 21 value=5.7536 params={'hidden_layer_sizes': (256, 128, 64), 'alpha': 0.0002478107147664638, 'learning_rate_init': 0.009216715063291364}
+2026-11-15T01:51:27 trial 22 value=5.6189 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.00029316170212226057, 'learning_rate_init': 0.008971668586419825}
+2026-11-15T01:51:29 trial 23 value=6.0536 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.00020583969377625759, 'learning_rate_init': 0.009515253830763558}
+2026-11-15T01:51:31 trial 24 value=5.3637 params={'hidden_layer_sizes': (512, 256), 'alpha': 2.3989511633120334e-05, 'learning_rate_init': 0.009248757098506576}
+2026-11-15T01:51:32 trial 25 value=6.2358 params={'hidden_layer_sizes': (512, 256), 'alpha': 1.4444546324246755e-06, 'learning_rate_init': 0.009747138551465603}
+2026-11-15T01:51:34 trial 26 value=8.7083 params={'hidden_layer_sizes': (512, 256), 'alpha': 1.0240629534347824e-05, 'learning_rate_init': 0.00451863484825038}
+2026-11-15T01:51:35 trial 27 value=6.7168 params={'hidden_layer_sizes': (256, 128, 64), 'alpha': 8.640245669572958e-05, 'learning_rate_init': 0.00934687932264734}
+2026-11-15T01:51:36 trial 28 value=5.9513 params={'hidden_layer_sizes': (256, 128, 64), 'alpha': 0.0008936416126269167, 'learning_rate_init': 0.00798131908890169}
+2026-11-15T01:51:36 trial 29 value=7.7933 params={'hidden_layer_sizes': (256,), 'alpha': 3.232322650578769e-05, 'learning_rate_init': 0.006829146053836192}
+2026-11-15T01:51:36 done search SYL-All__s010__d0__mlp best=5.3637 seconds=38

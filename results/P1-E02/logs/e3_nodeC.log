@@ -1,0 +1,12 @@
+2026-11-15T00:29:57 done e3 CETC331__tabpfn-nan share0_mean=2.698 share60_mean=5.193 predict=17.9s
+2026-11-15T00:30:18 done e3 CETC331__tabpfn-ph share0_mean=2.683 share60_mean=7.966 predict=17.5s
+2026-11-15T00:30:29 done e3 CETC331__tabicl share0_mean=2.601 share60_mean=4.864 predict=9.4s
+2026-11-15T00:30:29 e3: finished
+2026-11-15T01:33:48 done e3 CETC331__knn share0_mean=2.915 share60_mean=8.227 predict=0.2s
+2026-11-15T01:33:50 done e3 CETC331__rf share0_mean=3.493 share60_mean=10.349 predict=0.6s
+2026-11-15T01:34:24 done e3 CETC331__lgbm-ph share0_mean=3.317 share60_mean=9.617 predict=4.1s
+2026-11-15T01:36:22 done e3 CETC331__lgbm-nan share0_mean=3.459 share60_mean=10.211 predict=13.3s
+2026-11-15T01:36:29 done e3 CETC331__svr share0_mean=3.638 share60_mean=13.883 predict=5.6s
+2026-11-15T01:36:33 done e3 CETC331__mlp share0_mean=3.226 share60_mean=11.013 predict=0.5s
+2026-11-15T01:37:30 done e3 CETC331__gp share0_mean=3.064 share60_mean=11.604 predict=8.2s
+2026-11-15T01:37:30 e3: finished

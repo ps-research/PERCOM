@@ -1,0 +1,8 @@
+2026-11-14T23:57:02 search: 6 units, workers=3, threads per unit=6, trials=30
+2026-11-14T23:59:55 done SYL-All mlp best=2.6627 in 172s
+2026-11-15T00:02:25 done SYL-All svr best=3.2568 in 150s
+2026-11-15T00:04:36 done SYL-All rf best=1.8519 in 131s
+2026-11-15T00:04:56 done SYL-All knn best=1.9392 in 19s
+2026-11-15T00:43:02 done SYL-All lgbm-nan best=1.8842 in 2760s
+2026-11-15T00:49:37 done SYL-All lgbm-ph best=1.8599 in 3154s
+2026-11-15T00:49:37 search: all units finished

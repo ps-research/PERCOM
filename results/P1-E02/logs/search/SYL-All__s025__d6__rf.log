@@ -1,0 +1,32 @@
+2026-11-15T02:32:54 start search SYL-All__s025__d6__rf ref_points=74 rows=2220 threads=3 node=nodeA
+2026-11-15T02:33:08 trial  0 value=3.9413 params={'n_estimators': 500, 'max_features': 1.0, 'min_samples_leaf': 5, 'max_depth': 10}
+2026-11-15T02:33:09 trial  1 value=3.6046 params={'n_estimators': 500, 'max_features': 'sqrt', 'min_samples_leaf': 9, 'max_depth': 20}
+2026-11-15T02:33:12 trial  2 value=3.9515 params={'n_estimators': 500, 'max_features': 1.0, 'min_samples_leaf': 6, 'max_depth': 20}
+2026-11-15T02:33:13 trial  3 value=3.9819 params={'n_estimators': 200, 'max_features': 1.0, 'min_samples_leaf': 7, 'max_depth': 20}
+2026-11-15T02:33:17 trial  4 value=3.9512 params={'n_estimators': 500, 'max_features': 1.0, 'min_samples_leaf': 6, 'max_depth': 10}
+2026-11-15T02:33:19 trial  5 value=3.5973 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 2, 'max_depth': None}
+2026-11-15T02:33:19 trial  6 value=3.7540 params={'n_estimators': 200, 'max_features': 0.5, 'min_samples_leaf': 10, 'max_depth': 10}
+2026-11-15T02:33:22 trial  7 value=3.7576 params={'n_estimators': 500, 'max_features': 0.5, 'min_samples_leaf': 7, 'max_depth': None}
+2026-11-15T02:33:26 trial  8 value=3.9605 params={'n_estimators': 500, 'max_features': 1.0, 'min_samples_leaf': 3, 'max_depth': 30}
+2026-11-15T02:33:29 trial  9 value=3.7477 params={'n_estimators': 500, 'max_features': 0.5, 'min_samples_leaf': 6, 'max_depth': 30}
+2026-11-15T02:33:31 trial 10 value=3.6037 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 1, 'max_depth': 20}
+2026-11-15T02:33:33 trial 11 value=3.6037 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 1, 'max_depth': 20}
+2026-11-15T02:33:34 trial 12 value=3.5214 params={'n_estimators': 500, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'max_depth': None}
+2026-11-15T02:33:35 trial 13 value=3.5281 params={'n_estimators': 500, 'max_features': 'sqrt', 'min_samples_leaf': 2, 'max_depth': None}
+2026-11-15T02:33:35 trial 14 value=3.5182 params={'n_estimators': 200, 'max_features': 'sqrt', 'min_samples_leaf': 2, 'max_depth': None}
+2026-11-15T02:33:35 trial 15 value=3.5088 params={'n_estimators': 200, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'max_depth': None}
+2026-11-15T02:33:36 trial 16 value=3.5035 params={'n_estimators': 200, 'max_features': 'sqrt', 'min_samples_leaf': 4, 'max_depth': None}
+2026-11-15T02:33:36 trial 17 value=3.5811 params={'n_estimators': 200, 'max_features': 'sqrt', 'min_samples_leaf': 6, 'max_depth': None}
+2026-11-15T02:33:37 trial 18 value=3.7984 params={'n_estimators': 200, 'max_features': 0.5, 'min_samples_leaf': 3, 'max_depth': 10}
+2026-11-15T02:33:37 trial 19 value=3.5035 params={'n_estimators': 200, 'max_features': 'sqrt', 'min_samples_leaf': 4, 'max_depth': 30}
+2026-11-15T02:33:39 trial 20 value=3.9552 params={'n_estimators': 200, 'max_features': 1.0, 'min_samples_leaf': 4, 'max_depth': None}
+2026-11-15T02:33:39 trial 21 value=3.6040 params={'n_estimators': 200, 'max_features': 'sqrt', 'min_samples_leaf': 3, 'max_depth': 30}
+2026-11-15T02:33:39 trial 22 value=3.5525 params={'n_estimators': 200, 'max_features': 'sqrt', 'min_samples_leaf': 4, 'max_depth': 10}
+2026-11-15T02:33:40 trial 23 value=3.6486 params={'n_estimators': 200, 'max_features': 0.3, 'min_samples_leaf': 8, 'max_depth': 30}
+2026-11-15T02:33:41 trial 24 value=3.5571 params={'n_estimators': 500, 'max_features': 'sqrt', 'min_samples_leaf': 4, 'max_depth': None}
+2026-11-15T02:33:41 trial 25 value=3.5790 params={'n_estimators': 200, 'max_features': 'sqrt', 'min_samples_leaf': 7, 'max_depth': 30}
+2026-11-15T02:33:42 trial 26 value=3.8108 params={'n_estimators': 200, 'max_features': 0.5, 'min_samples_leaf': 4, 'max_depth': 30}
+2026-11-15T02:33:42 trial 27 value=3.5559 params={'n_estimators': 200, 'max_features': 'sqrt', 'min_samples_leaf': 5, 'max_depth': 20}
+2026-11-15T02:33:44 trial 28 value=3.9480 params={'n_estimators': 200, 'max_features': 1.0, 'min_samples_leaf': 2, 'max_depth': 20}
+2026-11-15T02:33:44 trial 29 value=3.5943 params={'n_estimators': 200, 'max_features': 0.3, 'min_samples_leaf': 1, 'max_depth': None}
+2026-11-15T02:33:44 done search SYL-All__s025__d6__rf best=3.5035 seconds=50
