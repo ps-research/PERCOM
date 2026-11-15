@@ -1,0 +1,289 @@
+command: /tmp/uv-venv/bin/python -m p1.e1 partb --out /tmp/percom/out/P1-E01 --data /tmp/percom/PERCOM/data/SODIndoorLoc --configs SYL-All --workers 3 --threads 6
+2026-11-14T23:51:24 final: configs=['SYL-All'] models=['tabpfn-nan', 'tabpfn-ph', 'tabicl'] seeds=[0, 1, 2, 3, 4] device=cuda node=nodeB cpus=20
+2026-11-14T23:51:30 warm-up tabpfn-nan: 5.6s info={'context_capped': False, 'context_rows': 64, 'model_path': '/home/marimo/.cache/tabpfn/tabpfn-v2-regressor.ckpt'}
+2026-11-14T23:51:30 warm-up tabpfn-ph: 0.6s info={'context_capped': False, 'context_rows': 64, 'model_path': '/home/marimo/.cache/tabpfn/tabpfn-v2-regressor.ckpt'}
+2026-11-14T23:51:31 warm-up tabicl: 1.2s info={'context_capped': False, 'context_rows': 64, 'checkpoint': 'tabicl-regressor-v2-20260212.ckpt'}
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+2026-11-14T23:52:00 done SYL-All__tabpfn-nan__seed0 mean=3.494 fit=13.4s predict=14.6s gpu=6778MB
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+2026-11-14T23:52:28 done SYL-All__tabpfn-nan__seed1 mean=3.369 fit=13.6s predict=14.4s gpu=6856MB
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+2026-11-14T23:52:56 done SYL-All__tabpfn-nan__seed2 mean=3.444 fit=13.2s predict=14.6s gpu=7104MB
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+2026-11-14T23:53:23 done SYL-All__tabpfn-nan__seed3 mean=3.411 fit=12.6s predict=14.4s gpu=6779MB
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+2026-11-14T23:53:51 done SYL-All__tabpfn-nan__seed4 mean=3.304 fit=13.2s predict=14.3s gpu=6677MB
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+2026-11-14T23:54:19 done SYL-All__tabpfn-ph__seed0 mean=3.306 fit=14.1s predict=14.4s gpu=6778MB
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+2026-11-14T23:54:48 done SYL-All__tabpfn-ph__seed1 mean=3.216 fit=14.1s predict=14.4s gpu=6856MB
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+2026-11-14T23:55:17 done SYL-All__tabpfn-ph__seed2 mean=3.163 fit=14.2s predict=14.7s gpu=7104MB
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+2026-11-14T23:55:46 done SYL-All__tabpfn-ph__seed3 mean=3.202 fit=14.2s predict=14.4s gpu=6779MB
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+/tmp/uv-venv/lib/python3.13/site-packages/tabpfn/preprocessing/ensemble.py:229: UserWarning: Feature subsampling is active, but at least one preprocessing pipeline uses data dependent feature exampnsion (for example one-hot encoding). The subsampling budget is computed without accounting for the additional columns created by this expansion (which depends on training data cardinality). The actual number of features per estimator may exceed `max_features_per_estimator` for those pipelines.
+  self.subsample_feature_indices = _get_subsample_feature_indices(
+2026-11-14T23:56:14 done SYL-All__tabpfn-ph__seed4 mean=3.197 fit=14.0s predict=14.2s gpu=6677MB
+2026-11-14T23:56:24 done SYL-All__tabicl__seed0 mean=3.238 fit=4.2s predict=5.2s gpu=33690MB
+2026-11-14T23:56:33 done SYL-All__tabicl__seed1 mean=3.256 fit=4.0s predict=5.2s gpu=33690MB
+2026-11-14T23:56:43 done SYL-All__tabicl__seed2 mean=3.266 fit=4.0s predict=5.3s gpu=33690MB
+2026-11-14T23:56:52 done SYL-All__tabicl__seed3 mean=3.241 fit=4.0s predict=5.3s gpu=33690MB
+2026-11-14T23:57:02 done SYL-All__tabicl__seed4 mean=3.290 fit=4.1s predict=5.2s gpu=33690MB
+2026-11-14T23:57:02 final: all units finished
+2026-11-14T23:57:02 search: 6 units, workers=3, threads per unit=6, trials=30
+2026-11-14T23:57:02 start search config=SYL-All model=mlp rows=8880 cols=363 threads=6 node=nodeB
+2026-11-14T23:57:02 start search config=SYL-All model=lgbm-ph rows=8880 cols=363 threads=6 node=nodeB
+2026-11-14T23:57:02 start search config=SYL-All model=lgbm-nan rows=8880 cols=363 threads=6 node=nodeB
+2026-11-14T23:57:08 trial  0 value=3.6551 params={'hidden_layer_sizes': (256, 128), 'alpha': 4.9501595537331986e-05, 'learning_rate_init': 0.0019578897201213002}
+2026-11-14T23:57:18 trial  1 value=3.3559 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.001468588598920087, 'learning_rate_init': 0.0011423254155608373}
+2026-11-14T23:57:21 trial  2 value=3.1967 params={'hidden_layer_sizes': (256, 128), 'alpha': 1.2046852412030323e-06, 'learning_rate_init': 0.0046263628414755864}
+2026-11-14T23:57:27 trial  3 value=2.8953 params={'hidden_layer_sizes': (512, 256), 'alpha': 7.013219779945803e-05, 'learning_rate_init': 0.0036396393567863887}
+2026-11-14T23:57:30 trial  4 value=3.5808 params={'hidden_layer_sizes': (256, 128, 64), 'alpha': 0.00012229065947034367, 'learning_rate_init': 0.0006750312521595928}
+2026-11-14T23:57:35 trial  5 value=3.8332 params={'hidden_layer_sizes': (256, 128), 'alpha': 1.1889379831773014e-06, 'learning_rate_init': 0.0017189806743319388}
+2026-11-14T23:57:42 trial  6 value=3.9646 params={'hidden_layer_sizes': (512, 256), 'alpha': 2.7417736752420992e-05, 'learning_rate_init': 0.0007482796037620795}
+2026-11-14T23:57:46 trial  7 value=6.9841 params={'hidden_layer_sizes': (256,), 'alpha': 6.942729492430145e-06, 'learning_rate_init': 0.00018107254066631083}
+2026-11-14T23:57:57 trial  8 value=4.5534 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.008984529773922553, 'learning_rate_init': 0.00015998881492631506}
+2026-11-14T23:57:59 trial  0 value=2.0255 params={'n_estimators': 914, 'learning_rate': 0.0852084800119005, 'num_leaves': 80, 'min_child_samples': 28, 'subsample': 0.7118273996694524, 'colsample_bytree': 0.7521258791466592, 'reg_lambda': 0.0562793204741517}
+2026-11-14T23:58:02 trial  0 value=2.0346 params={'n_estimators': 914, 'learning_rate': 0.0852084800119005, 'num_leaves': 80, 'min_child_samples': 28, 'subsample': 0.7118273996694524, 'colsample_bytree': 0.7521258791466592, 'reg_lambda': 0.0562793204741517}
+2026-11-14T23:58:05 trial  9 value=4.4010 params={'hidden_layer_sizes': (512, 256), 'alpha': 7.332348382056165e-05, 'learning_rate_init': 0.000308213164144295}
+2026-11-14T23:58:08 trial 10 value=3.1165 params={'hidden_layer_sizes': (256,), 'alpha': 1.9391306697132163e-05, 'learning_rate_init': 0.00890758050221103}
+2026-11-14T23:58:10 trial 11 value=3.2174 params={'hidden_layer_sizes': (256,), 'alpha': 4.75434200040828e-05, 'learning_rate_init': 0.008938083864104647}
+2026-11-14T23:58:19 trial 12 value=2.8806 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.0003200033875648795, 'learning_rate_init': 0.005628474198416584}
+2026-11-14T23:58:26 trial 13 value=2.8363 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.0004285613894784607, 'learning_rate_init': 0.003911645613686699}
+2026-11-14T23:58:32 trial 14 value=2.8543 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.0016406756497629694, 'learning_rate_init': 0.0035823058103139523}
+2026-11-14T23:58:41 trial 15 value=2.7223 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.008018554944125346, 'learning_rate_init': 0.0060490123080588504}
+2026-11-14T23:58:44 trial 16 value=2.9729 params={'hidden_layer_sizes': (256, 128), 'alpha': 0.007789482260577666, 'learning_rate_init': 0.006774305411977185}
+2026-11-14T23:58:46 trial 17 value=3.7100 params={'hidden_layer_sizes': (256,), 'alpha': 0.009519471838281345, 'learning_rate_init': 0.004097967859661641}
+2026-11-14T23:58:51 trial 18 value=3.1530 params={'hidden_layer_sizes': (512, 256), 'alpha': 6.015447598857646e-06, 'learning_rate_init': 0.0023210902791061415}
+2026-11-14T23:58:54 trial 19 value=5.6994 params={'hidden_layer_sizes': (256,), 'alpha': 0.006863080138350942, 'learning_rate_init': 0.001567427770761592}
+2026-11-14T23:58:55 trial  1 value=2.0813 params={'n_estimators': 1360, 'learning_rate': 0.17937179620011742, 'num_leaves': 54, 'min_child_samples': 40, 'subsample': 0.7644474598764522, 'colsample_bytree': 0.6976311927657526, 'reg_lambda': 5.039489598671215}
+2026-11-14T23:58:57 trial 20 value=3.1254 params={'hidden_layer_sizes': (256,), 'alpha': 0.0026157549321840965, 'learning_rate_init': 0.009094131999803393}
+2026-11-14T23:58:58 trial  2 value=2.2252 params={'n_estimators': 292, 'learning_rate': 0.012982485087605059, 'num_leaves': 10, 'min_child_samples': 42, 'subsample': 0.8890783754749252, 'colsample_bytree': 0.9090085037727733, 'reg_lambda': 8.212461922256873}
+2026-11-14T23:59:00 trial 21 value=3.1576 params={'hidden_layer_sizes': (256, 128, 64), 'alpha': 0.0022301642148743776, 'learning_rate_init': 0.0026476416538927135}
+2026-11-14T23:59:04 trial  1 value=2.1317 params={'n_estimators': 1360, 'learning_rate': 0.17937179620011742, 'num_leaves': 54, 'min_child_samples': 40, 'subsample': 0.7644474598764522, 'colsample_bytree': 0.6976311927657526, 'reg_lambda': 5.039489598671215}
+2026-11-14T23:59:07 trial  2 value=2.2369 params={'n_estimators': 292, 'learning_rate': 0.012982485087605059, 'num_leaves': 10, 'min_child_samples': 42, 'subsample': 0.8890783754749252, 'colsample_bytree': 0.9090085037727733, 'reg_lambda': 8.212461922256873}
+2026-11-14T23:59:13 trial 22 value=2.8150 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.003287687802150225, 'learning_rate_init': 0.008858996755986254}
+2026-11-14T23:59:22 trial 23 value=2.9943 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.001183399934655015, 'learning_rate_init': 0.00950993289887971}
+2026-11-14T23:59:27 trial 24 value=2.8788 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.0055031384443496945, 'learning_rate_init': 0.0030066242775826043}
+2026-11-14T23:59:33 trial 25 value=2.6844 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.008231122599670125, 'learning_rate_init': 0.00545891999636056}
+2026-11-14T23:59:39 trial 26 value=3.2449 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.00046108302907088913, 'learning_rate_init': 0.0015577654817440516}
+2026-11-14T23:59:48 trial 27 value=2.8048 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.007774622234072563, 'learning_rate_init': 0.006416420695903733}
+2026-11-14T23:59:51 trial 28 value=3.1650 params={'hidden_layer_sizes': (256, 128), 'alpha': 0.0012268715900890011, 'learning_rate_init': 0.006632473619475262}
+2026-11-14T23:59:54 trial 29 value=2.6627 params={'hidden_layer_sizes': (256, 128, 64), 'alpha': 0.003574567589002738, 'learning_rate_init': 0.0041345259996691105}
+2026-11-14T23:59:55 done search config=SYL-All model=mlp best=2.6627 seconds=172 params={'hidden_layer_sizes': (256, 128, 64), 'alpha': 0.003574567589002738, 'learning_rate_init': 0.0041345259996691105}
+2026-11-14T23:59:55 done SYL-All mlp best=2.6627 in 172s
+2026-11-14T23:59:55 start search config=SYL-All model=svr rows=8880 cols=363 threads=6 node=nodeB
+2026-11-15T00:00:01 trial  0 value=13.8380 params={'C': 15.67667719550606, 'gamma': 0.07257005721594278, 'epsilon': 0.16051911333587626}
+2026-11-15T00:00:03 trial  1 value=4.9123 params={'C': 15.119336467641, 'gamma': 0.004950159553733192, 'epsilon': 0.19578897201213002}
+2026-11-15T00:00:06 trial  2 value=15.5435 params={'C': 5.627932047415165, 'gamma': 0.36905577292137587, 'epsilon': 0.8459126528049372}
+2026-11-15T00:00:11 trial  3 value=15.0246 params={'C': 3.41795291206101, 'gamma': 0.1468588598920085, 'epsilon': 0.11423254155608371}
+2026-11-15T00:00:14 trial  4 value=15.4826 params={'C': 18.71450068624066, 'gamma': 0.503948959867121, 'epsilon': 0.013869861245357327}
+2026-11-15T00:00:26 trial  5 value=12.3279 params={'C': 0.22310905607443038, 'gamma': 0.00012046852412030328, 'epsilon': 0.46263628414755864}
+2026-11-15T00:00:28 trial  6 value=15.4352 params={'C': 129.60656597279706, 'gamma': 0.3020289640158664, 'epsilon': 0.9062263471261948}
+2026-11-15T00:00:30 trial  7 value=5.8079 params={'C': 157.2657885417949, 'gamma': 0.007013219779945793, 'epsilon': 0.3639639356786389}
+2026-11-15T00:00:40 trial  8 value=15.6767 params={'C': 0.29723346443356546, 'gamma': 0.036281404040243805, 'epsilon': 0.01935114088559527}
+2026-11-15T00:00:43 trial  9 value=7.4337 params={'C': 600.7249475906196, 'gamma': 0.012229065947034361, 'epsilon': 0.06750312521595925}
+2026-11-15T00:00:45 trial  3 value=1.8820 params={'n_estimators': 1239, 'learning_rate': 0.03984726267151497, 'num_leaves': 102, 'min_child_samples': 6, 'subsample': 0.819960510663762, 'colsample_bytree': 0.40034730118633244, 'reg_lambda': 6.007249475906204}
+2026-11-15T00:00:48 trial  3 value=1.9254 params={'n_estimators': 1239, 'learning_rate': 0.03984726267151497, 'num_leaves': 102, 'min_child_samples': 6, 'subsample': 0.819960510663762, 'colsample_bytree': 0.40034730118633244, 'reg_lambda': 6.007249475906204}
+2026-11-15T00:00:49 trial 10 value=3.4034 params={'C': 50.34634723208832, 'gamma': 0.0002561775622765398, 'epsilon': 0.022740914244090193}
+2026-11-15T00:00:53 trial 11 value=3.2667 params={'C': 22.35324747455074, 'gamma': 0.0009611862506526816, 'epsilon': 0.014055034704056047}
+2026-11-15T00:00:58 trial 12 value=3.3152 params={'C': 56.5154923919514, 'gamma': 0.00041213801434551977, 'epsilon': 0.018975932203686516}
+2026-11-15T00:01:09 trial 13 value=3.6336 params={'C': 2.0146755987157157, 'gamma': 0.00023825469162575604, 'epsilon': 0.017570240990712607}
+2026-11-15T00:01:13 trial  4 value=1.9876 params={'n_estimators': 878, 'learning_rate': 0.034632801362530156, 'num_leaves': 40, 'min_child_samples': 39, 'subsample': 0.7280751661082743, 'colsample_bytree': 0.6979037642080539, 'reg_lambda': 0.001188937983177301}
+2026-11-15T00:01:13 trial 14 value=3.5521 params={'C': 900.1978412741815, 'gamma': 0.00029609800571197767, 'epsilon': 0.02109764335314877}
+2026-11-15T00:01:17 trial  4 value=1.9963 params={'n_estimators': 878, 'learning_rate': 0.034632801362530156, 'num_leaves': 40, 'min_child_samples': 39, 'subsample': 0.7280751661082743, 'colsample_bytree': 0.6979037642080539, 'reg_lambda': 0.001188937983177301}
+2026-11-15T00:01:18 trial 15 value=3.3674 params={'C': 7.777584032733262, 'gamma': 0.0011586519634689567, 'epsilon': 0.011774276099670453}
+2026-11-15T00:01:21 trial 16 value=3.6046 params={'C': 133.65406765370216, 'gamma': 0.0017638053167044244, 'epsilon': 0.013924390315502352}
+2026-11-15T00:01:25 trial 17 value=3.3312 params={'C': 15.695175574398773, 'gamma': 0.0012549476257344794, 'epsilon': 0.026297877614489405}
+2026-11-15T00:01:32 trial 18 value=3.6429 params={'C': 123.60942339683729, 'gamma': 0.00010407630191690856, 'epsilon': 0.05388405992926524}
+2026-11-15T00:01:39 trial 19 value=3.3474 params={'C': 6.334135113020596, 'gamma': 0.0003896419357017328, 'epsilon': 0.055687535014173596}
+2026-11-15T00:01:43 trial 20 value=3.2568 params={'C': 67.68401502147664, 'gamma': 0.0008150123410690617, 'epsilon': 0.06023030278721486}
+2026-11-15T00:01:46 trial 21 value=3.4312 params={'C': 448.2817167820727, 'gamma': 0.0008103988598822242, 'epsilon': 0.046878998215350666}
+2026-11-15T00:01:52 trial 22 value=3.4051 params={'C': 40.9994908958089, 'gamma': 0.00019499869898706863, 'epsilon': 0.1735249100418054}
+2026-11-15T00:01:59 trial 23 value=3.7859 params={'C': 1.459805101933926, 'gamma': 0.0015955273781608152, 'epsilon': 0.05977336938127762}
+2026-11-15T00:02:05 trial 24 value=3.4610 params={'C': 45.06895839543812, 'gamma': 0.0001970721143427894, 'epsilon': 0.012208433457665304}
+2026-11-15T00:02:08 trial 25 value=3.6690 params={'C': 44.75218851194492, 'gamma': 0.0020772458378589508, 'epsilon': 0.026695813914558143}
+2026-11-15T00:02:11 trial 26 value=4.9647 params={'C': 145.64799216996371, 'gamma': 0.005124638212444324, 'epsilon': 0.024093134130514813}
+2026-11-15T00:02:11 trial  5 value=2.0154 params={'n_estimators': 1003, 'learning_rate': 0.06256837783419193, 'num_leaves': 82, 'min_child_samples': 48, 'subsample': 0.8409101495517417, 'colsample_bytree': 0.5516555304016502, 'reg_lambda': 0.05599223654063348}
+2026-11-15T00:02:15 trial  5 value=2.0258 params={'n_estimators': 1003, 'learning_rate': 0.06256837783419193, 'num_leaves': 82, 'min_child_samples': 48, 'subsample': 0.8409101495517417, 'colsample_bytree': 0.5516555304016502, 'reg_lambda': 0.05599223654063348}
+2026-11-15T00:02:16 trial 27 value=3.4826 params={'C': 301.9814275707808, 'gamma': 0.00025986207297975654, 'epsilon': 0.010802563908516225}
+2026-11-15T00:02:22 trial 28 value=3.3588 params={'C': 20.86931040415089, 'gamma': 0.0002550225736519008, 'epsilon': 0.0778868408744258}
+2026-11-15T00:02:25 trial 29 value=5.4687 params={'C': 7.656329449418983, 'gamma': 0.006223853340014139, 'epsilon': 0.010723425727259173}
+2026-11-15T00:02:25 done search config=SYL-All model=svr best=3.2568 seconds=150 params={'C': 67.68401502147664, 'gamma': 0.0008150123410690617, 'epsilon': 0.06023030278721486}
+2026-11-15T00:02:25 done SYL-All svr best=3.2568 in 150s
+2026-11-15T00:02:25 start search config=SYL-All model=rf rows=8880 cols=363 threads=6 node=nodeB
+2026-11-15T00:02:37 trial  0 value=2.1282 params={'n_estimators': 500, 'max_features': 1.0, 'min_samples_leaf': 5, 'max_depth': 10}
+2026-11-15T00:02:39 trial  1 value=1.9741 params={'n_estimators': 500, 'max_features': 'sqrt', 'min_samples_leaf': 9, 'max_depth': 20}
+2026-11-15T00:02:48 trial  2 value=2.1377 params={'n_estimators': 500, 'max_features': 1.0, 'min_samples_leaf': 6, 'max_depth': 20}
+2026-11-15T00:02:51 trial  3 value=2.1336 params={'n_estimators': 200, 'max_features': 1.0, 'min_samples_leaf': 7, 'max_depth': 20}
+2026-11-15T00:02:59 trial  4 value=2.1319 params={'n_estimators': 500, 'max_features': 1.0, 'min_samples_leaf': 6, 'max_depth': 10}
+2026-11-15T00:03:03 trial  5 value=1.8686 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 2, 'max_depth': None}
+2026-11-15T00:03:05 trial  6 value=1.8977 params={'n_estimators': 200, 'max_features': 0.5, 'min_samples_leaf': 10, 'max_depth': 10}
+2026-11-15T00:03:07 trial  6 value=1.8931 params={'n_estimators': 1107, 'learning_rate': 0.011977195682764619, 'num_leaves': 88, 'min_child_samples': 34, 'subsample': 0.6051912805369204, 'colsample_bytree': 0.3902484083583973, 'reg_lambda': 0.01826894228153233}
+2026-11-15T00:03:10 trial  7 value=1.8900 params={'n_estimators': 500, 'max_features': 0.5, 'min_samples_leaf': 7, 'max_depth': None}
+2026-11-15T00:03:16 trial  6 value=1.9094 params={'n_estimators': 1107, 'learning_rate': 0.011977195682764619, 'num_leaves': 88, 'min_child_samples': 34, 'subsample': 0.6051912805369204, 'colsample_bytree': 0.3902484083583973, 'reg_lambda': 0.01826894228153233}
+2026-11-15T00:03:19 trial  8 value=2.1166 params={'n_estimators': 500, 'max_features': 1.0, 'min_samples_leaf': 3, 'max_depth': 30}
+2026-11-15T00:03:24 trial  9 value=1.9035 params={'n_estimators': 500, 'max_features': 0.5, 'min_samples_leaf': 6, 'max_depth': 30}
+2026-11-15T00:03:26 trial  7 value=1.9479 params={'n_estimators': 673, 'learning_rate': 0.05518780254129612, 'num_leaves': 61, 'min_child_samples': 50, 'subsample': 0.551022405374014, 'colsample_bytree': 0.44621372926638425, 'reg_lambda': 0.004418125737902547}
+2026-11-15T00:03:27 trial 10 value=1.8592 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 1, 'max_depth': 20}
+2026-11-15T00:03:31 trial 11 value=1.8592 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 1, 'max_depth': 20}
+2026-11-15T00:03:35 trial 12 value=1.8592 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 1, 'max_depth': 20}
+2026-11-15T00:03:38 trial  7 value=1.9595 params={'n_estimators': 673, 'learning_rate': 0.05518780254129612, 'num_leaves': 61, 'min_child_samples': 50, 'subsample': 0.551022405374014, 'colsample_bytree': 0.44621372926638425, 'reg_lambda': 0.004418125737902547}
+2026-11-15T00:03:38 trial 13 value=1.8722 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 4, 'max_depth': 20}
+2026-11-15T00:03:40 trial 14 value=1.9554 params={'n_estimators': 500, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'max_depth': 10}
+2026-11-15T00:03:42 trial 15 value=1.8794 params={'n_estimators': 200, 'max_features': 0.3, 'min_samples_leaf': 3, 'max_depth': 10}
+2026-11-15T00:03:42 trial 16 value=1.9193 params={'n_estimators': 200, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'max_depth': 20}
+2026-11-15T00:03:48 trial 17 value=1.8810 params={'n_estimators': 500, 'max_features': 0.5, 'min_samples_leaf': 1, 'max_depth': 30}
+2026-11-15T00:03:49 trial 18 value=1.9358 params={'n_estimators': 500, 'max_features': 'sqrt', 'min_samples_leaf': 3, 'max_depth': 20}
+2026-11-15T00:03:54 trial 19 value=1.8858 params={'n_estimators': 500, 'max_features': 0.5, 'min_samples_leaf': 3, 'max_depth': 10}
+2026-11-15T00:04:03 trial 20 value=2.0979 params={'n_estimators': 500, 'max_features': 1.0, 'min_samples_leaf': 2, 'max_depth': 20}
+2026-11-15T00:04:06 trial 21 value=1.8592 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 1, 'max_depth': 20}
+2026-11-15T00:04:10 trial 22 value=1.8519 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 1, 'max_depth': 10}
+2026-11-15T00:04:13 trial  8 value=1.9029 params={'n_estimators': 1049, 'learning_rate': 0.021356986471473192, 'num_leaves': 64, 'min_child_samples': 13, 'subsample': 0.5794847918227599, 'colsample_bytree': 0.37726259881501356, 'reg_lambda': 0.4220057397195018}
+2026-11-15T00:04:13 trial 23 value=1.8519 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 1, 'max_depth': 10}
+2026-11-15T00:04:17 trial 24 value=1.8663 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 2, 'max_depth': 10}
+2026-11-15T00:04:18 trial 25 value=1.8772 params={'n_estimators': 200, 'max_features': 0.3, 'min_samples_leaf': 1, 'max_depth': 30}
+2026-11-15T00:04:21 trial  8 value=1.9187 params={'n_estimators': 1049, 'learning_rate': 0.021356986471473192, 'num_leaves': 64, 'min_child_samples': 13, 'subsample': 0.5794847918227599, 'colsample_bytree': 0.37726259881501356, 'reg_lambda': 0.4220057397195018}
+2026-11-15T00:04:25 trial  9 value=2.1072 params={'n_estimators': 379, 'learning_rate': 0.01802019761039029, 'num_leaves': 52, 'min_child_samples': 42, 'subsample': 0.5485506378965306, 'colsample_bytree': 0.8865614352491626, 'reg_lambda': 0.002423224390060893}
+2026-11-15T00:04:27 trial 26 value=2.1005 params={'n_estimators': 500, 'max_features': 1.0, 'min_samples_leaf': 2, 'max_depth': 10}
+2026-11-15T00:04:31 trial 27 value=1.8760 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 4, 'max_depth': 10}
+2026-11-15T00:04:32 trial 28 value=1.8685 params={'n_estimators': 200, 'max_features': 0.3, 'min_samples_leaf': 2, 'max_depth': 20}
+2026-11-15T00:04:33 trial  9 value=2.1033 params={'n_estimators': 379, 'learning_rate': 0.01802019761039029, 'num_leaves': 52, 'min_child_samples': 42, 'subsample': 0.5485506378965306, 'colsample_bytree': 0.8865614352491626, 'reg_lambda': 0.002423224390060893}
+2026-11-15T00:04:36 trial 29 value=1.8686 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 2, 'max_depth': 30}
+2026-11-15T00:04:36 done search config=SYL-All model=rf best=1.8519 seconds=131 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 1, 'max_depth': 10}
+2026-11-15T00:04:36 done SYL-All rf best=1.8519 in 131s
+2026-11-15T00:04:36 start search config=SYL-All model=knn rows=8880 cols=363 threads=6 node=nodeB
+2026-11-15T00:04:40 trial  0 value=2.0638 params={'n_neighbors': 17, 'weights': 'uniform', 'metric': 'euclidean'}
+2026-11-15T00:04:40 trial  1 value=2.0571 params={'n_neighbors': 20, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T00:04:41 trial  2 value=2.0645 params={'n_neighbors': 24, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T00:04:41 trial  3 value=1.9392 params={'n_neighbors': 3, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T00:04:41 trial  4 value=2.0903 params={'n_neighbors': 30, 'weights': 'uniform', 'metric': 'euclidean'}
+2026-11-15T00:04:42 trial  5 value=2.0571 params={'n_neighbors': 20, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T00:04:42 trial  6 value=2.0433 params={'n_neighbors': 8, 'weights': 'uniform', 'metric': 'euclidean'}
+2026-11-15T00:04:42 trial  7 value=2.0575 params={'n_neighbors': 19, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T00:04:42 trial  8 value=1.9512 params={'n_neighbors': 11, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T00:04:43 trial  9 value=1.9705 params={'n_neighbors': 21, 'weights': 'uniform', 'metric': 'manhattan'}
+2026-11-15T00:04:44 trial 10 value=1.9527 params={'n_neighbors': 2, 'weights': 'uniform', 'metric': 'manhattan'}
+2026-11-15T00:04:45 trial 11 value=1.9543 params={'n_neighbors': 9, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T00:04:45 trial 12 value=1.9463 params={'n_neighbors': 1, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T00:04:45 trial 13 value=2.0478 params={'n_neighbors': 2, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T00:04:46 trial 14 value=1.9392 params={'n_neighbors': 3, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T00:04:47 trial 15 value=1.9441 params={'n_neighbors': 5, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T00:04:48 trial 16 value=1.9541 params={'n_neighbors': 13, 'weights': 'uniform', 'metric': 'manhattan'}
+2026-11-15T00:04:48 trial 17 value=1.9408 params={'n_neighbors': 16, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T00:04:49 trial 18 value=1.9538 params={'n_neighbors': 28, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T00:04:50 trial 19 value=1.9441 params={'n_neighbors': 5, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T00:04:50 trial 20 value=2.0422 params={'n_neighbors': 10, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T00:04:50 trial 21 value=1.9449 params={'n_neighbors': 18, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T00:04:51 trial 22 value=1.9419 params={'n_neighbors': 14, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T00:04:51 trial 23 value=2.0498 params={'n_neighbors': 14, 'weights': 'distance', 'metric': 'euclidean'}
+2026-11-15T00:04:52 trial 24 value=1.9656 params={'n_neighbors': 8, 'weights': 'uniform', 'metric': 'manhattan'}
+2026-11-15T00:04:53 trial 25 value=1.9724 params={'n_neighbors': 30, 'weights': 'uniform', 'metric': 'manhattan'}
+2026-11-15T00:04:54 trial 26 value=1.9505 params={'n_neighbors': 21, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T00:04:54 trial 27 value=1.9539 params={'n_neighbors': 5, 'weights': 'uniform', 'metric': 'manhattan'}
+2026-11-15T00:04:55 trial 28 value=1.9405 params={'n_neighbors': 4, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T00:04:56 trial 29 value=1.9405 params={'n_neighbors': 4, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T00:04:56 done search config=SYL-All model=knn best=1.9392 seconds=19 params={'n_neighbors': 3, 'weights': 'distance', 'metric': 'manhattan'}
+2026-11-15T00:04:56 done SYL-All knn best=1.9392 in 19s
+2026-11-15T00:06:36 trial 10 value=2.0953 params={'n_estimators': 1312, 'learning_rate': 0.014304899681036305, 'num_leaves': 83, 'min_child_samples': 7, 'subsample': 0.6063248135318366, 'colsample_bytree': 0.7348540235099407, 'reg_lambda': 0.0018544573415279107}
+2026-11-15T00:07:03 trial 10 value=2.0762 params={'n_estimators': 1337, 'learning_rate': 0.12028878562633868, 'num_leaves': 115, 'min_child_samples': 7, 'subsample': 0.8613550890400377, 'colsample_bytree': 0.7625326167384502, 'reg_lambda': 7.837794639365093}
+2026-11-15T00:07:53 trial 11 value=1.8897 params={'n_estimators': 1070, 'learning_rate': 0.01944959834654303, 'num_leaves': 112, 'min_child_samples': 49, 'subsample': 0.7011956840219837, 'colsample_bytree': 0.3874466657291955, 'reg_lambda': 0.02613986576568422}
+2026-11-15T00:08:53 trial 12 value=1.9142 params={'n_estimators': 937, 'learning_rate': 0.012379751462556196, 'num_leaves': 93, 'min_child_samples': 50, 'subsample': 0.6755406513815397, 'colsample_bytree': 0.39094021869065865, 'reg_lambda': 0.013285701348186577}
+2026-11-15T00:09:36 trial 11 value=1.9501 params={'n_estimators': 1363, 'learning_rate': 0.07180574484099046, 'num_leaves': 90, 'min_child_samples': 3, 'subsample': 0.9406014122928115, 'colsample_bytree': 0.5096375217519109, 'reg_lambda': 0.10086518478379605}
+2026-11-15T00:10:41 trial 13 value=1.9233 params={'n_estimators': 1061, 'learning_rate': 0.01333385989725906, 'num_leaves': 82, 'min_child_samples': 29, 'subsample': 0.7105500557012939, 'colsample_bytree': 0.44959597195475365, 'reg_lambda': 0.40772579625959515}
+2026-11-15T00:12:18 trial 12 value=1.9729 params={'n_estimators': 1187, 'learning_rate': 0.0949411319960174, 'num_leaves': 106, 'min_child_samples': 19, 'subsample': 0.8004724545850942, 'colsample_bytree': 0.4340124154144019, 'reg_lambda': 0.6227137958861985}
+2026-11-15T00:12:37 trial 14 value=1.9051 params={'n_estimators': 1058, 'learning_rate': 0.014759658190555086, 'num_leaves': 121, 'min_child_samples': 36, 'subsample': 0.6773681915347811, 'colsample_bytree': 0.31348745380793985, 'reg_lambda': 0.07717962946698982}
+2026-11-15T00:13:59 trial 13 value=1.9244 params={'n_estimators': 983, 'learning_rate': 0.014043885885905555, 'num_leaves': 110, 'min_child_samples': 43, 'subsample': 0.5007520198609969, 'colsample_bytree': 0.3983954532867554, 'reg_lambda': 0.011852396942890045}
+2026-11-15T00:16:39 trial 15 value=1.8842 params={'n_estimators': 1040, 'learning_rate': 0.011040438995063904, 'num_leaves': 121, 'min_child_samples': 25, 'subsample': 0.7287207853408786, 'colsample_bytree': 0.3071493843474321, 'reg_lambda': 0.14215283568852713}
+2026-11-15T00:19:21 trial 14 value=1.8878 params={'n_estimators': 1263, 'learning_rate': 0.016314682309801327, 'num_leaves': 116, 'min_child_samples': 18, 'subsample': 0.8482505509751413, 'colsample_bytree': 0.3374144059038823, 'reg_lambda': 0.0518130948833632}
+2026-11-15T00:19:49 trial 16 value=1.9137 params={'n_estimators': 1455, 'learning_rate': 0.01729410247722206, 'num_leaves': 115, 'min_child_samples': 49, 'subsample': 0.7427772799597774, 'colsample_bytree': 0.42182527216781757, 'reg_lambda': 0.07866426267115145}
+2026-11-15T00:23:56 trial 17 value=1.9259 params={'n_estimators': 1096, 'learning_rate': 0.01389754205944626, 'num_leaves': 102, 'min_child_samples': 17, 'subsample': 0.7774605956318428, 'colsample_bytree': 0.3189864711909633, 'reg_lambda': 0.020469684068500707}
+2026-11-15T00:25:09 trial 15 value=1.8827 params={'n_estimators': 1180, 'learning_rate': 0.01128393169107113, 'num_leaves': 120, 'min_child_samples': 11, 'subsample': 0.8683013082157808, 'colsample_bytree': 0.3080076197166432, 'reg_lambda': 0.1792226506622858}
+2026-11-15T00:26:47 trial 18 value=1.9529 params={'n_estimators': 1162, 'learning_rate': 0.03542039725927929, 'num_leaves': 106, 'min_child_samples': 38, 'subsample': 0.6460825274127953, 'colsample_bytree': 0.3228668848122804, 'reg_lambda': 0.005581221172286144}
+2026-11-15T00:28:12 trial 19 value=1.9301 params={'n_estimators': 852, 'learning_rate': 0.02575937737262532, 'num_leaves': 100, 'min_child_samples': 28, 'subsample': 0.7464324737222794, 'colsample_bytree': 0.36283016792581835, 'reg_lambda': 1.0988883796156}
+2026-11-15T00:28:24 trial 16 value=1.8882 params={'n_estimators': 1011, 'learning_rate': 0.02761172658298828, 'num_leaves': 126, 'min_child_samples': 5, 'subsample': 0.7771175628626096, 'colsample_bytree': 0.43856713898366617, 'reg_lambda': 0.5917234732895119}
+2026-11-15T00:29:03 trial 20 value=1.9439 params={'n_estimators': 908, 'learning_rate': 0.010108149233707424, 'num_leaves': 111, 'min_child_samples': 39, 'subsample': 0.6455606398152617, 'colsample_bytree': 0.507658155874622, 'reg_lambda': 0.019906769682994326}
+2026-11-15T00:29:53 trial 21 value=1.9195 params={'n_estimators': 925, 'learning_rate': 0.01642037235605124, 'num_leaves': 124, 'min_child_samples': 44, 'subsample': 0.6847247453751822, 'colsample_bytree': 0.3769379885129093, 'reg_lambda': 0.37655426663022207}
+2026-11-15T00:30:50 trial 17 value=1.9026 params={'n_estimators': 1483, 'learning_rate': 0.032812522917118364, 'num_leaves': 113, 'min_child_samples': 13, 'subsample': 0.9517509500942245, 'colsample_bytree': 0.32300467838581043, 'reg_lambda': 7.744047265542277}
+2026-11-15T00:31:29 trial 22 value=1.9399 params={'n_estimators': 1423, 'learning_rate': 0.033816845963971144, 'num_leaves': 119, 'min_child_samples': 32, 'subsample': 0.6522630661185811, 'colsample_bytree': 0.3001714418508446, 'reg_lambda': 0.18401749063632392}
+2026-11-15T00:32:21 trial 18 value=1.9246 params={'n_estimators': 1094, 'learning_rate': 0.019588452644746294, 'num_leaves': 89, 'min_child_samples': 2, 'subsample': 0.9175869470758581, 'colsample_bytree': 0.4424069133717565, 'reg_lambda': 0.8728962875528128}
+2026-11-15T00:33:16 trial 23 value=1.8943 params={'n_estimators': 1229, 'learning_rate': 0.013104283944723192, 'num_leaves': 120, 'min_child_samples': 21, 'subsample': 0.6757766536455452, 'colsample_bytree': 0.32201495053835244, 'reg_lambda': 0.28399224688037267}
+2026-11-15T00:33:32 trial 19 value=1.9244 params={'n_estimators': 964, 'learning_rate': 0.045576411858507235, 'num_leaves': 99, 'min_child_samples': 16, 'subsample': 0.8588637535743716, 'colsample_bytree': 0.3630332915530936, 'reg_lambda': 1.7755393986054115}
+2026-11-15T00:35:03 trial 24 value=1.9456 params={'n_estimators': 1154, 'learning_rate': 0.011434115385807643, 'num_leaves': 112, 'min_child_samples': 13, 'subsample': 0.7718652274030076, 'colsample_bytree': 0.5022831786489523, 'reg_lambda': 0.09427613258519138}
+2026-11-15T00:35:22 trial 20 value=1.8885 params={'n_estimators': 1301, 'learning_rate': 0.030766062793727674, 'num_leaves': 99, 'min_child_samples': 5, 'subsample': 0.8217711571839765, 'colsample_bytree': 0.4362473267043038, 'reg_lambda': 0.7989593950641339}
+2026-11-15T00:37:11 trial 25 value=1.9298 params={'n_estimators': 1291, 'learning_rate': 0.011568278957834154, 'num_leaves': 114, 'min_child_samples': 16, 'subsample': 0.6928941128031222, 'colsample_bytree': 0.36346348495526615, 'reg_lambda': 0.2097941114925024}
+2026-11-15T00:37:37 trial 21 value=1.9190 params={'n_estimators': 1447, 'learning_rate': 0.030424843175667873, 'num_leaves': 114, 'min_child_samples': 15, 'subsample': 0.8983974522158391, 'colsample_bytree': 0.4188760971830956, 'reg_lambda': 0.10099022204643243}
+2026-11-15T00:38:19 trial 26 value=1.9258 params={'n_estimators': 1312, 'learning_rate': 0.023363955725617086, 'num_leaves': 117, 'min_child_samples': 39, 'subsample': 0.6484789628910883, 'colsample_bytree': 0.459325351945674, 'reg_lambda': 0.16793508947179114}
+2026-11-15T00:39:26 trial 22 value=1.8908 params={'n_estimators': 1396, 'learning_rate': 0.01389351336317454, 'num_leaves': 111, 'min_child_samples': 13, 'subsample': 0.850008074873269, 'colsample_bytree': 0.34188581643702304, 'reg_lambda': 0.10562620465577242}
+2026-11-15T00:39:56 trial 27 value=1.9145 params={'n_estimators': 1301, 'learning_rate': 0.01956793475538521, 'num_leaves': 105, 'min_child_samples': 16, 'subsample': 0.5983352845749549, 'colsample_bytree': 0.33175006977714283, 'reg_lambda': 0.2875004335272784}
+2026-11-15T00:41:10 trial 28 value=1.9324 params={'n_estimators': 1099, 'learning_rate': 0.015367105958791661, 'num_leaves': 90, 'min_child_samples': 41, 'subsample': 0.7691249562149037, 'colsample_bytree': 0.473115407982229, 'reg_lambda': 0.09276485219656448}
+2026-11-15T00:41:30 trial 23 value=1.9157 params={'n_estimators': 1179, 'learning_rate': 0.015732388601671084, 'num_leaves': 110, 'min_child_samples': 11, 'subsample': 0.9644289889117231, 'colsample_bytree': 0.4440521870903615, 'reg_lambda': 0.14427942319649847}
+2026-11-15T00:43:02 trial 29 value=1.9094 params={'n_estimators': 1081, 'learning_rate': 0.019934133125922415, 'num_leaves': 124, 'min_child_samples': 12, 'subsample': 0.7188734395621739, 'colsample_bytree': 0.3174376186577468, 'reg_lambda': 1.2122473767254018}
+2026-11-15T00:43:02 done search config=SYL-All model=lgbm-nan best=1.8842 seconds=2760 params={'n_estimators': 1040, 'learning_rate': 0.011040438995063904, 'num_leaves': 121, 'min_child_samples': 25, 'subsample': 0.7287207853408786, 'colsample_bytree': 0.3071493843474321, 'reg_lambda': 0.14215283568852713}
+2026-11-15T00:43:02 done SYL-All lgbm-nan best=1.8842 in 2760s
+2026-11-15T00:43:06 trial 24 value=1.9118 params={'n_estimators': 1069, 'learning_rate': 0.020377048679467123, 'num_leaves': 98, 'min_child_samples': 14, 'subsample': 0.7987664833310701, 'colsample_bytree': 0.4013633513893872, 'reg_lambda': 0.033979374638698344}
+2026-11-15T00:44:32 trial 25 value=1.8599 params={'n_estimators': 1377, 'learning_rate': 0.020717611135197055, 'num_leaves': 112, 'min_child_samples': 7, 'subsample': 0.8412723904154132, 'colsample_bytree': 0.3229763202640079, 'reg_lambda': 0.6414667033837858}
+2026-11-15T00:45:37 trial 26 value=1.8965 params={'n_estimators': 1131, 'learning_rate': 0.013474138762756405, 'num_leaves': 112, 'min_child_samples': 14, 'subsample': 0.8511476375033877, 'colsample_bytree': 0.34605649628070334, 'reg_lambda': 1.6192204586158996}
+2026-11-15T00:46:52 trial 27 value=1.9068 params={'n_estimators': 1500, 'learning_rate': 0.02310112312351664, 'num_leaves': 96, 'min_child_samples': 2, 'subsample': 0.7860030218063708, 'colsample_bytree': 0.30067828632318006, 'reg_lambda': 5.196513963793188}
+2026-11-15T00:48:19 trial 28 value=1.8984 params={'n_estimators': 1420, 'learning_rate': 0.013785599112074786, 'num_leaves': 111, 'min_child_samples': 5, 'subsample': 0.852439788452964, 'colsample_bytree': 0.46307120829748716, 'reg_lambda': 1.3847133021682607}
+2026-11-15T00:49:36 trial 29 value=1.8866 params={'n_estimators': 1184, 'learning_rate': 0.028579285834370704, 'num_leaves': 123, 'min_child_samples': 4, 'subsample': 0.8709968857236281, 'colsample_bytree': 0.31753280376411097, 'reg_lambda': 2.3278274987880176}
+2026-11-15T00:49:37 done search config=SYL-All model=lgbm-ph best=1.8599 seconds=3154 params={'n_estimators': 1377, 'learning_rate': 0.020717611135197055, 'num_leaves': 112, 'min_child_samples': 7, 'subsample': 0.8412723904154132, 'colsample_bytree': 0.3229763202640079, 'reg_lambda': 0.6414667033837858}
+2026-11-15T00:49:37 done SYL-All lgbm-ph best=1.8599 in 3154s
+2026-11-15T00:49:37 search: all units finished
+2026-11-15T00:49:37 final: configs=['SYL-All'] models=['knn', 'rf', 'lgbm-ph', 'lgbm-nan', 'svr', 'mlp', 'gp'] seeds=[0, 1, 2, 3, 4] device=cuda node=nodeB cpus=20
+2026-11-15T00:49:37 paused e2 sessions [20560] for the timed runs
+2026-11-15T00:49:37 done SYL-All__knn__seed0 mean=4.091 fit=0.0s predict=0.2s
+2026-11-15T00:49:38 done SYL-All__rf__seed0 mean=3.533 fit=0.7s predict=0.1s
+2026-11-15T00:49:39 done SYL-All__rf__seed1 mean=3.549 fit=0.6s predict=0.1s
+2026-11-15T00:49:40 done SYL-All__rf__seed2 mean=3.583 fit=0.6s predict=0.2s
+2026-11-15T00:49:41 done SYL-All__rf__seed3 mean=3.612 fit=0.6s predict=0.1s
+2026-11-15T00:49:42 done SYL-All__rf__seed4 mean=3.595 fit=0.6s predict=0.1s
+2026-11-15T00:50:40 done SYL-All__lgbm-ph__seed0 mean=3.598 fit=58.5s predict=0.1s
+2026-11-15T00:51:34 done SYL-All__lgbm-ph__seed1 mean=3.559 fit=53.8s predict=0.1s
+2026-11-15T00:52:26 done SYL-All__lgbm-ph__seed2 mean=3.540 fit=51.5s predict=0.1s
+2026-11-15T00:53:20 done SYL-All__lgbm-ph__seed3 mean=3.540 fit=53.5s predict=0.1s
+2026-11-15T00:54:12 done SYL-All__lgbm-ph__seed4 mean=3.441 fit=51.6s predict=0.1s
+2026-11-15T00:54:54 done SYL-All__lgbm-nan__seed0 mean=3.720 fit=41.6s predict=0.1s
+2026-11-15T00:55:38 done SYL-All__lgbm-nan__seed1 mean=3.624 fit=43.8s predict=0.1s
+2026-11-15T00:56:19 done SYL-All__lgbm-nan__seed2 mean=3.621 fit=41.4s predict=0.1s
+2026-11-15T00:57:00 done SYL-All__lgbm-nan__seed3 mean=3.587 fit=40.9s predict=0.1s
+2026-11-15T00:57:42 done SYL-All__lgbm-nan__seed4 mean=3.749 fit=41.6s predict=0.1s
+2026-11-15T00:57:48 done SYL-All__svr__seed0 mean=6.892 fit=5.2s predict=0.9s
+2026-11-15T00:57:52 done SYL-All__mlp__seed0 mean=4.520 fit=3.5s predict=0.0s
+2026-11-15T00:57:56 done SYL-All__mlp__seed1 mean=4.562 fit=3.8s predict=0.0s
+2026-11-15T00:58:00 done SYL-All__mlp__seed2 mean=4.902 fit=3.7s predict=0.0s
+2026-11-15T00:58:04 done SYL-All__mlp__seed3 mean=4.515 fit=4.3s predict=0.0s
+2026-11-15T00:58:08 done SYL-All__mlp__seed4 mean=3.809 fit=4.0s predict=0.0s
+2026-11-15T00:58:11 done SYL-All__gp__seed0 mean=6.268 fit=2.0s predict=0.1s
+2026-11-15T00:58:11 resumed e2 sessions [20560]
+2026-11-15T00:58:11 final: all units finished
+exit code: 0

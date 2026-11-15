@@ -1,0 +1,47 @@
+2026-11-14T23:51:24 final: configs=['HCXY-All'] models=['tabpfn-nan', 'tabpfn-ph', 'tabicl'] seeds=[0, 1, 2, 3, 4] device=cuda node=nodeA cpus=20
+2026-11-14T23:51:30 warm-up tabpfn-nan: 5.9s info={'context_capped': False, 'context_rows': 64, 'model_path': '/home/marimo/.cache/tabpfn/tabpfn-v2-regressor.ckpt'}
+2026-11-14T23:51:31 warm-up tabpfn-ph: 0.7s info={'context_capped': False, 'context_rows': 64, 'model_path': '/home/marimo/.cache/tabpfn/tabpfn-v2-regressor.ckpt'}
+2026-11-14T23:51:32 warm-up tabicl: 1.3s info={'context_capped': False, 'context_rows': 64, 'checkpoint': 'tabicl-regressor-v2-20260212.ckpt'}
+2026-11-14T23:52:10 done HCXY-All__tabpfn-nan__seed0 mean=1.766 fit=18.5s predict=19.0s gpu=8801MB
+2026-11-14T23:52:48 done HCXY-All__tabpfn-nan__seed1 mean=1.752 fit=19.0s predict=18.8s gpu=8871MB
+2026-11-14T23:53:26 done HCXY-All__tabpfn-nan__seed2 mean=1.445 fit=18.5s predict=18.9s gpu=8890MB
+2026-11-14T23:54:03 done HCXY-All__tabpfn-nan__seed3 mean=2.253 fit=18.5s predict=18.8s gpu=8906MB
+2026-11-14T23:54:40 done HCXY-All__tabpfn-nan__seed4 mean=1.959 fit=18.0s predict=18.8s gpu=8835MB
+2026-11-14T23:55:20 done HCXY-All__tabpfn-ph__seed0 mean=1.461 fit=20.5s predict=18.8s gpu=8801MB
+2026-11-14T23:56:00 done HCXY-All__tabpfn-ph__seed1 mean=1.585 fit=20.9s predict=18.8s gpu=8871MB
+2026-11-14T23:56:40 done HCXY-All__tabpfn-ph__seed2 mean=1.589 fit=20.8s predict=19.0s gpu=8890MB
+2026-11-14T23:57:19 done HCXY-All__tabpfn-ph__seed3 mean=1.512 fit=20.5s predict=18.7s gpu=8906MB
+2026-11-14T23:57:59 done HCXY-All__tabpfn-ph__seed4 mean=1.646 fit=20.7s predict=18.8s gpu=8835MB
+2026-11-14T23:58:12 done HCXY-All__tabicl__seed0 mean=1.751 fit=5.7s predict=7.5s gpu=53572MB
+2026-11-14T23:58:25 done HCXY-All__tabicl__seed1 mean=1.711 fit=5.5s predict=7.5s gpu=53572MB
+2026-11-14T23:58:39 done HCXY-All__tabicl__seed2 mean=1.783 fit=5.7s predict=7.5s gpu=53572MB
+2026-11-14T23:58:52 done HCXY-All__tabicl__seed3 mean=1.811 fit=5.7s predict=7.5s gpu=53572MB
+2026-11-14T23:59:06 done HCXY-All__tabicl__seed4 mean=1.851 fit=5.7s predict=7.5s gpu=53572MB
+2026-11-14T23:59:06 final: all units finished
+2026-11-15T00:40:04 final: configs=['HCXY-All'] models=['knn', 'rf', 'lgbm-ph', 'lgbm-nan', 'svr', 'mlp', 'gp'] seeds=[0, 1, 2, 3, 4] device=cuda node=nodeA cpus=20
+2026-11-15T00:40:04 paused e2 sessions [5846] for the timed runs
+2026-11-15T00:40:05 done HCXY-All__knn__seed0 mean=1.805 fit=0.0s predict=0.3s
+2026-11-15T00:40:06 done HCXY-All__rf__seed0 mean=1.860 fit=1.2s predict=0.1s
+2026-11-15T00:40:07 done HCXY-All__rf__seed1 mean=1.855 fit=1.2s predict=0.1s
+2026-11-15T00:40:09 done HCXY-All__rf__seed2 mean=1.859 fit=1.1s predict=0.1s
+2026-11-15T00:40:10 done HCXY-All__rf__seed3 mean=1.899 fit=1.1s predict=0.1s
+2026-11-15T00:40:12 done HCXY-All__rf__seed4 mean=1.873 fit=1.1s predict=0.1s
+2026-11-15T00:40:39 done HCXY-All__lgbm-ph__seed0 mean=2.197 fit=26.7s predict=0.1s
+2026-11-15T00:41:05 done HCXY-All__lgbm-ph__seed1 mean=2.129 fit=26.7s predict=0.1s
+2026-11-15T00:41:31 done HCXY-All__lgbm-ph__seed2 mean=2.137 fit=25.3s predict=0.1s
+2026-11-15T00:41:57 done HCXY-All__lgbm-ph__seed3 mean=2.259 fit=25.5s predict=0.1s
+2026-11-15T00:42:22 done HCXY-All__lgbm-ph__seed4 mean=2.226 fit=25.2s predict=0.1s
+2026-11-15T00:42:51 done HCXY-All__lgbm-nan__seed0 mean=2.097 fit=28.7s predict=0.1s
+2026-11-15T00:43:19 done HCXY-All__lgbm-nan__seed1 mean=2.131 fit=27.5s predict=0.0s
+2026-11-15T00:43:46 done HCXY-All__lgbm-nan__seed2 mean=2.157 fit=27.7s predict=0.0s
+2026-11-15T00:44:14 done HCXY-All__lgbm-nan__seed3 mean=2.062 fit=27.6s predict=0.1s
+2026-11-15T00:44:42 done HCXY-All__lgbm-nan__seed4 mean=2.051 fit=27.8s predict=0.0s
+2026-11-15T00:46:11 done HCXY-All__svr__seed0 mean=4.931 fit=86.4s predict=2.3s
+2026-11-15T00:46:15 done HCXY-All__mlp__seed0 mean=5.408 fit=4.2s predict=0.0s
+2026-11-15T00:46:21 done HCXY-All__mlp__seed1 mean=3.502 fit=5.3s predict=0.0s
+2026-11-15T00:46:26 done HCXY-All__mlp__seed2 mean=3.512 fit=4.9s predict=0.0s
+2026-11-15T00:46:30 done HCXY-All__mlp__seed3 mean=5.526 fit=4.5s predict=0.0s
+2026-11-15T00:46:35 done HCXY-All__mlp__seed4 mean=4.300 fit=4.7s predict=0.0s
+2026-11-15T00:46:40 done HCXY-All__gp__seed0 mean=7.585 fit=4.1s predict=0.1s
+2026-11-15T00:46:40 resumed e2 sessions [5846]
+2026-11-15T00:46:40 final: all units finished

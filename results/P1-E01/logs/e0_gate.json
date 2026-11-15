@@ -1,0 +1,13 @@
+{
+  "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+  "counts_ok": true,
+  "dataset_commit": "bfe8f63f55957cc25b23ba91c408ae345a3fb0b7",
+  "gate_passed": true,
+  "knn": "KNeighborsRegressor(n_neighbors=5, weights='distance', metric='euclidean')",
+  "node": "nodeC",
+  "passed_with": [
+    "placeholder -105"
+  ],
+  "tolerance_m": 0.05,
+  "written_utc": "2026-11-14T23:50:16Z"
+}
