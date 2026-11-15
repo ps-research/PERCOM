@@ -1,0 +1,45 @@
+{
+  "code_commit": "0f526ead990ececd0c06d004781317f51b0286d5",
+  "config": "HCXY-All",
+  "cost": {
+    "fit_s": 54.152862910000295,
+    "peak_gpu_mem_mb": null,
+    "peak_gpu_reserved_mb": null,
+    "predict_s": 0.0709902280004826
+  },
+  "device": "cpu",
+  "draw": 5,
+  "encoding": "missing",
+  "finished_utc": "2026-11-15T01:01:57Z",
+  "in_kept_rows": 0,
+  "info": {},
+  "mean_error_in_kept": null,
+  "mean_error_not_in_kept": 2.0503614893459776,
+  "model": "lgbm-nan",
+  "n_features": 347,
+  "n_jobs": 20,
+  "n_ref_points": 379,
+  "node": "nodeA",
+  "params": {
+    "colsample_bytree": 0.31467548419036656,
+    "learning_rate": 0.010748895426211035,
+    "min_child_samples": 9,
+    "n_estimators": 807,
+    "num_leaves": 90,
+    "reg_lambda": 0.04481944337973353,
+    "subsample": 0.7403874516818324
+  },
+  "run_id": "HCXY-All__s100__d5__lgbm-nan",
+  "seed": 5,
+  "share": 100,
+  "started_utc": "2026-11-15T01:01:02Z",
+  "stats": {
+    "mean": 2.0503614893459776,
+    "median": 1.4258387313520184,
+    "p75": 2.229528032475193,
+    "p95": 5.630311310912858,
+    "rmse": 3.178170892022376
+  },
+  "test_rows": 860,
+  "train_rows": 11370
+}

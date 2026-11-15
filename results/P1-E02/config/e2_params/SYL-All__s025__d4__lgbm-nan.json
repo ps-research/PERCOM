@@ -1,0 +1,38 @@
+{
+  "best_params": {
+    "colsample_bytree": 0.30067828632318006,
+    "learning_rate": 0.019912832730744397,
+    "min_child_samples": 2,
+    "n_estimators": 1500,
+    "num_leaves": 96,
+    "reg_lambda": 2.495235360781669,
+    "subsample": 0.7576507941079166
+  },
+  "best_trial": 27,
+  "best_value": 3.281873759562712,
+  "blas_threads": 4,
+  "code_commit": "4393db1dad12ca685c83679aceebe096f49cb49f",
+  "config": "SYL-All",
+  "draw": 4,
+  "encoding": "missing",
+  "finished_utc": "2026-11-15T01:57:02Z",
+  "lgbm_threads": 1,
+  "model": "lgbm-nan",
+  "n_ref_points": 74,
+  "n_trials": 30,
+  "node": "nodeB",
+  "search_seconds": 416.76235823299976,
+  "settings": {
+    "cv": "GroupKFold by reference point",
+    "model_seed_in_search": 0,
+    "n_folds": 3,
+    "n_trials": 30,
+    "objective": "mean positioning error averaged over folds",
+    "sampler": "TPESampler",
+    "sampler_seed": 0
+  },
+  "share": 25,
+  "started_utc": "2026-11-15T01:50:05Z",
+  "threads": 3,
+  "train_rows": 2220
+}

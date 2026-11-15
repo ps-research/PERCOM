@@ -1,0 +1,32 @@
+2026-11-15T02:18:48 start search CETC331__s010__d8__mlp ref_points=96 rows=96 threads=3 node=nodeC
+2026-11-15T02:18:51 trial  0 value=2.7201 params={'hidden_layer_sizes': (256, 128), 'alpha': 4.9501595537331986e-05, 'learning_rate_init': 0.0019578897201213002}
+2026-11-15T02:18:51 trial  1 value=4.0179 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.001468588598920087, 'learning_rate_init': 0.0011423254155608373}
+2026-11-15T02:18:51 trial  2 value=3.2099 params={'hidden_layer_sizes': (256, 128), 'alpha': 1.2046852412030323e-06, 'learning_rate_init': 0.0046263628414755864}
+2026-11-15T02:18:52 trial  3 value=2.8346 params={'hidden_layer_sizes': (512, 256), 'alpha': 7.013219779945803e-05, 'learning_rate_init': 0.0036396393567863887}
+2026-11-15T02:18:52 trial  4 value=3.8131 params={'hidden_layer_sizes': (256, 128, 64), 'alpha': 0.00012229065947034367, 'learning_rate_init': 0.0006750312521595928}
+2026-11-15T02:18:52 trial  5 value=2.7744 params={'hidden_layer_sizes': (256, 128), 'alpha': 1.1889379831773014e-06, 'learning_rate_init': 0.0017189806743319388}
+2026-11-15T02:18:52 trial  6 value=4.9608 params={'hidden_layer_sizes': (512, 256), 'alpha': 2.7417736752420992e-05, 'learning_rate_init': 0.0007482796037620795}
+2026-11-15T02:18:53 trial  7 value=2.8512 params={'hidden_layer_sizes': (256,), 'alpha': 6.942729492430145e-06, 'learning_rate_init': 0.00018107254066631083}
+2026-11-15T02:18:54 trial  8 value=2.9797 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.008984529773922553, 'learning_rate_init': 0.00015998881492631506}
+2026-11-15T02:18:55 trial  9 value=3.3991 params={'hidden_layer_sizes': (512, 256), 'alpha': 7.332348382056165e-05, 'learning_rate_init': 0.000308213164144295}
+2026-11-15T02:18:55 trial 10 value=2.6445 params={'hidden_layer_sizes': (256, 128), 'alpha': 0.008577724800151912, 'learning_rate_init': 0.0004636116997068003}
+2026-11-15T02:18:55 trial 11 value=2.8359 params={'hidden_layer_sizes': (256, 128), 'alpha': 0.0008914833615356964, 'learning_rate_init': 0.003617323881857092}
+2026-11-15T02:18:56 trial 12 value=2.5104 params={'hidden_layer_sizes': (256, 128), 'alpha': 0.0005773656334193529, 'learning_rate_init': 0.0003095981934587314}
+2026-11-15T02:18:56 trial 13 value=2.6353 params={'hidden_layer_sizes': (256, 128), 'alpha': 0.0017857155398455654, 'learning_rate_init': 0.0004715790966762277}
+2026-11-15T02:18:56 trial 14 value=2.8491 params={'hidden_layer_sizes': (256,), 'alpha': 0.0019210416173087584, 'learning_rate_init': 0.000228697979485799}
+2026-11-15T02:18:57 trial 15 value=2.4981 params={'hidden_layer_sizes': (256, 128), 'alpha': 0.0007997727017539123, 'learning_rate_init': 0.0002008173760524463}
+2026-11-15T02:18:58 trial 16 value=2.5040 params={'hidden_layer_sizes': (256, 128), 'alpha': 0.0004774716808352017, 'learning_rate_init': 0.00014758081618979302}
+2026-11-15T02:19:00 trial 17 value=2.7165 params={'hidden_layer_sizes': (512, 256), 'alpha': 9.341411793264391e-05, 'learning_rate_init': 0.00010026748524572414}
+2026-11-15T02:19:01 trial 18 value=2.5031 params={'hidden_layer_sizes': (256, 128), 'alpha': 0.0027039435760993907, 'learning_rate_init': 0.00013891157526338315}
+2026-11-15T02:19:02 trial 19 value=2.9635 params={'hidden_layer_sizes': (512, 256), 'alpha': 0.000996310632600348, 'learning_rate_init': 0.0001403361780823451}
+2026-11-15T02:19:02 trial 20 value=2.7646 params={'hidden_layer_sizes': (256, 128), 'alpha': 0.008034319282816635, 'learning_rate_init': 0.0014251103944828672}
+2026-11-15T02:19:03 trial 21 value=2.5259 params={'hidden_layer_sizes': (256, 128), 'alpha': 0.00165583648235269, 'learning_rate_init': 0.00010032513391949271}
+2026-11-15T02:19:03 trial 22 value=2.5366 params={'hidden_layer_sizes': (256, 128), 'alpha': 1.8796782197650124e-05, 'learning_rate_init': 0.00010078151136604032}
+2026-11-15T02:19:04 trial 23 value=2.5094 params={'hidden_layer_sizes': (256, 128), 'alpha': 0.00019394327482370963, 'learning_rate_init': 0.0001670411912120875}
+2026-11-15T02:19:04 trial 24 value=2.4973 params={'hidden_layer_sizes': (256, 128), 'alpha': 2.6183438133485153e-05, 'learning_rate_init': 0.00032272648534027715}
+2026-11-15T02:19:04 trial 25 value=2.6466 params={'hidden_layer_sizes': (256, 128), 'alpha': 5.423949350612923e-06, 'learning_rate_init': 0.0005032293028679695}
+2026-11-15T02:19:05 trial 26 value=3.4136 params={'hidden_layer_sizes': (256,), 'alpha': 4.130145708809282e-06, 'learning_rate_init': 0.0017748837410389512}
+2026-11-15T02:19:05 trial 27 value=2.5009 params={'hidden_layer_sizes': (256, 128), 'alpha': 0.0027809723780597984, 'learning_rate_init': 0.00026880604307130733}
+2026-11-15T02:19:06 trial 28 value=2.4941 params={'hidden_layer_sizes': (256, 128), 'alpha': 3.9048338425009367e-05, 'learning_rate_init': 0.000332179226907174}
+2026-11-15T02:19:06 trial 29 value=2.6684 params={'hidden_layer_sizes': (256, 128), 'alpha': 1.9750445486438312e-05, 'learning_rate_init': 0.00060979610542052}
+2026-11-15T02:19:06 done search CETC331__s010__d8__mlp best=2.4941 seconds=18

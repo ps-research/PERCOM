@@ -1,0 +1,31 @@
+command: /tmp/uv-venv/bin/python -m p1.e2 own --out /tmp/percom/out/P1-E02 --e1-out /tmp/percom/out/P1-E01 --data /tmp/percom/PERCOM/data/SODIndoorLoc --configs CETC331
+2026-11-15T01:33:48 done e3 CETC331__knn share0_mean=2.915 share60_mean=8.227 predict=0.2s
+2026-11-15T01:33:50 done e3 CETC331__rf share0_mean=3.493 share60_mean=10.349 predict=0.6s
+2026-11-15T01:34:24 done e3 CETC331__lgbm-ph share0_mean=3.317 share60_mean=9.617 predict=4.1s
+2026-11-15T01:36:22 done e3 CETC331__lgbm-nan share0_mean=3.459 share60_mean=10.211 predict=13.3s
+2026-11-15T01:36:29 done e3 CETC331__svr share0_mean=3.638 share60_mean=13.883 predict=5.6s
+2026-11-15T01:36:33 done e3 CETC331__mlp share0_mean=3.226 share60_mean=11.013 predict=0.5s
+2026-11-15T01:37:30 done e3 CETC331__gp share0_mean=3.064 share60_mean=11.604 predict=8.2s
+2026-11-15T01:37:30 e3: finished
+2026-11-15T01:37:31 done CETC331__s100__d5__rf mean=3.516
+2026-11-15T01:37:32 done CETC331__s100__d6__rf mean=3.534
+2026-11-15T01:37:34 done CETC331__s100__d7__rf mean=3.504
+2026-11-15T01:37:36 done CETC331__s100__d8__rf mean=3.508
+2026-11-15T01:37:38 done CETC331__s100__d9__rf mean=3.556
+2026-11-15T01:38:59 done CETC331__s100__d5__lgbm-ph mean=3.259
+2026-11-15T01:40:08 done CETC331__s100__d6__lgbm-ph mean=3.295
+2026-11-15T01:41:12 done CETC331__s100__d7__lgbm-ph mean=3.322
+2026-11-15T01:42:13 done CETC331__s100__d8__lgbm-ph mean=3.328
+2026-11-15T01:43:10 done CETC331__s100__d9__lgbm-ph mean=3.271
+2026-11-15T01:44:26 done CETC331__s100__d5__lgbm-nan mean=3.357
+2026-11-15T01:45:49 done CETC331__s100__d6__lgbm-nan mean=3.403
+2026-11-15T01:47:20 done CETC331__s100__d7__lgbm-nan mean=3.414
+2026-11-15T01:48:29 done CETC331__s100__d8__lgbm-nan mean=3.428
+2026-11-15T01:49:38 done CETC331__s100__d9__lgbm-nan mean=3.359
+2026-11-15T01:49:40 done CETC331__s100__d5__mlp mean=3.456
+2026-11-15T01:49:43 done CETC331__s100__d6__mlp mean=3.241
+2026-11-15T01:49:44 done CETC331__s100__d7__mlp mean=3.387
+2026-11-15T01:49:45 done CETC331__s100__d8__mlp mean=3.451
+2026-11-15T01:49:47 done CETC331__s100__d9__mlp mean=3.389
+2026-11-15T01:49:47 full: finished
+exit code: 0

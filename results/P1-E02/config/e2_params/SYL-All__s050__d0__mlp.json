@@ -1,0 +1,38 @@
+{
+  "best_params": {
+    "alpha": 4.040249408392636e-06,
+    "hidden_layer_sizes": [
+      256,
+      128,
+      64
+    ],
+    "learning_rate_init": 0.008132593517063007
+  },
+  "best_trial": 28,
+  "best_value": 3.5777276998464784,
+  "blas_threads": 4,
+  "code_commit": "4393db1dad12ca685c83679aceebe096f49cb49f",
+  "config": "SYL-All",
+  "draw": 0,
+  "encoding": "placeholder",
+  "finished_utc": "2026-11-15T00:58:07Z",
+  "lgbm_threads": 1,
+  "model": "mlp",
+  "n_ref_points": 148,
+  "n_trials": 30,
+  "node": "nodeA",
+  "search_seconds": 117.44174976600061,
+  "settings": {
+    "cv": "GroupKFold by reference point",
+    "model_seed_in_search": 0,
+    "n_folds": 3,
+    "n_trials": 30,
+    "objective": "mean positioning error averaged over folds",
+    "sampler": "TPESampler",
+    "sampler_seed": 0
+  },
+  "share": 50,
+  "started_utc": "2026-11-15T00:56:09Z",
+  "threads": 3,
+  "train_rows": 4440
+}

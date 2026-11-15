@@ -1,0 +1,32 @@
+2026-11-15T02:04:12 start search SYL-All__s010__d4__rf ref_points=30 rows=900 threads=3 node=nodeB
+2026-11-15T02:04:16 trial  0 value=4.9982 params={'n_estimators': 500, 'max_features': 1.0, 'min_samples_leaf': 5, 'max_depth': 10}
+2026-11-15T02:04:17 trial  1 value=4.6720 params={'n_estimators': 500, 'max_features': 'sqrt', 'min_samples_leaf': 9, 'max_depth': 20}
+2026-11-15T02:04:18 trial  2 value=4.9226 params={'n_estimators': 500, 'max_features': 1.0, 'min_samples_leaf': 6, 'max_depth': 20}
+2026-11-15T02:04:18 trial  3 value=4.9612 params={'n_estimators': 200, 'max_features': 1.0, 'min_samples_leaf': 7, 'max_depth': 20}
+2026-11-15T02:04:19 trial  4 value=4.9226 params={'n_estimators': 500, 'max_features': 1.0, 'min_samples_leaf': 6, 'max_depth': 10}
+2026-11-15T02:04:20 trial  5 value=4.2694 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 2, 'max_depth': None}
+2026-11-15T02:04:20 trial  6 value=4.2820 params={'n_estimators': 200, 'max_features': 0.5, 'min_samples_leaf': 10, 'max_depth': 10}
+2026-11-15T02:04:21 trial  7 value=4.3377 params={'n_estimators': 500, 'max_features': 0.5, 'min_samples_leaf': 7, 'max_depth': None}
+2026-11-15T02:04:22 trial  8 value=5.3329 params={'n_estimators': 500, 'max_features': 1.0, 'min_samples_leaf': 3, 'max_depth': 30}
+2026-11-15T02:04:23 trial  9 value=4.3436 params={'n_estimators': 500, 'max_features': 0.5, 'min_samples_leaf': 6, 'max_depth': 30}
+2026-11-15T02:04:24 trial 10 value=4.2664 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 1, 'max_depth': 20}
+2026-11-15T02:04:25 trial 11 value=4.2664 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 1, 'max_depth': 20}
+2026-11-15T02:04:25 trial 12 value=4.2664 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 1, 'max_depth': 20}
+2026-11-15T02:04:26 trial 13 value=4.2132 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 4, 'max_depth': 20}
+2026-11-15T02:04:27 trial 14 value=4.2132 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 4, 'max_depth': 20}
+2026-11-15T02:04:28 trial 15 value=4.2132 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 4, 'max_depth': 20}
+2026-11-15T02:04:28 trial 16 value=4.1339 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 8, 'max_depth': 20}
+2026-11-15T02:04:29 trial 17 value=4.1640 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 9, 'max_depth': 10}
+2026-11-15T02:04:30 trial 18 value=4.1640 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 9, 'max_depth': 10}
+2026-11-15T02:04:30 trial 19 value=4.1339 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 8, 'max_depth': 20}
+2026-11-15T02:04:31 trial 20 value=4.2382 params={'n_estimators': 200, 'max_features': 0.3, 'min_samples_leaf': 9, 'max_depth': 20}
+2026-11-15T02:04:31 trial 21 value=4.1339 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 8, 'max_depth': 20}
+2026-11-15T02:04:32 trial 22 value=4.1439 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 7, 'max_depth': 20}
+2026-11-15T02:04:33 trial 23 value=4.1339 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 8, 'max_depth': 30}
+2026-11-15T02:04:33 trial 24 value=4.1532 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 10, 'max_depth': 20}
+2026-11-15T02:04:35 trial 25 value=4.8910 params={'n_estimators': 500, 'max_features': 1.0, 'min_samples_leaf': 8, 'max_depth': 20}
+2026-11-15T02:04:35 trial 26 value=4.1339 params={'n_estimators': 500, 'max_features': 0.3, 'min_samples_leaf': 8, 'max_depth': 20}
+2026-11-15T02:04:36 trial 27 value=4.2027 params={'n_estimators': 200, 'max_features': 0.3, 'min_samples_leaf': 6, 'max_depth': None}
+2026-11-15T02:04:37 trial 28 value=4.8952 params={'n_estimators': 500, 'max_features': 1.0, 'min_samples_leaf': 10, 'max_depth': None}
+2026-11-15T02:04:38 trial 29 value=4.3640 params={'n_estimators': 500, 'max_features': 0.5, 'min_samples_leaf': 9, 'max_depth': 20}
+2026-11-15T02:04:38 done search SYL-All__s010__d4__rf best=4.1339 seconds=26

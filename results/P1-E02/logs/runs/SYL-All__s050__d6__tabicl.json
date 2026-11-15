@@ -1,0 +1,41 @@
+{
+  "code_commit": "0f526ead990ececd0c06d004781317f51b0286d5",
+  "config": "SYL-All",
+  "cost": {
+    "fit_s": 4.20646961500006,
+    "peak_gpu_mem_mb": 16132.75048828125,
+    "peak_gpu_reserved_mb": 22894.0,
+    "predict_s": 2.8285738139998102
+  },
+  "device": "cuda",
+  "draw": 6,
+  "encoding": "missing",
+  "finished_utc": "2026-11-15T00:14:07Z",
+  "in_kept_rows": 0,
+  "info": {
+    "checkpoint": "tabicl-regressor-v2-20260212.ckpt",
+    "context_capped": false,
+    "context_rows": 4440
+  },
+  "mean_error_in_kept": null,
+  "mean_error_not_in_kept": 3.3288577893372473,
+  "model": "tabicl",
+  "n_features": 363,
+  "n_jobs": 1,
+  "n_ref_points": 148,
+  "node": "nodeC",
+  "params": {},
+  "run_id": "SYL-All__s050__d6__tabicl",
+  "seed": 6,
+  "share": 50,
+  "started_utc": "2026-11-15T00:14:00Z",
+  "stats": {
+    "mean": 3.3288577893372473,
+    "median": 2.655852956669035,
+    "p75": 3.8851991473532816,
+    "p95": 6.56597537369028,
+    "rmse": 5.545106229438893
+  },
+  "test_rows": 1020,
+  "train_rows": 4440
+}

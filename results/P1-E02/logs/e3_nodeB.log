@@ -1,0 +1,12 @@
+2026-11-15T00:29:14 done e3 SYL-All__tabpfn-nan share0_mean=3.494 share60_mean=5.230 predict=184.3s
+2026-11-15T00:32:25 done e3 SYL-All__tabpfn-ph share0_mean=3.306 share60_mean=6.326 predict=174.0s
+2026-11-15T00:33:22 done e3 SYL-All__tabicl share0_mean=3.239 share60_mean=4.498 predict=52.9s
+2026-11-15T00:33:22 e3: finished
+2026-11-15T00:58:34 done e3 SYL-All__knn share0_mean=4.091 share60_mean=14.138 predict=6.2s
+2026-11-15T00:58:37 done e3 SYL-All__rf share0_mean=3.533 share60_mean=10.380 predict=1.4s
+2026-11-15T00:59:45 done e3 SYL-All__lgbm-ph share0_mean=3.598 share60_mean=10.455 predict=6.2s
+2026-11-15T01:00:36 done e3 SYL-All__lgbm-nan share0_mean=3.720 share60_mean=10.973 predict=6.9s
+2026-11-15T01:01:46 done e3 SYL-All__svr share0_mean=6.892 share60_mean=12.028 predict=64.0s
+2026-11-15T01:01:52 done e3 SYL-All__mlp share0_mean=4.520 share60_mean=8.752 predict=0.7s
+2026-11-15T01:02:02 done e3 SYL-All__gp share0_mean=6.268 share60_mean=12.941 predict=6.4s
+2026-11-15T01:02:02 e3: finished

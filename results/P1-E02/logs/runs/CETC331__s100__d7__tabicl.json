@@ -1,0 +1,41 @@
+{
+  "code_commit": "0f526ead990ececd0c06d004781317f51b0286d5",
+  "config": "CETC331",
+  "cost": {
+    "fit_s": 0.9895829830002185,
+    "peak_gpu_mem_mb": 2262.44189453125,
+    "peak_gpu_reserved_mb": 3070.0,
+    "predict_s": 0.47791011099980096
+  },
+  "device": "cuda",
+  "draw": 7,
+  "encoding": "missing",
+  "finished_utc": "2026-11-15T00:31:07Z",
+  "in_kept_rows": 840,
+  "info": {
+    "checkpoint": "tabicl-regressor-v2-20260212.ckpt",
+    "context_capped": false,
+    "context_rows": 955
+  },
+  "mean_error_in_kept": 2.6097497399893967,
+  "mean_error_not_in_kept": null,
+  "model": "tabicl",
+  "n_features": 52,
+  "n_jobs": 20,
+  "n_ref_points": 955,
+  "node": "nodeC",
+  "params": {},
+  "run_id": "CETC331__s100__d7__tabicl",
+  "seed": 7,
+  "share": 100,
+  "started_utc": "2026-11-15T00:31:06Z",
+  "stats": {
+    "mean": 2.6097497399893967,
+    "median": 2.030534162982956,
+    "p75": 3.383878914495138,
+    "p95": 5.439095651731958,
+    "rmse": 3.6479572769646196
+  },
+  "test_rows": 840,
+  "train_rows": 955
+}
