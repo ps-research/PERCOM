@@ -77,15 +77,21 @@ E2_CPU_CMD = (
     f"--draws {{' '.join(map(str, E2_DRAWS))}} --workers {workers} --threads {threads}"
 )
 e2_jobs = {{}}
-for _tag, _cmd, _pat in (("p1e02_gpu", E2_GPU_CMD, "p1.e2 gpu"), ("p1e02_parta", E2_CPU_CMD, "p1.e2 parta")):
+# The CPU job starts only after this node's P1-E01 job has exited: running both at once oversubscribes
+# the 20 cores (LightGBM slows down badly) and P1-E01's timed runs must not share the machine.
+e2_e1_done = p1nb.job_exit_code("/tmp/p1e01_partb.log") == 0
+for _tag, _cmd, _pat, _gate in (("p1e02_gpu", E2_GPU_CMD, "p1.e2 gpu", True),
+                                ("p1e02_parta", E2_CPU_CMD, "p1.e2 parta", e2_e1_done)):
     if p1nb.job_alive(_pat) or p1nb.job_exit_code(f"/tmp/{{_tag}}.log") == 0:
         e2_jobs[_tag] = "already running or finished"
+    elif not _gate:
+        e2_jobs[_tag] = "waiting for the P1-E01 job on this node to finish"
     else:
         e2_jobs[_tag] = bg_run(p1nb.job_script(_cmd, REPO2, NODE), tag=_tag)["log"]
 mo.md(
     "### P1-E02 jobs\\n"
     f"- GPU job (foundation models, Part A draws {{E2_DRAWS}}, then Part B and 100% seeds 5 to 9 for {{E2_OWN}}):\\n  `{{E2_GPU_CMD}}`\\n"
-    f"- CPU job (baseline searches and refits, Part A draws {{E2_DRAWS}}):\\n  `{{E2_CPU_CMD}}`\\n\\n"
+    f"- CPU job (baseline searches and refits, Part A draws {{E2_DRAWS}}): **{{e2_jobs['p1e02_parta'] if isinstance(e2_jobs['p1e02_parta'], str) and not e2_jobs['p1e02_parta'].startswith('/tmp') else 'launched'}}**\\n  `{{E2_CPU_CMD}}`\\n\\n"
     "A P1-E01 timed run on this node pauses both jobs while it runs."
 )
 ''')
@@ -93,12 +99,14 @@ mo.md(
     cell("e2_launch_own", f'''
 progress_refresh
 _tuned = ["knn", "rf", "lgbm-ph", "lgbm-nan", "svr", "mlp"]
-e2_own_ready = all((OUT / "config" / "best_params" / f"{{_c}}__{{_m}}.json").exists() for _c in E2_OWN for _m in _tuned)
+# Needs this node's P1-E01 best values, and must not overlap P1-E01's timed runs: wait for the P1-E01 job to exit.
+e2_own_ready = all((OUT / "config" / "best_params" / f"{{_c}}__{{_m}}.json").exists() for _c in E2_OWN for _m in _tuned) \\
+    and p1nb.job_exit_code("/tmp/p1e01_partb.log") == 0
 E2_OWN_CMD = (
     f"{{sys.executable}} -m p1.e2 own --out {{OUT2}} --e1-out {{OUT}} --data {{DATA}} --configs {{' '.join(E2_OWN)}}"
 )
 if not e2_own_ready:
-    e2_own_state = "waiting for the P1-E01 searches of " + ", ".join(E2_OWN)
+    e2_own_state = "waiting for the P1-E01 job on this node (searches of " + ", ".join(E2_OWN) + " and timed runs)"
 elif p1nb.job_alive("p1.e2 own") or p1nb.job_exit_code("/tmp/p1e02_own.log") == 0:
     e2_own_state = "running or finished"
 else:
