@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 
-def cells(node: str, gpu_configs: list[str], own: list[str], commit: str, branch: str = "exp/P1-E03") -> list[dict]:
+def cells(node: str, gpu_configs: list[str], own: list[str], commit: str, branch: str = "exp/P1-E03",
+          extra_configs: list[str] | None = None) -> list[dict]:
+    extra_configs = list(extra_configs or [])
     C = []
 
     def cell(name, code, hide=False, run=True):
@@ -65,6 +67,24 @@ mo.md(
     f"- GPU job (A, C, B): **{e3_jobs['p1e03_gpu']}**\\n  `{E3_GPU_CMD}`\\n"
     f"- D (more Part B draws): **{e3_jobs['p1e03_own']}**\\n  `{E3_OWN_CMD}`"
 )
+''')
+
+    cell("e3_launch_extra", f'''
+progress_refresh
+# Part C (seeds 5 to 19) of configurations moved here from a node whose GPU was still busy.
+E3_EXTRA_CONFIGS = {extra_configs!r}
+E3_EXTRA_CMD = (f"{{sys.executable}} -m p1.e3x gpu --out {{OUT3}} --e1-out {{OUT}} --data {{DATA}} "
+                f"--configs {{' '.join(E3_EXTRA_CONFIGS)}} --parts C")
+if not E3_EXTRA_CONFIGS:
+    e3_extra_state = "none"
+elif p1nb.job_alive("p1.e3x gpu") or p1nb.job_exit_code("/tmp/p1e03_gpu2.log") == 0:
+    e3_extra_state = "running or finished"
+elif p1nb.job_exit_code("/tmp/p1e03_gpu.log") != 0:
+    e3_extra_state = "waiting for this node's first P1-E03 GPU job"
+else:
+    bg_run(p1nb.job_script(E3_EXTRA_CMD, REPO3, NODE), tag="p1e03_gpu2")
+    e3_extra_state = "launched"
+mo.md(f"Extra P1-E03 part C for {{E3_EXTRA_CONFIGS}}: **{{e3_extra_state}}**")
 ''')
 
     cell("e3_progress", '''

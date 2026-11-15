@@ -52,6 +52,7 @@ def main() -> None:
     ap.add_argument("--helpers", default=None, help="file with the notebook helper cell (sent first, hidden)")
     ap.add_argument("--draws", nargs="*", type=int, default=[], help="e02: Part A draws of this node")
     ap.add_argument("--extra-draws", nargs="*", type=int, default=[], help="e02: draws moved here from another node")
+    ap.add_argument("--extra-configs", nargs="*", default=[], help="e03: part C configurations moved here")
     ap.add_argument("--own", nargs="*", default=[], help="e02: configurations whose P1-E01 results are on this node")
     a = ap.parse_args()
     if a.brief == "e01":
@@ -66,7 +67,7 @@ def main() -> None:
     else:
         from p1.notebook.cells_e03 import cells
 
-        specs = cells(a.node, a.configs, a.own, a.commit)
+        specs = cells(a.node, a.configs, a.own, a.commit, extra_configs=a.extra_configs)
     if a.helpers:
         specs.insert(2, dict(name="helpers", code=Path(a.helpers).read_text(), hide=True, run=True))
     if a.only is not None:
