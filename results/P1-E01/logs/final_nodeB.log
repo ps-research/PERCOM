@@ -1,0 +1,47 @@
+2026-11-14T23:51:24 final: configs=['SYL-All'] models=['tabpfn-nan', 'tabpfn-ph', 'tabicl'] seeds=[0, 1, 2, 3, 4] device=cuda node=nodeB cpus=20
+2026-11-14T23:51:30 warm-up tabpfn-nan: 5.6s info={'context_capped': False, 'context_rows': 64, 'model_path': '/home/marimo/.cache/tabpfn/tabpfn-v2-regressor.ckpt'}
+2026-11-14T23:51:30 warm-up tabpfn-ph: 0.6s info={'context_capped': False, 'context_rows': 64, 'model_path': '/home/marimo/.cache/tabpfn/tabpfn-v2-regressor.ckpt'}
+2026-11-14T23:51:31 warm-up tabicl: 1.2s info={'context_capped': False, 'context_rows': 64, 'checkpoint': 'tabicl-regressor-v2-20260212.ckpt'}
+2026-11-14T23:52:00 done SYL-All__tabpfn-nan__seed0 mean=3.494 fit=13.4s predict=14.6s gpu=6778MB
+2026-11-14T23:52:28 done SYL-All__tabpfn-nan__seed1 mean=3.369 fit=13.6s predict=14.4s gpu=6856MB
+2026-11-14T23:52:56 done SYL-All__tabpfn-nan__seed2 mean=3.444 fit=13.2s predict=14.6s gpu=7104MB
+2026-11-14T23:53:23 done SYL-All__tabpfn-nan__seed3 mean=3.411 fit=12.6s predict=14.4s gpu=6779MB
+2026-11-14T23:53:51 done SYL-All__tabpfn-nan__seed4 mean=3.304 fit=13.2s predict=14.3s gpu=6677MB
+2026-11-14T23:54:19 done SYL-All__tabpfn-ph__seed0 mean=3.306 fit=14.1s predict=14.4s gpu=6778MB
+2026-11-14T23:54:48 done SYL-All__tabpfn-ph__seed1 mean=3.216 fit=14.1s predict=14.4s gpu=6856MB
+2026-11-14T23:55:17 done SYL-All__tabpfn-ph__seed2 mean=3.163 fit=14.2s predict=14.7s gpu=7104MB
+2026-11-14T23:55:46 done SYL-All__tabpfn-ph__seed3 mean=3.202 fit=14.2s predict=14.4s gpu=6779MB
+2026-11-14T23:56:14 done SYL-All__tabpfn-ph__seed4 mean=3.197 fit=14.0s predict=14.2s gpu=6677MB
+2026-11-14T23:56:24 done SYL-All__tabicl__seed0 mean=3.238 fit=4.2s predict=5.2s gpu=33690MB
+2026-11-14T23:56:33 done SYL-All__tabicl__seed1 mean=3.256 fit=4.0s predict=5.2s gpu=33690MB
+2026-11-14T23:56:43 done SYL-All__tabicl__seed2 mean=3.266 fit=4.0s predict=5.3s gpu=33690MB
+2026-11-14T23:56:52 done SYL-All__tabicl__seed3 mean=3.241 fit=4.0s predict=5.3s gpu=33690MB
+2026-11-14T23:57:02 done SYL-All__tabicl__seed4 mean=3.290 fit=4.1s predict=5.2s gpu=33690MB
+2026-11-14T23:57:02 final: all units finished
+2026-11-15T00:49:37 final: configs=['SYL-All'] models=['knn', 'rf', 'lgbm-ph', 'lgbm-nan', 'svr', 'mlp', 'gp'] seeds=[0, 1, 2, 3, 4] device=cuda node=nodeB cpus=20
+2026-11-15T00:49:37 paused e2 sessions [20560] for the timed runs
+2026-11-15T00:49:37 done SYL-All__knn__seed0 mean=4.091 fit=0.0s predict=0.2s
+2026-11-15T00:49:38 done SYL-All__rf__seed0 mean=3.533 fit=0.7s predict=0.1s
+2026-11-15T00:49:39 done SYL-All__rf__seed1 mean=3.549 fit=0.6s predict=0.1s
+2026-11-15T00:49:40 done SYL-All__rf__seed2 mean=3.583 fit=0.6s predict=0.2s
+2026-11-15T00:49:41 done SYL-All__rf__seed3 mean=3.612 fit=0.6s predict=0.1s
+2026-11-15T00:49:42 done SYL-All__rf__seed4 mean=3.595 fit=0.6s predict=0.1s
+2026-11-15T00:50:40 done SYL-All__lgbm-ph__seed0 mean=3.598 fit=58.5s predict=0.1s
+2026-11-15T00:51:34 done SYL-All__lgbm-ph__seed1 mean=3.559 fit=53.8s predict=0.1s
+2026-11-15T00:52:26 done SYL-All__lgbm-ph__seed2 mean=3.540 fit=51.5s predict=0.1s
+2026-11-15T00:53:20 done SYL-All__lgbm-ph__seed3 mean=3.540 fit=53.5s predict=0.1s
+2026-11-15T00:54:12 done SYL-All__lgbm-ph__seed4 mean=3.441 fit=51.6s predict=0.1s
+2026-11-15T00:54:54 done SYL-All__lgbm-nan__seed0 mean=3.720 fit=41.6s predict=0.1s
+2026-11-15T00:55:38 done SYL-All__lgbm-nan__seed1 mean=3.624 fit=43.8s predict=0.1s
+2026-11-15T00:56:19 done SYL-All__lgbm-nan__seed2 mean=3.621 fit=41.4s predict=0.1s
+2026-11-15T00:57:00 done SYL-All__lgbm-nan__seed3 mean=3.587 fit=40.9s predict=0.1s
+2026-11-15T00:57:42 done SYL-All__lgbm-nan__seed4 mean=3.749 fit=41.6s predict=0.1s
+2026-11-15T00:57:48 done SYL-All__svr__seed0 mean=6.892 fit=5.2s predict=0.9s
+2026-11-15T00:57:52 done SYL-All__mlp__seed0 mean=4.520 fit=3.5s predict=0.0s
+2026-11-15T00:57:56 done SYL-All__mlp__seed1 mean=4.562 fit=3.8s predict=0.0s
+2026-11-15T00:58:00 done SYL-All__mlp__seed2 mean=4.902 fit=3.7s predict=0.0s
+2026-11-15T00:58:04 done SYL-All__mlp__seed3 mean=4.515 fit=4.3s predict=0.0s
+2026-11-15T00:58:08 done SYL-All__mlp__seed4 mean=3.809 fit=4.0s predict=0.0s
+2026-11-15T00:58:11 done SYL-All__gp__seed0 mean=6.268 fit=2.0s predict=0.1s
+2026-11-15T00:58:11 resumed e2 sessions [20560]
+2026-11-15T00:58:11 final: all units finished

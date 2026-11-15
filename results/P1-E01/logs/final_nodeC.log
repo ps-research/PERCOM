@@ -1,0 +1,123 @@
+2026-11-14T23:51:24 final: configs=['CETC331', 'HCXY-AP', 'SYL-AP'] models=['tabpfn-nan', 'tabpfn-ph', 'tabicl'] seeds=[0, 1, 2, 3, 4] device=cuda node=nodeC cpus=20
+2026-11-14T23:51:29 warm-up tabpfn-nan: 5.2s info={'context_capped': False, 'context_rows': 64, 'model_path': '/home/marimo/.cache/tabpfn/tabpfn-v2-regressor.ckpt'}
+2026-11-14T23:51:30 warm-up tabpfn-ph: 0.6s info={'context_capped': False, 'context_rows': 64, 'model_path': '/home/marimo/.cache/tabpfn/tabpfn-v2-regressor.ckpt'}
+2026-11-14T23:51:31 warm-up tabicl: 1.2s info={'context_capped': False, 'context_rows': 64, 'checkpoint': 'tabicl-regressor-v2-20260212.ckpt'}
+2026-11-14T23:51:34 done CETC331__tabpfn-nan__seed0 mean=2.698 fit=2.3s predict=0.5s gpu=600MB
+2026-11-14T23:51:37 done CETC331__tabpfn-nan__seed1 mean=2.714 fit=2.2s predict=0.5s gpu=600MB
+2026-11-14T23:51:40 done CETC331__tabpfn-nan__seed2 mean=2.662 fit=2.2s predict=0.5s gpu=600MB
+2026-11-14T23:51:42 done CETC331__tabpfn-nan__seed3 mean=2.667 fit=2.2s predict=0.5s gpu=600MB
+2026-11-14T23:51:45 done CETC331__tabpfn-nan__seed4 mean=2.666 fit=2.3s predict=0.5s gpu=600MB
+2026-11-14T23:51:48 done CETC331__tabpfn-ph__seed0 mean=2.683 fit=2.1s predict=0.5s gpu=600MB
+2026-11-14T23:51:50 done CETC331__tabpfn-ph__seed1 mean=2.662 fit=2.2s predict=0.5s gpu=600MB
+2026-11-14T23:51:53 done CETC331__tabpfn-ph__seed2 mean=2.717 fit=2.2s predict=0.5s gpu=600MB
+2026-11-14T23:51:56 done CETC331__tabpfn-ph__seed3 mean=2.693 fit=2.1s predict=0.5s gpu=600MB
+2026-11-14T23:51:59 done CETC331__tabpfn-ph__seed4 mean=2.711 fit=2.1s predict=0.5s gpu=600MB
+2026-11-14T23:52:00 done CETC331__tabicl__seed0 mean=2.601 fit=1.1s predict=0.5s gpu=2255MB
+2026-11-14T23:52:02 done CETC331__tabicl__seed1 mean=2.623 fit=1.0s predict=0.5s gpu=2255MB
+2026-11-14T23:52:03 done CETC331__tabicl__seed2 mean=2.610 fit=1.0s predict=0.5s gpu=2255MB
+2026-11-14T23:52:05 done CETC331__tabicl__seed3 mean=2.571 fit=1.0s predict=0.5s gpu=2255MB
+2026-11-14T23:52:06 done CETC331__tabicl__seed4 mean=2.575 fit=1.0s predict=0.5s gpu=2255MB
+2026-11-14T23:52:17 done HCXY-AP__tabpfn-nan__seed0 mean=2.625 fit=5.4s predict=5.2s gpu=3196MB
+2026-11-14T23:52:27 done HCXY-AP__tabpfn-nan__seed1 mean=2.729 fit=5.4s predict=5.1s gpu=3196MB
+2026-11-14T23:52:38 done HCXY-AP__tabpfn-nan__seed2 mean=2.229 fit=5.5s predict=5.2s gpu=3160MB
+2026-11-14T23:52:49 done HCXY-AP__tabpfn-nan__seed3 mean=3.238 fit=5.4s predict=5.1s gpu=3196MB
+2026-11-14T23:52:59 done HCXY-AP__tabpfn-nan__seed4 mean=2.700 fit=5.4s predict=5.1s gpu=3196MB
+2026-11-14T23:53:09 done HCXY-AP__tabpfn-ph__seed0 mean=3.784 fit=4.8s predict=5.1s gpu=3196MB
+2026-11-14T23:53:19 done HCXY-AP__tabpfn-ph__seed1 mean=3.670 fit=4.7s predict=5.1s gpu=3196MB
+2026-11-14T23:53:29 done HCXY-AP__tabpfn-ph__seed2 mean=2.228 fit=4.8s predict=5.1s gpu=3160MB
+2026-11-14T23:53:39 done HCXY-AP__tabpfn-ph__seed3 mean=3.622 fit=4.8s predict=5.1s gpu=3196MB
+2026-11-14T23:53:49 done HCXY-AP__tabpfn-ph__seed4 mean=3.768 fit=4.8s predict=5.1s gpu=3196MB
+2026-11-14T23:53:53 done HCXY-AP__tabicl__seed0 mean=2.819 fit=1.4s predict=1.8s gpu=9570MB
+2026-11-14T23:53:56 done HCXY-AP__tabicl__seed1 mean=2.798 fit=1.4s predict=1.8s gpu=9570MB
+2026-11-14T23:53:59 done HCXY-AP__tabicl__seed2 mean=2.813 fit=1.4s predict=1.8s gpu=9570MB
+2026-11-14T23:54:02 done HCXY-AP__tabicl__seed3 mean=2.832 fit=1.5s predict=1.8s gpu=9570MB
+2026-11-14T23:54:06 done HCXY-AP__tabicl__seed4 mean=2.875 fit=1.4s predict=1.8s gpu=9570MB
+2026-11-14T23:54:15 done SYL-AP__tabpfn-nan__seed0 mean=3.346 fit=5.7s predict=3.8s gpu=2452MB
+2026-11-14T23:54:25 done SYL-AP__tabpfn-nan__seed1 mean=3.413 fit=5.8s predict=3.8s gpu=2452MB
+2026-11-14T23:54:34 done SYL-AP__tabpfn-nan__seed2 mean=3.486 fit=5.8s predict=3.8s gpu=2452MB
+2026-11-14T23:54:44 done SYL-AP__tabpfn-nan__seed3 mean=3.462 fit=5.7s predict=3.8s gpu=2452MB
+2026-11-14T23:54:54 done SYL-AP__tabpfn-nan__seed4 mean=3.432 fit=5.7s predict=3.8s gpu=2452MB
+2026-11-14T23:55:01 done SYL-AP__tabpfn-ph__seed0 mean=3.293 fit=3.9s predict=3.8s gpu=2452MB
+2026-11-14T23:55:09 done SYL-AP__tabpfn-ph__seed1 mean=3.327 fit=3.9s predict=3.8s gpu=2452MB
+2026-11-14T23:55:17 done SYL-AP__tabpfn-ph__seed2 mean=3.297 fit=3.9s predict=3.8s gpu=2452MB
+2026-11-14T23:55:25 done SYL-AP__tabpfn-ph__seed3 mean=3.265 fit=3.9s predict=3.8s gpu=2452MB
+2026-11-14T23:55:32 done SYL-AP__tabpfn-ph__seed4 mean=3.340 fit=3.9s predict=3.8s gpu=2452MB
+2026-11-14T23:55:35 done SYL-AP__tabicl__seed0 mean=3.431 fit=1.1s predict=1.2s gpu=6393MB
+2026-11-14T23:55:37 done SYL-AP__tabicl__seed1 mean=3.502 fit=1.1s predict=1.2s gpu=6393MB
+2026-11-14T23:55:40 done SYL-AP__tabicl__seed2 mean=3.443 fit=1.1s predict=1.2s gpu=6393MB
+2026-11-14T23:55:42 done SYL-AP__tabicl__seed3 mean=3.533 fit=1.1s predict=1.2s gpu=6393MB
+2026-11-14T23:55:44 done SYL-AP__tabicl__seed4 mean=3.550 fit=1.1s predict=1.2s gpu=6393MB
+2026-11-14T23:55:44 final: all units finished
+2026-11-15T01:19:16 final: configs=['CETC331', 'HCXY-AP', 'SYL-AP'] models=['knn', 'rf', 'lgbm-ph', 'lgbm-nan', 'svr', 'mlp', 'gp'] seeds=[0, 1, 2, 3, 4] device=cuda node=nodeC cpus=20
+2026-11-15T01:19:16 paused e2 sessions [31589] for the timed runs
+2026-11-15T01:19:16 done CETC331__knn__seed0 mean=2.910 fit=0.0s predict=0.1s
+2026-11-15T01:19:17 done CETC331__rf__seed0 mean=3.493 fit=0.5s predict=0.1s
+2026-11-15T01:19:18 done CETC331__rf__seed1 mean=3.550 fit=0.5s predict=0.1s
+2026-11-15T01:19:18 done CETC331__rf__seed2 mean=3.497 fit=0.5s predict=0.1s
+2026-11-15T01:19:19 done CETC331__rf__seed3 mean=3.487 fit=0.5s predict=0.1s
+2026-11-15T01:19:20 done CETC331__rf__seed4 mean=3.547 fit=0.5s predict=0.1s
+2026-11-15T01:19:45 done CETC331__lgbm-ph__seed0 mean=3.317 fit=25.6s predict=0.1s
+2026-11-15T01:20:11 done CETC331__lgbm-ph__seed1 mean=3.302 fit=25.7s predict=0.1s
+2026-11-15T01:20:36 done CETC331__lgbm-ph__seed2 mean=3.383 fit=24.8s predict=0.1s
+2026-11-15T01:21:01 done CETC331__lgbm-ph__seed3 mean=3.320 fit=24.7s predict=0.1s
+2026-11-15T01:21:24 done CETC331__lgbm-ph__seed4 mean=3.367 fit=22.8s predict=0.1s
+2026-11-15T01:21:55 done CETC331__lgbm-nan__seed0 mean=3.459 fit=31.0s predict=0.1s
+2026-11-15T01:22:25 done CETC331__lgbm-nan__seed1 mean=3.377 fit=29.8s predict=0.1s
+2026-11-15T01:22:56 done CETC331__lgbm-nan__seed2 mean=3.477 fit=31.3s predict=0.1s
+2026-11-15T01:23:28 done CETC331__lgbm-nan__seed3 mean=3.420 fit=31.1s predict=0.1s
+2026-11-15T01:23:58 done CETC331__lgbm-nan__seed4 mean=3.470 fit=29.9s predict=0.1s
+2026-11-15T01:23:58 done CETC331__svr__seed0 mean=3.638 fit=0.1s predict=0.1s
+2026-11-15T01:23:59 done CETC331__mlp__seed0 mean=3.226 fit=0.8s predict=0.0s
+2026-11-15T01:24:00 done CETC331__mlp__seed1 mean=3.267 fit=0.8s predict=0.0s
+2026-11-15T01:24:01 done CETC331__mlp__seed2 mean=3.313 fit=1.1s predict=0.0s
+2026-11-15T01:24:02 done CETC331__mlp__seed3 mean=3.396 fit=1.0s predict=0.0s
+2026-11-15T01:24:02 done CETC331__mlp__seed4 mean=3.611 fit=0.4s predict=0.0s
+2026-11-15T01:24:15 done CETC331__gp__seed0 mean=3.064 fit=12.9s predict=0.0s
+2026-11-15T01:24:15 done HCXY-AP__knn__seed0 mean=2.658 fit=0.0s predict=0.0s
+2026-11-15T01:24:16 done HCXY-AP__rf__seed0 mean=2.476 fit=0.5s predict=0.1s
+2026-11-15T01:24:17 done HCXY-AP__rf__seed1 mean=2.479 fit=0.5s predict=0.1s
+2026-11-15T01:24:17 done HCXY-AP__rf__seed2 mean=2.468 fit=0.5s predict=0.1s
+2026-11-15T01:24:18 done HCXY-AP__rf__seed3 mean=2.451 fit=0.5s predict=0.1s
+2026-11-15T01:24:19 done HCXY-AP__rf__seed4 mean=2.448 fit=0.5s predict=0.1s
+2026-11-15T01:24:35 done HCXY-AP__lgbm-ph__seed0 mean=2.789 fit=15.9s predict=0.0s
+2026-11-15T01:24:51 done HCXY-AP__lgbm-ph__seed1 mean=2.804 fit=16.0s predict=0.0s
+2026-11-15T01:25:07 done HCXY-AP__lgbm-ph__seed2 mean=2.825 fit=15.9s predict=0.0s
+2026-11-15T01:25:23 done HCXY-AP__lgbm-ph__seed3 mean=2.798 fit=15.9s predict=0.0s
+2026-11-15T01:25:39 done HCXY-AP__lgbm-ph__seed4 mean=2.763 fit=16.0s predict=0.0s
+2026-11-15T01:26:00 done HCXY-AP__lgbm-nan__seed0 mean=2.813 fit=21.6s predict=0.1s
+2026-11-15T01:26:21 done HCXY-AP__lgbm-nan__seed1 mean=2.836 fit=20.2s predict=0.1s
+2026-11-15T01:26:41 done HCXY-AP__lgbm-nan__seed2 mean=2.810 fit=20.0s predict=0.1s
+2026-11-15T01:27:01 done HCXY-AP__lgbm-nan__seed3 mean=2.787 fit=20.1s predict=0.1s
+2026-11-15T01:27:21 done HCXY-AP__lgbm-nan__seed4 mean=2.763 fit=19.8s predict=0.1s
+2026-11-15T01:27:39 done HCXY-AP__svr__seed0 mean=9.330 fit=18.0s predict=0.5s
+2026-11-15T01:27:46 done HCXY-AP__mlp__seed0 mean=8.100 fit=6.4s predict=0.0s
+2026-11-15T01:27:55 done HCXY-AP__mlp__seed1 mean=8.323 fit=9.5s predict=0.0s
+2026-11-15T01:28:01 done HCXY-AP__mlp__seed2 mean=8.689 fit=5.9s predict=0.0s
+2026-11-15T01:28:09 done HCXY-AP__mlp__seed3 mean=7.501 fit=7.5s predict=0.0s
+2026-11-15T01:28:17 done HCXY-AP__mlp__seed4 mean=8.404 fit=7.7s predict=0.0s
+2026-11-15T01:28:18 done HCXY-AP__gp__seed0 mean=9.327 fit=1.7s predict=0.0s
+2026-11-15T01:28:19 done SYL-AP__knn__seed0 mean=4.332 fit=0.0s predict=0.0s
+2026-11-15T01:28:19 done SYL-AP__rf__seed0 mean=3.439 fit=0.5s predict=0.1s
+2026-11-15T01:28:20 done SYL-AP__rf__seed1 mean=3.451 fit=0.5s predict=0.1s
+2026-11-15T01:28:20 done SYL-AP__rf__seed2 mean=3.421 fit=0.5s predict=0.1s
+2026-11-15T01:28:21 done SYL-AP__rf__seed3 mean=3.410 fit=0.5s predict=0.1s
+2026-11-15T01:28:22 done SYL-AP__rf__seed4 mean=3.450 fit=0.5s predict=0.1s
+2026-11-15T01:28:40 done SYL-AP__lgbm-ph__seed0 mean=3.648 fit=17.6s predict=0.1s
+2026-11-15T01:28:57 done SYL-AP__lgbm-ph__seed1 mean=3.673 fit=17.7s predict=0.1s
+2026-11-15T01:29:15 done SYL-AP__lgbm-ph__seed2 mean=3.598 fit=17.5s predict=0.1s
+2026-11-15T01:29:33 done SYL-AP__lgbm-ph__seed3 mean=3.605 fit=17.9s predict=0.1s
+2026-11-15T01:29:51 done SYL-AP__lgbm-ph__seed4 mean=3.584 fit=17.9s predict=0.1s
+2026-11-15T01:30:29 done SYL-AP__lgbm-nan__seed0 mean=3.671 fit=37.8s predict=0.1s
+2026-11-15T01:31:06 done SYL-AP__lgbm-nan__seed1 mean=3.659 fit=37.3s predict=0.1s
+2026-11-15T01:31:42 done SYL-AP__lgbm-nan__seed2 mean=3.663 fit=35.9s predict=0.1s
+2026-11-15T01:32:18 done SYL-AP__lgbm-nan__seed3 mean=3.664 fit=35.2s predict=0.1s
+2026-11-15T01:32:55 done SYL-AP__lgbm-nan__seed4 mean=3.683 fit=37.2s predict=0.1s
+2026-11-15T01:32:58 done SYL-AP__svr__seed0 mean=4.348 fit=2.9s predict=0.3s
+2026-11-15T01:33:05 done SYL-AP__mlp__seed0 mean=4.471 fit=6.7s predict=0.0s
+2026-11-15T01:33:11 done SYL-AP__mlp__seed1 mean=4.629 fit=6.1s predict=0.0s
+2026-11-15T01:33:16 done SYL-AP__mlp__seed2 mean=4.294 fit=4.6s predict=0.0s
+2026-11-15T01:33:19 done SYL-AP__mlp__seed3 mean=4.401 fit=3.4s predict=0.0s
+2026-11-15T01:33:23 done SYL-AP__mlp__seed4 mean=4.394 fit=3.7s predict=0.0s
+2026-11-15T01:33:24 done SYL-AP__gp__seed0 mean=4.671 fit=1.0s predict=0.0s
+2026-11-15T01:33:24 resumed e2 sessions [31589]
+2026-11-15T01:33:24 final: all units finished
