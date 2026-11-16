@@ -170,6 +170,10 @@ def check_source(src: Path, rep: Report, stage: str, max_refs: int, allow: list[
     left = [p for p in TEMPLATE_PHRASES if p in joined]
     rep.add(hard if left else "PASS", "template text removed", "; ".join(left) or "none")
     rep.add(hard if PLACEHOLDER_AUTHOR in joined else "PASS", "author block", "placeholder still in place" if PLACEHOLDER_AUTHOR in joined else "filled")
+    blocks = re.findall(r"\\IEEEauthorblockA\{(.*?)\}\s*(?:\\and|\})", body, flags=re.S)
+    no_contact = sum(1 for b in blocks if "@" not in b and "orcid" not in b.lower())
+    if blocks:  # template: each author gives an "email address or ORCID"
+        rep.add(hard if no_contact else "PASS", "author email or ORCID", f"missing for {no_contact} of {len(blocks)} authors" if no_contact else "all authors")
 
     m = re.search(r"\\title\{", body)
     title = braced(body, m.end() - 1) if m else ""
