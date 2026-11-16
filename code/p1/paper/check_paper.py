@@ -30,7 +30,7 @@ TEMPLATE_PHRASES = [
     "IEEE conference templates contain guidance text",
     "Sub-titles are not captured",
 ]
-PLACEHOLDERS = ["Author names to be added", "email to be added", "0000-0000-0000-0000"]
+PLACEHOLDERS = ["Author names to be added", "email to be added", "0000-0000-0000-0000", "Lorem ipsum"]
 LAYOUT_COMMANDS = [
     r"\\vspace\b", r"\\vskip\b", r"\\baselinestretch\b", r"\\linespread\b",
     r"\\usepackage(\[[^\]]*\])?\{geometry\}", r"\\(set|addto)length\{?\\(textheight|textwidth|columnsep|topmargin|oddsidemargin|evensidemargin|headsep|footskip)\b",
@@ -170,7 +170,7 @@ def check_source(src: Path, rep: Report, stage: str, max_refs: int, allow: list[
     left = [p for p in TEMPLATE_PHRASES if p in joined]
     rep.add(hard if left else "PASS", "template text removed", "; ".join(left) or "none")
     held = {p: joined.count(p) for p in PLACEHOLDERS if p in joined}
-    rep.add(hard if held else "PASS", "author placeholders", ", ".join(f"'{p}' x{n}" for p, n in held.items()) or "none")
+    rep.add(hard if held else "PASS", "placeholders", ", ".join(f"'{p}' x{n}" for p, n in held.items()) or "none")
     blocks = re.findall(r"\\IEEEauthorblockA\{(.*?)\}\s*(?:\\and|\})", body, flags=re.S)
     if blocks:  # call: "include all authors' information"; template: "email address or ORCID"
         no_email = sum(1 for b in blocks if "@" not in b)
