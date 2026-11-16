@@ -1,0 +1,47 @@
+{
+  "blas_threads": 4,
+  "code_commit": "4393db1dad12ca685c83679aceebe096f49cb49f",
+  "config": "SYL-All",
+  "cost": {
+    "fit_s": 26.056302197999685,
+    "peak_gpu_mem_mb": null,
+    "peak_gpu_reserved_mb": null,
+    "predict_s": 0.6676939760000096
+  },
+  "device": "cpu",
+  "draw": 4,
+  "encoding": "missing",
+  "finished_utc": "2026-11-15T01:57:38Z",
+  "in_kept_rows": 0,
+  "info": {},
+  "lgbm_threads": 1,
+  "mean_error_in_kept": null,
+  "mean_error_not_in_kept": 4.282335280687356,
+  "model": "lgbm-nan",
+  "n_features": 363,
+  "n_jobs": 3,
+  "n_ref_points": 74,
+  "node": "nodeB",
+  "params": {
+    "colsample_bytree": 0.30067828632318006,
+    "learning_rate": 0.019912832730744397,
+    "min_child_samples": 2,
+    "n_estimators": 1500,
+    "num_leaves": 96,
+    "reg_lambda": 2.495235360781669,
+    "subsample": 0.7576507941079166
+  },
+  "run_id": "SYL-All__s025__d4__lgbm-nan",
+  "seed": 4,
+  "share": 25,
+  "started_utc": "2026-11-15T01:57:11Z",
+  "stats": {
+    "mean": 4.282335280687356,
+    "median": 3.2686055903123217,
+    "p75": 4.58606457541416,
+    "p95": 10.152505772102806,
+    "rmse": 6.429312205983891
+  },
+  "test_rows": 1020,
+  "train_rows": 2220
+}

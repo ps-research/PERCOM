@@ -1,0 +1,31 @@
+command: /tmp/uv-venv/bin/python -m p1.e2 own --out /tmp/percom/out/P1-E02 --e1-out /tmp/percom/out/P1-E01 --data /tmp/percom/PERCOM/data/SODIndoorLoc --configs HCXY-All
+2026-11-15T00:47:37 done e3 HCXY-All__knn share0_mean=1.804 share60_mean=8.213 predict=8.8s
+2026-11-15T00:47:42 done e3 HCXY-All__rf share0_mean=1.860 share60_mean=18.847 predict=1.4s
+2026-11-15T00:48:54 done e3 HCXY-All__lgbm-ph share0_mean=2.197 share60_mean=19.165 predict=3.4s
+2026-11-15T00:50:09 done e3 HCXY-All__lgbm-nan share0_mean=2.097 share60_mean=18.538 predict=3.9s
+2026-11-15T00:55:32 done e3 HCXY-All__svr share0_mean=4.931 share60_mean=15.073 predict=219.9s
+2026-11-15T00:55:40 done e3 HCXY-All__mlp share0_mean=5.408 share60_mean=13.584 predict=0.4s
+2026-11-15T00:55:55 done e3 HCXY-All__gp share0_mean=7.585 share60_mean=21.298 predict=7.6s
+2026-11-15T00:55:55 e3: finished
+2026-11-15T00:56:00 done HCXY-All__s100__d5__rf mean=1.903
+2026-11-15T00:56:05 done HCXY-All__s100__d6__rf mean=1.909
+2026-11-15T00:56:09 done HCXY-All__s100__d7__rf mean=1.875
+2026-11-15T00:56:12 done HCXY-All__s100__d8__rf mean=1.828
+2026-11-15T00:56:15 done HCXY-All__s100__d9__rf mean=1.903
+2026-11-15T00:57:23 done HCXY-All__s100__d5__lgbm-ph mean=2.137
+2026-11-15T00:58:25 done HCXY-All__s100__d6__lgbm-ph mean=2.205
+2026-11-15T00:59:20 done HCXY-All__s100__d7__lgbm-ph mean=2.191
+2026-11-15T01:00:09 done HCXY-All__s100__d8__lgbm-ph mean=2.136
+2026-11-15T01:01:02 done HCXY-All__s100__d9__lgbm-ph mean=2.255
+2026-11-15T01:01:57 done HCXY-All__s100__d5__lgbm-nan mean=2.050
+2026-11-15T01:02:53 done HCXY-All__s100__d6__lgbm-nan mean=2.056
+2026-11-15T01:03:48 done HCXY-All__s100__d7__lgbm-nan mean=2.077
+2026-11-15T01:04:42 done HCXY-All__s100__d8__lgbm-nan mean=2.119
+2026-11-15T01:05:49 done HCXY-All__s100__d9__lgbm-nan mean=2.078
+2026-11-15T01:06:05 done HCXY-All__s100__d5__mlp mean=4.712
+2026-11-15T01:06:14 done HCXY-All__s100__d6__mlp mean=5.300
+2026-11-15T01:06:24 done HCXY-All__s100__d7__mlp mean=4.223
+2026-11-15T01:06:36 done HCXY-All__s100__d8__mlp mean=4.852
+2026-11-15T01:06:48 done HCXY-All__s100__d9__mlp mean=3.898
+2026-11-15T01:06:48 full: finished
+exit code: 0

@@ -1,0 +1,41 @@
+{
+  "code_commit": "0f526ead990ececd0c06d004781317f51b0286d5",
+  "config": "SYL-All",
+  "cost": {
+    "fit_s": 14.127411034000033,
+    "peak_gpu_mem_mb": 6699.67333984375,
+    "peak_gpu_reserved_mb": 17678.0,
+    "predict_s": 14.202556440999615
+  },
+  "device": "cuda",
+  "draw": 5,
+  "encoding": "missing",
+  "finished_utc": "2026-11-15T00:33:51Z",
+  "in_kept_rows": 10,
+  "info": {
+    "context_capped": false,
+    "context_rows": 8880,
+    "model_path": "/home/marimo/.cache/tabpfn/tabpfn-v2-regressor.ckpt"
+  },
+  "mean_error_in_kept": 7.425350555942354,
+  "mean_error_not_in_kept": 3.270338103418526,
+  "model": "tabpfn-nan",
+  "n_features": 363,
+  "n_jobs": 20,
+  "n_ref_points": 296,
+  "node": "nodeB",
+  "params": {},
+  "run_id": "SYL-All__s100__d5__tabpfn-nan",
+  "seed": 5,
+  "share": 100,
+  "started_utc": "2026-11-15T00:33:22Z",
+  "stats": {
+    "mean": 3.31107351961974,
+    "median": 2.672373831691801,
+    "p75": 3.8425652435194535,
+    "p95": 6.850890474782846,
+    "rmse": 5.901946867061998
+  },
+  "test_rows": 1020,
+  "train_rows": 8880
+}

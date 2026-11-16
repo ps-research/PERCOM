@@ -32,7 +32,7 @@ ENCODING = {
 
 # Thread counts are fixed so that a run gives the same numbers on any machine with
 # at least this many cores. They are settings of the run, not of the model.
-LGBM_THREADS = 4
+LGBM_THREADS = int(__import__("os").environ.get("P1_LGBM_THREADS", "4"))  # 1 and 4 give identical predictions
 BLAS_THREADS = 4
 SVR_CACHE_MB = 1000
 GP_RANDOM_STATE = 0  # only seeds the restarts of the marginal-likelihood optimiser

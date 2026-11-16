@@ -1,0 +1,346 @@
+2026-11-15T00:11:37 parta: 36 units, configs=['CETC331', 'HCXY-All', 'SYL-All'] draws=[3, 4, 5] shares=[5, 10, 25, 50] workers=4 threads=6 trials=30 cpus=20 node=nodeB
+2026-11-15T00:11:52 done search CETC331__s050__d3__svr best=1.6284 in 14s
+2026-11-15T00:13:00 done search CETC331__s050__d3__rf best=1.7418 in 68s
+2026-11-15T00:13:05 done search CETC331__s050__d3__mlp best=1.8014 in 87s
+2026-11-15T00:13:08 done search CETC331__s050__d3__knn best=1.3818 in 7s
+2026-11-15T00:16:21 done search HCXY-All__s050__d3__mlp best=3.9655 in 194s
+2026-11-15T01:00:50 parta: 36 units, configs=['CETC331', 'HCXY-All', 'SYL-All'] draws=[3, 4, 5] shares=[5, 10, 25, 50] workers=6 threads=3 trials=30 cpus=20 node=nodeB
+2026-11-15T01:00:51 skip search CETC331__s050__d3__mlp
+2026-11-15T01:00:51 skip search CETC331__s050__d3__svr
+2026-11-15T01:00:51 skip search CETC331__s050__d3__rf
+2026-11-15T01:00:51 skip search CETC331__s050__d3__knn
+2026-11-15T01:00:51 skip search HCXY-All__s050__d3__mlp
+2026-11-15T01:03:45 done search HCXY-All__s050__d3__rf best=2.1632 in 173s
+2026-11-15T01:03:59 done search HCXY-All__s050__d3__knn best=1.9048 in 13s
+2026-11-15T01:04:11 done search HCXY-All__s050__d3__svr best=4.4854 in 199s
+2026-11-15T01:06:08 done search SYL-All__s050__d3__mlp best=3.4581 in 130s
+2026-11-15T01:06:45 done search CETC331__s050__d3__lgbm-ph best=1.5953 in 354s
+2026-11-15T01:07:41 done search SYL-All__s050__d3__svr best=4.2505 in 55s
+2026-11-15T01:07:43 done search CETC331__s050__d3__lgbm-nan best=1.5953 in 412s
+2026-11-15T01:08:46 done fits CETC331__s050__d3 knn=2.807 rf=3.681 lgbm-ph=3.718 lgbm-nan=3.645 svr=4.049 mlp=3.753 gp=3.306
+2026-11-15T01:08:59 done search SYL-All__s050__d3__knn best=2.5869 in 12s
+2026-11-15T01:09:32 done search CETC331__s050__d4__mlp best=1.8626 in 34s
+2026-11-15T01:09:47 done search SYL-All__s050__d3__rf best=2.4974 in 126s
+2026-11-15T01:14:33 done search HCXY-All__s050__d3__lgbm-nan best=2.2706 in 822s
+2026-11-15T01:14:38 done search CETC331__s050__d4__svr best=1.6996 in 4s
+2026-11-15T01:15:07 done search CETC331__s050__d4__rf best=1.7772 in 29s
+2026-11-15T01:15:13 done search CETC331__s050__d4__knn best=1.4738 in 6s
+2026-11-15T01:16:12 done search HCXY-All__s050__d3__lgbm-ph best=2.2148 in 920s
+2026-11-15T01:16:34 done search CETC331__s050__d4__lgbm-ph best=1.6068 in 422s
+2026-11-15T01:16:44 done search CETC331__s050__d4__lgbm-nan best=1.6254 in 417s
+2026-11-15T01:17:59 done fits CETC331__s050__d4 knn=2.769 rf=3.991 lgbm-ph=3.788 lgbm-nan=3.878 svr=3.481 mlp=3.457 gp=3.231
+2026-11-15T01:17:59 done fits HCXY-All__s050__d3 knn=2.018 rf=2.132 lgbm-ph=2.697 lgbm-nan=2.772 svr=4.539 mlp=5.793 gp=7.452
+2026-11-15T01:18:59 done search HCXY-All__s050__d4__mlp best=3.5060 in 226s
+2026-11-15T01:20:22 done search SYL-All__s050__d3__lgbm-ph best=2.4892 in 971s
+2026-11-15T01:20:35 done search HCXY-All__s050__d4__knn best=1.9423 in 13s
+2026-11-15T01:21:31 done search HCXY-All__s050__d4__svr best=4.4883 in 211s
+2026-11-15T01:22:14 done search SYL-All__s050__d3__lgbm-nan best=2.5473 in 966s
+2026-11-15T01:22:32 done search SYL-All__s050__d4__mlp best=3.4142 in 117s
+2026-11-15T01:22:38 done search HCXY-All__s050__d4__rf best=2.2884 in 218s
+2026-11-15T01:23:21 done search SYL-All__s050__d4__svr best=4.1189 in 43s
+2026-11-15T01:23:32 done fits SYL-All__s050__d3 knn=4.405 rf=3.840 lgbm-ph=3.922 lgbm-nan=4.181 svr=5.863 mlp=4.990 gp=7.269
+2026-11-15T01:23:42 done search SYL-All__s050__d4__knn best=2.4500 in 9s
+2026-11-15T01:24:15 done search CETC331__s050__d5__mlp best=1.6750 in 33s
+2026-11-15T01:25:11 done search SYL-All__s050__d4__rf best=2.4459 in 110s
+2026-11-15T01:29:38 done search CETC331__s050__d5__lgbm-ph best=1.5694 in 323s
+2026-11-15T01:29:41 done search HCXY-All__s050__d4__lgbm-ph best=2.4010 in 786s
+2026-11-15T01:29:43 done search CETC331__s050__d5__svr best=1.5687 in 5s
+2026-11-15T01:29:47 done search CETC331__s050__d5__knn best=1.2963 in 4s
+2026-11-15T01:30:03 done search CETC331__s050__d5__lgbm-nan best=1.5928 in 292s
+2026-11-15T01:30:14 done search CETC331__s050__d5__rf best=1.7968 in 33s
+2026-11-15T01:31:02 done fits CETC331__s050__d5 knn=2.839 rf=3.795 lgbm-ph=3.626 lgbm-nan=3.728 svr=3.534 mlp=3.683 gp=3.204
+2026-11-15T01:31:33 done search HCXY-All__s050__d4__lgbm-nan best=2.4923 in 813s
+2026-11-15T01:32:27 done search SYL-All__s050__d4__lgbm-nan best=2.4763 in 595s
+2026-11-15T01:32:40 done search HCXY-All__s050__d5__mlp best=3.7143 in 172s
+2026-11-15T01:32:52 done search SYL-All__s050__d4__lgbm-ph best=2.3875 in 681s
+2026-11-15T01:33:06 done fits HCXY-All__s050__d4 knn=2.028 rf=2.414 lgbm-ph=3.000 lgbm-nan=2.989 svr=7.214 mlp=4.112 gp=10.725
+2026-11-15T01:33:18 done search HCXY-All__s050__d5__knn best=1.8484 in 12s
+2026-11-15T01:33:55 done fits SYL-All__s050__d4 knn=4.148 rf=3.361 lgbm-ph=3.701 lgbm-nan=3.740 svr=5.592 mlp=4.737 gp=6.923
+2026-11-15T01:35:22 done search SYL-All__s050__d5__mlp best=3.4573 in 124s
+2026-11-15T01:35:47 done search HCXY-All__s050__d5__svr best=4.4616 in 200s
+2026-11-15T01:36:34 done search SYL-All__s050__d5__svr best=4.2927 in 46s
+2026-11-15T01:36:35 done search HCXY-All__s050__d5__rf best=2.1933 in 235s
+2026-11-15T01:36:44 done search SYL-All__s050__d5__knn best=2.5250 in 9s
+2026-11-15T01:37:18 done search CETC331__s025__d3__mlp best=2.1476 in 34s
+2026-11-15T01:38:16 done search SYL-All__s050__d5__rf best=2.6678 in 102s
+2026-11-15T01:39:21 done search CETC331__s025__d3__lgbm-ph best=2.0732 in 123s
+2026-11-15T01:39:24 done search CETC331__s025__d3__svr best=1.8708 in 3s
+2026-11-15T01:39:41 done search CETC331__s025__d3__rf best=2.2624 in 16s
+2026-11-15T01:39:44 done search CETC331__s025__d3__knn best=1.8426 in 3s
+2026-11-15T01:40:26 done search HCXY-All__s050__d5__lgbm-ph best=2.3752 in 622s
+2026-11-15T01:40:43 done search CETC331__s025__d3__lgbm-nan best=2.0968 in 147s
+2026-11-15T01:41:02 done search SYL-All__s050__d5__lgbm-ph best=2.7057 in 426s
+2026-11-15T01:41:14 done fits CETC331__s025__d3 knn=2.852 rf=3.968 lgbm-ph=3.762 lgbm-nan=4.027 svr=4.387 mlp=3.915 gp=3.436
+2026-11-15T01:41:36 done search HCXY-All__s025__d3__mlp best=4.5332 in 112s
+2026-11-15T01:41:59 done search HCXY-All__s025__d3__svr best=5.9845 in 45s
+2026-11-15T01:42:07 done search HCXY-All__s025__d3__knn best=2.1799 in 7s
+2026-11-15T01:42:45 done search HCXY-All__s050__d5__lgbm-nan best=2.3528 in 703s
+2026-11-15T01:43:15 done search SYL-All__s050__d5__lgbm-nan best=2.8079 in 473s
+2026-11-15T01:43:29 done search SYL-All__s025__d3__mlp best=4.3696 in 82s
+2026-11-15T01:43:35 done search HCXY-All__s025__d3__rf best=2.4760 in 119s
+2026-11-15T01:44:03 done fits SYL-All__s050__d5 knn=4.367 rf=3.656 lgbm-ph=3.600 lgbm-nan=3.714 svr=5.870 mlp=4.485 gp=6.436
+2026-11-15T01:44:14 done fits HCXY-All__s050__d5 knn=2.054 rf=2.316 lgbm-ph=2.747 lgbm-nan=2.530 svr=8.022 mlp=3.833 gp=11.663
+2026-11-15T01:44:17 done search SYL-All__s025__d3__svr best=4.8283 in 14s
+2026-11-15T01:44:23 done search SYL-All__s025__d3__knn best=2.9728 in 5s
+2026-11-15T01:44:51 done search CETC331__s025__d4__mlp best=2.1282 in 28s
+2026-11-15T01:45:07 done search SYL-All__s025__d3__rf best=2.9302 in 52s
+2026-11-15T01:47:27 done search HCXY-All__s025__d3__lgbm-ph best=2.6338 in 421s
+2026-11-15T01:47:28 done search CETC331__s025__d4__lgbm-nan best=2.0302 in 141s
+2026-11-15T01:47:32 done search CETC331__s025__d4__svr best=1.9331 in 4s
+2026-11-15T01:47:36 done search CETC331__s025__d4__knn best=1.8272 in 4s
+2026-11-15T01:47:40 done search CETC331__s025__d4__lgbm-ph best=1.9370 in 169s
+2026-11-15T01:47:45 done search HCXY-All__s025__d3__lgbm-nan best=2.7312 in 403s
+2026-11-15T01:47:50 done search CETC331__s025__d4__rf best=2.1822 in 23s
+2026-11-15T01:48:13 done search SYL-All__s025__d3__lgbm-nan best=3.2015 in 277s
+2026-11-15T01:48:25 done fits CETC331__s025__d4 knn=3.014 rf=4.247 lgbm-ph=3.843 lgbm-nan=4.044 svr=3.667 mlp=3.742 gp=3.481
+2026-11-15T01:49:04 done fits HCXY-All__s025__d3 knn=2.485 rf=3.772 lgbm-ph=3.442 lgbm-nan=3.605 svr=5.545 mlp=6.044 gp=9.145
+2026-11-15T01:49:10 done search HCXY-All__s025__d4__mlp best=4.3449 in 94s
+2026-11-15T01:49:10 done search HCXY-All__s025__d4__svr best=4.9504 in 45s
+2026-11-15T01:49:18 done search HCXY-All__s025__d4__knn best=2.4367 in 8s
+2026-11-15T01:50:05 done search SYL-All__s025__d4__mlp best=3.5682 in 55s
+2026-11-15T01:50:23 done search SYL-All__s025__d3__lgbm-ph best=3.1260 in 414s
+2026-11-15T01:50:35 done search HCXY-All__s025__d4__rf best=2.9471 in 91s
+2026-11-15T01:50:46 done search SYL-All__s025__d4__svr best=4.8604 in 11s
+2026-11-15T01:50:54 done fits SYL-All__s025__d3 knn=4.042 rf=4.268 lgbm-ph=4.392 lgbm-nan=4.526 svr=5.626 mlp=5.048 gp=6.984
+2026-11-15T01:51:00 done search SYL-All__s025__d4__knn best=2.7961 in 5s
+2026-11-15T01:51:14 done search CETC331__s025__d5__mlp best=1.8969 in 14s
+2026-11-15T01:51:28 done search SYL-All__s025__d4__rf best=3.1607 in 42s
+2026-11-15T01:53:06 done search CETC331__s025__d5__lgbm-ph best=1.9635 in 112s
+2026-11-15T01:53:09 done search CETC331__s025__d5__svr best=1.7489 in 3s
+2026-11-15T01:53:18 done search SYL-All__s025__d4__lgbm-ph best=3.1928 in 240s
+2026-11-15T01:53:21 done search CETC331__s025__d5__knn best=1.6439 in 3s
+2026-11-15T01:53:27 done search CETC331__s025__d5__rf best=2.2206 in 17s
+2026-11-15T01:53:41 done search CETC331__s025__d5__lgbm-nan best=2.0043 in 132s
+2026-11-15T01:54:05 done search HCXY-All__s025__d4__lgbm-ph best=2.8007 in 385s
+2026-11-15T01:54:11 done fits CETC331__s025__d5 knn=3.103 rf=4.135 lgbm-ph=3.948 lgbm-nan=4.091 svr=3.747 mlp=4.091 gp=3.578
+2026-11-15T01:55:00 done search HCXY-All__s025__d5__svr best=5.3767 in 48s
+2026-11-15T01:55:07 done search HCXY-All__s025__d5__mlp best=4.5953 in 106s
+2026-11-15T01:55:13 done search HCXY-All__s025__d5__knn best=2.2750 in 6s
+2026-11-15T01:56:08 done search SYL-All__s025__d5__mlp best=4.4977 in 55s
+2026-11-15T01:56:11 done search HCXY-All__s025__d4__lgbm-nan best=2.9938 in 478s
+2026-11-15T01:56:28 done search HCXY-All__s025__d5__rf best=2.8289 in 88s
+2026-11-15T01:56:56 done fits HCXY-All__s025__d4 knn=2.722 rf=2.947 lgbm-ph=3.671 lgbm-nan=3.860 svr=6.041 mlp=5.365 gp=14.825
+2026-11-15T01:57:02 done search SYL-All__s025__d4__lgbm-nan best=3.2819 in 417s
+2026-11-15T01:57:08 done search SYL-All__s025__d5__svr best=4.8743 in 11s
+2026-11-15T01:57:40 done fits SYL-All__s025__d4 knn=4.208 rf=4.087 lgbm-ph=4.390 lgbm-nan=4.282 svr=6.004 mlp=4.929 gp=7.027
+2026-11-15T01:57:45 done search SYL-All__s025__d5__knn best=3.1839 in 5s
+2026-11-15T01:57:55 done search SYL-All__s025__d5__rf best=3.5932 in 47s
+2026-11-15T01:57:57 done search CETC331__s010__d3__mlp best=2.7129 in 12s
+2026-11-15T01:58:35 done search CETC331__s010__d3__lgbm-ph best=3.2356 in 39s
+2026-11-15T01:58:38 done search CETC331__s010__d3__svr best=2.4059 in 3s
+2026-11-15T01:58:49 done search CETC331__s010__d3__rf best=3.4934 in 11s
+2026-11-15T01:58:53 done search CETC331__s010__d3__knn best=2.8053 in 3s
+2026-11-15T01:58:59 done search CETC331__s010__d3__lgbm-nan best=3.1566 in 62s
+2026-11-15T01:59:11 done fits CETC331__s010__d3 knn=3.469 rf=4.641 lgbm-ph=4.511 lgbm-nan=4.588 svr=3.740 mlp=4.242 gp=3.772
+2026-11-15T01:59:32 done search HCXY-All__s010__d3__mlp best=6.5400 in 39s
+2026-11-15T02:00:18 done search HCXY-All__s025__d5__lgbm-ph best=3.0757 in 411s
+2026-11-15T02:00:26 done search HCXY-All__s010__d3__svr best=7.3301 in 8s
+2026-11-15T02:00:44 done search SYL-All__s025__d5__lgbm-nan best=3.6718 in 255s
+2026-11-15T02:00:48 done search HCXY-All__s010__d3__knn best=4.2627 in 4s
+2026-11-15T02:00:50 done search SYL-All__s025__d5__lgbm-ph best=3.5871 in 282s
+2026-11-15T02:00:55 done search HCXY-All__s010__d3__rf best=4.6438 in 28s
+2026-11-15T02:01:14 done search SYL-All__s010__d3__mlp best=4.4563 in 26s
+2026-11-15T02:01:18 done fits SYL-All__s025__d5 knn=4.789 rf=4.009 lgbm-ph=4.175 lgbm-nan=4.294 svr=6.554 mlp=5.240 gp=7.695
+2026-11-15T02:01:22 done search SYL-All__s010__d3__svr best=5.3481 in 4s
+2026-11-15T02:01:45 done search SYL-All__s010__d3__rf best=3.7242 in 23s
+2026-11-15T02:01:50 done search SYL-All__s010__d3__knn best=3.8916 in 4s
+2026-11-15T02:02:09 done search CETC331__s010__d4__mlp best=2.4615 in 19s
+2026-11-15T02:02:32 done search SYL-All__s010__d3__lgbm-ph best=3.8522 in 97s
+2026-11-15T02:02:35 done search SYL-All__s010__d3__lgbm-nan best=3.9231 in 81s
+2026-11-15T02:02:37 done search HCXY-All__s010__d3__lgbm-ph best=4.8478 in 206s
+2026-11-15T02:02:39 done search HCXY-All__s010__d3__lgbm-nan best=5.2597 in 187s
+2026-11-15T02:02:40 done search CETC331__s010__d4__svr best=2.2203 in 3s
+2026-11-15T02:02:41 done fits SYL-All__s010__d3 knn=5.550 rf=7.025 lgbm-ph=7.501 lgbm-nan=7.764 svr=9.206 mlp=7.365 gp=16.328
+2026-11-15T02:02:44 done search CETC331__s010__d4__knn best=2.5233 in 3s
+2026-11-15T02:02:56 done search CETC331__s010__d4__rf best=2.9910 in 16s
+2026-11-15T02:03:06 done fits HCXY-All__s010__d3 knn=4.248 rf=3.919 lgbm-ph=4.327 lgbm-nan=4.650 svr=8.766 mlp=8.538 gp=16.850
+2026-11-15T02:03:16 done search CETC331__s010__d4__lgbm-ph best=2.5644 in 67s
+2026-11-15T02:03:28 done search HCXY-All__s010__d4__svr best=6.7926 in 11s
+2026-11-15T02:03:28 done search HCXY-All__s010__d4__mlp best=6.7269 in 43s
+2026-11-15T02:03:32 done search HCXY-All__s010__d4__knn best=4.5945 in 5s
+2026-11-15T02:03:33 done search CETC331__s010__d4__lgbm-nan best=2.6308 in 61s
+2026-11-15T02:03:43 done fits CETC331__s010__d4 knn=3.273 rf=4.620 lgbm-ph=4.490 lgbm-nan=4.533 svr=4.000 mlp=4.226 gp=3.966
+2026-11-15T02:04:03 done search SYL-All__s010__d4__mlp best=5.1587 in 30s
+2026-11-15T02:04:07 done search HCXY-All__s010__d4__rf best=4.7742 in 40s
+2026-11-15T02:04:12 done search SYL-All__s010__d4__svr best=5.5081 in 4s
+2026-11-15T02:04:32 done search HCXY-All__s010__d4__lgbm-ph best=5.1845 in 96s
+2026-11-15T02:04:36 done search SYL-All__s010__d4__knn best=3.7935 in 4s
+2026-11-15T02:04:38 done search SYL-All__s010__d4__rf best=4.1339 in 26s
+2026-11-15T02:04:48 done search CETC331__s010__d5__mlp best=2.2769 in 12s
+2026-11-15T02:05:10 done search HCXY-All__s010__d4__lgbm-nan best=5.3530 in 123s
+2026-11-15T02:05:10 done search SYL-All__s010__d4__lgbm-nan best=4.4527 in 67s
+2026-11-15T02:05:10 done search HCXY-All__s025__d5__lgbm-nan best=3.2590 in 665s
+2026-11-15T02:05:13 done search CETC331__s010__d5__svr best=2.1383 in 3s
+2026-11-15T02:05:20 done search SYL-All__s010__d4__lgbm-ph best=4.1852 in 96s
+2026-11-15T02:05:21 done fits HCXY-All__s010__d4 knn=2.998 rf=3.862 lgbm-ph=4.262 lgbm-nan=4.900 svr=7.243 mlp=5.530 gp=15.852
+2026-11-15T02:05:24 done search CETC331__s010__d5__knn best=2.3914 in 3s
+2026-11-15T02:05:24 done search CETC331__s010__d5__rf best=3.1575 in 11s
+2026-11-15T02:05:30 done fits SYL-All__s010__d4 knn=4.594 rf=5.206 lgbm-ph=5.473 lgbm-nan=5.727 svr=7.411 mlp=5.868 gp=12.674
+2026-11-15T02:05:40 done search CETC331__s010__d5__lgbm-ph best=2.4810 in 62s
+2026-11-15T02:05:47 done search CETC331__s010__d5__lgbm-nan best=2.6215 in 59s
+2026-11-15T02:05:50 done search HCXY-All__s010__d5__svr best=6.4938 in 10s
+2026-11-15T02:06:03 done fits CETC331__s010__d5 knn=4.080 rf=4.605 lgbm-ph=4.473 lgbm-nan=4.837 svr=3.674 mlp=3.789 gp=3.571
+2026-11-15T02:06:08 done search HCXY-All__s010__d5__knn best=3.6487 in 5s
+2026-11-15T02:06:09 done search HCXY-All__s010__d5__mlp best=5.5856 in 45s
+2026-11-15T02:06:19 done fits HCXY-All__s025__d5 knn=2.776 rf=3.186 lgbm-ph=4.081 lgbm-nan=4.224 svr=9.501 mlp=8.359 gp=16.466
+2026-11-15T02:06:40 done search HCXY-All__s010__d5__rf best=4.5545 in 50s
+2026-11-15T02:06:45 done search SYL-All__s010__d5__mlp best=5.1966 in 37s
+2026-11-15T02:06:46 done search SYL-All__s010__d5__svr best=5.8128 in 5s
+2026-11-15T02:06:50 done search SYL-All__s010__d5__knn best=3.1766 in 4s
+2026-11-15T02:07:04 done search CETC331__s005__d3__mlp best=3.0017 in 14s
+2026-11-15T02:07:09 done search SYL-All__s010__d5__rf best=4.3469 in 24s
+2026-11-15T02:07:40 done search CETC331__s005__d3__lgbm-ph best=3.4300 in 36s
+2026-11-15T02:07:40 done search CETC331__s005__d3__lgbm-nan best=3.9321 in 31s
+2026-11-15T02:07:43 done search CETC331__s005__d3__svr best=2.6270 in 3s
+2026-11-15T02:07:46 done search CETC331__s005__d3__knn best=3.2937 in 3s
+2026-11-15T02:07:54 done search CETC331__s005__d3__rf best=4.2847 in 14s
+2026-11-15T02:08:05 done fits CETC331__s005__d3 knn=4.288 rf=5.988 lgbm-ph=5.455 lgbm-nan=5.461 svr=4.040 mlp=4.362 gp=4.287
+2026-11-15T02:08:15 done search HCXY-All__s005__d3__mlp best=5.7713 in 28s
+2026-11-15T02:10:10 done search SYL-All__s010__d5__lgbm-ph best=4.1305 in 240s
+2026-11-15T02:10:14 done search HCXY-All__s005__d3__svr best=8.8274 in 4s
+2026-11-15T02:10:26 done search SYL-All__s010__d5__lgbm-nan best=4.1975 in 246s
+2026-11-15T02:10:32 done search HCXY-All__s005__d3__rf best=6.0003 in 18s
+2026-11-15T02:10:37 done search HCXY-All__s005__d3__knn best=4.3189 in 4s
+2026-11-15T02:10:59 done search HCXY-All__s010__d5__lgbm-ph best=4.1603 in 335s
+2026-11-15T02:11:01 done fits SYL-All__s010__d5 knn=5.240 rf=5.810 lgbm-ph=6.013 lgbm-nan=6.226 svr=7.389 mlp=7.609 gp=11.776
+2026-11-15T02:11:05 done search SYL-All__s005__d3__mlp best=5.4718 in 28s
+2026-11-15T02:11:08 done search SYL-All__s005__d3__svr best=7.5136 in 4s
+2026-11-15T02:11:21 done search SYL-All__s005__d3__rf best=4.9436 in 13s
+2026-11-15T02:11:25 done search SYL-All__s005__d3__knn best=5.7747 in 4s
+2026-11-15T02:11:35 done search CETC331__s005__d4__mlp best=2.9077 in 9s
+2026-11-15T02:11:36 done search SYL-All__s005__d3__lgbm-ph best=5.2910 in 37s
+2026-11-15T02:11:38 done search HCXY-All__s005__d3__lgbm-nan best=5.5354 in 203s
+2026-11-15T02:11:42 done search CETC331__s005__d4__svr best=2.4860 in 3s
+2026-11-15T02:11:44 done search SYL-All__s005__d3__lgbm-nan best=5.8778 in 43s
+2026-11-15T02:11:47 done fits SYL-All__s005__d3 knn=6.681 rf=7.952 lgbm-ph=7.735 lgbm-nan=7.933 svr=9.929 mlp=7.359 gp=20.401
+2026-11-15T02:11:50 done search CETC331__s005__d4__knn best=3.0166 in 3s
+2026-11-15T02:11:54 done search CETC331__s005__d4__rf best=3.7116 in 12s
+2026-11-15T02:12:00 done search HCXY-All__s005__d3__lgbm-ph best=5.4182 in 235s
+2026-11-15T02:12:01 done search CETC331__s005__d4__lgbm-nan best=3.3817 in 25s
+2026-11-15T02:12:04 done search CETC331__s005__d4__lgbm-ph best=3.1031 in 30s
+2026-11-15T02:12:08 done fits CETC331__s005__d4 knn=4.175 rf=6.050 lgbm-ph=5.784 lgbm-nan=6.331 svr=4.484 mlp=4.793 gp=4.703
+2026-11-15T02:12:13 done search HCXY-All__s005__d4__svr best=8.6298 in 5s
+2026-11-15T02:12:25 done search HCXY-All__s005__d4__mlp best=9.3456 in 35s
+2026-11-15T02:12:29 done search HCXY-All__s005__d4__knn best=7.8704 in 4s
+2026-11-15T02:12:29 done fits HCXY-All__s005__d3 knn=6.935 rf=7.801 lgbm-ph=7.869 lgbm-nan=7.996 svr=11.933 mlp=9.405 gp=26.276
+2026-11-15T02:12:39 done search HCXY-All__s005__d4__rf best=7.8919 in 25s
+2026-11-15T02:13:02 done search HCXY-All__s005__d4__lgbm-nan best=7.9454 in 61s
+2026-11-15T02:13:02 done search HCXY-All__s010__d5__lgbm-nan best=4.3999 in 452s
+2026-11-15T02:13:05 done search SYL-All__s005__d4__mlp best=7.0752 in 36s
+2026-11-15T02:13:06 done search SYL-All__s005__d4__svr best=10.0785 in 4s
+2026-11-15T02:13:06 done search HCXY-All__s005__d4__lgbm-ph best=7.6725 in 72s
+2026-11-15T02:13:09 done search SYL-All__s005__d4__lgbm-ph best=6.6390 in 40s
+2026-11-15T02:13:10 done search SYL-All__s005__d4__knn best=5.7232 in 4s
+2026-11-15T02:13:13 done fits HCXY-All__s005__d4 knn=4.357 rf=5.307 lgbm-ph=7.180 lgbm-nan=6.983 svr=8.788 mlp=8.497 gp=21.594
+2026-11-15T02:13:19 done search SYL-All__s005__d4__lgbm-nan best=7.0364 in 39s
+2026-11-15T02:13:20 done search CETC331__s005__d5__mlp best=2.7115 in 10s
+2026-11-15T02:13:22 done search CETC331__s005__d5__svr best=2.7065 in 3s
+2026-11-15T02:13:24 done search SYL-All__s005__d4__rf best=7.5041 in 19s
+2026-11-15T02:13:25 done search CETC331__s005__d5__knn best=3.2513 in 3s
+2026-11-15T02:13:28 done fits SYL-All__s005__d4 knn=6.456 rf=6.144 lgbm-ph=9.196 lgbm-nan=8.652 svr=8.012 mlp=7.360 gp=16.646
+2026-11-15T02:13:32 done search CETC331__s005__d5__rf best=4.4549 in 12s
+2026-11-15T02:13:40 done search CETC331__s005__d5__lgbm-nan best=4.1236 in 27s
+2026-11-15T02:13:42 done search CETC331__s005__d5__lgbm-ph best=3.5864 in 32s
+2026-11-15T02:13:45 done search HCXY-All__s005__d5__svr best=9.4452 in 5s
+2026-11-15T02:13:47 done fits CETC331__s005__d5 knn=4.633 rf=6.789 lgbm-ph=6.089 lgbm-nan=6.121 svr=4.572 mlp=4.603 gp=4.721
+2026-11-15T02:13:50 done fits HCXY-All__s010__d5 knn=4.312 rf=6.964 lgbm-ph=5.424 lgbm-nan=5.244 svr=9.505 mlp=11.775 gp=17.650
+2026-11-15T02:13:52 done search HCXY-All__s005__d5__knn best=5.8482 in 5s
+2026-11-15T02:13:55 done search HCXY-All__s005__d5__mlp best=7.5874 in 29s
+2026-11-15T02:14:17 done search HCXY-All__s005__d5__rf best=6.7009 in 32s
+2026-11-15T02:14:22 done search SYL-All__s005__d5__svr best=6.8694 in 5s
+2026-11-15T02:14:25 done search SYL-All__s005__d5__mlp best=5.8170 in 35s
+2026-11-15T02:14:29 done search SYL-All__s005__d5__knn best=4.3156 in 4s
+2026-11-15T02:14:35 done search SYL-All__s005__d5__lgbm-ph best=4.8699 in 42s
+2026-11-15T02:14:37 done search SYL-All__s005__d5__lgbm-nan best=4.7257 in 42s
+2026-11-15T02:14:39 done search SYL-All__s005__d5__rf best=6.0301 in 17s
+2026-11-15T02:14:42 done fits SYL-All__s005__d5 knn=6.404 rf=7.914 lgbm-ph=7.767 lgbm-nan=8.094 svr=9.061 mlp=9.496 gp=17.025
+2026-11-15T02:15:27 done search HCXY-All__s005__d5__lgbm-ph best=6.7225 in 119s
+2026-11-15T02:15:40 done search HCXY-All__s005__d5__lgbm-nan best=6.6440 in 128s
+2026-11-15T02:15:46 done fits HCXY-All__s005__d5 knn=7.576 rf=10.940 lgbm-ph=11.246 lgbm-nan=10.754 svr=14.997 mlp=13.126 gp=29.847
+2026-11-15T02:15:47 parta: all units finished
+2026-11-15T02:31:51 parta: 12 units, configs=['CETC331', 'HCXY-All', 'SYL-All'] draws=[7] shares=[5, 10, 25, 50] workers=6 threads=3 trials=30 cpus=20 node=nodeB
+2026-11-15T02:31:52 skip search CETC331__s050__d7__mlp
+2026-11-15T02:31:52 skip search CETC331__s050__d7__lgbm-ph
+2026-11-15T02:31:52 skip search CETC331__s050__d7__lgbm-nan
+2026-11-15T02:31:52 skip search CETC331__s050__d7__svr
+2026-11-15T02:31:52 skip search CETC331__s050__d7__rf
+2026-11-15T02:31:52 skip search CETC331__s050__d7__knn
+2026-11-15T02:31:52 skip search HCXY-All__s050__d7__mlp
+2026-11-15T02:31:52 skip search HCXY-All__s050__d7__svr
+2026-11-15T02:31:52 skip search HCXY-All__s050__d7__rf
+2026-11-15T02:31:52 skip search HCXY-All__s050__d7__knn
+2026-11-15T02:31:52 skip search SYL-All__s050__d7__mlp
+2026-11-15T02:31:52 skip search SYL-All__s050__d7__lgbm-ph
+2026-11-15T02:31:52 skip search SYL-All__s050__d7__lgbm-nan
+2026-11-15T02:31:52 skip search SYL-All__s050__d7__svr
+2026-11-15T02:31:52 skip search SYL-All__s050__d7__rf
+2026-11-15T02:31:52 skip search SYL-All__s050__d7__knn
+2026-11-15T02:31:52 done fits CETC331__s050__d7 
+2026-11-15T02:32:24 done search CETC331__s025__d7__mlp best=2.2407 in 32s
+2026-11-15T02:32:27 done search CETC331__s025__d7__svr best=1.9186 in 3s
+2026-11-15T02:32:38 done fits SYL-All__s050__d7 lgbm-ph=3.777 lgbm-nan=3.979 svr=6.281 mlp=4.387 gp=6.275
+2026-11-15T02:32:40 done search CETC331__s025__d7__rf best=2.3085 in 13s
+2026-11-15T02:32:41 done search CETC331__s025__d7__knn best=1.9324 in 3s
+2026-11-15T02:33:39 done search CETC331__s025__d7__lgbm-ph best=1.9457 in 106s
+2026-11-15T02:34:06 done search HCXY-All__s025__d7__mlp best=4.6249 in 85s
+2026-11-15T02:34:27 done search CETC331__s025__d7__lgbm-nan best=2.0122 in 155s
+2026-11-15T02:34:42 done search HCXY-All__s025__d7__svr best=5.4294 in 35s
+2026-11-15T02:34:51 done fits CETC331__s025__d7 knn=3.062 rf=4.093 lgbm-ph=4.016 lgbm-nan=4.212 svr=3.873 mlp=3.710 gp=3.629
+2026-11-15T02:34:57 done search HCXY-All__s025__d7__knn best=2.3334 in 6s
+2026-11-15T02:35:56 done search SYL-All__s025__d7__mlp best=4.1002 in 58s
+2026-11-15T02:36:05 done search HCXY-All__s025__d7__rf best=3.0065 in 83s
+2026-11-15T02:39:36 done search HCXY-All__s025__d7__lgbm-ph best=3.3828 in 414s
+2026-11-15T02:39:48 done search SYL-All__s025__d7__svr best=4.7972 in 11s
+2026-11-15T02:39:56 done search SYL-All__s025__d7__lgbm-nan best=3.4760 in 231s
+2026-11-15T02:40:01 done search SYL-All__s025__d7__knn best=3.2816 in 5s
+2026-11-15T02:40:13 done search CETC331__s010__d7__mlp best=3.0767 in 12s
+2026-11-15T02:40:14 done search HCXY-All__s025__d7__lgbm-nan best=3.5514 in 395s
+2026-11-15T02:40:36 done search SYL-All__s025__d7__rf best=3.0548 in 48s
+2026-11-15T02:41:06 done search CETC331__s010__d7__lgbm-ph best=2.8568 in 53s
+2026-11-15T02:41:10 done search CETC331__s010__d7__svr best=2.6418 in 3s
+2026-11-15T02:41:10 done fits HCXY-All__s025__d7 knn=2.543 rf=2.729 lgbm-ph=3.221 lgbm-nan=3.511 svr=8.966 mlp=4.045 gp=11.788
+2026-11-15T02:41:13 done search CETC331__s010__d7__knn best=2.6904 in 4s
+2026-11-15T02:41:26 done search CETC331__s010__d7__lgbm-nan best=3.0764 in 50s
+2026-11-15T02:41:27 done search CETC331__s010__d7__rf best=3.3348 in 17s
+2026-11-15T02:41:45 done fits CETC331__s010__d7 knn=3.453 rf=4.429 lgbm-ph=4.355 lgbm-nan=4.583 svr=3.656 mlp=4.804 gp=3.556
+2026-11-15T02:42:06 done search HCXY-All__s010__d7__mlp best=5.9420 in 52s
+2026-11-15T02:42:08 done search SYL-All__s025__d7__lgbm-ph best=3.4108 in 372s
+2026-11-15T02:42:14 done search HCXY-All__s010__d7__svr best=6.0677 in 8s
+2026-11-15T02:42:35 done search HCXY-All__s050__d7__lgbm-nan best=2.3186 in 642s
+2026-11-15T02:42:38 done fits SYL-All__s025__d7 knn=4.121 rf=3.920 lgbm-ph=3.994 lgbm-nan=4.067 svr=6.048 mlp=5.721 gp=8.453
+2026-11-15T02:42:39 done search HCXY-All__s010__d7__knn best=3.4225 in 4s
+2026-11-15T02:42:44 done search HCXY-All__s010__d7__rf best=4.6804 in 30s
+2026-11-15T02:43:16 done search SYL-All__s010__d7__mlp best=4.9592 in 38s
+2026-11-15T02:43:21 done search SYL-All__s010__d7__svr best=5.2313 in 4s
+2026-11-15T02:43:43 done search HCXY-All__s010__d7__lgbm-ph best=5.0811 in 137s
+2026-11-15T02:43:46 done search SYL-All__s010__d7__knn best=4.1187 in 4s
+2026-11-15T02:43:47 done search SYL-All__s010__d7__rf best=3.8226 in 27s
+2026-11-15T02:43:56 done search CETC331__s005__d7__mlp best=4.1403 in 10s
+2026-11-15T02:44:25 done search HCXY-All__s010__d7__lgbm-nan best=5.1089 in 160s
+2026-11-15T02:44:26 done search CETC331__s005__d7__lgbm-ph best=4.8073 in 39s
+2026-11-15T02:44:29 done search SYL-All__s010__d7__lgbm-ph best=3.6425 in 110s
+2026-11-15T02:44:29 done search CETC331__s005__d7__svr best=3.0954 in 3s
+2026-11-15T02:44:30 done search SYL-All__s010__d7__lgbm-nan best=3.9299 in 105s
+2026-11-15T02:44:32 done search CETC331__s005__d7__lgbm-nan best=5.3478 in 36s
+2026-11-15T02:44:33 done search CETC331__s005__d7__knn best=3.7570 in 4s
+2026-11-15T02:44:43 done fits HCXY-All__s010__d7 knn=3.850 rf=3.443 lgbm-ph=4.326 lgbm-nan=4.577 svr=8.404 mlp=6.604 gp=10.756
+2026-11-15T02:44:43 done fits SYL-All__s010__d7 knn=4.410 rf=5.558 lgbm-ph=5.486 lgbm-nan=5.917 svr=6.133 mlp=5.206 gp=10.836
+2026-11-15T02:44:44 done search CETC331__s005__d7__rf best=5.1093 in 15s
+2026-11-15T02:44:49 done search HCXY-All__s005__d7__svr best=13.4393 in 6s
+2026-11-15T02:44:53 done fits CETC331__s005__d7 knn=3.960 rf=5.353 lgbm-ph=4.575 lgbm-nan=4.811 svr=3.914 mlp=5.309 gp=4.002
+2026-11-15T02:44:58 done search HCXY-All__s005__d7__knn best=6.2617 in 5s
+2026-11-15T02:45:05 done search HCXY-All__s005__d7__mlp best=10.5949 in 33s
+2026-11-15T02:45:11 done search HCXY-All__s050__d7__lgbm-ph best=2.2308 in 798s
+2026-11-15T02:45:15 done search HCXY-All__s005__d7__rf best=9.4574 in 26s
+2026-11-15T02:45:22 done search HCXY-All__s005__d7__lgbm-ph best=10.8162 in 49s
+2026-11-15T02:45:27 done search SYL-All__s005__d7__svr best=7.7851 in 5s
+2026-11-15T02:45:37 done search HCXY-All__s005__d7__lgbm-nan best=11.3931 in 55s
+2026-11-15T02:45:37 done search SYL-All__s005__d7__mlp best=7.0627 in 39s
+2026-11-15T02:45:41 done search SYL-All__s005__d7__knn best=6.3390 in 3s
+2026-11-15T02:45:43 done fits HCXY-All__s005__d7 knn=6.827 rf=6.478 lgbm-ph=7.439 lgbm-nan=7.337 svr=8.400 mlp=8.919 gp=21.443
+2026-11-15T02:45:46 done search SYL-All__s005__d7__rf best=7.6935 in 18s
+2026-11-15T02:45:47 done search SYL-All__s005__d7__lgbm-ph best=7.4021 in 41s
+2026-11-15T02:45:51 done search SYL-All__s005__d7__lgbm-nan best=7.3794 in 35s
+2026-11-15T02:45:56 done fits SYL-All__s005__d7 knn=5.532 rf=6.156 lgbm-ph=6.322 lgbm-nan=6.566 svr=8.041 mlp=6.596 gp=16.400
+2026-11-15T02:46:18 done fits HCXY-All__s050__d7 knn=2.085 rf=2.262 lgbm-ph=2.329 lgbm-nan=2.518 svr=6.232 mlp=4.045 gp=8.953
+2026-11-15T02:46:19 parta: all units finished
