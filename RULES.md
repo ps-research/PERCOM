@@ -7,8 +7,8 @@ This repository is the only channel between the planning session and the compute
 | Role | Does | Where it writes |
 | --- | --- | --- |
 | **PI** (repository owner) | Decides. Approves experiment briefs. Stamps the compute node's work by merging its pull requests. | |
-| **Planning session** | Literature review, paper plans, experiment briefs, analysis of returned results, paper drafts. Runs no experiments. | Directly on `main` |
-| **Compute node** (Claude Code with GPU access) | Writes experiment code, runs experiments, returns results. | Its own branches only. Never on `main`. |
+| **Planning session** | Literature review, paper plans, experiment briefs, analysis of returned results, review of drafts. Runs no experiments. | Directly on `main` |
+| **Compute node** (Claude Code with GPU access) | Writes experiment code, runs experiments, returns results. Drafts the paper when the PI asks. | Its own branches only. Never on `main`. |
 
 ## Approval gates
 
@@ -17,6 +17,15 @@ This repository is the only channel between the planning session and the compute
 3. **Before a number enters a paper.** Its results pull request must be merged.
 
 The node runs a brief as written. If a step cannot be done as written, it stops and reports that in the pull request. It does not improvise.
+
+The PI may also instruct the node directly. The node then writes the brief itself, on its branch, and says so at the top of the pull request (as for `P1-E03`).
+
+## Paper drafting (from 2026-11-16)
+
+- At the PI's instruction, the compute node drafts the paper in `paper1/draft/`, on a branch named `draft/paper1`.
+- The draft comes back as a pull request; only the PI merges it.
+- Gate 3 applies to the draft: a number enters it only after its results pull request is merged.
+- Start from `paper1/CONTEXT.md`.
 
 ## Branch etiquette for the compute node
 
@@ -37,7 +46,8 @@ The node runs a brief as written. If a step cannot be done as written, it stops 
 | Path | Contents | Written by |
 | --- | --- | --- |
 | `litreview/` | Reviews with their search logs, source index and evidence ledger | Planning session |
-| `paper1/` | Plan, outline, drafts and figures for the paper | Planning session |
+| `paper1/` | Plan, context and venue notes | Planning session |
+| `paper1/draft/` | The paper draft | Compute node, at the PI's instruction |
 | `paper2/` | Dropped on 2026-11-15; a note only | Planning session |
 | `briefs/` | One file per experiment, named `P<paper>-E<nn>-<short-name>.md` | Planning session |
 | `code/` | Experiment code | Compute node |

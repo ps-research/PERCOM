@@ -135,7 +135,7 @@ Two briefs, each run by the compute node only when its status is `approved`:
 1. `P1-E01`: environment, data, pipeline check (E0), full survey (E1), cost logging (E5).
 2. `P1-E02`: few reference points (E2) and missing access points (E3).
 
-A third brief, `P1-E03` (comparison on Wi-Fi RSS & RTT, E4), is written only if the PI decides the narrative needs it.
+A further brief, `P1-E04` (comparison on Wi-Fi RSS & RTT, E4), is written only if the PI decides the narrative needs it. (The approved draft called it `P1-E03`; that ID was later taken, see section 10.)
 
 ## 9. Decisions for the PI
 
@@ -161,3 +161,6 @@ Each item is a detail the briefs pin down, or a fact read from the dataset files
 | 8 | LightGBM is run twice: with the placeholder number and with native missing values | Answers "trees handle missing values too" |
 | 9 | The SODIndoorLoc repository has no licence file. Its README asks users to cite the dataset paper | Read from the repository |
 | 10 | Compute estimate raised to one to two GPU-days at most, with most of the time on CPU | Re-tuning five baselines on every reduced survey is the costly part |
+| 11 | `P1-E03` was run at the PI's direct instruction (2026-11-15): uncertainty of the predictions, scans per reference point, more seeds and draws, a breakdown by phone and user, and the paper figures. The node wrote its brief on its own branch; the planning session did not review it. It adds to the approved experiments and replaces none of them | PI instruction to the compute node |
+| 12 | The ID `P1-E03` is taken, so the optional comparison on Wi-Fi RSS & RTT (E4) becomes `P1-E04` if the PI ever asks for it | Follows from 11 |
+| 13 | Drafting started on 2026-11-16 on the compute node, at the PI's instruction. Start from `paper1/CONTEXT.md` | PI instruction |

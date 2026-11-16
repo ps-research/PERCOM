@@ -1,0 +1,7 @@
+Source: Consensus search result record (abstract only), retrieved 2026-11-14 via the Consensus MCP search tool; search-log S034.
+URL: https://consensus.app/papers/details/w:91404168-b6b3-4af8-b4c7-e788500ff07f/
+Title: TUJI1 Dataset: Multi-device dataset for indoor localization with high measurement density
+Listing: Lucie Klus et al., 2024, Data in Brief (DOI 10.1016/j.dib.2024.110356 via Crossref)
+
+Abstract:
+Positioning in indoor scenarios using signals of opportunity is an effective solution enabling accurate and reliable performance in Global Navigation Satellite System (GNSS)-obscured scenarios. Despite the availability of numerous fingerprinting datasets utilizing various wireless signals, the challenge of device heterogeneity and sample density remains an unanswered issue. To address this gap, this work introduces TUJI1, an anonymized IEEE 802.11 Wireless LAN (Wi-Fi) fingerprinting dataset collected using 5 different commercial devices in a fine-grained grid. The dataset contains the matched fingerprints of Received Signal Strength Indicator (RSSI) measurements with the corresponding coordinates, split into training and testing subsets for effortless and fair reproducibility.

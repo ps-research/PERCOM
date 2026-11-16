@@ -1,0 +1,198 @@
+ 
+ Table 11 | Supplementary open dataset for WiFi indoor localization based on received signal strength | Satellite Navigation | Springer Nature Link 
+ Skip to main content 
+ Log in 
+ Menu 
+ Find a journal
+ Publish with us
+ Track your research
+ Search 
+ Saved research 
+ Cart 
+ Home 
+ Satellite Navigation 
+ Article 
+ Table 11 
+ Table 11 Statistics of different methods based on the two sheets in the HCXY building
+ From: Supplementary open dataset for WiFi indoor localization based on received signal strength 
+ Sheets
+ | Methods
+ | MAE (m)
+ | RMSE (m)
+ | 50th percentiles error (m)
+ | 75th percentiles error (m)
+ | 95th percentiles error (m)
+ | Elapsed time (s)
+ | 
+ 1
+ | KNC
+ | 2.339
+ | 2.096
+ | 1.342
+ | 3.059
+ | 6.686
+ | 0.44
+ | 
+ KNR
+ | 2.365
+ | 2.033
+ | 1.47
+ | 3.231
+ | 6.627
+ | 0.445
+ | 
+ SVC
+ | 2.259
+ | 1.966
+ | 1.342
+ | 3.081
+ | 6.627
+ | 17.201
+ | 
+ SVR
+ | 2.652
+ | 2.177
+ | 2.169
+ | 3.385
+ | 6.707
+ | 66.053
+ | 
+ RFC
+ | 6.242
+ | 10.057
+ | 1.879
+ | 5.433
+ | 30.606
+ | 11.458
+ | 
+ RFR
+ | 2.412
+ | 3.309
+ | 1.382
+ | 2.87
+ | 7.572
+ | 27.337
+ | 
+ MLPC
+ | 29.411
+ | 25.435
+ | 21.054
+ | 42.957
+ | 79.122
+ | 71.15
+ | 
+ MLPR
+ | 8.269
+ | 4.792
+ | 7.586
+ | 11.275
+ | 17.435
+ | 10.932
+ | 
+ 2
+ | KNC
+ | 5.893
+ | 7.232
+ | 3.059
+ | 6.689
+ | 25.807
+ | 0.304
+ | 
+ KNR
+ | 5.813
+ | 7.22
+ | 3.048
+ | 7.341
+ | 25.807
+ | 0.286
+ | 
+ SVC
+ | 5.916
+ | 7.678
+ | 3
+ | 6.708
+ | 25.807
+ | 11.916
+ | 
+ SVR
+ | 5.108
+ | 4.659
+ | 3.094
+ | 6.876
+ | 15.62
+ | 35.678
+ | 
+ RFC
+ | 7.227
+ | 10.931
+ | 1.942
+ | 5.532
+ | 35.405
+ | 6.059
+ | 
+ RFR
+ | 3.198
+ | 3.724
+ | 2.101
+ | 4.129
+ | 8.294
+ | 7.941
+ | 
+ MLPC
+ | 6.955
+ | 9.531
+ | 3.547
+ | 7.58
+ | 30.606
+ | 40.914
+ | 
+ MLPR
+ | 15.091
+ | 15.714
+ | 7.675
+ | 26.663
+ | 47.184
+ | 9.332
+ | 
+ Back to article page 
+ Search
+ Search by keyword or author 
+ Search 
+ Navigation
+ Find a journal
+ Publish with us
+ Track your research
+ Footer Navigation
+ Discover content
+ Journals A-Z 
+ Books A-Z 
+ Subjects A-Z 
+ Publish with us
+ Journal finder 
+ Publish your research 
+ Language editing 
+ Open access publishing 
+ Products and services
+ Our products 
+ Librarians 
+ Societies 
+ Partners and advertisers 
+ Our brands
+ Springer 
+ Nature Portfolio 
+ BMC 
+ Palgrave Macmillan 
+ Apress 
+ Discover 
+ Corporate Navigation
+ Your privacy choices/Manage cookies 
+ Your US state privacy rights 
+ Accessibility statement 
+ Terms and conditions 
+ Privacy policy 
+ Help and support 
+ Legal notice 
+ Cancel contracts here 
+ 160.79.106.145 
+ Not affiliated
+ © 2026 Springer Nature

@@ -1,0 +1,118 @@
+Source: https://zenodo.org/api/records/11558791
+Title: WiFi RSS & RTT dataset with different LOS conditions for indoor positioning
+Creators: Feng, Xu; Nguyen, Khuong An; Luo, Zhiyuan
+License: {'id': 'cc-by-4.0'}
+Publication date: 2024-06-11
+DOI: 10.5281/zenodo.11558792 (concept DOI 10.5281/zenodo.11558791)
+
+Description:
+ This is the second batch of WiFi RSS RTT datasets with LOS conditions we published. Please see   https://doi.org/10.5281/zenodo.11558192   for the first release. 
+   
+ We provide three real-world datasets for indoor positioning model selection purpose. We divided the area of interest was divided into discrete grids and labelled them with correct ground truth coordinates and the LoS APs from the grid. The dataset contains WiFi RTT and RSS signal measures and is well separated so that training points and testing points will not overlap. Please find the datasets in the 'data' folder. The datasets contain both  WiFi RSS and RTT signal measures  with  groud truth coordinates  label and  LOS condition label . 
+ 
+ 
+ Lecture theatre: This is a entirely LOS scenario with 5 APs. 60 scans of WiFi RTT and RSS signal measures were collected at each reference point (RP).  
+ 
+ 
+ Corridor: This is a entirely NLOS scenario with 4 APs. 60 scans of WiFi RTT and RSS signal measures were collected at each reference point (RP).  
+ 
+ 
+ Office: This is a mixed LOS-NLOS scenario with 5 APs. At least one AP was NLOS for each RP. 60 scans of WiFi RTT and RSS signal measures were collected at each reference point (RP).  
+ 
+ 
+ 
+  Collection methodology  
+ The APs utilised were Google WiFi Router AC-1304, the smartphone used to collect the data was Google Pixel 3 with Android 9. 
+ The ground truth coordinates were collected using fixed tile size on the floor and manual post-it note markers.   
+ Only RTT-enabled APs were included in the dataset. 
+  The features of the dataset  
+ 
+ The features of the lecture theatre dataset are as follows: 
+ 
+ 
+ Testbed area:	15 × 14.5 m2
+Grid size: 0.6 × 0.6 m2 Number of AP: 5
+Number of reference points: 120
+Samples per reference point: 60
+Number of all data samples: 7,200
+Number of training samples: 5,400
+Number of testing samples: 1,800
+Signal measure: WiFi RTT, WiFi RSS
+Note: Entirely LOS
+ 
+ 
+   
+ 
+ The features of the corricor dataset are as follows: 
+ 
+ 
+ Testbed area:	35 × 6 m2
+Grid size: 0.6 × 0.6 m2 Number of AP: 4
+Number of reference points: 114
+Samples per reference point: 60
+Number of all data samples: 6,840
+Number of training samples: 5,130
+Number of testing samples: 1,710
+Signal measure: WiFi RTT, WiFi RSS
+Note: Miexed LOS-NLOS. At least one AP was NLOS for each RP.
+ 
+ 
+   
+ 
+ The features of the office dataset are as follows: 
+ 
+ 
+ Testbed area:	18 × 5.5 m2
+Grid size: 0.6 × 0.6 m2 Number of AP: 5
+Number of reference points: 108
+Samples per reference point: 60
+Number of all data samples: 6,480
+Number of training samples: 4,860
+Number of testing samples: 1,620
+Signal measure: WiFi RTT, WiFi RSS
+Note: Entirely NLOS
+ 
+ 
+   
+ 
+ 
+  Dataset explanation  
+ 
+ The columns of the dataset are as follows: 
+ 
+ Column 'X': the X coordinates of the sample.
+Column 'Y': the Y coordinates of the sample.
+Column 'AP1 RTT(mm)', 'AP2 RTT(mm)', ..., 'AP5 RTT(mm)': the RTT measure from corresponding AP at a reference point.
+Column 'AP1 RSS(dBm)', 'AP2 RSS(dBm)', ..., 'AP5 RSS(dBm)': the RSS measure from corresponding AP at a reference point.
+Column 'LOS APs': indicating which AP has a LOS to this reference point.
+ 
+ 
+ Please note: 
+ 
+ 
+ The RSS value -200 dBm indicates that the AP is too far away from the current reference point and no signals could be heard from it. 
+ 
+ 
+ The RTT value 100,000 mm indicates that no signal is received from the specific AP. 
+ 
+ 
+   
+  Citation request  
+ When using this dataset, please cite the following three items: 
+  Feng, X., Nguyen, K. A., & Zhiyuan, L. (2024). WiFi RSS & RTT dataset with different LOS conditions for indoor positioning [Data set]. Zenodo. https://doi.org/10.5281/zenodo.11558792  
+   
+  @article{feng2024wifi,
+  title={A WiFi RSS-RTT indoor positioning system using dynamic model switching algorithm},
+  author={Feng, Xu and Nguyen, Khuong An and Luo, Zhiyuan},
+  journal={IEEE Journal of Indoor and Seamless Positioning and Navigation},
+  year={2024},
+  publisher={IEEE}
+}    @inproceedings{feng2023dynamic,
+  title={A dynamic model switching algorithm for WiFi fingerprinting indoor positioning},
+  author={Feng, Xu and Nguyen, Khuong An and Luo, Zhiyuan},
+  booktitle={2023 13th International Conference on Indoor Positioning and Indoor Navigation (IPIN)},
+  pages={1--6},
+  year={2023},
+  organization={IEEE}
+}  
+   

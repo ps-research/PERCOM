@@ -1,0 +1,7 @@
+Source: Consensus search result record (abstract only), retrieved 2026-11-14 via the Consensus MCP search tool; search-log S032.
+URL: https://consensus.app/papers/details/w:1333ccf0-08ef-4531-8d67-4bb475db8975/
+Title: Few-Shot Learning for WiFi Fingerprinting Indoor Positioning
+Listing: Zhenjie Ma et al., 2023, Sensors (DOI 10.3390/s23208458 via Crossref)
+
+Abstract:
+In recent years, deep-learning-based WiFi fingerprinting has been intensively studied as a promising technology for providing accurate indoor location services. However, it still demands a time-consuming and labor-intensive site survey and suffers from the fluctuation of wireless signals. To address these issues, we propose a prototypical network-based positioning system, which explores the power of few-shot learning to establish a robust RSSI-position matching model with limited labels. Our system uses a temporal convolutional network as the encoder to learn an embedding of the individual sample, as well as its quality. Each prototype is a weighted combination of the embedded support samples belonging to its position. Online positioning is performed for an embedded query sample by simply finding the nearest position prototype. To mitigate the space ambiguity caused by signal fluctuation, the Kalman Filter estimates the most likely current RSSI based on the historical measurements and current measurement in the online stage. The extensive experiments demonstrate that the proposed system performs better than the existing deep-learning-based models with fewer labeled samples.

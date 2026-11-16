@@ -1,0 +1,87 @@
+ 
+ UCI Machine Learning Repository 
+ Wireless Indoor Localization - UCI Machine Learning Repository 
+ Datasets 
+ Contribute Dataset Donate New 
+ Link External 
+ About Us Who We Are 
+ Citation Metadata 
+ Contact Information 
+ Login 
+ Wireless Indoor Localization
+ Donated on 12/3/2017
+ Collected in indoor space by observing signal strengths of seven WiFi signals visible on a smartphone. The decision variable is one of the four rooms. 
+ Dataset Characteristics
+ Multivariate
+ Subject Area
+ Computer Science
+ Associated Tasks
+ Classification
+ Feature Type
+ Real
+ # Instances
+ 2000
+ # Features
+ -
+ Dataset Information
+ Additional Information
+ Collected to perform experimentation on how wifi signal strengths can be used to determine one of the indoor locations.
+ Has Missing Values?
+ No
+ Variables Table
+ Variable Name | Role | Type | Description | Units | Missing Values | 
+ | | | | | no | 
+ | | | | | no | 
+ | | | | | no | 
+ | | | | | no | 
+ | | | | | no | 
+ | | | | | no | 
+ | | | | | no | 
+ Rows per page 5 10 15 20 25 0 to 7 of 7 
+ Additional Variable Information
+ Each attribute is wifi signal strength observed on smartphone.
+ Dataset Files
+ File | Size | 
+ wifi_localization.txt | 60.5 KB | 
+ Download (60.7 KB) Install the ucimlrepo package 
+ pip install ucimlrepo 
+ Import the dataset into your code 
+ from ucimlrepo import fetch_ucirepo 
+# fetch dataset 
+wireless_indoor_localization = fetch_ucirepo(id=422) 
+# data (as pandas dataframes) 
+X = wireless_indoor_localization.data.features 
+y = wireless_indoor_localization.data.targets 
+# metadata 
+print(wireless_indoor_localization.metadata) 
+# variable information 
+print(wireless_indoor_localization.variables) 
+ View the full documentation 
+ Cite 0 citations 
+ 9903 views 
+ Citation
+ Bhatt, R. (2017). Wireless Indoor Localization [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C51880. 
+ Style: APA MLA Chicago Vancouver IEEE BibTeX 
+ Creators
+ Rajen Bhatt
+ DOI
+ 10.24432/C51880 
+ License
+ This dataset is licensed under a
+ Creative Commons Attribution 4.0 International 
+(CC BY 4.0) license.
+ This allows for the sharing and adaptation of the datasets for any purpose,
+provided that the appropriate credit is given.
+ By using the UCI Machine Learning Repository,
+you acknowledge and accept the cookies and privacy practices used by the UCI Machine Learning Repository.
+ Accept Read Policy 
+ The Project About Us CML National Science Foundation 
+ Navigation Home View Datasets Donate a Dataset 
+ Logistics Contact Privacy Notice Feature Request or Bug Report 
+ Browse Datasets 
+ Donate a Dataset 
+ Link an external Dataset 
+ Who We Are 
+ Citation Metadata 
+ Contact Information 
+ Login 

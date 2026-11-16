@@ -1,0 +1,7 @@
+Source: Consensus search result record (abstract only), retrieved 2026-11-14 via the Consensus MCP search tool; search-log S034.
+URL: https://consensus.app/papers/details/w:313a1bab-e96e-4c8d-8d70-3816f8481fc1/
+Title: A Wi-Fi RSS-RTT Indoor Positioning Model Based on Dynamic Model Switching Algorithm
+Listing: Xu Feng et al., 2024, IEEE Journal of Indoor and Seamless Positioning and Navigation (DOI 10.1109/jispin.2024.3385356 via Crossref)
+
+Abstract:
+The advances in Wi-Fi technology have encouraged the development of numerous indoor positioning systems. However, their performance varies significantly across different indoor environments, making it challenging to identify the most suitable system for all scenarios. To address this challenge, we propose an algorithm that dynamically selects the most optimal Wi-Fi positioning model for each location. Our algorithm employs a machine learning weighted model selection algorithm trained on raw Wi-Fi received signal strength (RSS), raw Wi-Fi round-trip time (RTT) data, statistical RSS and RTT measures, and access point line-of-sight information. We tested our algorithm in four complex indoor environments, and compared its performance to traditional Wi-Fi indoor positioning models and state-of-the-art stacking models, demonstrating an improvement of up to 1.8 m on average.

@@ -1,0 +1,7 @@
+Source: Consensus search result record (abstract only), retrieved 2026-11-14 via the Consensus MCP search tool; search-log S032.
+URL: https://consensus.app/papers/details/w:68a9055c-dade-4b63-b29e-f880d6296092/
+Title: MetaLoc: Learning to Learn Wireless Localization
+Listing: Jun Gao et al., 2023, IEEE Journal on Selected Areas in Communications (DOI 10.1109/jsac.2023.3322766 via Crossref)
+
+Abstract:
+(Consensus record confirms venue: IEEE Journal on Selected Areas in Communications, 2023. Abstract identical to arXiv entry saved in P019_metaloc_abs.txt, with code link https://github.com/WU-Dongze/MetaLoc.)

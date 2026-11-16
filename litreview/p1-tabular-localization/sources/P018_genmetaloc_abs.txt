@@ -1,0 +1,11 @@
+Source: arXiv API entry (abstract only) https://export.arxiv.org/api/query?id_list=2503.18078
+Title: GenMetaLoc: Learning to Learn Environment-Aware Fingerprint Generation for Sample Efficient Wireless Localization
+Authors: Jun Gao, Feng Yin, Wenzhong Yan, Qinglei Kong, Lexi Xu, Shuguang Cui
+Published: 2025-03-23T14:02:40Z
+arXiv: 2503.18078
+Journal-ref: 
+DOI: 
+Comment: 
+
+Abstract:
+Existing fingerprinting-based localization methods often require extensive data collection and struggle to generalize to new environments. In contrast to previous environment-unknown MetaLoc, we propose GenMetaLoc in this paper, which first introduces meta-learning to enable the generation of dense fingerprint databases from an environment-aware perspective. In the model aspect, the learning-to-learn mechanism accelerates the fingerprint generation process by facilitating rapid adaptation to new environments with minimal data. Additionally, we incorporate 3D point cloud data from the first Fresnel zone between the transmitter and receiver, which describes the obstacles distribution in the environment and serves as a condition to guide the diffusion model in generating more accurate fingerprints. In the data processing aspect, unlike most studies that focus solely on channel state information (CSI) amplitude or phase, we present a comprehensive processing that addresses both, correcting errors from WiFi hardware limitations such as amplitude discrepancies and frequency offsets. For the data collection platform, we develop an uplink wireless localization system that leverages the sensing capabilities of existing commercial WiFi devices and mobile phones, thus reducing the need for additional deployment costs. Experimental results on real datasets show that our framework outperforms baseline methods.

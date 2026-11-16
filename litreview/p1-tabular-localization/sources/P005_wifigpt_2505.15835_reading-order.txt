@@ -1,0 +1,1311 @@
+Transforming Decoder-Only Transformers for
+Accurate WiFi-Telemetry Based Indoor Localization
+Nayan Sanjay Bhatia, Katia Obraczka
+
+arXiv:2505.15835v1 [cs.NI] 16 May 2025
+
+University of California, Santa Cruz
+Santa Cruz, California, USA
+{nbhatia3, katia}@ucsc.edu
+
+Abstract—Wireless Fidelity (WiFi) based indoor positioning
+is a widely researched area for determining the position of
+devices within a wireless network. Accurate indoor location
+has numerous applications, such as asset tracking and indoor
+navigation. Despite advances in WiFi localization techniquesin particular approaches that leverage WiFi telemetry- their
+adoption in practice remains limited due to several factors
+including environmental changes that cause signal fading, multipath effects, interference, which, in turn, impact positioning accuracy. In addition, telemetry data differs depending on the WiFi
+device vendor, offering distinct features and formats; use case
+requirements can also vary widely. Currently, there is no unified
+model to handle all these variations effectively. In this paper, we
+present WiFiGPT, a Generative Pretrained Transformer (GPT)
+based system that is able to handle these variations while achieving high localization accuracy. Our experiments with WiFiGPT
+demonstrate that GPTs, in particular Large Language Models
+(LLMs), can effectively capture subtle spatial patterns in noisy
+wireless telemetry, making them reliable regressors. Compared
+to existing state-of-the-art methods, our method matches and
+often surpasses conventional approaches for multiple types of
+telemetry. Achieving sub-meter accuracy for RSSI and FTM and
+centimeter-level precision for CSI demonstrates the potential of
+LLM-based localisation to outperform specialized techniques, all
+without handcrafted signal processing or calibration.
+Index Terms—Indoor localization, WiFi, LLM, LLaMA, CSI,
+GPT
+
+I. I NTRODUCTION
+Indoor positioning technologies have various applications,
+ranging from indoor navigation in environments such as
+airports, hospitals, and shopping malls, accessibility, healthand elderly care to improving smart building systems [1]–[3].
+However, its adoption in the real world has been slow due
+to practical issues. Many localization systems are trained and
+tested on static environments in a controlled manner. However, the real world is dynamic, and even slight environmental
+variations can cause catastrophic loss in accuracy [4]. In order
+to make real impact, localization approaches must be able to
+adapt to different dynamic scenarios while maintaining high
+accuracy [5]. More recently, localization using WiFi telemetry
+has been receiving considerable attention from researchers
+and practitioners due to WiFi’s ubiquity, cost-effectiveness
+and scalability [6]. WiFi telemetry offers valuable information
+about the Radio Frequency (RF) environment through metrics such as the Received Signal Strength Indicator (RSSI),
+Channel State Information (CSI) and Fine Timing Measurement (FTM) [7], [8]. This telemetry, especially the CSI,
+
+characterizes how a signal propagates from a transmitter to
+a receiver, encompassing effects like scattering, fading, and
+power decay [9].
+As AI and ML tools become increasingly prevalent, they
+have been used for indoor localization systems to improve
+accuracy, adaptability, and real-time performance in a variety
+of environments [10]. Indoor localization has traditionally
+relied on rule-based algorithms that need telemetry features
+like RSSI, CSI, or FTM to be manually customized. While effective in custom settings, these models often fail to generalize
+across environments and require significant engineering effort
+to adapt to different target scenarios. Common neural networks or non-linear regressor based approaches often require
+data preprocessing steps such as filtering and data scaling.
+These methods rely on fixed schemas and struggle with
+missing or incomplete data, limiting flexibility and scalability
+across heterogeneous environments [11].
+As Transformers [12] become more ubiquitous and accessible, we have explored their use to address the challenges posed by accurate WiFi-based indoor localization.
+Transformers [12] were originally built for language translation, where the goal is to understand textual sequences
+and generalize across different contexts. Their generalization
+capability makes Transformers a good candidate for modeling
+WiFi telemetry, which is often dynamic, noisy, sparse, and
+affected by signal propagation impairments. In environments
+that are heavily affected by the effect of multipath, like
+corridors or indoor spaces, even small changes in position
+can lead to significant signal variations, which traditional
+methods struggle to capture. Transformers, and more broadly
+LLMs, provide a flexible way to learn patterns from spatiotemporal data without needing hand-crafted features. Their
+generalization ability, which has already been shown in NLP,
+computer vision, robotics, and even biomedical signals [13]–
+[16], can be applied here to make sense of complex patterns
+in WiFi environments. In other words, instead of building
+different models for every setup, we can train a single model
+that learns to work across environments.
+Motivated by the cross-generalization capabilities of GPTs,
+in particular LLMs, we investigate their potential to address
+indoor localization tasks using WiFi signals to accurately
+estimate positioning in dynamic environments subject to noise
+and multipath effects.
+In this paper, we introduce WiFiGPT, a decoder-only large
+
+language model adapted and re-tooled to model real-world
+WiFi telemetry for accurate indoor localization. LLMs have
+been typically trained to model textual sequences in natural
+language. In WiFiGPT, we leverage decoder-only LLMs’
+learning capability to model the distribution of telemetry
+signals, treating each signal feature as an input and mapping
+the final answer to the device position. We demonstrate that
+LLMs are not limited to text-based systems and can operate
+in a noisy environment utilizing wireless telemetry data for
+indoor positioning. The system is designed with portability,
+agility, and adaptability in mind. It can quickly adjust to
+different environments while maintaining high accuracy. This
+allows fast learning, even from just a few samples, and enables
+strong cross-generalization. Because of this, the resulting
+model can be rapidly trained and deployed in real-world
+scenarios with minimal computational overhead where LLMs
+already exist, such as smart home devices, smartphones. In
+this paper, we make the following contributions:
+• To the best of our knowledge, WiFiGPT is the first
+system repurposing decoder-only LLMs for indoor localization.
+• We present a generalized framework with deterministic outputs that integrates diverse telemetry sources
+and adapts across radio environments. Extending LLMs
+beyond language, we apply a simple training scheme
+to map telemetry sequences to distance predictions for
+sensor-based regression.
+• We show that LLMs can handle WiFi telemetry directly
+without manual feature engineering. WiFiGPT performs
+well on real-world indoor datasets and adapts quickly,
+even with limited training data, getting sub-meter accuracy.
+• We analyze how the accuracy of different LLaMA model
+sizes varies under changing environmental conditions.
+The rest of the paper is organized as follow: In Section II,
+we provide an overview of the background and related work
+setting the stage for our contributions. Section III describes in
+detail our large WiFi-telemetry model for indoor localization,
+while in Section IV, we present its implementation details.
+Section V describes how we evaluated the performance of
+our system and Section VI presents and discusses our results.
+Finally, Section VII concludes the paper and discusses directions for future work.
+II. BACKGROUND AND RELATED WORK
+In this section, we start with a brief overview of the
+background on WiFi telemetry and then describe the stateof-the-art approaches including both traditional models and
+more recent methods based on large language models (LLMs).
+We highlight the strengths and limitations of each, setting the
+stage for our proposed approach.
+A. WiFi Telemetry
+WiFi provides different telemetry data, such as Received
+Signal Strength Indicator (RSSI), Channel State Information
+(CSI), Angle of Arrival (AoA) or time-based systems like
+
+Fine Timing Measurement (FTM), Time of Flight (ToF), Return Time of Flight (RToF) each offering trade-offs between
+accuracy, complexity, and practicality for Indoor Positioning.
+(Table I).
+RSSI: Received Signal Strength Indicator (RSSI) is a metric
+used to quantify the strength of a received signal during
+wireless communication [17]. RSSI-based techniques are
+commonly used because they are easily accessible and involve
+minimal overhead [18]. RSSI values are often scaled based
+on the specific hardware and manufacturer specifications,
+meaning there is no standardized scale to compare data.
+Fingerprinting approaches [19] are common. However, it is
+sensitive to environmental noise and device heterogeneity.
+Hence, even after enhancement of ML and sensor fusion [20],
+RSSI-based approach often shows high localization error. To
+reduce the error, RSSI is used in conjunction with other
+telemetry data. The process of combining telemetry data
+from different sensors is called Sensor Fusion. In 2021,
+Microsoft’s indoor localization competition by Microsoft [21]
+attracted participation from 1,170 global teams exploring various methodologies. The dataset encompasses dense signatures
+of WiFi, GMF, iBeacons, BLE and ground truth (waypoint)
+locations from numerous buildings in Chinese cities, and the
+top teams achieved high localization accuracy using the sensor
+fusion setup using non-NN models like KNN and LGBM with
+an error margin of 1.3 m.
+FTM: IEEE 802.11-2016 [22] included the first generation
+of the FTM protocol that sends a burst of frames and
+averages the round-trip-time (RTT). In the Line-Of-Sight
+(LOS) environment, FTM can perform significantly better
+than RSSI, with errors around two meters [23]. However,
+not all commercial devices support it; accuracy is affected
+by clock skew and drift and needs calibration accordingly.
+Its performance suffers in Non-Line-Of-Sight environments
+(NLOS), where positioning error exacerbates and can be as
+high as 5-10 meters in NLOS settings [23], [24].
+CSI and AoA: CSI captures environmental conditions by
+providing the phase and amplitude of different subcarriers.
+Consequently, the system is more robust against scattering,
+fading and power delays. Indoor localization has seen advancements in the Non-Line-of-Sight (NLOS) environment
+through systems like Ubicarse, ArrayTrack, and SpotFi [25]–
+[27], each based on using Angle of Arrival(AoA) derived
+from the Channel State Information(CSI). MUSIC (Multiple
+Signal Classification) [28] and ESPRIT (Estimation of Signal
+Parameters via Rotational Invariance Techniques) [29] signal
+processing technique that separates signal and noise spaces
+and can be used to estimate angles of arrival (AoA) of signals
+in array signal processing. All AoA methodology are based
+on some variation of MUSIC and ESPRIT requires multiple antennae to get phase differences. Hence, most existing
+work relies on specialized hardware as traditional routers
+have firmware restrictions and cannot work on single-antenna
+systems (ESP32, Raspberry Pi) [30], [31]. This makes them
+less ubiquitous than RSSI and FTM. System performance is
+also affected by feedback delays, and errors introduced by
+
+TABLE I
+C OMPARISON OF W IRELESS L OCALIZATION T ECHNIQUES
+Feature
+Accuracy
+Resolution
+H/W Requirements
+Computational Complexity
+Multipath Resilience
+Ease of Implementation
+
+CSI
+High
+Fine-grained
+Specialized
+(e.g.,
+Intel 5300 NIC)
+Moderate to High
+Good (can leverage
+multi-path)
+Moderate to Complex
+
+the use of outdated or incorrect CSI. Acquiring accurate CSI
+introduces requires control message exchanges between the
+transmitter and receiver, restricting valuable bandwidth by
+adding overhead.
+B. LLMs and Their Applications
+Transformer models have demonstrated remarkable adaptability across diverse domains. In particular, as shown in [13],
+large language models (LLMs), which can be realized by
+generative pre-trained transformers (GPTs), which are trained
+primarily in English, still perform well in other languages.
+Since then, transformers’ capacity for generalization has
+expanded far beyond natural language processing to include
+applications such as computer vision (vision transformers),
+robotics, structured code generation, modeling vital signs,
+e.g., eletrocardiogram (ECG) signals, and even interpreting
+dolphin vocalizations [14]–[16].
+Transformers can be broadly classified into two types:
+Models that can handle all tokens at once (encoders) and those
+that can only handle past tokens (decoders) [32]. Encoderbased transformers such as BERT [33] take full input and
+process it simultaneously. This requires access to the whole
+input sequence before any processing can begin (non-causal).
+However, they cannot be used when data is available in real
+time (such as WiFi packets) and are more suitable for offline
+tasks such as recovering lost network packets [34] or data imputation [35]. Decoder-based transformers generate an output
+sequence that is not dependent on the future element (causal).
+Decoder-only transformers are also called autoregressive, in
+that each output is generated one step at a time based on
+current and past elements. Decoder-only architectures are thus
+well suited for real-time applications. Contemporary systems,
+such as Openai’s GPT [36] and Meta’s LLaMA [37], adopt a
+decoder-only architecture. Throughout the paper, we use the
+term Generated Pretrained Transformers (GPT) for decoderbased transformers only.
+LLMs are gaining traction in networking applications.
+NetLLM [38] introduces a framework that adapts large
+language models (LLMs) for networking tasks, including
+viewport prediction, adaptive bitrate streaming, and cluster
+job scheduling. WirelessLLM [39] deals with challenges like
+power allocation and spectrum sensing in communication
+networks and SigLLM [40] explores the application of LLMs
+for time series anomaly detection. CSI-BERT [41] uses an
+
+RSSI
+Low to Moderate
+Coarse-grained
+Standard WiFi
+
+Time-Based
+Moderate to High
+Fine-grained
+Timing hardware
+
+Low
+Poor
+
+Moderate
+Moderate
+
+AoA
+High
+Fine-grained
+Multiple antennas
+High
+Good
+
+Simple
+
+Moderate
+
+Complex
+
+encoder-based transformer to recover lost CSI in wireless
+sensing applications caused by packet loss. LocGPT [42]
+proposes a custom encoder-decoder transformer architecture
+for antenna array-based triangulation using phase spectra. It
+requires extensive pre-training data to learn general localization features.
+Vacareanu et al. (2024) [43] show that LLMs can perform
+regression purely through in-context learning, achieving competitive results on nonlinear synthetic datasets without finetuning. Tang et al. (2024) [44] show that LLM embeddings
+can be used for regression tasks in higher-dimensional settings
+than traditional feature engineering on synthetic datasets.
+Building on this, we show that exising decoder-only LLMs
+can accurately perform distance calculations. Once fine-tuned
+on a sufficient set of WiFi packets, our system can deliver
+accurate distance predictions without requiring large-scale
+pretraining or extensive scene-specific data.
+III. W I F I GPT
+WiFiGPT (Figure 1) is a deterministic language modelbased system designed for indoor distance estimation using
+Wi-Fi telemetry. It begins by collecting telemetry data from
+transmitter-receiver (Tx/Rx) pairs. This raw data is then
+aligned with ground-truth distance labels to enable promptstyle learning. In the training phase, a large language model is
+fine-tuned in a supervised manner to map telemetry sequences
+to corresponding distances, using MAE and MSE as custom
+loss metrics. During inference, the model applies greedy
+decoding to output a single numeric distance prediction
+in meters, ensuring deterministic behavior. The system is
+evaluated by computing MAE/MSE directly on the output
+format, making it a streamlined and interpretable solution for
+localization tasks.
+A. Telemetry Source
+We use telemetry data captured between transmitters (Tx)
+and receivers (Rx) of various WiFi devices, including ESP32
+devices, Google Access Points and Pixel smartphones. Specifically, our system shows results for multisource telemetry
+inputs such as CSI, FTM, and RSSI measurements. However, our model is not restricted to these particular types of
+telemetry and can handle other telemetry and sensor data.
+Our method processes these telemetry signals sequentially
+through an autoregressive model, allowing the system to
+
+1. Telemetry Source
+
+2. Data Preparation Layer
+
+Collects Wi-Fi telemetry from
+Tx/Rx pairs such as RSSI,
+FTM, CSI
+
+Aligns raw telemetry with known distance
+label enabling prompt style learning
+
+4. Deterministic Inference Pipeline
+
+3. Training Layer
+
+Selecting highest token probability to ensure
+deterministic output (greedy decoding)
+
+Supervised fine tuning to learn the mapping
+between telemetry signals and physical
+distance.
+
+Processes Wi-Fi telemetry arrays using the
+fine-tuned LLM model.
+Produces a numeric distance output in the
+format: {answer}m
+
+Custom Loss Monitoring
+- Uses MAE / MSE for distance prediction
+
+Evaluation Module
+- MAE / MSE
+- Directly on LLM output format
+
+Fig. 1. WiFiGPT: System Flow
+
+generalize distance predictions across different environments
+and hardware setups. Importantly, by learning directly from
+raw telemetry data, our model remains strong and works
+well with any device. It adapts reliably to different indoor
+conditions without relying on specific hardware or signal
+types.
+B. Data Preparation Layer
+A token is a chunk of character sets that the model
+reads or generates step by step. Large Language models are
+primarily autoregressive models that means they do next token
+prediction based on the previous inputs and is expressed by
+the equation:
+P (x1 , x2 , . . . , xT ) =
+
+T
+Y
+
+P (xt | x1 , . . . , xt−1 )
+
+(1)
+
+t=1
+
+where xt is the token at position t, predicted based on
+previous x1 ...xt−1 tokens.
+To adapt the LLM for a regression-style task using sensor
+telemetry, we present the problem as a language modelling
+goal, where the model is familiarized with the telemetry input.
+The model learns to generate the target value as the next
+token in a structured prompt-response format. By framing
+the positioning task as a next-word prediction problem, we
+avoid modifying the LLM architecture, eliminating the need
+of a encoder for input data. The output token must be
+a numeric value in a consistent and parseable format. It
+should be deterministic and agnostic to the system conditions.
+The telemetry data needs to be represented effectively in a
+structured format so that LLM can understand the effective
+
+relationship and predict the assign task. We modify equation
+(1) as follows:
+P ({Distance}m | Instruction, [Telemetry])
+
+(2)
+
+We treat the instruction prompt and telemetry data as the
+input tokens x1 , x2 , . . . , xt−1 and the position as token
+xt . Reframes the LLM modeling objective into a regression task. The LLM is trained using a JSONL-based instruction tuning format [45] where each WiFi packet is
+structured as a JSON object containing a single text field.
+We use four delimiter tokens for different sections of our
+prompts. <|begin_of_text|> and <|end_of_text|> indicate the start and end of each new packet, respectively.
+<|start_header_id|> and <|end_header_id|> creates a distinct identity between the user and the assistant. The
+user agent can send available WiFi telemetry or other sensor
+data (BLE, gyroscope), and the assistant returns the estimated
+distance in the format: {answer}m. The <|end_of_text|>
+also acts as end of sequence (EOS) token. eg.
+<|begin_of_text|><|start_header_id|>
+user <|end_header_id|>
+based on the array predict distance in
+meter and nothing else in this format:
+{answer}m.
+this is array: [WiFi Telemetry]
+<|start_header_id|> assistant
+<|end_header_id|> {Distance}m
+<|end_of_text|>
+
+This format is used for alignment [46]. Formatting the model
+response in this way simplifies automated evaluation in later
+phases. During inference, the text until the end header ID is
+provided to the LLM, prompting it to predict the distance as
+the next token in this format {answer}m.
+
+Unlike traditional deep learning methods like CNNs,
+LSTMs, or nonlinear regressors like LGBM and KNN, the
+LLM-based approach does not require data scaling or converting categorical features (like vendor information or room
+numbers) into one-hot vectors. A fixed schema is not required,
+and missing features can be omitted. It can convert wireless environment information into high-dimensional vectors,
+capturing semantic meanings and relationships into the latent
+space. For instance, the user commands, ”Turn on the nearest
+light.” The system can calculate the user’s precise location,
+understands the contextual intent, and activates the nearest
+light. The model could answer questions like ”Where is the
+nearest restroom?” or ”What is the signal strength near Room
+404?”.
+C. Training
+1) Select Base LLM Model: We select the Meta’s LLaMA
+3 family of models, including variants 1B [47], 3B [48], and
+8B [49], due to their open-source availability, strong performance characteristics, and established presence in the research
+literature as representative examples of modern decoder-only
+transformer architectures. LLaMA has open-weights, permissive open-source license with strong benchmark scores for
+language tasks and a longer context window size, allowing
+us to process a whole packet in one pass [50].
+2) Fine Tuning: Large Language Models (LLMs) can
+model a task when given examples of that task in their context,
+exhibiting Few-Shot and Zero-Shot Capabilities. We conduct
+supervised fine-tuning (SFT) [51] using LoRA (Low-Rank
+Adaptation) adapters [52] on the LLaMA models. We used
+Apple’s MLX framework [53] on a 32GB M1 Max chip.
+SFT involves training the LLM model on the positioninglabeled data, while LoRA enables efficient fine-tuning of
+only selected model layers instead of the whole network.
+LoRA is an efficient way to adapt base language models
+to new tasks without changing the entire layer, which can
+be both time- and computing-intensive. LoRA freezes the
+original weights and updates only a fraction of the parameters.
+After training, it creates a LoRA adapter for the given
+dataset to be loaded/unloaded for different tasks. Reduces
+the computational overhead of training on consumer-grade
+hardware, allows modularity, and allows us to easily swap
+or stack adapters for different tasks without retraining the
+entire model. We use batch size 2, number of layers 16,
+and learning rate (lr) 2e-4. We use a smaller batch size
+and num-layers due to limited GPU memory, which can
+lead to noisier gradients [54]. We use the relatively standard
+learning rate to fine-tune [55]. We train the LLM model
+separately for each dataset and environment to evaluate how it
+responds to different signal distributions and spatial layouts.
+This allows us to study its behavior in a controlled setting
+and to understand how well it captures environment-specific
+patterns. According to the Chinchilla Law [56], models benefit
+more from increased training data than from an increased
+parameter count. Therefore, as we accumulate more radio
+environment data across diverse settings, the model should
+
+generalize better in future deployments, even without retraining, by leveraging its prior exposure to similar propagation
+characteristics.
+D. Deterministic Inference
+LLMs are generative models that learn statistical patterns
+in training data to predict the next token in a sequence. As a
+result, they are inherently stochastic, meaning that their output
+can vary depending on the decoding strategy used. We used
+deterministic text generation (greedy decoding) by setting the
+temperature t to 0.0, top-p to 1.0 and do-sample to false. We
+also set a fixed random seed to ensure that the results are
+fully reproducible every time we run the experiments. The
+temperature parameter controls randomness in the generation
+process by scaling the logits (raw output scores produced by
+the model) before applying the softmax function. Temperature
+0.0 ensures that the model consistently selects the most
+probable token. Top-p value of 1.0 enables consideration of
+the full token distribution. Setting do-sample to false forces
+the model to not do sampling and ensures greedy decoding.
+The random seed establishes a fixed initialization point for
+any probabilistic components, guaranteeing identical outputs
+given the same input conditions.
+• Temperature T = 0.0 scales the logits (z) such that
+P (x) = softmax(z/T ) → arg max as T → 0, forcing
+deterministic selection.
+• do-sample = F alse restricts candidate tokens to the
+single most likely token.
+• Top-p = 1.0 includes the entire token distribution (no
+truncation by cumulative probability).
+• Random seed fixes any stochastic elements (e.g.,
+dropout, sampling noise), ensuring reproducibility.
+Under these conditions, the output is fully deterministic;
+the same input prompt always allows the same output token.
+IV. E XPERIMENTAL M ETHODOLOGY
+A. Datasets
+We demonstrate the accuracy of our system using two
+datasets. The first dataset is custom collected, where we
+capture Channel State Information (CSI) using two ESP32S2 devices positioned 6 to 10 meters apart in a hallway
+with human presence, recording data for around 5 minutes
+and maintaining LOS. The second data set is publicly available [57], combining WiFi fine-time measurement (FTM) and
+received signal strength indicator (RSSI) data collected in
+three environments: a lecture theater (LOS), an office (mixed
+LOS-NLOS), and a corridor (NLOS) to improve positioning
+accuracy under varying conditions. Using these two datasets
+underscores our model’s adaptability and robustness across
+telemetry and environmental scenarios.
+1) ESP-32-CSI-HALLWAY: Hallways are a multipathprevalent environment [58]. ESP32 is a single antenna device;
+therefore, we cannot extract phase difference information
+between antennas. Therefore, we cannot use state-of-the-art
+algorithms like MUSIC because they are inapplicable for
+similar low-cost devices. This limitation also applies to many
+
+low-cost Android phones and even the Raspberry Pi, making
+the single-antenna constraint particularly relevant in such
+scenarios.
+We use two ESP32-S2 devices operating at 20 MHz, one
+as a transmitter and the other as a receiver. The ESP32
+chip we are using uses 802.11n WiFi 4. 802.11n was the
+first generation to introduce CSI. The devices are placed
+6 to 10 meters apart at 1-meter intervals, recording CSI
+for approximately 5 minutes in a hallway. The environment
+includes multipath noise and people occasionally lingering
+around, but the setup maintains line-of-sight (LOS). The
+data set is custom collected to ensure that Meta’s LLaMA
+model is not exposed to these data, since the specifics of
+LLaMa’s training data are not publicly available. The data
+set is structured as follows:
+<|begin_of_text|><|start_header_id|>
+user <|end_header_id|>
+based on the array predict distance in
+meter and nothing else in this format:
+{answer}m.
+this is array: [84 -64 4 0 0 0 0 0 0 0
+0 0 13 1 14 2 14 3 14 4 14 3 13 4 12 3
+13 4 13 4 11 4 11 5 10 5 9 5 9 5 8 5 7
+5 6 4 5 4 4 4 3 3 3 3 2 2 1 2 1 2 0 2
+-1 2 0 0 -3 1 -2 2 -4 2 -5 2 -5 2 -6 3
+-6 4 -7 4 -7 5 -7 3 -9 5 -9 5 -9 6 -10
+7 -11 7 -11 8 -10 8 -10 9 -10 10 -9 11
+-10 12 -9 13 -9 15 -9 16 -11 16 -10 17
+0 0 0 0 0 0 0 0 0 0 ]
+<|start_header_id|> assistant
+<|end_header_id|> 6m <|end_of_text|>
+
+11351.0, WiFi RSSI AP 1 (dbm): -63.0,
+WiFi FTM AP 2 (ns): 5599.0, WiFi RSSI
+AP 2 (dbm): -60.0, WiFi FTM AP 3 (ns):
+2918.0, WiFi RSSI AP 3 (dbm): -52.0,
+WiFi FTM AP 4 (ns): 13573.0, WiFi RSSI
+AP 4 (dbm): -68.0, WiFi FTM AP 5 (ns):
+10671.0, WiFi RSSI AP 5 (dbm): -64.0]
+<|start_header_id|> assistant
+<|end_header_id|> 18.25m
+<|end_of_text|>
+
+B. Evaluation Metrics
+Training large-language models with MSE or MAE instead
+of cross-entropy loss can create fundamental issues. MAE
+(Mean Absolute Error) and MSE (Mean Squared Error) loss
+functions assume continuous, symmetric error distributions,
+incompatible with the probabilistic nature of next-token prediction that cross-entropy handles. We are interested in monitoring the training progress without modifying the transformer
+architecture. Therefore, we insert the loss functions as an
+auxiliary module to observe whether the model converges.
+n
+
+MSE =
+
+1X
+(yi − ŷi )2
+n i=1
+
+MAE =
+
+1X
+|yi − ŷi |
+n i=1
+
+(3)
+
+n
+
+(4)
+
+where:
+TABLE II
+W I F I RSS & RTT DATASET WITH DIFFERENT LOS CONDITIONS FOR
+INDOOR POSITIONING [59]
+Data features
+Testbed (m2 )
+Grid size (m2 )
+Number of RPs
+All samples
+Training samples
+Testing samples
+WiFi condition
+
+Lecture Theatre
+15 × 14.5
+0.6 × 0.6
+120
+7,200
+5,280
+1,920
+LOS
+
+Office
+18 × 5.5
+0.6 × 0.6
+108
+6,480
+4,860
+1,620
+LOS-NLOS
+
+Corridor
+35 × 6
+0.6 × 0.6
+114
+6,840
+5,110
+1,740
+NLOS
+
+2) WiFi RSS and RTT dataset with different LOS conditions
+for indoor positioning: We use a publicly available WiFi
+dataset that comprises various LOS and NLOS environments [57]. It contains an extensive selection of samples from
+multiple reference points (RP) in three different scenarios:
+lecture theater (LOS), corridor (mixed LOS / NLOS) and
+office (NLOS) (Table II). Data are collected using a Google
+AC-1304 WiFi router and Pixel 3 smartphones. The data set
+contains RTT and RSSI measurements, as both the Access
+Point (AP) and the Station (STA) support the FTM protocol.
+The dataset is structured as follows:
+<|begin_of_text|><|start_header_id|>
+user <|end_header_id|>
+based on the array predict distance in
+meter and nothing else in this format:
+{answer}m.
+this is array: [WiFi FTM AP 1 (ns):
+
+yi represents the actual value
+ŷi represents the predicted value
+• n is the total number of samples
+•
+•
+
+These evaluation metrics are auxiliary diagnostic tools; we
+do not use them for gradient updates during training. This
+allows us to evaluate the regression behaviour of the LLM
+model while preserving the underlying cross-entropy-based
+language modelling intent. We keep a misalignment counter
+additionally to track outputs that are misaligned or cannot
+be parsed. These are skipped in the loss metrics and logged
+separately for quality checks allowing us to monitor whether
+the LLM is learning to align with the regression task.
+V. R ESULTS
+
+TABLE III
+P ERFORMANCE OF LL A MA-3 M ODELS ON 51,500 CSI S AMPLES (80%
+OF THE DATASET )
+Model
+
+MSE (m)
+
+MAE (m)
+
+R2
+
+Misalignments
+
+LLaMA-3.2-1B
+LLaMA-3.2-3B
+LLaMA-3.1-8B
+
+0.1809
+0.1678
+0.3772
+
+0.0759
+0.0688
+0.1809
+
+0.9163
+0.9224
+0.8255
+
+0
+6
+2
+
+TABLE IV
+M ODEL PERFORMANCE ON T ESTING SAMPLES ACROSS DIFFERENT ENVIRONMENTS
+Parameter
+1b
+3b
+8b
+1b
+3b
+8b
+1b
+3b
+8b
+
+Environment
+Corridor
+Corridor
+Corridor
+Theatre
+Theatre
+Theatre
+Office
+Office
+Office
+
+MSE
+3.0567
+1.8553
+2.4009
+1.8281
+1.23085
+1.5360
+2.4462
+2.2595
+1.9816
+
+R2
+0.9891
+0.9934
+0.9914
+0.9557
+0.97
+0.9628
+0.9641
+0.9668
+0.97094
+
+MAE
+1.3359
+1.1166
+1.2155
+1.0328
+0.90263
+0.9601
+1.1589
+1.0974
+1.107094
+
+A. Few Shot Learning-CSI
+To evaluate how the model behaves with a few shots of
+learning, we split the CSI dataset by class, assigning 10%
+for training, 10% for validation, and the remaining 80% for
+testing. We chose this configuration to present a realistic fewshot learning scenario. Table III presents the performance
+of various LLaMA models on 51,500 CSI samples collected
+in a hallway environment with strong multipath propagation
+and signal reflections from the surrounding, including human
+presence. Despite these challenging conditions, the CSI-based
+models overall achieved near-perfect accuracy. The LLaMA3.2-3B model led in performance, reaching the lowest MSE
+of 0.1678 m and MAE of 0.0688 m, although it experienced
+six misalignments. The LLaMA-3.2-1B model had slightly
+higher error metrics (MSE: 0.1809 m, MAE: 0.0759 m,
+R2 : 0.9163) but confirmed perfectly stable predictions (0
+misalignments). LLaMA-3.1-8B model performed slightly
+worse on all metrics, although not significantly. These results
+highlight the effectiveness of LLMs fine-tuned with CSI data
+in enabling accurate indoor localization, even in complex
+multipath indoor environments.
+CDF of Absolute Localization Error
+
+LLaMA (Lecture Environment)
+
+1.0
+
+Cumulative Probability
+
+0.8
+0.6
+0.4
+
+25th
+0.9600
+0.9750
+0.9800
+0.47
+0.4299
+0.4900
+0.39
+0.29
+0.47
+
+50th
+1.0000
+1.0000
+1.0000
+0.83
+0.8299
+0.76
+0.8
+0.9
+0.97
+
+75th
+2.0000
+1.0000
+1.9900
+1.36
+1.08
+1.36
+1.85
+1.58
+1.76
+
+100th
+10.0100
+9.98
+10.0500
+9.34
+5.37
+6.71
+5.98
+7.22
+5.37
+
+Iteration
+2750
+4000
+4350
+2550
+2500
+3750
+2150
+3500
+2400
+
+all setups, LLMs exhibit strong regression capabilities, with
+median localization errors typically near or below 1 meter.
+In the fully NLOS Corridor environment, the 3B model has
+the highest accuracy, with an MAE of 1.12 m, and MSE of
+1.86. The smaller 1B model also remains effective in such
+scenario with the lowest 25th percentile (0.96) error showing
+its capability in constrained, noisy environment.
+Theater (LOS) has the best performance with the 3 billion
+model with the lowest MSE (1.23) suggesting few outliers and
+lowest MAE (0.90) suggesting consistent performance overall.
+The LOS condition and relatively square shape (15 × 14.5
+m2 ) likely contributing to the higher accuracy. The theater
+has the highest number of RPs (120), which also explains
+better spatial granularity and improved results.
+In contrast, in the office environment, which presents mixed
+LOS-NLOS conditions, the 8B model outperforms others with
+an MSE of 1.98 highlighting its ability to generalize better
+in heterogeneous signal environments. Nevertheless, the 1B
+model notably achieves the lowest MAE (approximately 1.15
+m) and the smallest errors at the median (0.81 m) making it
+suitable for resource-constrained deployment scenarios.
+Across all environment, LLMs exhibit strong regression
+capabilities, with median localization errors typically near
+or below 1 meter. These findings demonstrate the practical
+use of decoder-only architectures to integrate diverse WiFi
+telemetry data (RSSI, FTM, CSI) within a unified learning
+framework, enhancing indoor localization without relying on
+explicit rule based models. This sets the system accuracy
+suitable for indoor navigation, asset tracking, and augmented
+reality (AR) use cases.
+C. Data Imputation
+
+0.2
+
+1B FTM
+1B FTM+RSSI
+1B RSSI
+3B FTM
+3B FTM+RSSI
+
+0.0
+0
+
+2
+
+4
+
+6
+
+Absolute Error (meters)
+
+8
+
+3B RSSI
+8B FTM
+8B FTM+RSSI
+8B RSSI
+
+10
+
+12
+
+Fig. 2. CDF of Localization Error
+
+B. FTM and RSSI
+The results (Table IV) show a clear trend in which the
+environmental conditions (LOS and NLOS) and the complexity of the model affect the positioning accuracy. Across
+
+Large Language Models (LLMs) often perform implicit
+data imputation to compensate for missing input features.
+By framing the positioning problem through a languagebased interface, we are able to leverage this capability to
+enhance robustness and generalization. In the background
+and related work, we’ve already mentioned that combining
+multiple telemetry sources (sensor fusion) improves accuracy,
+especially since FTM, a time-based mechanism, offers finer
+granularity than coarse-grained mechanisms like RSSI. To
+test whether our model has learned to use these modalities
+dynamically, we use a model trained on both FTM and
+RSSI data and then selectively ablate one feature set at a
+
+time. Figure 2 shows the cumulative distributed probability of
+model performance based on the choice of telemetry selected.
+1) FTM+RSSI: Across all model sizes (1B, 3B, 8B), the
+FTM+RSSI combinations consistently achieve the highest
+cumulative probability at lower error thresholds. This supports
+the theoretical premise that fusing time-based (FTM) and
+power-based (RSSI) features provides complementary information, improving generalization and implying that the model
+can capture the intricacies.
+2) FTM-Only Ablation Study: FTM performs the second best. The FTM-only models (especially 3B FTM and
+8B FTM) show strong performance, closely following the
+FTM+RSSI curves. This aligns with the fact that time-based
+telemetry perform better than course grained RSSI. It is worth
+noting that the 1B model exhibited 296 misalignments, the 3B
+model reduced this to 22, and the 8B model achieved perfect
+alignment with zero misalignments out of 1920 samples used
+for testing.
+3) RSSI-Only Ablation Study: RSSI-only models consistently lag behind in performance across all model sizes, with
+slower CDF growth and heavier tails. This is expected due to
+RSSI’s high sensitivity to multipath and environment-specific
+attenuation, which limits its localization precision. It is also
+worth noting that 1b had 8 misalignments whereas other
+models didn’t have any misalignments.
+D. Discussion
+Our methodology analyzes the accuracy using a single WiFi
+packet from each AP to isolate models’ behaviour. However,
+a single packet may be corrupted in practical deployments
+due to hardware imperfections, clock drift, or other systemlevel limitations beyond the model’s control, implicating
+tail latency. To mitigate these issues, most systems rely on
+multiple packets. For instance, even with CSI (most precise
+form of WiFi telemetry) SpotFi [60] requires 10 CSI packets
+to achieve a 0.5 median accuracy while worst error reaches
+up to 10m.
+Practitioners adopting our system can apply a sliding window of 5–10 packets to smooth out tail-heavy errors, incurring
+only a few milliseconds of additional delay. Alternatively, the
+LLM can be adapted to ingest multiple packets jointly rather
+than processing each individually. However, it is important to
+note that increasing the input context window also increases
+the time complexity in a quadratic manner [61]. LLMs can
+also be given the physical dimensions of the environment in
+the prompt itself to prevent hallucinations beyond the defined
+boundary conditions.
+Figure 2 showcases that even with incomplete telemetry
+(RSSI-only), larger models (e.g., 8B RSSI) still show improvement over smaller counterparts (e.g., 1B RSSI). This
+indicates that the LLaMA model effectively leverages its
+internal latent space, learning correlations and compensating
+for missing features during fine-tuning. The model’s ability
+to infer distance from imperfect data (e.g., RSSI-only cases)
+demonstrates that the vector embeddings capture semantically
+rich structure, allowing practical distance estimation even
+
+under partial observability. The bigger parameter models
+showcase no misalignments whereas the smaller model tends
+to misalign with ablated data. However, as noted in [56],
+model performance improves more with increased data than
+just scaling model size. Once the smaller models are trained
+on a bigger corpus of radio data, they can generalize further
+and achieve better accuracy. That’s why we trained the model
+separately for each environment and dataset, so we could
+closely observe how it behaves under different conditions
+without external data. As long as the model gets relevant data,
+it can generalize effectively.
+Rather than using embeddings or few-shot prompts, we
+treat indoor positioning as a next-token prediction task,
+aligning the output distribution with predicted distance as
+the final token. This approach uses LLMs’ autoregressive
+modelling, internal attention mechanisms, positional encodings, and emergent sequence forecasting behaviours, capturing sequential dependencies that static methods miss. Our
+simplified pipeline consists of a single autoregressive pass
+that is generalizable across sensors and environments.
+VI. L IMITATIONS AND F UTURE WORK
+We selected the LLaMA family of models for our initial
+experiments because they are open source, available in different sizes (1B, 3B, 8B), and are widely adopted in the
+research community. Moving forward, we plan to explore
+other model families like Gemma and Phi, and closed-source
+LLMs such as Claude and OpenAI’s ChatGPT. We also aim
+to study the effects of quantization across different models
+to understand better the trade-offs in performance, efficiency,
+and deployment feasibility.
+LLMs are known to be sensitive to prompt phrasing due
+to their autoregressive property [62]. Even a slight change
+of wording can drastically affect the next token, potentially
+hindering its ability to do regression. We plan to study the
+influence of prompts on indoor positioning accuracy. As a
+temporary workaround, we can treat the regression task as a
+separate model call using the structured query described in
+the training data format (as outlined in the paper).
+
+Fig. 3. Trilateration geometry: (a) Ideal Scenario (b) Real Scenario [63]
+
+Our system’s performance may degrade in a new environment without any prior training or Dataset of new sensors.
+If there is no error, the device should meet at a singular
+point in space as shown in Figure 2a [63]. However, errors
+due to signal fading, path loss, create a geometry instead
+
+of a centroid, as seen in Figure 2b. Calculating the area of
+the geometry and having multiple access points(more than
+3) allows us to get the ground truth. Smaller error area
+(A) implies higher accuracy, so we define the feedback as
+ffeedback = A1 . Without the ground truth, this feedback serves
+as a reward signal, minimizing localization errors.
+Our approach shows great potential for localization accuracy. Even though our model runs on commodity hardware, it
+requires significant computing power. However, that is starting
+to change. There has been a large-scale effort to reduce computing costs while making models more power efficient [64],
+[65]. For example, Microsoft’s BitNet b1.58 [66] reduces
+memory and computing needs without losing much performance. With breakthroughs like this, more models are moving
+toward low-bit quantization. We can expect these models to
+run directly on consumer Stations (STA) or affordable Access
+Points (AP) that can support multiple user without costing a
+fortune.
+VII. C ONCLUSION
+In this paper, we introduce WiFiGPT, a telemetry-agnostic,
+token-based WiFi positioning system built entirely on large
+language models. Using a custom training template for the
+telemetry dataset and fine-tuning Llama 3 using LoRA, we
+could adapt a purely autoregressive decoder to a regression task. We show it can reliably capture complex signal
+behaviours like multipath without filtering or preprocessing
+while consistently staying under 1m error. The pipeline, which
+includes an auxiliary regression monitor and a fully deterministic inference setup, makes LLMs a reliable regressor. This
+setup shows that token-based regression is a viable alternative
+to traditional methods. It is schema-less by design, requires
+no preprocessing pipeline, and effectively captures semantic
+relationships for categorical data. It also highlights how large
+language models can implicitly learn nuanced spatial patterns
+in noisy wireless telemetry by attending to structured input
+sequences and understanding the language of wireless.
+R EFERENCES
+[1] N. Singh, S. Choe, and R. Punmiya, “Machine learning based indoor
+localization using wi-fi rssi fingerprints: An overview,” IEEE Access,
+vol. 9, pp. 127 150–127 174, 2021.
+[2] P. S. Farahsari, A. Farahzadi, J. Rezazadeh, and A. Bagheri, “A survey
+on indoor positioning systems for iot-based applications,” IEEE Internet
+of Things Journal, vol. 9, no. 10, pp. 7680–7699, 2022.
+[3] A. Correa, M. Barcelo, A. Morell, and J. L. Vicario, “A review of
+pedestrian indoor positioning systems for mass market applications,”
+Sensors, vol. 17, no. 8, p. 1927, 2017.
+[4] F. Dwiyasa and M.-H. Lim, “A survey of problems and approaches
+in wireless-based indoor positioning,” in 2016 International conference
+on indoor positioning and indoor navigation (IPIN). IEEE, 2016, pp.
+1–7.
+[5] G. Deak, K. Curran, and J. Condell, “A survey of active and passive indoor localisation systems,” Computer Communications, vol. 35, no. 16,
+pp. 1939–1954, 2012.
+[6] P. Roy and C. Chowdhury, “A survey on ubiquitous wifi-based indoor
+localization system for smartphone users from implementation perspectives,” CCF Transactions on Pervasive Computing and Interaction,
+vol. 4, no. 3, pp. 298–318, 2022.
+
+[7] E. Pagliari, L. Davoli, and G. Ferrari, “Wi-fi-based real-time uav
+localization: A comparative analysis between rssi-based and ftm-based
+approaches,” IEEE Transactions on Aerospace and Electronic Systems,
+vol. 60, no. 6, pp. 8757–8778, 2024.
+[8] F. Zafari, A. Gkelias, and K. K. Leung, “A survey of indoor localization
+systems and technologies,” IEEE Communications Surveys & Tutorials,
+vol. 21, no. 3, pp. 2568–2599, 2019.
+[9] M. Cominelli, F. Gringoli, and F. Restuccia, “Exposing the csi: A
+systematic investigation of csi-based wi-fi sensing capabilities and
+limitations,” in 2023 IEEE International Conference on Pervasive
+Computing and Communications (PerCom). IEEE, 2023, pp. 81–90.
+[10] A. Nessa, B. Adhikari, F. Hussain, and X. N. Fernando, “A survey
+of machine learning for indoor positioning,” IEEE access, vol. 8, pp.
+214 945–214 965, 2020.
+[11] B. Twala, “An empirical comparison of techniques for handling incomplete data using decision trees,” Applied Artificial Intelligence, vol. 23,
+no. 5, pp. 373–405, 2009.
+[12] A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A. N.
+Gomez, L. u. Kaiser, and I. Polosukhin, “Attention is all you need,” in
+Advances in Neural Information Processing Systems, I. Guyon, U. V.
+Luxburg, S. Bengio, H. Wallach, R. Fergus, S. Vishwanathan, and
+R. Garnett, Eds., vol. 30. Curran Associates, Inc., 2017.
+[13] T. Pires, E. Schlinger, and D. Garrette, “How multilingual is multilingual bert?” arXiv preprint arXiv:1906.01502, 2019.
+[14] Google
+DeepMind,
+“Dolphingemma:
+How
+google
+ai
+is
+helping
+decode
+dolphin
+communication,”
+https://blog.google/technology/ai/dolphingemma/,
+February
+2024,
+accessed:
+2025-05-03.
+[Online].
+Available:
+https://blog.google/technology/ai/dolphingemma/
+[15] H. Liu, H. Kamarthi, Z. Zhao, S. Xu, S. Wang, Q. Wen, T. Hartvigsen,
+F. Wang, and B. A. Prakash, “How can time series analysis benefit from multiple modalities? a survey and outlook,” arXiv preprint
+arXiv:2503.11835, 2025.
+[16] W. Aljedaani, A. Habib, A. Aljohani, M. Eler, and Y. Feng, “Does
+chatgpt generate accessible code? investigating accessibility challenges
+in llm-generated source code,” in Proceedings of the 21st International
+Web for All Conference, ser. W4A ’24. New York, NY, USA:
+Association for Computing Machinery, 2024, p. 165–176. [Online].
+Available: https://doi.org/10.1145/3677846.3677854
+[17] S. Pagano, S. Peirani, and M. Valle, “Indoor ranging and localisation
+algorithm based on received signal strength indicator using statistic
+parameters for wireless sensor networks,” IET Wireless Sensor Systems,
+vol. 5, no. 5, pp. 243–249, 2015.
+[18] H. P. Mistry and N. H. Mistry, “Rssi based localization scheme
+in wireless sensor networks: A survey,” in 2015 Fifth International
+Conference on Advanced Computing & Communication Technologies.
+IEEE, 2015, pp. 647–652.
+[19] S. Yiu, M. Dashti, H. Claussen, and F. Perez-Cruz, “Wireless rssi
+fingerprinting localization,” Signal Processing, vol. 131, pp. 235–244,
+2017.
+[20] N. Singh, S. Choe, and R. Punmiya, “Machine learning based indoor
+localization using wi-fi rssi fingerprints: An overview,” IEEE access,
+vol. 9, pp. 127 150–127 174, 2021.
+[21] D. Lymberopoulos and J. Liu, “The microsoft indoor localization
+competition: Experiences and lessons learned,” IEEE Signal Processing
+Magazine, vol. 34, no. 5, pp. 125–140, 2017.
+[22] V. Barral Vales, O. C. Fernández, T. Domı́nguez-Bolaño, C. J. Escudero,
+and J. A. Garcı́a-Naya, “Fine time measurement for the internet of
+things: A practical approach using esp32,” IEEE Internet of Things
+Journal, vol. 9, no. 19, pp. 18 305–18 318, 2022.
+[23] M. Ibrahim, H. Liu, M. Jawahar, V. Nguyen, M. Gruteser, R. Howard,
+B. Yu, and F. Bai, “Verification: Accuracy evaluation of wifi fine time
+measurements on an open platform,” in Proceedings of the 24th annual
+international conference on mobile computing and networking, 2018,
+pp. 417–427.
+[24] M. Bullmann, T. Fetzer, F. Ebner, M. Ebner, F. Deinzer, and M. Grzegorzek, “Comparison of 2.4 ghz wifi ftm-and rssi-based indoor positioning methods in realistic scenarios,” Sensors, vol. 20, no. 16, p. 4515,
+2020.
+[25] S. Kumar, S. Gil, D. Katabi, and D. Rus, “Accurate indoor localization
+with zero start-up cost,” in Proceedings of the 20th annual international
+conference on Mobile computing and networking, 2014, pp. 483–494.
+
+[26] J. Xiong and K. Jamieson, “{ArrayTrack}: A {Fine-Grained} indoor
+location system,” in 10th USENIX Symposium on Networked Systems
+Design and Implementation (NSDI 13), 2013, pp. 71–84.
+[27] M. Kotaru, K. Joshi, D. Bharadia, and S. Katti, “Spotfi: Decimeter level
+localization using wifi,” in Proceedings of the 2015 ACM Conference on
+Special Interest Group on Data Communication, ser. SIGCOMM ’15.
+New York, NY, USA: Association for Computing Machinery, 2015, p.
+269–282. [Online]. Available: https://doi.org/10.1145/2785956.2787487
+[28] K. Qian, C. Wu, Z. Yang, Z. Zhou, X. Wang, and Y. Liu, “Enabling
+phased array signal processing for mobile wifi devices,” IEEE Transactions on Mobile Computing, vol. 17, no. 8, pp. 1820–1833, 2017.
+[29] A. Paulraj, R. Roy, and T. Kailath, “Estimation of signal parameters via
+rotational invariance techniques-esprit,” in Nineteeth Asilomar Conference on Circuits, Systems and Computers, 1985. IEEE, 1985, pp.
+83–89.
+[30] E.
+Systems,
+“Esp32
+series
+datasheet,”
+https://www.espressif.com/en/products/socs/esp32, 2023, accessed:
+2025-05-14.
+[31] R.
+P.
+Foundation,
+“Raspberry
+pi
+documentation,”
+https://www.raspberrypi.com/documentation/, 2023, accessed: 202505-14.
+[32] M. Qorib, G. Moon, and H. T. Ng, “Are decoder-only language
+models better than encoder-only language models in understanding
+word meaning?” in Findings of the Association for Computational
+Linguistics ACL 2024, 2024, pp. 16 339–16 347.
+[33] M. V. Koroteev, “Bert: a review of applications in natural language
+processing and understanding,” arXiv preprint arXiv:2103.11943, 2021.
+[34] Z. Zhao, F. Meng, H. Li, X. Li, and G. Zhu, “Mining limited data
+sufficiently: A bert-inspired approach for csi time series application
+in wireless communication and sensing,” 2024. [Online]. Available:
+https://arxiv.org/abs/2412.06861
+[35] L. B. Cesar, M.-Á. Manso-Callejo, and C.-I. Cira, “Bert (bidirectional
+encoder representations from transformers) for missing data imputation
+in solar irradiance time series,” Engineering Proceedings, vol. 39, no. 1,
+p. 26, 2023.
+[36] O. AI, “Gpt-4 technical report,” arXiv preprint arXiv:2303.08774, 2023.
+[37] H. Touvron, T. Lavril, G. Izacard, X. Martinet, M.-A. Lachaux,
+T. Lacroix, B. Rozière, N. Goyal, E. Hambro, F. Azhar et al., “Llama:
+Open and efficient foundation language models,” arXiv preprint
+arXiv:2302.13971, 2023.
+[38] D. Wu, X. Wang, Y. Qiao, Z. Wang, J. Jiang, S. Cui, and
+F. Wang, “Netllm: Adapting large language models for networking,”
+in Proceedings of the ACM SIGCOMM 2024 Conference, ser. ACM
+SIGCOMM ’24. ACM, Aug. 2024, p. 661–678. [Online]. Available:
+http://dx.doi.org/10.1145/3651890.3672268
+[39] J. Shao, J. Tong, Q. Wu, W. Guo, Z. Li, Z. Lin,
+and J. Zhang, “Wirelessllm: Empowering large language
+models towards wireless intelligence,” 2024. [Online]. Available:
+https://arxiv.org/abs/2405.17053
+[40] S. Alnegheimish, L. Nguyen, L. Berti-Equille, and K. Veeramachaneni,
+“Large language models can be zero-shot anomaly detectors for time
+series?” 2024. [Online]. Available: https://arxiv.org/abs/2405.14755
+[41] Z. Zhao, T. Chen, F. Meng, H. Li, X. Li, and G. Zhu,
+“Finding the missing data: A bert-inspired approach against
+package loss in wireless sensing,” in IEEE INFOCOM 2024
+- IEEE Conference on Computer Communications Workshops
+(INFOCOM WKSHPS). IEEE, May 2024, p. 1–6. [Online]. Available:
+http://dx.doi.org/10.1109/INFOCOMWKSHPS61880.2024.10620769
+[42] X. Zhao, G. Wang, Z. An, Q. Pan, and L. Yang, “Understanding
+localization by a tailored gpt,” in Proceedings of the 22nd Annual
+International Conference on Mobile Systems, Applications and
+Services, ser. MOBISYS ’24. New York, NY, USA: Association
+for Computing Machinery, 2024, p. 318–330. [Online]. Available:
+https://doi.org/10.1145/3643832.3661869
+[43] R. Vacareanu, V.-A. Negru, V. Suciu, and M. Surdeanu, “From words
+to numbers: Your large language model is secretly a capable regressor
+when given in-context examples,” arXiv preprint arXiv:2404.07544,
+2024.
+[44] E. Tang, B. Yang, and X. Song, “Understanding llm embeddings for
+regression,” arXiv preprint arXiv:2411.14708, 2024.
+[45] B. Agarwal, I. Joshi, and V. Rojkova, “Think inside the json: Reinforcement strategy for strict llm schema adherence,” arXiv preprint
+arXiv:2502.14905, 2025.
+
+[46] T. Shen, R. Jin, Y. Huang, C. Liu, W. Dong, Z. Guo, X. Wu, Y. Liu, and
+D. Xiong, “Large language model alignment: A survey,” arXiv preprint
+arXiv:2309.15025, 2023.
+[47] M.
+Community,
+“Llama-3.2-1b-instruct-bf16,”
+https://huggingface.co/mlx-community/Llama-3.2-1B-InstructMLXTuned, 2024, converted to MLX format from metallama/Llama-3.2-1B-Instruct using mlx-lm version 0.17.1. [Online].
+Available:
+https://huggingface.co/mlx-community/Llama-3.2-1BInstruct-MLXTuned
+[48] ——,
+“Llama-3.2-3b-bf16,”
+https://huggingface.co/mlxcommunity/Llama-3.2-3B-bf16, 2024, converted to MLX format from
+meta-llama/Llama-3.2-3B using mlx-lm version 0.17.1. [Online].
+Available: https://huggingface.co/mlx-community/Llama-3.2-3B-bf16
+[49] ——,
+“Deephermes-3-llama-3-8b-preview-bf16,”
+https://huggingface.co/mlx-community/DeepHermes-3-Llama-38B-Preview-bf16, 2025, converted to MLX format from
+NousResearch/DeepHermes-3-Llama-3-8B-Preview using mlx-lm
+version 0.21.1. [Online]. Available: https://huggingface.co/mlxcommunity/DeepHermes-3-Llama-3-8B-Preview-bf16
+[50] J. Zhao, Z. Zhang, L. Gao, Q. Zhang, T. Gui, and X. Huang, “Llama
+beyond english: An empirical study on language capability transfer,”
+arXiv preprint arXiv:2401.01055, 2024.
+[51] G. Dong, H. Yuan, K. Lu, C. Li, M. Xue, D. Liu, W. Wang, Z. Yuan,
+C. Zhou, and J. Zhou, “How abilities in large language models are
+affected by supervised fine-tuning data composition,” arXiv preprint
+arXiv:2310.05492, 2023.
+[52] E. J. Hu, Y. Shen, P. Wallis, Z. Allen-Zhu, Y. Li, S. Wang, L. Wang,
+W. Chen et al., “Lora: Low-rank adaptation of large language models.”
+ICLR, vol. 1, no. 2, p. 3, 2022.
+[53] A. Hannun, J. Digani, A. Katharopoulos, and R. Collobert, “MLX:
+Efficient and flexible machine learning on apple silicon,” 2023.
+[Online]. Available: https://github.com/ml-explore
+[54] B. Zhang, Z. Liu, C. Cherry, and O. Firat, “When scaling meets llm
+finetuning: The effect of data, model and finetuning method,” arXiv
+preprint arXiv:2402.17193, 2024.
+[55] U. Team, “Fine-tuning guide,” https://docs.unsloth.ai/get-started/finetuning-guide, 2025, accessed: 2025-05-11.
+[56] J. Hoffmann, S. Borgeaud, A. Mensch, E. Buchatskaya, T. Cai,
+E. Rutherford, D. de Las Casas, L. A. Hendricks, J. Welbl, A. Clark,
+T. Hennigan, E. Noland, K. Millican, G. van den Driessche, B. Damoc,
+A. Guy, S. Osindero, K. Simonyan, E. Elsen, J. W. Rae, O. Vinyals,
+and L. Sifre, “Training compute-optimal large language models,” 2022.
+[Online]. Available: https://arxiv.org/abs/2203.15556
+[57] X. Feng, K. A. Nguyen, and Z. Luo, “WiFi RSS & RTT
+dataset with different LOS conditions for indoor positioning,”
+Zenodo, Jun. 2024, accessed: May 11, 2025. [Online]. Available:
+https://zenodo.org/doi/10.5281/zenodo.11558791
+[58] G. Wang, C. Qian, K. Cui, X. Shi, H. Ding, W. Xi, J. Zhao, and J. Han,
+“A universal method to combat multipaths for rfid sensing,” in IEEE
+INFOCOM 2020 - IEEE Conference on Computer Communications,
+2020, pp. 277–286.
+[59] X. Feng, K. A. Nguyen, and Z. Luo, “A wifi rss-rtt indoor positioning
+system using dynamic model switching algorithm,” IEEE Journal of
+Indoor and Seamless Positioning and Navigation, 2024.
+[60] M. Kotaru, K. Joshi, D. Bharadia, and S. Katti, “Spotfi: Decimeter
+level localization using wifi,” SIGCOMM Comput. Commun. Rev.,
+vol. 45, no. 4, p. 269–282, Aug. 2015. [Online]. Available:
+https://doi.org/10.1145/2829988.2787487
+[61] M. Ali, M. Fromm, K. Thellmann, R. Rutmann, M. Lübbering, J. Leveling, K. Klug, J. Ebert, N. Doll, J. Buschhoff et al., “Tokenizer choice
+for llm training: Negligible or crucial?” in Findings of the Association
+for Computational Linguistics: NAACL 2024, 2024, pp. 3907–3924.
+[62] S. Anagnostidis and J. Bulian, “How susceptible are llms to influence in
+prompts?” 2024. [Online]. Available: https://arxiv.org/abs/2408.11865
+[63] H. M. Le, J.-P. Rossi, and D. Slock, “A geometric interpretation of
+trilateration for rss-based localization,” in 2020 28th European Signal
+Processing Conference (EUSIPCO), 2021, pp. 1797–1801.
+[64] S. Shekhar, T. Dubey, K. Mukherjee, A. Saxena, A. Tyagi, and
+N. Kotla, “Towards optimizing the costs of llm usage,” arXiv preprint
+arXiv:2402.01742, 2024.
+[65] S. Ma, H. Wang, L. Ma, L. Wang, W. Wang, S. Huang, L. Dong,
+R. Wang, J. Xue, and F. Wei, “The era of 1-bit llms: All large language
+models are in 1.58 bits,” arXiv preprint arXiv:2402.17764, vol. 1, 2024.
+
+[66] S. Ma, H. Wang, S. Huang, X. Zhang, Y. Hu, T. Song, Y. Xia, and
+F. Wei, “Bitnet b1.58 2b4t technical report,” 2025. [Online]. Available:
+https://arxiv.org/abs/2504.12285
+
+

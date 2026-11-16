@@ -1,0 +1,11 @@
+Source: arXiv API entry (abstract only) https://export.arxiv.org/api/query?id_list=2405.11079
+Title: FeMLoc: Federated Meta-learning for Adaptive Wireless Indoor Localization Tasks in IoT Networks
+Authors: Yaya Etiabi, Wafa Njima, El Mehdi Amhoud
+Published: 2024-05-17T20:22:39Z
+arXiv: 2405.11079
+Journal-ref: 
+DOI: 
+Comment: 16 pages, 6 figures
+
+Abstract:
+The rapid growth of the Internet of Things fosters collaboration among connected devices for tasks like indoor localization. However, existing indoor localization solutions struggle with dynamic and harsh conditions, requiring extensive data collection and environment-specific calibration. These factors impede cooperation, scalability, and the utilization of prior research efforts. To address these challenges, we propose FeMLoc, a federated meta-learning framework for localization. FeMLoc operates in two stages: (i) collaborative meta-training where a global meta-model is created by training on diverse localization datasets from edge devices. (ii) Rapid adaptation for new environments, where the pre-trained global meta-model initializes the localization model, requiring only minimal fine-tuning with a small amount of new data. In this paper, we provide a detailed technical overview of FeMLoc, highlighting its unique approach to privacy-preserving meta-learning in the context of indoor localization. Our performance evaluation demonstrates the superiority of FeMLoc over state-of-the-art methods, enabling swift adaptation to new indoor environments with reduced calibration effort. Specifically, FeMLoc achieves up to 80.95% improvement in localization accuracy compared to the conventional baseline neural network (NN) approach after only 100 gradient steps. Alternatively, for a target accuracy of around 5m, FeMLoc achieves the same level of accuracy up to 82.21% faster than the baseline NN approach. This translates to FeMLoc requiring fewer training iterations, thereby significantly reducing fingerprint data collection and calibration efforts. Moreover, FeMLoc exhibits enhanced scalability, making it well-suited for location-aware massive connectivity driven by emerging wireless communication technologies.

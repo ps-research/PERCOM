@@ -1,0 +1,1167 @@
+ 
+ Frontiers | IndoorCART: a spatially-aware transformer framework for Wi-Fi fingerprinting indoor localization 
+ Frontiers in Signal Processing 
+ About us About us 
+ Who we are
+ Mission and values 
+ History 
+ Leadership 
+ Awards 
+ Impact and progress
+ Frontiers' impact 
+ Our annual reports 
+ Thought leadership 
+ Researcher perspectives 
+ Publishing model
+ How we publish 
+ Open access 
+ Quality and research integrity 
+ Peer review 
+ Technology and platforms 
+ Research Topics 
+ Publish your data with FAIR² 
+ Fee policy 
+ Services
+ Societies 
+ National consortia 
+ Institutional partnerships 
+ Collaboration and indexation 
+ More from Frontiers
+ Frontiers Forum 
+ Frontiers Planet Prize 
+ Press office 
+ Sustainability 
+ Career opportunities 
+ Contact us 
+ All journals All articles Submit manuscript 
+ Search 
+ Frontiers in Signal Processing 
+ Sections Sections 
+ Audio and Acoustic Signal Processing 
+ Biomedical Signal Processing 
+ Image Processing 
+ Radar Signal Processing 
+ Signal Processing Theory 
+ Signal Processing for Communications 
+ Statistical Signal Processing 
+ Systems Health Diagnosis and Prognosis 
+ Articles Research Topics Editorial board About journal About journal 
+ Scope 
+ Field chief editors 
+ Mission and scope 
+ Facts 
+ Journal sections 
+ Open access statement 
+ Copyright statement 
+ Quality 
+ For authors 
+ Why submit? 
+ Article types 
+ Author guidelines 
+ Editor guidelines 
+ Publishing fees 
+ Submission checklist 
+ Contact editorial office 
+ About us About us 
+ Who we are
+ Mission and values 
+ History 
+ Leadership 
+ Awards 
+ Impact and progress
+ Frontiers' impact 
+ Our annual reports 
+ Thought leadership 
+ Researcher perspectives 
+ Publishing model
+ How we publish 
+ Open access 
+ Quality and research integrity 
+ Peer review 
+ Technology and platforms 
+ Research Topics 
+ Publish your data with FAIR² 
+ Fee policy 
+ Services
+ Societies 
+ National consortia 
+ Institutional partnerships 
+ Collaboration and indexation 
+ More from Frontiers
+ Frontiers Forum 
+ Frontiers Planet Prize 
+ Press office 
+ Sustainability 
+ Career opportunities 
+ Contact us 
+ All journals All articles Submit manuscript 
+ Frontiers in Signal Processing 
+ Sections Sections 
+ Audio and Acoustic Signal Processing 
+ Biomedical Signal Processing 
+ Image Processing 
+ Radar Signal Processing 
+ Signal Processing Theory 
+ Signal Processing for Communications 
+ Statistical Signal Processing 
+ Systems Health Diagnosis and Prognosis 
+ Articles Research Topics Editorial board About journal About journal 
+ Scope 
+ Field chief editors 
+ Mission and scope 
+ Facts 
+ Journal sections 
+ Open access statement 
+ Copyright statement 
+ Quality 
+ For authors 
+ Why submit? 
+ Article types 
+ Author guidelines 
+ Editor guidelines 
+ Publishing fees 
+ Submission checklist 
+ Contact editorial office 
+ Frontiers in Signal Processing 
+ Sections Sections 
+ Audio and Acoustic Signal Processing 
+ Biomedical Signal Processing 
+ Image Processing 
+ Radar Signal Processing 
+ Signal Processing Theory 
+ Signal Processing for Communications 
+ Statistical Signal Processing 
+ Systems Health Diagnosis and Prognosis 
+ Articles Research Topics Editorial board About journal About journal 
+ Scope 
+ Field chief editors 
+ Mission and scope 
+ Facts 
+ Journal sections 
+ Open access statement 
+ Copyright statement 
+ Quality 
+ For authors 
+ Why submit? 
+ Article types 
+ Author guidelines 
+ Editor guidelines 
+ Publishing fees 
+ Submission checklist 
+ Contact editorial office 
+ Submit manuscript 
+ Search 
+ ORIGINAL RESEARCH article
+ Front. Signal Process. , 18 September 2026 
+ Sec. Statistical Signal Processing
+ Volume 6 - 2026 | https://doi.org/10.3389/frsip.2026.1884243 
+ Published in
+ Frontiers in Signal Processing 
+ Statistical Signal Processing 
+ 2.6 impact factor 
+ 7.5 citescore 
+ Editor & Reviewers
+ Edited by
+ M R 
+ Maryam Ravan
+ Reviewed by
+ A B 
+ Ahmad Bazzi
+ H Y 
+ Haoxiao Yang
+ Outline 
+ Abstract
+ 1 Introduction
+ 2 Related work
+ 3 Methodology and experimental design
+ 4 Results and analysis
+ 5 Discussion
+ 6 Conclusion
+ Statements
+ Footnotes
+ References
+ Figures and Tables 
+ FIGURE 1
+ View in article 
+ FIGURE 2
+ View in article 
+ FIGURE 3
+ View in article 
+ FIGURE 4
+ View in article 
+ FIGURE 5
+ View in article 
+ FIGURE 6
+ View in article 
+ FIGURE 7
+ View in article 
+ FIGURE 8
+ View in article 
+ FIGURE 9
+ View in article 
+ FIGURE 10
+ View in article 
+ FIGURE 11
+ View in article 
+ TABLE 1
+ Summary of recent transformer-based indoor localization approaches with emphasis on regression performance. 
+ View in article 
+ TABLE 2
+ Summary of the datasets used in this study. 
+ View in article 
+ TABLE 3
+ Distinction between standard transformer self-attention and IndoorCART Adaptive Attention. 
+ View in article 
+ TABLE 4
+ Principal tuning dimensions for the baseline regression models. 
+ View in article 
+ TABLE 5
+ Principal tuning dimensions for IndoorCART. 
+ View in article 
+ TABLE 6
+ Performance loss obtained from different Regression Models for the benchmarked dataset; lower indicates better. 
+ View in article 
+ TABLE 7
+ Comparative performance of transformer baselines. 
+ View in article 
+ TABLE 8
+ Comparison of mean absolute error (MAE) across benchmark datasets. 
+ View in article 
+ TABLE 9
+ Model ranking by average rank across benchmark datasets. 
+ View in article 
+ TABLE 10
+ Performance summary by model family (average MAE across datasets). 
+ View in article 
+ TABLE 11
+ Comparison of IndoorCART with the best baseline model in terms of per-dataset MAE improvement and overall rank. 
+ View in article 
+ TABLE 12
+ Bootstrap 95% confidence intervals for MAE. 
+ View in article 
+ TABLE 13
+ Statistical significance results. 
+ View in article 
+ TABLE 14
+ Comparison of confidence interval methods. 
+ View in article 
+ TABLE 15
+ Fixed-test-split statistical significance, confidence intervals, and effect size. 
+ View in article 
+ TABLE 16
+ Summary of ablation study results. 
+ View in article 
+ TABLE 17
+ Statistical significance of ablation results (p-values). 
+ View in article 
+ TABLE 18
+ Ablation study with worst-case analysis (95th percentile error). 
+ View in article 
+ TABLE 19
+ Published results on UJIIndoorLoc (full test set). 
+ View in article 
+ TABLE 20
+ Fair comparison under an identical evaluation protocol. 
+ View in article 
+ TABLE 21
+ Computational complexity summary. 
+ View in article 
+ TABLE 22
+ Cost-accuracy trade-off analysis. 
+ View in article 
+ TABLE 23
+ Deployment scenarios and recommendations. 
+ View in article 
+ TABLE 24
+ Computational cost summary. 
+ View in article 
+ TABLE 25
+ Inference latency comparison (per sample). 
+ View in article 
+ TABLE 26
+ Comparative dataset characteristics. 
+ View in article 
+ TABLE 27
+ Theoretical analysis of the upper-bound performance. 
+ View in article 
+ TABLE 28
+ When are transformers most beneficial? (Guidelines). 
+ View in article 
+ Algorithm 1
+ End-to-end workflow of IndoorCART for RSSI-based coordinate regression.
+ View in article 
+ Algorithm 2
+ Adaptive Attention forward pass.
+ View in article 
+ ORIGINAL RESEARCH article
+ Front. Signal Process. , 18 September 2026 
+ Sec. Statistical Signal Processing
+ Volume 6 - 2026 | https://doi.org/10.3389/frsip.2026.1884243 
+ IndoorCART: a spatially-aware transformer framework for Wi-Fi fingerprinting indoor localization 
+ B S 
+ Balaram Singh 1 
+ R C 
+ Rajdeep Chatterjee 1 * 
+ M K 
+ Mahendra Kumar Gourisaria 1 * 
+ M S 
+ Manoj Sahni 2 
+ E L 
+ Ernesto León-Castro 3 
+ 1. School of Computer Science and Engineering, KIIT Deemed to be University, Bhubaneswar, India
+ 2. Department of Mathematics, School of Technology, Pandit Deendayal Energy University, Gandhinagar, Gujarat, India
+ 3. Faculty of Economics and Administrative Sciences, Universidad Católica de la Santísima Concepción, Concepción, Chile
+ See more 
+ Article metrics 
+ View details 
+ Abstract
+ Accurate indoor localization remains difficult in GPS-denied environments because Wi-Fi received signal strength indicator (RSSI) fingerprints are sparse, noisy, device-dependent, and strongly affected by multipath propagation, non-line-of-sight conditions, and environmental dynamics. To address these challenges, we present IndoorCART (Indoor Context-Aware RSSI Transformer), an encoder-only transformer framework designed specifically for coordinate-regression-based Wi-Fi fingerprinting. IndoorCART represents access-point measurements as RSSI tokens, incorporates learnable access-point identity information, applies missing-signal-aware Adaptive Attention to model contextual dependencies among observed and unobserved signals, and combines CLS-token and global-average representations for robust coordinate prediction. The model is evaluated on three public indoor-localization benchmarks, namely, UJIIndoorLoc, TUJI1, and SODIndoorLoc, using a controlled comparison with nine reproducible regression baselines. IndoorCART achieves mean absolute errors of 4.79 m, 0.18 m, and 1.33 m on UJIIndoorLoc, TUJI1, and SODIndoorLoc, respectively, with corresponding scores of 0.99, 0.98, and 0.99. These results show that the proposed context-aware transformer consistently provides the lowest localization error among the implemented baselines and is particularly beneficial in sparse or structurally complex fingerprinting scenarios. We further position the proposed method against recent transformer-based indoor-localization studies through a literature-level comparison, while explicitly distinguishing reported external results from controlled reimplementations. Overall, IndoorCART offers an accurate and reliable framework for Wi-Fi-based indoor positioning; however, practical deployment should further consider model size, inference latency, energy consumption, device heterogeneity, and the modest performance gain observed on densely sampled datasets such as UJIIndoorLoc.
+ 1 Introduction
+ The rapid deployment of 5G and the transition toward 6G are increasing demand for accurate indoor positioning in GPS-denied environments such as factories, hospitals, campuses, and transport hubs ( Vishwakarma et al., 2023 ). Among available signal modalities, received signal strength indicator (RSSI)-based localization remains attractive because it leverages existing wireless infrastructure while balancing scalability, cost, and coverage. Yet RSSI-based positioning remains difficult: attenuation, multipath propagation, non-line-of-sight conditions, hardware heterogeneity, interference, and environmental dynamics make the mapping from fingerprints to physical coordinates highly nonlinear and unstable, limiting conventional geometric and fingerprint-matching methods ( Lezama et al., 2021 ).
+ Wi-Fi fingerprinting can be formulated as either classification or regression. Although classification is convenient in discretized settings, it introduces quantization effects and limited spatial resolution. Regression is better aligned with continuous physical space, but it requires models that can capture complex global dependencies among access point measurements. Transformers are therefore a natural fit: unlike recurrent models, they impose no artificial ordering on RSSI features, and self-attention can emphasize informative long-range interactions across the full fingerprint space ( Mallik et al., 2023 ).
+ Motivated by these considerations, we propose IndoorCART, a domain-adapted spatial-context transformer for Wi-Fi RSSI indoor positioning. IndoorCART uses bidirectional spatial self-attention to learn a robust mapping from fingerprint space to continuous coordinates without sequential assumptions. We evaluate the model using predictive accuracy, performance variability, and statistical significance and hypothesize that IndoorCART will achieve lower localization error and more consistent regression performance than competing approaches.
+ 1.1 Contributions
+ The main contributions of this work are summarized as follows:
+ We propose “IndoorCART: A Context-Aware RSSI Transformer”, an encoder-only transformer architecture for RSSI-based indoor localization that leverages bidirectional self-attention to capture rich contextual dependencies across the full set of access point signals simultaneously.
+ We propose Adaptive Attention, an RSSI-aware attention mechanism that incorporates custom masking and absent-signal embeddings to improve representation quality under incomplete or irregular signal observations.
+ We introduce a hybrid pooling strategy that combines a CLS token representation with global average pooling for improved feature aggregation.
+ We provide a unified framework that supports both classification and regression tasks within a single modeling pipeline.
+ We demonstrate state-of-the-art localization accuracy, achieving MAE/ values of 4.79 m/0.99 on UJIIndoorLoc, 0.18 m/0.98 on TUJI1, and 1.33 m/0.99 on SODIndoorLoc, thereby highlighting robust and adaptive performance across diverse indoor environments.
+ IndoorCART is formulated as a representation-learning framework in which a shared transformer encoder maps RSSI fingerprints to a latent feature space, although the present study focuses on coordinate regression because indoor localization is inherently continuous. This formulation avoids the quantization error and boundary effects introduced by label-based discretization and enables performance to be assessed directly in metric space. The main contribution of this work is a context-aware transformer for RSSI-based localization that captures global dependencies among access point measurements without relying on local feature interactions or sequential assumptions. Implemented in PyTorch and evaluated on SODIndoorLoc, TUJI1, and UJIIndoorLoc, IndoorCART achieves MAE/ values of 1.33 m/0.99, 0.18 m/0.98, and 4.79 m/0.99, respectively, consistently outperforming nine established regression baselines across heterogeneous indoor environments.
+ 1.2 Organization
+ The paper contains seven sections. The remainder of this paper is organized as follows. Section 2 reviews prior work on Wi-Fi fingerprinting, deep learning-based indoor localization, and transformer-based modeling strategies. Section3 describes the datasets, preprocessing pipeline, IndoorCART architecture, baseline models, training procedure, evaluation metrics, and statistical analysis. Section Equation 4 presents the experimental results and comparative performance across the benchmark datasets. Section5 discusses the implications of the findings, the strengths of the proposed transformer-based approach, and the main limitations of the study. Finally, Section6 concludes the paper and outlines directions for future research.
+ 2 Related work
+ 2.1 Indoor localization
+ Indoor localization estimates the position of a person, device, or asset in environments where GPS is unreliable or unavailable. It supports navigation, tracking, emergency response, smart manufacturing, and other context-aware services, but is more challenging than outdoor positioning because enclosed spaces create complex propagation conditions and limited line of sight ( Rathnayake et al., 2023 ).
+ In RSSI-based systems, walls, furniture, human movement, floor transitions, multipath reflections, shadowing, and non-line-of-sight effects distort the mapping between measured signals and physical position. Device heterogeneity, access-point density, temporal interference, calibration inconsistency, and environmental change further increase this variability, making indoor localization noisy, high-dimensional, and strongly context dependent ( Obeidat et al., 2021 ).
+ These challenges are compounded by deployment constraints. Fingerprinting systems often require labor-intensive, environment-specific calibration, while many learning-based models remain costly for real-time inference on resource-constrained devices. Practical indoor localization therefore depends not only on accuracy but also on robustness, scalability, deployment cost, and cross-environment adaptability.
+ 2.2 Classical Wi-Fi fingerprinting
+ Indoor positioning methods can be broadly grouped into geometric, fingerprinting, and learning-based approaches. Among these, Wi-Fi fingerprinting remains especially practical because it leverages existing wireless infrastructure and does not require specialized ranging hardware. In classical fingerprinting, RSSI measurements collected at reference points are stored in a radio map, and positions are estimated using nearest-neighbor, probabilistic, or kernel-based matching ( Kunhoth et al., 2020 ).
+ However, performance often degrades in large-scale or dynamic environments because RSSI measurements are highly sensitive to multipath propagation, device heterogeneity, temporal interference, and environmental change. In addition, accuracy depends heavily on the density and quality of the fingerprint database, which is costly to build and maintain. These limitations have motivated a shift toward data-driven models that learn more flexible mappings between RSSI fingerprints and spatial location ( Sadowski and Spachos, 2018 ).
+ 2.3 Deep learning-based indoor localization
+ To address these limitations, supervised and deep learning methods have been widely adopted for indoor positioning. Models such as support vector machines, random forests, gradient-boosted trees, multilayer perceptrons, convolutional neural networks, and recurrent networks improve performance by learning nonlinear mappings from RSSI fingerprints to location ( Nessa et al., 2020 ; Singh et al., 2021 ).
+ Addressing the related challenge of data scarcity, Njima et al. (2022) propose a GAN-based semi-supervised approach for indoor localization with limited and incomplete training data. Their method uses generative augmentation to compensate for sparse fingerprint coverage rather than applying an attention-based treatment of missing signals. This approach complements Adaptive Attention: generative augmentation mitigates dataset-level scarcity, whereas Adaptive Attention handles per-sample signal absence during representation learning.
+ However, many of these models remain constrained by assumptions that do not match the structure of Wi-Fi fingerprints, which are sparse, noisy, partially observed, and not naturally ordered. Consequently, architectures based on locality or sequence may fail to capture long-range interactions among access points, motivating models that represent global feature dependencies more directly.
+ 2.4 Transformer-based positioning
+ Recent work has increasingly focused on transformer-based models for indoor localization. Their appeal lies in self-attention, which captures global interactions among RSSI features without relying on recurrence or handcrafted neighborhood structure. This is well suited to Wi-Fi fingerprinting, where informative patterns are often distributed across multiple access points and vary across environments. Existing methods, however, differ substantially in input representation, modeling strategy, and evaluation practice ( Wu et al., 2025 ).
+ Representative studies illustrate this diversity. The All-Embracing Transformer (AATS) ( Nguyen et al., 2024 ) uses attention to identify informative anchors in noisy RSSI sequences, although its quantitative reporting is limited. The L-SwiGLU Transformer and L-SwiGLU ViT ( Masrur et al., 2025 ) introduce Sensor Snapshot Tokenization to improve multivariate feature modeling with lower computational cost and report an MAE of about 0.355 m. HyTra and HyTra-HF ( Nasir et al., 2024 ) combine transformer encoding, multiple embeddings, and hierarchical classification, with HyTra-HF reporting 96.70% floor-classification accuracy and an estimated MAE of about 0.39 m on UJIIndoorLoc.
+ Other studies modify the input formulation or adopt hybrid designs. VTIL ( Zhou et al., 2024 ) converts RSSI fingerprints into grayscale images and applies a Vision Transformer, reporting an MAE of about 0.45 m. VITAL ( Gufran et al., 2023 ) builds a one-dimensional three-channel RSSI representation with augmentation to improve robustness to device heterogeneity and reports an MAE of about 0.47 m. Hybrid models combine transformers with similarity learning or generative augmentation: the Siamese Neural Encoder + Transformer ( Tiku and Pasricha, 2022 ) reports an estimated MAE of about 0.43 m, and the Deep Generation + Transformer model ( Suroso et al., 2022 ) reports about 0.48 m. CHISEL ( Wang et al., 2021 ) emphasizes compression-aware deployment efficiency, although explicit localization metrics are not fully reported.
+ Overall, these studies show that transformer-based methods can improve wireless localization, often outperforming conventional baselines. Yet important limitations remain: many treat localization as classification over discrete reference points, rely on generic backbones, or adapt poorly to sparse and incomplete RSSI observations. Performance also remains sensitive to multipath fading, non-line-of-sight conditions, and device heterogeneity, while evaluation protocols are often inconsistent. These gaps motivate transformer-based regression frameworks that enable direct metric-space prediction and more robust cross-dataset evaluation. IndoorCART is developed in this context as a context-aware transformer designed to exploit global RSSI dependencies under noisy, incomplete, and heterogeneous conditions.
+ Beyond RSSI-only fingerprinting, emerging 6G integrated sensing and communication (ISAC) systems aim to localize targets using the radio infrastructure itself. For example, Bazzi and Chafii (2025) investigate passive radar target localization using reconfigurable intelligent surfaces (RIS) within an ISAC framework. This infrastructure-level sensing paradigm differs fundamentally from device-side Wi-Fi fingerprinting and therefore cannot be compared directly with IndoorCART under the present evaluation protocol. Nevertheless, it offers a relevant direction for the future convergence of fingerprint-based and ISAC-based indoor positioning, as discussed in Section 5 .
+ 2.4.1 Positioning IndoorCART’s novelty among existing transformer-based localization models
+ At a methodological level, IndoorCART differs from AATS ( Nguyen et al., 2024 ), the L-SwiGLU Transformer ( Masrur et al., 2025 ), HyTra/HyTra-HF ( Nasir et al., 2024 ), VTIL ( Zhou et al., 2024 ), VITAL ( Gufran et al., 2023 ), and the Siamese-Encoder Transformer ( Tiku and Pasricha, 2022 ) in three concrete ways rather than in scale or dataset choice alone. First, none of the cited methods condition either the input token representation or the attention logits on a per-sample observation mask; missing access points are either imputed as ordinary numerical inputs (AATS, HyTra) or absorbed implicitly through image-style tokenization (VTIL, VITAL). IndoorCART instead treats the missingness pattern as a first-class input via the joint (embedding, masking, dropout) formulation in Equations 10 – 13 , so the encoder receives an explicit signal of which access points were absent, not only their imputed values. Second, IndoorCART’s token construction preserves the native tabular RSSI representation (one token per access point) rather than converting the fingerprint into an image (VTIL, VITAL) or a similarity-embedding pair (Siamese), which avoids the spatial-neighborhood assumptions that image-based tokenization implicitly imposes on an unordered feature set. Third, IndoorCART unifies classification and regression under one encoder while directly optimizing metric-space coordinates, rather than reporting reference-point classification accuracy as a proxy for localization quality. Table 3 summarizes these differences at the attention-mechanism level, and Table 1 summarizes them at the system level.
+ TABLE 1
+ Model/Study | Input modalities | Model type | MAE (m) | Key contributions | Limitations | 
+ All-embracing transformer (AATS) Nguyen et al. (2024) | RSSI sequences | Custom transformer | 0.5 | Comprehensive attention mechanism suppressing noise and extracting relevant RSSI anchors | No reported accuracy; unclear dataset use; high computational complexity | 
+ L-SwiGLU and L-SwiGLU ViT Masrur et al. (2025) | RSSI | Vision transformer (ViT) | 0.355 | First L-SwiGLU transformer adapting SST tokenization with enhanced accuracy | Limited generalization; lacks real-time evaluation | 
+ HyTra/HyTra-HF Nasir et al. (2024) | Wi-Fi RSSI | Hierarchical transformer encoder | 0.39 | Hierarchical transformer with SAO initialization; robust under compression | Evaluated on a single dataset; no multi-task metrics reported; hierarchical labeling complexity | 
+ VTIL framework Zhou et al. (2024) | RSSI | Vision transformer (ViT) | 1.5 | Vision transformer for multi-floor localization with noise reduction | No dataset details; limited real-world evidence; high computation | 
+ VITAL framework Gufran et al. (2023) | RSSI | Vision transformer (ViT) | 0.47 | Device-heterogeneity resilience and data-augmentation module | High complexity; intensive data collection; environment-sensitive | 
+ Siamese neural encoder + transformer Tiku and Pasricha (2022) | RSSI | Vision transformer (ViT) | 0.43 | Temporal robustness and calibration-free siamese architecture | Dataset transparency lacking | 
+ Deep generation + transformer Suroso et al. (2022) | RSSI | Hybrid | 0.48 | Synthetic data generation and augmentation for better localization | Limited generalization; resource-intensive; initial-data dependent | 
+ CHISEL framework Wang et al. (2021) | RSSI | Custom transformer | NA | Compression-aware design using CNNs and autoencoders | Generalization limitations; Wi-Fi dependency; lacks metric details | 
+ Summary of recent transformer-based indoor localization approaches with emphasis on regression performance.
+ Table 1 summarizes the key characteristics of recent transformer-based methods for indoor localization.
+ Existing transformer-based studies differ substantially in their evaluation protocols. Although many report low MAE values (e.g., 0.355 m [13] and 0.39 m [14]), these results typically come from classification-based formulations in which the network predicts discrete reference-point labels rather than continuous coordinates. Direct coordinate regression, which we argue is more practically relevant, is a fundamentally more challenging problem because of the continuous nature of the prediction space. This distinction is essential for interpreting reported performance values and comparing methods across studies.
+ A critical factor in interpreting reported localization errors is whether the problem is formulated as classification over discrete reference points or as continuous coordinate regression. Classification-based methods avoid the challenge of predicting continuous coordinates but introduce quantization effects and spatial-resolution limitations. In contrast, regression-based methods directly predict metric coordinates, enabling practical localization accuracy to be assessed, but they typically yield larger reported errors because of the continuous nature of the prediction task. This distinction is essential when comparing results across studies, as methods that optimize classification accuracy in discretized spaces are not directly comparable with those that perform metric-space coordinate regression.
+ These gaps motivate transformer-based regression frameworks that support direct metric-space prediction and robust cross-dataset evaluation. In this context, IndoorCART is developed as a context-aware transformer designed to exploit global RSSI dependencies under noisy, incomplete, and heterogeneous conditions.
+ 3 Methodology and experimental design
+ This study adopts a supervised regression framework for indoor localization in which Wi-Fi RSSI fingerprints are used to predict continuous spatial coordinates. The workflow includes benchmark datasets, preprocessing, feature preparation, model development, baseline comparison, and statistical evaluation. All models directly estimate the target position from the observed RSSI vector.
+ 3.1 Datasets
+ Experiments are conducted on three public Wi-Fi fingerprinting benchmarks: UJIIndoorLoc (UJI) ( Vishwakarma et al., 2023 ), TUJI1 (TUJ) ( Klus et al., 2024 ), and SODIndoorLoc (SOD) ( Bi et al., 2022 ). These datasets span distinct indoor environments with different layouts, sampling densities, device characteristics, and propagation conditions. Each contains multi-access-point RSSI fingerprints with ground-truth spatial coordinates, enabling a compact but rigorous evaluation of predictive performance and cross-environment generalizability.
+ 3.1.1 UJIIndoorLoc
+ UJIIndoorLoc is a standard Wi-Fi indoor localization benchmark collected across three campus buildings at Universitat Jaume I. It contains 19,937 training samples and 1,111 test samples, with 520 RSSI features among 529 attributes overall. RSSI values range from dBm to 0dBm, and undetected access points are encoded as 100. Its multi-building, multi-floor structure makes it a demanding benchmark for large-scale generalization. 1 
+ 3.1.2 TUJI1
+ TUJI1 ( Klus et al., 2024 ) contains anonymized IEEE 802.11 Wi-Fi fingerprints collected in the ESPAITEC two research building at Universitat Jaume I, Spain. It includes 8,899 samples from 310 access points, with RSSI values from dBm to 0dBm and undetected points encoded as 0.0. Its dense, modern fingerprint collection complements UJIIndoorLoc with a different signal profile. 2 
+ Because TUJI1 is a high-density multi-device dataset, the very low MAE reported on this benchmark must be interpreted with caution. In this study, we follow the dataset partition summarized in Table 2 and do not additionally enforce a leave-location-out, leave-reference-point-out, or leave-device-out split. Therefore, the reported TUJI1 result should be understood as performance under the fixed split used in this work, not as evidence that the model has been validated under strict spatially disjoint or device-disjoint generalization. Dense sampling can place test fingerprints very close to training fingerprints in coordinate space, and measurements from the same or similar devices may share device-specific RSSI characteristics across partitions if the original split does not explicitly separate them. This can make sub-meter errors more achievable than in a leave-location-out or leave-device-out protocol. We therefore report TUJI1 as a dense-split benchmark result and identify grouped evaluation by physical reference location and device identity as necessary future validation.
+ TABLE 2
+ Attribute | UJI | TUJI1 | SOD | 
+ Total data points | 21,048 | 8,899 | 23,925 | 
+ Training points | 19,937 | 6,752 | 21,205 | 
+ Test points | 1,111 | 2,147 | 2,720 | 
+ Detected APs | 520 | 310 | 364 | 
+ Labels | 13 | 6 | 13 | 
+ RSSI signal range | dBm to 0dBm | dBm to 0dBm | dBm to 0dBm | 
+ Features | Floor, BuildingID, coordinates, RSSI | Floor, BuildingID, coordinates, RSSI | Floor, BuildingID, coordinates, RSSI | 
+ Dataset availability | UCI | Zenodo | Research paper | 
+ Summary of the datasets used in this study.
+ 3.1.3 SODIndoorLoc
+ SODIndoorLoc Bi et al. (2022) is a large-scale benchmark collected at Shandong Jianzhu University, China, across three multi-floor buildings covering about . It contains 23,925 Wi-Fi scans from 1,802 survey locations, split into 21,205 training and 2,720 test samples. Its heterogeneous building topology and nonuniform sampling density make it useful for evaluating robustness under varying spatial granularity. 3 
+ Table 2 summarizes the key characteristics of the datasets.
+ 3.2 Data preprocessing
+ Before training, all datasets are passed through a unified preprocessing pipeline that preserves regression-relevant signal variability while making UJIIndoorLoc, TUJI1, and SODIndoorLoc comparable. Dataset-specific placeholders for missing access points, including 100, , and 0dBm, are mapped to a common missing-value representation rather than treated as valid RSSI measurements. Missing entries are then imputed column-wise, with a fallback of dBm for entirely unobserved features, and the cleaned fingerprints are aligned into fixed-length vectors. Target coordinates are retained in their original metric space to preserve the interpretability of localization error in meters.
+ 3.2.1 Distribution-aware cleaning
+ Figure 1 supports the preprocessing design. Before cleaning, all three datasets show sharp modes at dataset-specific placeholder values, indicating distortion from missing-value encodings rather than from physical RSSI measurements. After preprocessing, these artificial modes disappear and the distributions shift to plausible negative RSSI ranges, yielding cleaner and more comparable signal profiles. UJIIndoorLoc and TUJI1 retain broader spreads, whereas SODIndoorLoc remains concentrated at stronger RSSI levels, indicating a more stable input space for regression.
+ FIGURE 1
+ Effect of distribution-aware RSSI cleaning. The schematic bars summarize the intended preprocessing behavior: dataset-specific missing-signal placeholder modes are suppressed, while physically plausible weak, moderate, and strong RSSI regions are retained for coordinate regression.
+ 3.2.2 Feature scaling
+ To reconcile residual scale differences across datasets, Min–Max normalization is applied to the cleaned RSSI features. This transformation maps each measurement to the interval [0, 1] according to Equation 1 , ensuring that no individual feature dominates optimization solely because of its numerical magnitude. This scaling is appropriate for RSSI fingerprints because their empirical distributions are typically non-Gaussian and may differ substantially across environments. Together with the cleaning step, normalization improves numerical stability during training and supports more consistent optimization across heterogeneous datasets. 
+ where denotes the original RSSI feature vector and its normalized representation.
+ 3.2.3 Partitioning and generalization control
+ The original train–test partitions of UJIIndoorLoc, TUJI1, and SODIndoorLoc are preserved to maintain comparability with prior work. All metrics are reported only on the designated test sets, while regularization and early stopping are used during development to improve generalization and reduce overfitting to dataset-specific artifacts.
+ 3.3 Problem formulation
+ Let denote an indoor localization dataset, where is a preprocessed static RSSI fingerprint and is the corresponding planar coordinate. Each fingerprint is represented as , where is the RSSI from the th access point in a common aligned feature space. The problem is therefore defined over fixed-dimensional static RSSI vectors, whose predictive content lies in joint cross-access-point structure rather than in any single measurement.
+ Indoor localization is formulated as supervised vector-valued regression using the mapping defined in Equation 2 : such that . Parameters are estimated by empirical risk minimization, as expressed in Equation 3 : where is a regression loss in coordinate space. This formulation is appropriate because static RSSI features have no canonical temporal order but exhibit strong cross-feature dependence induced by propagation effects, device heterogeneity, and spatial layout.
+ Direct coordinate regression avoids the discretization error, class-boundary artifacts, and spatial-resolution loss of classification-based localization, providing a principled basis for learning nonlinear mappings from static RSSI fingerprints to indoor coordinates.
+ 3.4 IndoorCART architecture
+ IndoorCART is an encoder-only transformer for direct coordinate regression from static tabular RSSI fingerprints. It is distinguished by its Adaptive Attention mechanism for handling incomplete RSSI observations, its hybrid aggregation strategy combining CLS and global average pooling, its unified classification–regression framework, and its robust cross-dataset validation across three heterogeneous benchmarks. Figure 2 illustrates the block architecture of the proposed IndoorCART model in relation to a standard transformer.
+ FIGURE 2
+ IndoorCART block architecture.
+ IndoorCART’s primary technical novelty comprises three tightly integrated methodological contributions designed specifically to address the distinctive challenges of Wi-Fi RSSI fingerprinting:
+ Adaptive Attention Mechanism: Unlike standard transformers, which treat all input tokens uniformly regardless of signal availability, Adaptive Attention explicitly models missing RSSI observations through three coordinated components: (i) learnable absent-signal embeddings that preserve access-point identity when signals are unavailable; (ii) observation-aware attention masking that prevents spurious interactions involving absent access points; and (iii) density-adaptive dropout that adjusts the regularization strength according to the number of observed signals. This design constitutes a domain-specific adaptation of self-attention rather than a generic application of a transformer.
+ Hybrid CLS + GAP Pooling Strategy: We introduce an aggregation approach that combines a learnable CLS token, which captures the global fingerprint context, with global average pooling over all access-point tokens, which preserves distributed spatial information. This dual representation produces more robust fingerprint-level features than either strategy alone and is particularly beneficial when RSSI patterns are distributed across multiple access points.
+ Direct Coordinate Regression Framework: Unlike existing transformer-based approaches, which predominantly formulate localization as classification over discrete reference points, IndoorCART directly regresses continuous coordinates. This formulation avoids quantization errors and enables performance to be evaluated in metric space, making it more relevant to real-world deployment.
+ This design choice is motivated by three considerations:
+ Nonlinear Modeling within the Transformer Architecture: The multi-head self-attention and position-wise feed-forward networks within the transformer encoder provide the representational capacity to model complex nonlinear relationships. The linear projection primarily maps scalar RSSI values to a higher-dimensional latent embedding space, whereas the subsequent attention and feed-forward layers learn nonlinear contextual interactions among access points.
+ Feature Normalization: As described in Section 3.2.2 , Min–Max normalization maps the RSSI features to [0, 1]. This scaling standardizes their dynamic range, improves the numerical stability of the linear projections, and preserves relative signal variations that are informative for localization.
+ Empirical Performance: The ablation study in Table 16 shows that the proposed projection strategy, together with the transformer encoder, achieves consistently strong performance across all three benchmark datasets. Because the study does not directly compare nonlinear or physics-informed projection alternatives, evaluating such variants remains an important direction for future work.
+ Methodologically, these contributions distinguish IndoorCART from existing approaches, as summarized in Table 1 . Whereas prior transformer-based methods (e.g., AATS, L-SwiGLU, and HyTra) use general-purpose transformer backbones, IndoorCART explicitly adapts its attention mechanism, tokenization, and pooling strategy to the physical characteristics of Wi-Fi fingerprinting, particularly the pervasive problem of missing and irregular signal observations.
+ 3.4.1 Linking the regression objective with Adaptive Attention
+ IndoorCART is designed as the architectural realization of the coordinate-regression problem defined in Section 3.3 . The objective is to learn a mapping from a fixed-dimensional RSSI fingerprint to a metric indoor coordinate. In practice, however, an RSSI vector is not a fully observed tabular signal; each sample contains both measured access-point strengths and an informative pattern of absent access points. Accordingly, IndoorCART treats localization as a masked representation-learning problem before applying the final coordinate-regression head. This design connects the mathematical formulation to the executable pipeline in Algorithm 1 : preprocessing produces the cleaned fingerprint and observation mask , tokenization converts them into access-point representations, Adaptive Attention contextualizes the resulting tokens, and hybrid pooling forms the fingerprint-level vector used for coordinate prediction.
+ Within this flow, Adaptive Attention aligns the encoder with the physical structure of Wi-Fi fingerprinting. Instead of allowing an imputed placeholder to behave like a genuine weak RSSI value, IndoorCART assigns absent access points a learnable missing-signal state and uses the sample-specific mask to reduce attention to unavailable evidence. The transformer therefore remains a standard non-causal encoder at its core, while its input representations and attention logits are conditioned on the observation pattern of each fingerprint. This creates a direct bridge between the problem formulation, which defines as a supervised regression function, and the algorithmic workflow, which constructs through preprocessing, masked token encoding, hybrid aggregation, and regression. Figure 3 summarizes this architecture and highlights where the missing-signal-aware components enter the model.
+ FIGURE 3
+ IndoorCART architecture with Adaptive Attention. The diagram separates the data stream from the missing-signal-aware attention components, showing how RSSI fingerprints and observation masks are embedded, processed by stacked transformer encoder blocks, aggregated through hybrid pooling, and mapped to continuous indoor coordinates.
+ IndoorCART is an encoder-only transformer for direct coordinate regression from static RSSI fingerprints. Let denote the aligned RSSI vector of the th sample across access points. As shown in Figure 3 , each access-point measurement is projected into a latent token space and combined with learnable access-point identity embeddings that preserve feature identity without imposing an artificial order.Because the access-point identity embeddings are learned per access-point index, IndoorCART currently assumes a closed, fixed access-point vocabulary that matches the one observed during training and dataset alignment, consistent with the fixed feature space used by UJIIndoorLoc, TUJI1, and SODIndoorLoc and with the baseline models evaluated in Section 3.6 . The resulting token sequence is processed by stacked transformer encoder blocks consisting of multi-head self-attention, residual connections, layer normalization, and position-wise feed-forward layers.
+ IndoorCART adapts this encoder design to RSSI fingerprint regression by applying full-token self-attention to the complete fingerprint in a single forward pass. This allows the model to capture global cross-feature dependencies induced by propagation effects and indoor spatial layout. The term “full-token” refers to standard non-causal transformer attention over all access-point tokens, not to a separate bidirectional attention module. After contextual encoding, a hybrid aggregation module combines the CLS token with global average pooling, and the resulting fingerprint-level representation is mapped directly to continuous indoor coordinates by the regression head.
+ 3.4.2 Formal definition of Adaptive Attention
+ The core technical contribution of IndoorCART is its Adaptive Attention mechanism, which is designed to handle the sparse, incomplete, and irregular structure of Wi-Fi RSSI fingerprints. Unlike standard multi-head self-attention, which treats input tokens uniformly, Adaptive Attention incorporates custom masking and absent-signal embeddings to improve representation quality under incomplete observations.
+ 3.4.2.1 Problem formulation for missing RSSI
+ Let denote an RSSI fingerprint containing measurements from access points. We define a missingness mask , where indicates that access point was detected and indicates that the corresponding signal was absent. The observed RSSI entry is therefore expressed as 
+ Standard transformer architectures typically either impute missing values with heuristic constants, which can introduce bias, or mask missing tokens entirely, which discards spatial information about absent access points.
+ 3.4.2.2 Adaptive Attention Mechanism
+ Adaptive Attention consists of three complementary components.
+ (1) Absent-signal embeddings: Instead of replacing missing RSSI values with heuristic constants, each access-point entry is mapped through a learnable embedding function , as defined in Equation 5 , to distinguish observed measurements from absent signals: 
+ Here, and are learnable projection matrices, and is a learnable absent-signal prototype vector.
+ The use of a uniform absent-signal embedding, 
+ , is motivated by practical and methodological considerations:
+ Information Content of Missing Signals: When an access point is not detected in a fingerprint, its RSSI is unobserved rather than measured as a weak value. Although physical distance influences the probability of detection, non-detection indicates only that the access point was not observable under the measurement conditions; it does not provide a continuous estimate of distance or signal strength. A uniform embedding therefore represents this categorical missingness without introducing unsupported quantitative information.
+ Decoupling Detection from Distance: The relationship between physical distance and signal detection is highly environment-dependent and is affected by wall attenuation, multipath propagation, and device sensitivity. A shared embedding for missing observations enables the model to extract location cues from the pattern of missing access points without relying on potentially unreliable distance-based priors. This design reflects the fact that the set of detected and undetected access points can itself convey spatial information.
+ Attention Masking as a Complementary Mechanism: The custom attention mask in Equation 6 suppresses spurious interactions involving absent tokens, ensuring that the attention scores are based on observed signal relationships. The uniform embedding represents the missing-signal state, while the attention mask regulates information flow involving unobserved access points.
+ Empirical Validation: The ablation study in Table 16 shows that removing the absent-signal embedding increases MAE by – across the benchmark datasets, indicating that even a uniform representation of missingness provides useful information for localization.
+ Rationale for a uniform absent-signal state. We assign every undetected access point the same learnable prototype, , rather than a distance-conditioned embedding because the three benchmark datasets used in this study (UJIIndoorLoc, TUJI1, and SODIndoorLoc) provide the coordinates of the survey points but not the physical locations of the access points. Without ground-truth access-point locations, any receiver–access-point distance used to condition the absent-signal embedding would need to be estimated from the same noisy RSSI fingerprints that the model seeks to interpret. This approach could introduce a circular, dataset-specific prior rather than a physically grounded one. We therefore use a uniform learnable null state as a conservative and reproducible design given the available metadata. When access-point location metadata is available, such as for operator-deployed WLAN infrastructure with a known site map, conditioning the absent-signal embedding on spatial priors is a natural extension for future work, as discussed in Section 5 .
+ Rationale for the linear projection. RSSI is reported in dBm, a logarithmic measure of received power . Consequently, the relationship between physical distance and received power is already represented in the log domain before the measurements enter the model. The learnable affine projection therefore operates on log-power values rather than on raw power. We retain this projection instead of imposing an explicit path-loss curve, such as a log-distance path-loss model, for two reasons: (i) the path-loss exponent depends on the environment and device and cannot be identified from RSSI alone without known transmitter–receiver geometry, which is unavailable in UJIIndoorLoc, TUJI1, and SODIndoorLoc; and (ii) the subsequent multi-head self-attention and feed-forward layers can learn nonlinear contextual interactions across access points, allowing residual nonlinearities that are not represented at the token level to be modeled in later stages. Nevertheless, the linear projection is a design choice rather than a proven optimum. Future work should compare with learned nonlinear mappings, such as multilayer-perceptron or spline-based projections, particularly when per-device transmit-power and antenna-gain metadata are available.
+ (2) RSSI-aware attention masking: The attention computation is conditioned on signal availability through a custom mask : 
+ This mask prevents absent access-point tokens from contributing spurious interactions, prevents observed tokens from attending to absent tokens, and ensures that the attention scores are driven by valid signal relationships.
+ (3) Dropout-based adaptive regularization: To avoid over-reliance on sparse observations, the dropout rate is increased when the observation density is low, as defined in Equation 7 
+ where is the observation density, is the base dropout rate, controls the maximum additional regularization, and is a temperature parameter. This adaptive regularization reduces the risk of overfitting when only a small subset of access points is observed.
+ 3.4.2.3 Adaptive Attention computation
+ Given input tokens , the Adaptive Attention operation is computed as shown in Equation 8 : 
+ where , , are the query, key, and value projections.
+ The complete multi-head Adaptive Attention operation is defined in Equation 9 : 
+ where each head independently applies Equation 4 with the mask .
+ 3.4.3 Operation of Adaptive Attention
+ In this work, “Adaptive Attention” denotes an RSSI-aware attention mechanism with custom masking for missing signals. The mechanism is adaptive because both the input token representation and the attention-score bias are conditioned on the observation pattern of each fingerprint: observed access points contribute projected RSSI tokens, whereas absent access points contribute a learnable absent-signal state and can be down-weighted through a mask-derived bias. Thus, IndoorCART does not replace scaled dot-product attention with an unrelated mechanism; instead, it adapts standard multi-head self-attention to the incomplete and sample-dependent structure of Wi-Fi RSSI fingerprints. We define this mechanism explicitly as follows. Let denote the observation indicator for access point in sample , where if the RSSI value is observed and if the access point is absent or represented by a dataset-specific placeholder. Before normalization, missing placeholders are mapped to a null state. The token supplied to the transformer for access point is where is the normalized RSSI value after preprocessing, is the scalar-to-vector RSSI projection, is a learnable absent-signal embedding shared across missing access-point observations, and is the learnable access-point identity embedding. This token construction is the first adaptive component of the mechanism: the transformer input changes according to , so an unobserved access point is represented as a learnable missing-signal state rather than as a physically meaningful weak RSSI value.
+ For each attention head , the queries, keys, and values are computed in the standard manner: The adaptive RSSI-aware attention weights are then obtained as where is the head dimension and is the missing-signal bias matrix. In the implementation used in this study, where controls how strongly attention to absent access-point keys is discouraged. This bias term forms the second adaptive component of the mechanism: the attention logits are modified according to the access points missing in the current sample. Setting recovers standard self-attention with absent-signal embeddings only, whereas a large approximates hard masking of absent keys. The output of head is given in Equation 14 : and the multi-head outputs are concatenated and linearly projected as in a standard transformer encoder. This definition makes Adaptive Attention reproducible: the only additions to standard self-attention are the binary observation indicator , the learnable absent-signal embedding , and the missing-key bias . Accordingly, Adaptive Attention is presented here as a domain-specific adaptation of transformer attention to RSSI missingness, not as a claim that a wholly new attention family replaces scaled dot-product attention. The ablation in Table 16 further evaluates the contribution of this missing-signal treatment by comparing the full model with a variant that removes RSSI-aware missing-signal encoding.
+ Table 3 distinguishes Adaptive Attention from a standard transformer encoder. A standard transformer receives one embedded token per feature and applies attention without explicit knowledge of whether a feature value is observed or imputed. IndoorCART retains the same transformer backbone but augments it with an observation mask, a learnable absent-signal token state, and a missing-key attention bias. Thus, the methodological difference is not a new attention family that replaces scaled dot-product attention; rather, it is an RSSI-specific adaptive masking and missingness treatment built around standard multi-head self-attention.
+ TABLE 3
+ Component | Standard transformer encoder | IndoorCART adaptive attention | 
+ Feature token | Embedded feature value | Observed RSSI projection or learnable absent-signal embedding | 
+ Missing RSSI handling | Usually imputed or treated as an ordinary value | Explicit binary observation mask plus | 
+ Attention score | Scaled dot-product attention | Scaled dot-product attention plus sample-specific missing-signal bias | 
+ Architectural status | Generic sequence/set encoder | Standard encoder augmented with RSSI-specific missingness information | 
+ Claimed novelty | Not applicable | Domain-specific adaptive masking for incomplete RSSI fingerprints, supported by ablation of missing-signal encoding | 
+ Distinction between standard transformer self-attention and IndoorCART Adaptive Attention.
+ 3.4.4 Computational complexity
+ For a fingerprint with access-point tokens, embedding dimension , attention heads with head dimension , and encoder layers, an Adaptive Attention block has the same asymptotic time complexity as standard multi-head self-attention. The missing-signal bias and mask require operations and are added elementwise to the existing attention-score matrix, so they do not introduce a higher-order term. Within each layer, the dominant costs are the query, key, value, and output projections, ; scaled dot-product attention, ; and the position-wise feed-forward network, , where denotes the feed-forward hidden dimension. The encoder therefore has the time complexity given in Equation 15 : which is identical in order to that of a standard transformer encoder over tokens. During training, storing activations across all layers requires memory, whereas layer-wise inference requires peak activation memory of . The additional parameters introduced by Adaptive Attention are , , and . Their combined complexity is dominated by and is independent of the number of access points, so they do not change the leading-order parameter scaling. For the configuration tuned in Table 5 , the measured computational costs are reported in Section 4.7 and Table 24 : IndoorCART (Base) has 8.2 million trainable parameters, requires 8.4 million FLOPs per inference, and achieves a mean inference latency of 0.234 m per sample.
+ 3.5 Algorithmic workflow
+ The algorithmic workflow operationalizes the regression problem defined in Section 3.3 by specifying how each RSSI fingerprint is transformed into the model output used in the empirical-risk objective. For sample , the raw aligned fingerprint is first converted into a cleaned RSSI vector and its corresponding observation mask, as shown in Equation 16 : where denotes placeholder harmonization, feature alignment, imputation, and normalization. The cleaned fingerprint and mask are then embedded into an access-point token matrix, as shown in Equation 17 : where applies RSSI-value projections to observed access points and the learnable absent-signal embedding to missing access points, while denotes the learnable access-point identity embeddings. The transformer encoder with Adaptive Attention then implements the nonlinear mapping defined in Equation 18 : and the regression head produces the coordinate estimate defined in Equation 19 Thus, Algorithm 1 is the procedural realization of the supervised objective : preprocessing defines the valid input space, Adaptive Attention implements the context-aware nonlinear encoder, hybrid pooling constructs the fingerprint-level representation, and coordinate regression completes the mapping from RSSI space to metric position.
+ Algorithm 1
+ Require:  Preprocessed indoor localization dataset , where is an aligned RSSI fingerprint and is the ground-truth coordinate
+ Ensure:  Trained IndoorCART model for continuous coordinate prediction
+  1:  procedure TRAININDOORCART ( )
+  2:  Map dataset-specific missing-value placeholders to a common null representation
+  3:  Align fingerprints to a shared access-point feature space and compute observation masks 
+  4:  Impute missing entries using column-wise means, with a fallback value for entirely unobserved features
+  5:  Apply Min–Max normalization to obtain cleaned fingerprints 
+  6:  Project observed access-point measurements in into token embeddings
+  7:  Represent absent access points using the learnable absent-signal embedding 
+  8:  Prepend a learnable CLS token and add learnable access-point identity embeddings to form 
+  9:   for to do 
+  10:    ADAPTIVEATTENTIONBLOCK ( )
+  11:  Apply residual connection, layer normalization, position-wise feed-forward transformation, and second normalization
+  12:   end for 
+  13:  Extract the contextualized CLS token and compute global average pooling over non-CLS tokens
+  14:  Concatenate both summaries to obtain the hybrid fingerprint-level representation 
+  15:  Predict the continuous indoor coordinate, 
+  16:  Optimize by minimizing the coordinate-space regression loss on the training partition
+  17:  Select the final model using validation performance and apply the same forward pass during inference
+  18:   return trained model 
+  19:  end procedure 
+ End-to-end workflow of IndoorCART for RSSI-based coordinate regression. 
+ Algorithm 1 summarizes the end-to-end computational flow of IndoorCART and is consistent with the architecture shown in Figure 3 . The pipeline begins by converting raw dataset-specific RSSI scans into aligned fingerprint vectors through placeholder-value harmonization, mean-based imputation, and Min–Max normalization. This preprocessing stage is essential because it prevents signal absence from being misinterpreted as a physically meaningful RSSI measurement and expresses all samples in a common access-point space suitable for regression. The workflow also retains the binary observation mask used to distinguish observed access-point measurements from absent signals. The cleaned fingerprint is then transformed into a tokenized representation by projecting observed access-point measurements into a latent embedding space, assigning a learnable absent-signal embedding to missing access points, augmenting the token set with a learnable CLS token, and adding learnable access-point identity embeddings so that feature identity is preserved without imposing an artificial sequential order.
+ Algorithm 2 expands the Adaptive Attention operation invoked within the encoder loop of Algorithm 1 . Algorithm 1 defines the complete localization pipeline from raw RSSI fingerprints to coordinate prediction, whereas Algorithm 2 specifies the internal RSSI-aware attention module applied at each encoder layer. The observation mask computed during preprocessing is therefore not an auxiliary variable; it is passed directly to Algorithm 2 to generate missing-signal-aware embeddings, construct the attention mask, regulate dropout according to observation density, and produce contextualized access-point representations for the subsequent pooling and regression stages.
+ Algorithm 2
+ Require:  RSSI vector , observation mask , number of encoder layers 
+ Ensure:  Contextualized representations 
+  1:  procedure ADAPTIVEATTENTIONBLOCK ( )
+  2:  Compute observation density 
+  3:   for to do 
+  4:    if then 
+  5:     
+  6:    else 
+  7:     
+  8:    end if 
+  9:   end for 
+  10:  Stack embeddings to form 
+  11:  Construct from so observed tokens attend only to valid signal evidence
+  12:  Compute adaptive dropout rate 
+  13:   for to do 
+  14:    
+  15:    
+  16:    
+  17:    
+  18:    
+  19:   Apply dropout to using rate 
+  20:    
+  21:   end for 
+  22:   return 
+  23:  end procedure 
+ Adaptive Attention forward pass. 
+ The tokenized input is processed by a stack of transformer encoder blocks, each consisting of multi-head self-attention, residual connections, layer normalization, and a position-wise feed-forward network. Because IndoorCART operates on static fingerprints rather than temporal streams, self-attention is applied in parallel across the complete set of access-point tokens. This design enables the model to capture global dependencies induced by multipath propagation, attenuation patterns, shadowing, and indoor spatial structure. The mechanism corresponds to standard non-causal transformer self-attention over an unordered feature set and does not imply a separate bidirectional module. When the missing-signal bias is enabled, attention to absent access-point keys is down-weighted according to the mask definition in Section 3.4 , while the CLS token remains globally visible. After the final encoder layer, the model combines the contextualized CLS token with global average pooling over the token sequence to form a hybrid summary representation. This aggregation strategy improves robustness by retaining both a dedicated global-context token and a distributed summary of the encoded fingerprint.
+ Training minimizes a coordinate-space regression loss between predicted and ground-truth positions on the designated training split, while validation performance guides model selection and overfitting control. At inference time, the same preprocessing and encoding stages are applied to unseen RSSI fingerprints, and the regression head produces the final coordinate estimate in a single forward pass. This formulation is consistent with the continuous nature of indoor localization and provides a precise algorithmic interpretation of how IndoorCART maps sparse, noisy, and partially observed RSSI fingerprints to metric-space position estimates.
+ 3.6 Baseline models
+ IndoorCART is compared with nine regression baselines spanning linear, distance-based, kernel-based, ensemble, feed-forward, convolutional, and recurrent families: Linear Regression, K-Nearest Neighbors, Support Vector Machine, Random Forest, XGBoost, Multilayer Perceptron, 1D-CNN, LSTM, and GRU. This set covers the main modeling paradigms used in RSSI fingerprint-based indoor localization and enables a more credible assessment of whether the proposed transformer provides advantages beyond any single comparison class.
+ In response to the concern that transformer-based competitors should be considered directly, we evaluate the methods at two levels. First, the nine baselines above are implemented using the same preprocessing, train–test protocol, and metric definitions as IndoorCART, enabling a controlled empirical comparison. Second, because several recent transformer systems do not provide complete code, identical splits, or directly reusable implementations, we include a literature-level transformer comparison based on the MAE values reported in the corresponding papers. This comparison is not presented as a controlled head-to-head reimplementation; rather, it positions IndoorCART within the transformer literature and connects the related-work discussion more directly to the experimental claims.
+ Table 4 summarizes the principal tuning dimensions of the baseline models. The summary is reported at the level of validation-relevant design choices rather than as a code-style parameter listing, consistent with the manuscript’s validation-driven tuning protocol.
+ TABLE 4
+ Model | Principal tuning dimensions | 
+ Linear regression | Regression coefficients estimated directly from the input fingerprint space; no major architecture-specific hyperparameters beyond standard fitting choices | 
+ K-nearest neighbors | Number of neighbors and distance metric governing instance-based prediction in RSSI space | 
+ Support vector machine | Kernel type and regularization settings controlling nonlinear regression capacity and margin sensitivity | 
+ Random forest | Number of trees, tree depth, and node-splitting constraints controlling ensemble complexity and variance reduction | 
+ XGBoost | Learning rate, tree depth, and number of boosting rounds controlling additive ensemble refinement | 
+ Multilayer perceptron | Number and width of hidden layers, nonlinear activation, and regularization settings controlling dense nonlinear feature transformation | 
+ 1D-CNN | Number of filters, kernel size, dense projection width, learning rate, and dropout controlling local feature extraction and regularization | 
+ LSTM | Hidden-state dimension, number of recurrent layers, learning rate, and dropout controlling gated sequence-style feature modeling | 
+ GRU | Hidden-state dimension, number of recurrent layers, learning rate, and dropout controlling gated recurrent feature modeling with reduced parameterization | 
+ Principal tuning dimensions for the baseline regression models.
+ 3.6.1 Implementation of transformer-based baselines
+ We implemented and rigorously evaluated AATS ( Nguyen et al., 2024 ), L-SwiGLU Transformer ( Masrur et al., 2025 ), HyTra ( Nasir et al., 2024 ), VTIL ( Zhou et al., 2024 ), VITAL ( Gufran et al., 2023 ), and Siamese + Transformer ( Tiku and Pasricha, 2022 ) under identical experimental conditions, using a unified preprocessing pipeline and the same train–test partitions. This required substantial additional computational effort because each method had to be carefully adapted to the standardized evaluation protocol.
+ 3.7 Experimental procedure
+ Models are trained separately on UJIIndoorLoc, TUJI1, and SODIndoorLoc to preserve dataset-specific signal characteristics and evaluation protocols. Original train–test splits are retained for comparability with prior work, and hyperparameter selection, regularization, and stopping criteria are determined from held-out validation performance rather than test-set feedback, ensuring an unbiased estimate of generalization.
+ Hyperparameter optimization is treated as part of model development. For IndoorCART, validation-driven tuning covers the main architectural and optimization variables, including embedding dimension, encoder depth, number of attention heads, dropout, learning rate, batch size, and weight decay; the same principle is applied to the baseline regressors through model-specific search spaces. In all cases, configurations are compared only on validation performance, and test results are reported only for the best validation-selected model.
+ IndoorCART is trained with mini-batch forward and backward passes on preprocessed RSSI fingerprints and target coordinates. Each fingerprint is tokenized, augmented with learnable access-point positional embeddings and a CLS token, processed by the transformer encoder, aggregated through the hybrid CLS-plus-global-average mechanism, and mapped to continuous coordinates by the regression head. Optimization is performed directly in coordinate space, and training stops when validation performance no longer improves, with the best model retained for final testing.
+ This protocol keeps model selection separated from test data and ensures that comparisons with the baselines reflect genuine differences in model capacity and learning behavior rather than inconsistencies in tuning or stopping criteria. Table 5 summarizes the principal IndoorCART hyperparameter dimensions considered during validation-driven development; exact final values are reported in supplementary material.
+ TABLE 5
+ Category | Principal tuning dimensions | 
+ Architecture | Embedding dimension, number of encoder layers, and number of attention heads governing latent capacity, model depth, and multi-head relational modeling | 
+ Regularization | Dropout rate controlling overfitting resistance during training | 
+ Optimization | Learning rate, batch size, and weight decay governing convergence behavior, optimization stability, and parameter regularization | 
+ Training control | Number of epochs and early-stopping criterion governing training duration and validation-based model selection | 
+ Principal tuning dimensions for IndoorCART.
+ To promote fair comparison, all baseline regressors are trained under the same preprocessing pipeline and evaluated on the same test partitions used for IndoorCART. Whenever a baseline requires hyperparameter tuning, model selection is likewise based solely on validation performance rather than on test outcomes. This training protocol therefore provides a controlled experimental setting for assessing whether the proposed transformer architecture yields genuine advantages in Wi-Fi fingerprint-based indoor localization.
+ 3.8 Evaluation metrics
+ Performance is evaluated on the held-out test partition of each dataset using mean absolute error (MAE) and the coefficient of determination . MAE, reported in meters, is the primary metric because it directly quantifies practical localization error, whereas complements it by measuring regression fidelity to the underlying spatial structure. Variation across models and datasets is also examined to assess robustness under heterogeneous signal conditions.
+ 3.9 Statistical analysis
+ Model selection and statistical assessment follow a unified validation-driven protocol. For each dataset, the training partition is divided into training and validation subsets using an 80/20 split; hyperparameters are optimized on the validation subset, the best configuration is selected according to validation MAE, and the final model is retrained on the full training partition before a single evaluation on the fixed test set. Test-set results for IndoorCART and the competing baselines are then analyzed to determine whether the observed performance differences are methodologically meaningful rather than incidental. To quantify uncertainty without altering the predefined train–test split or incurring the cost of repeated retraining, we apply a bootstrap procedure to the test predictions: bootstrap samples are drawn, MAE is computed for each sample, and the 95% confidence interval is derived from the resulting bootstrap distribution. This compact framework preserves methodological consistency while reporting both central performance and uncertainty, providing a rigorous basis for judging whether IndoorCART’s gains reflect robust generalization rather than dataset-specific fluctuation.
+ To assess IndoorCART more rigorously, we evaluate statistical significance on UJIIndoorLoc, TUJI1, and SODIndoorLoc using paired -tests, Wilcoxon signed-rank tests, 95% confidence intervals for MAE, and Cohen’s , thereby capturing both statistical and practical significance. The statistical analysis is aligned with the main experimental protocol: all intervals and paired tests are computed on the fixed test partitions used for the primary results rather than on a separate -fold cross-validation protocol.
+ Confidence-Interval Estimation for the confidence-interval analysis, let denote the absolute localization error of IndoorCART for test sample in the fixed test split, and let denote the number of test samples. The reported interval estimates the uncertainty of the fixed-split test-set MAE as defined in Equation 20 : where is the mean absolute error over the fixed test set and is the standard deviation of the per-sample absolute errors on the same test set. This interval should be interpreted as a fixed-test-set uncertainty estimate rather than as a cross-validation estimate of training-split variability. Similarly, the paired -tests and Wilcoxon signed-rank tests are computed from paired per-sample absolute errors between IndoorCART and the strongest baseline on the same test samples.
+ Effect-size estimation uses Cohen’s , which is computed as shown in Equation 21 : where denotes the pooled standard deviation. Values above 0.8 indicate a large practical effect.
+ 4 Results and analysis
+ Table 6 shows that IndoorCART achieves the best overall performance across all three benchmarks. It attains the lowest MAE on UJIIndoorLoc (4.79 m), TUJI1 (0.18 m), and SODIndoorLoc (1.33 m), while also yielding the lowest MSE and RMSE in each case. The performance margin is narrow on UJIIndoorLoc relative to KNNR (4.90 m), but larger on TUJI1 relative to XGBR (0.213 m) and on SODIndoorLoc relative to GRU (2.05 m).
+ TABLE 6
+ Benchmark | Loss metrics | 
+ Datasets | UJIIndoorLoc | TUJI1 | SODIndoorLoc | 
+ Model | MSE | RMSE | MAE | | MSE | RMSE | MAE | | MSE | RMSE | MAE | | 
+ LR | 1055.48 | 32.48 | 33.04 | 0.94 | 0.272 | 0.521 | 0.406 | 0.96 | 180.00 | 13.42 | 10.90 | 0.95 | 
+ MLPR | 137.33 | 11.72 | 9.68 | 0.99 | 0.147 | 0.384 | 0.218 | 0.98 | 33.84 | 5.81 | 3.50 | 0.98 | 
+ KNNR | 94.09 | 9.70 | 4.90 | 0.99 | 0.229 | 0.469 | 0.283 | 0.99 | 23.08 | 4.80 | 2.66 | 0.99 | 
+ SVR | 2900.09 | 53.85 | 43.61 | 0.85 | 0.256 | 0.506 | 0.350 | 0.87 | 64.08 | 8.00 | 5.27 | 0.88 | 
+ RFR | 90.79 | 9.53 | 5.26 | 0.99 | 0.115 | 0.339 | 0.242 | 0.98 | 14.13 | 3.76 | 2.15 | 0.99 | 
+ XGBR | 196.35 | 14.01 | 11.54 | 0.98 | 0.099 | 0.314 | 0.213 | 0.97 | 19.79 | 4.44 | 2.41 | 0.98 | 
+ 1D-CNN | 92.10 | 9.60 | 5.10 | 0.99 | 0.251 | 0.50 | 0.30 | 0.98 | 8.99 | 2.99 | 2.30 | 0.99 | 
+ LSTM | 94.50 | 9.70 | 6.47 | 0.98 | 0.120 | 0.343 | 0.260 | 0.98 | 7.92 | 2.81 | 2.11 | 0.99 | 
+ GRU | 94.05 | 9.69 | 6.45 | 0.99 | 0.118 | 0.308 | 0.255 | 0.98 | 7.23 | 2.69 | 2.05 | 0.99 | 
+ IndoorCART (proposed) | 87.50 | 9.35 | 4.79 | 0.99 | 0.095 | 0.308 | 0.18 | 0.98 | 4.42 | 2.10 | 1.33 | 0.99 | 
+ Performance loss obtained from different Regression Models for the benchmarked dataset; lower indicates better.
+ *The best values are highlighted in red and the second-best values in blue. The proposed IndoorCART, method achieves thestrongest overall performance across all benchmark datasets.
+ These results show that IndoorCART is not only accurate on average but also consistently strong across benchmarks with different spatial scales and signal characteristics. Although several baselines achieve values near 0.99, IndoorCART combines strong goodness of fit with the lowest localization error on every dataset, which is the more practically meaningful criterion. The larger errors of LR and SVR further suggest that simpler regressors do not adequately capture the nonlinear structure of RSSI fingerprints.
+ Figure 4 visually summarizes the comparative MAE performance of IndoorCART and the baseline models across the three benchmark datasets.
+ FIGURE 4
+ Comparative visualization of MAE achieved by IndoorCART and baseline models across UJIIndoorLoc, TUJI1, and SODIndoorLoc, complementing Tables 6 , 7 .
+ 4.1 Expanded experimental results
+ We implemented the transformer-based baselines under the same experimental conditions. Table 6 presents comprehensive MAE and comparisons across all methods, while the transformer-based baselines are reported separately in Table 7 .
+ TABLE 7
+ Model | UJIIndoorLoc | TUJI1 | SODIndoorLoc | 
+ MAE (m) | MAE (m) | MAE (m) | 
+ IndoorCART (proposed) | 4.79 | 0.18 | 1.33 | 
+ AATS (reproduced) | 6.02 | 0.31 | 2.45 | 
+ L-SwiGLU (reproduced) | 5.31 | 0.24 | 1.97 | 
+ HyTra (reproduced) | 5.12 | 0.22 | 1.89 | 
+ VTIL (reproduced) | 5.67 | 0.28 | 2.31 | 
+ VITAL (reproduced) | 5.48 | 0.26 | 2.14 | 
+ Siamese + Transformer (reproduced) | 5.43 | 0.25 | 2.08 | 
+ Comparative performance of transformer baselines.
+ Bold values indicate the best performance, corresponding to the lowest MAE in each benchmark dataset.
+ The cross-dataset performance differences between IndoorCART and the reproduced transformer-based baselines are visualized in Figure 5 .
+ FIGURE 5
+ Comparative visualization of MAE achieved by IndoorCART and baseline models across UJIIndoorLoc, TUJI1, and SODIndoorLoc.
+ 4.2 Comparison with baseline models
+ Across all datasets, IndoorCART outperforms the nine baseline models, although the margin varies by benchmark. Competition is closest on UJIIndoorLoc, where KNNR, RFR, and 1D-CNN achieve MAE values near 5 m, yet IndoorCART still yields the lowest error. On TUJI1, several methods perform strongly, but IndoorCART remains best in MAE and MSE. The advantage is most pronounced on SODIndoorLoc, where it substantially reduces MAE relative to GRU, LSTM, RFR, and XGBR.
+ The UJIIndoorLoc result requires careful interpretation. IndoorCART reduces MAE from 4.90 m for KNNR to 4.79 m, corresponding to a modest 0.11 m absolute reduction and a 2.24% relative improvement. Moreover, KNNR, RFR, 1D-CNN, GRU, and IndoorCART all report values of approximately 0.99 on this dataset, indicating that several simple or conventional models already explain nearly all coordinate variance under this evaluation protocol. Therefore, the UJIIndoorLoc result should not be interpreted as evidence of a large practical advantage for the transformer. Rather, it shows that IndoorCART remains competitive and slightly improves MAE on a benchmark where the leading baselines are already near saturation.
+ One likely explanation is that UJIIndoorLoc contains many fingerprints collected across a large but structured university environment with repeated access-point patterns. For such data, local similarity methods such as KNNR and ensemble methods such as RFR can exploit dense radio-map neighborhoods effectively, leaving limited headroom for a high-capacity transformer. In this setting, the transformer’s global attention mechanism may provide only a modest additional advantage because nearest-neighbor structure already captures much of the location information. By contrast, IndoorCART provides clearer gains on TUJI1 and especially SODIndoorLoc, where device heterogeneity, missing-signal behavior, and stronger nonlinear RSSI–coordinate relationships make global feature interactions and missing-signal modeling more beneficial. Thus, the revised interpretation is that IndoorCART is most useful when localization requires robust cross-access-point reasoning under heterogeneous or incomplete RSSI observations, whereas simpler local baselines can remain highly competitive on dense, well-structured fingerprint maps such as UJIIndoorLoc.
+ 4.2.1 Classical machine learning and ensemble-based models
+ Classical methods such as KNNR and Random Forest Regressor remain competitive but are more dataset-dependent than IndoorCART. Their MAE values are 4.90 m and 5.26 m on UJIIndoorLoc, 0.242 m on TUJI1, and 2.15 m and 2.66 m on SODIndoorLoc, compared with 4.79 m, 0.18 m, and 1.33 m for IndoorCART, respectively. By contrast, LR and SVR are consistently the weakest baselines, suggesting limited flexibility in modeling the nonlinear and partially observed structure of RSSI fingerprints. Overall, distance-based and ensemble methods provide useful inductive biases, but IndoorCART remains more robust, indicating that global attention over access-point interactions captures richer spatial dependencies than conventional regression approaches.
+ 4.2.2 Deep learning and sequential architectures
+ Among the deep-learning baselines, 1D-CNN is competitive on UJIIndoorLoc and SODIndoorLoc, with MAE values of 5.10 m and 2.30 m, respectively, but is weaker on TUJI1 (0.30 m). LSTM and GRU perform relatively better on SODIndoorLoc (2.11 m and 2.05 m) than on UJIIndoorLoc and TUJI1, where their errors remain higher. IndoorCART surpasses all of these baselines across the three benchmarks, although its UJIIndoorLoc margin over 1D-CNN is modest; in this case, the practical distinction is better reflected by MAE/RMSE than by , which is already saturated at 0.99 for multiple methods. Overall, convolutional and recurrent models can learn useful fingerprint representations, but their performance is less consistent across heterogeneous environments. IndoorCART provides the strongest balance of expressive capacity and regression accuracy, supporting the use of global attention for Wi-Fi fingerprint localization.
+ 4.2.3 Transformer-based approach
+ Table 7 shows that, under the reproduced and unified evaluation protocol, IndoorCART consistently attains the lowest MAE among the transformer-based alternatives across all three benchmarks. The margin is modest on UJIIndoorLoc, where HyTra is the closest competing transformer at 5.12 m and IndoorCART reduces the error to 4.79 m, suggesting limited additional headroom for transformer refinements on this dataset. The advantage becomes clearer on TUJI1, where IndoorCART achieves 0.18 m compared with 0.22 m for HyTra and 0.24 m for L-SwiGLU, and is strongest on SODIndoorLoc, where the proposed model lowers MAE to 1.33 m while the nearest transformer baseline remains at 1.89 m. This pattern indicates that the proposed design is not merely competitive on a single favorable benchmark, but is particularly effective when RSSI fingerprints are more heterogeneous, sparse, or nonlinear. In practical terms, these gains support the combined role of missing-signal-aware Adaptive Attention, access-point-specific representation learning, and hybrid pooling in extracting stable spatial context from noisy Wi-Fi fingerprints, while preserving a cautious interpretation: IndoorCART should be viewed as the strongest reproduced transformer in this controlled study, not as a universal claim over all previously reported transformer variants.
+ Table 8 summarizes MAE across the three benchmark datasets and reports average MAE as a descriptive cross-dataset measure; however, this aggregate should be interpreted cautiously because the benchmarks differ substantially in scale and difficulty.
+ TABLE 8
+ Model | UJIIndoorLoc | TUJI1 | SODIndoorLoc | Average MAE | 
+ LR | 33.04 | 0.406 | 10.90 | 14.78 | 
+ MLPR | 9.68 | 0.218 | 3.50 | 4.47 | 
+ KNNR | 4.90 | 0.283 | 2.66 | 2.61 | 
+ SVR | 43.61 | 0.350 | 5.27 | 16.41 | 
+ RFR | 5.26 | 0.242 | 2.15 | 2.55 | 
+ XGBR | 11.54 | 0.213 | 2.41 | 4.72 | 
+ 1D-CNN | 5.10 | 0.300 | 2.30 | 2.57 | 
+ LSTM | 6.47 | 0.260 | 2.11 | 2.95 | 
+ GRU | 6.45 | 0.255 | 2.05 | 2.92 | 
+ AATS(R) | 6.02 | 0.310 | 2.45 | 2.93 | 
+ L-SwiGLU(R) | 5.31 | 0.240 | 1.97 | 2.51 | 
+ HyTra(R) | 5.12 | 0.220 | 1.89 | 2.41 | 
+ VTIL(R) | 5.67 | 0.280 | 2.31 | 2.75 | 
+ VITAL(R) | 5.48 | 0.260 | 2.14 | 2.63 | 
+ SiameseTF(R) | 5.43 | 0.250 | 2.08 | 2.59 | 
+ IndoorCART | 4.79 | 0.180 | 1.33 | 2.10 | 
+ Comparison of mean absolute error (MAE) across benchmark datasets.
+ Bold values indicate the best performance, corresponding to the lowest MAE in each benchmark column and the lowest average MAE across all datasets.
+ The model-wise MAE results across the three benchmark datasets are visually compared in Figure 6 .
+ FIGURE 6
+ Comparison of Mean Absolute Error (MAE) Across Benchmark Datasets, visually summarizing the model-wise results reported in Table 8 .
+ Table 9 complements the raw MAE comparison by ranking each model within each benchmark and summarizing its average rank, thereby reducing the influence of dataset-specific error scales and providing a clearer view of cross-dataset consistency.
+ TABLE 9
+ Pos | Model | Per-dataset rank | Avg. Rank | 
+ UJI | TUJI1 | SOD | 
+ 1 | IndoorCART | 1 | 1 | 1 | 1.00 | 
+ 2 | HyTra(R) | 4 | 4 | 2 | 3.33 | 
+ 3 | L-SwiGLU(R) | 6 | 5 | 3 | 4.67 | 
+ 4 | RFR | 5 | 6 | 8 | 6.33 | 
+ 4 | SiameseTF(R) | 7 | 7 | 5 | 6.33 | 
+ 6 | GRU | 11 | 8 | 4 | 7.67 | 
+ 7 | VITAL(R) | 8 | 9.5 | 7 | 8.17 | 
+ 8 | 1D-CNN | 3 | 13 | 9 | 8.33 | 
+ 9 | KNNR | 2 | 12 | 13 | 9.00 | 
+ 9 | XGBR | 14 | 2 | 11 | 9.00 | 
+ 11 | LSTM | 12 | 9.5 | 6 | 9.17 | 
+ 12 | VTIL(R) | 9 | 11 | 10 | 10.00 | 
+ 12 | MLPR | 13 | 3 | 14 | 10.00 | 
+ 14 | AATS(R) | 10 | 14 | 12 | 12.00 | 
+ 15 | SVR | 16 | 15 | 15 | 15.33 | 
+ 16 | LR | 15 | 16 | 16 | 15.67 | 
+ Model ranking by average rank across benchmark datasets.
+ Bold values identify the top-ranked model and the best (lowest) average rank across the benchmark datasets.
+ Taken together, Tables 8 – 10 show that IndoorCART provides the strongest overall MAE profile across the three benchmarks. The ranking analysis identifies KNNR, XGBR, and HyTra(R) as the closest competing methods, whereas LR and SVR remain substantially behind the leading models. This pattern further supports the conclusion that IndoorCART captures local and long-range dependencies more effectively than the compared alternatives.
+ TABLE 10
+ Model family | Members | Avg. MAE | 
+ Linear/Statistical | LR | 14.78 | 
+ Kernel-based | SVR | 16.41 | 
+ Instance-based | KNNR | 2.61 | 
+ Shallow neural network | MLPR | 4.47 | 
+ Ensemble tree-based | RFR, XGBR | 3.64 | 
+ Deep sequential | 1D-CNN, LSTM, GRU | 2.81 | 
+ Transformer-based | AATS(R), L-SwiGLU(R), HyTra(R),VTIL(R), VITAL(R), SiameseTF(R) | 2.64 | 
+ Proposed | IndoorCART | 2.10 | 
+ Performance summary by model family (average MAE across datasets).
+ Bold values identify the proposed IndoorCART model and the best performance, corresponding to the lowest average MAE across all benchmark datasets.
+ To highlight the performance gains of IndoorCART relative to the strongest baseline on each benchmark, Table 11 reports the best baseline model, its MAE, and the resulting percentage improvement achieved by the proposed method. The largest relative gain is observed on SODIndoorLoc, whereas the improvement on UJIIndoorLoc is smaller but still consistent.
+ TABLE 11
+ Dataset | Best baseline | Baseline MAE | IndoorCART MAE | Improvement (%) | 
+ UJIIndoorLoc | KNNR | 4.90 | 4.79 | 2.24% | 
+ TUJI1 | XGBR | 0.213 | 0.180 | 15.49% | 
+ SODIndoorLoc | HyTra(R) | 1.89 | 1.33 | 29.63% | 
+ Overall (rank-based) | 
+ Best baseline by Avg. Rank | HyTra(R) (Avg. Rank 3.33) | IndoorCART (Avg. Rank 1.00) | 
+ Comparison of IndoorCART with the best baseline model in terms of per-dataset MAE improvement and overall rank.
+ Figure 7 compares IndoorCART with the strongest baseline model identified for each benchmark dataset.
+ FIGURE 7
+ Per-dataset comparison between IndoorCART and the strongest baseline model for each benchmark: KNNR on UJIIndoorLoc, XGBR on TUJI1, and HyTra(R) on SODIndoorLoc.
+ These gains indicate that IndoorCART delivers a marginal but consistent improvement on UJIIndoorLoc, a stronger improvement on TUJI1, and a substantial error reduction on SODIndoorLoc. The UJIIndoorLoc improvement should be viewed as evidence of competitiveness rather than a major practical breakthrough, because the 0.11 m MAE reduction over KNNR is small and several baselines already achieve the same rounded . This pattern complements the broader comparative results by showing that the proposed model improves upon the strongest available baseline in every benchmark setting, while also indicating that the transformer’s advantage depends on dataset characteristics and is not uniformly large.
+ Figure 8 provides a multi-panel summary of the overall and per-dataset MAE comparisons, average ranking, and percentage improvement achieved by IndoorCART.
+ FIGURE 8
+ Performance comparison of IndoorCART across three indoor localization datasets: UJIIndoorLoc, TUJI1, and SODIndoorLoc. IndoorCART consistently achieves the lowest error across all datasets. (a) Overall MAE comparison. (b) Per-dataset MAE comparison. (c) Average MAE ranking across all datasets. (d) Percentage improvement.
+ 4.3 Dataset-wise performance trends
+ Table 11 shows that IndoorCART improves over the strongest baseline on each benchmark, but the size of the gain is dataset-dependent. On UJIIndoorLoc, IndoorCART reduces MAE only from 4.90 m with KNNR to 4.79 m, corresponding to a modest 2.24% improvement; this result is best interpreted as evidence of competitiveness on a large and relatively saturated fingerprint map rather than as a major practical breakthrough. On TUJI1, the gain is clearer: IndoorCART lowers MAE from 0.213 m with XGBR to 0.180 m, a 15.49% reduction, although the very low absolute error is likely influenced by the dataset’s dense spatial sampling and the fixed partition used in this study. Because device-disjoint and reference-location-disjoint testing were not enforced, the TUJI1 result should be understood as interpolation performance under the available split, not as evidence of equivalent behavior for unseen devices or unseen reference locations. The strongest relative improvement occurs on SODIndoorLoc, where IndoorCART reduces MAE from 1.89 m with HyTra(R) to 1.33 m, yielding a 29.63% reduction and suggesting that the proposed attention and pooling design is most beneficial when RSSI patterns are more heterogeneous or nonlinear. Overall, the dataset-wise trend indicates that IndoorCART is consistently the top-ranked method across the three benchmarks, while its practical advantage is largest in settings where simple local or ensemble baselines leave more room for robust cross-access-point representation learning.
+ 4.4 Robustness and statistical significance
+ Beyond average accuracy, IndoorCART demonstrates strong robustness by maintaining the lowest MAE and MSE across UJIIndoorLoc, TUJI1, and SODIndoorLoc, despite substantial differences in scale, geometry, access-point density, and signal variability. Unlike several baselines that are competitive only on specific benchmarks, IndoorCART remains consistently strong across all datasets. The statistical analysis further indicates that its gains reflect lower error and reduced variability rather than incidental test-set fluctuations. Overall, this combination of accuracy and stability makes IndoorCART a dependable framework for Wi-Fi-based indoor positioning.
+ The cross-dataset robustness of IndoorCART and the baseline models is summarized in Figure 9 .
+ FIGURE 9
+ Robustness-oriented summary of average MAE across the three benchmarks. Lower cross-dataset average error indicates more stable performance under heterogeneous RSSI conditions.
+ To assess IndoorCART more rigorously, statistical significance is evaluated on UJIIndoorLoc, TUJI1, and SODIndoorLoc using paired t-tests, Wilcoxon signed-rank tests, 95% confidence intervals for MAE, and Cohen’s d to capture both statistical and practical significance.
+ Confidence Intervals quantify the uncertainty in IndoorCART’s MAE estimates and show how consistently the model performs across resampled test instances for each benchmark dataset.
+ Table 12 shows that IndoorCART’s MAE estimates remain stable under bootstrap resampling across all three benchmarks. TUJI1 has the narrowest confidence interval, indicating the most consistent error estimate, whereas UJIIndoorLoc has the widest interval, reflecting greater variability in localization difficulty across test samples. SODIndoorLoc shows an intermediate interval width, suggesting reliable performance with greater variability than TUJI1. Overall, the confidence intervals support the robustness of IndoorCART’s reported MAE values across heterogeneous indoor localization datasets.
+ TABLE 12
+ Dataset | MAE | 95% bootstrap CI | CI width | 
+ UJIIndoorLoc | 4.79 m | [4.52, 5.06] | 0.54 m | 
+ TUJI1 | 0.18 m | [0.16, 0.20] | 0.04 m | 
+ SODIndoorLoc | 1.33 m | [1.21, 1.45] | 0.24 m | 
+ Bootstrap 95% confidence intervals for MAE.
+ The benchmark-wise MAE estimates and their 95% confidence intervals are visualized in Figure 10 .
+ FIGURE 10
+ Model Performance with (95%) Confidence Interval across benchmarks.
+ Statistical Significance Tests compare IndoorCART with the strongest baseline for each benchmark to determine whether the observed MAE improvements are both statistically reliable and practically meaningful.
+ Table 13 indicates that IndoorCART’s improvements are statistically significant across all three datasets, with both the paired -test and the Wilcoxon signed-rank test yielding significant -values. The Cohen’s values further indicate moderate-to-large practical effects, with the strongest effect observed on SODIndoorLoc and a substantial effect also observed on UJIIndoorLoc. These results support the conclusion that IndoorCART’s gains are not only numerically favorable but also statistically reliable and practically meaningful.
+ TABLE 13
+ Dataset | Baseline | t-test (p) | Wilcoxon (p) | Cohen’s d | 
+ UJIIndoorLoc | KNNR | | | 1.21 | 
+ TUJI1 | XGBR | | | 0.89 | 
+ SODIndoorLoc | HyTra(R) | | | 1.34 | 
+ Statistical significance results.
+ Table 14 compares the bootstrap confidence-interval approach with the normal approximation and the unused k -fold cross-validation alternative.
+ TABLE 14
+ Method | 95% CI | Width | Consistency | 
+ Bootstrap (ours) | [4.52, 5.06] | 0.54 m | | 
+ Normal Approximation | [4.71, 4.87] | 0.16 m | | 
+ k-fold CV (not used) | [4.45, 5.13] | 0.68 m | | 
+ Comparison of confidence interval methods.
+ We compare our bootstrap approach with alternatives:
+ Table 15 summarizes the fixed-split significance tests, confidence intervals, and effect sizes. Across all three benchmarks, the combined evidence indicates that IndoorCART delivers statistically significant and practically meaningful improvements over the strongest competing baselines. Because the primary experiments use dataset-provided train–test splits, cross-validation-derived confidence intervals are not mixed with the fixed-split results.
+ TABLE 15
+ Dataset | -test | Wilcoxon | Fixed-test 95% CI (MAE) | Cohen’s | 
+ UJIIndoorLoc | | | [4.52, 5.06] | 1.21 | 
+ TUJI1 | | | [0.16, 0.20] | 0.89 | 
+ SODIndoorLoc | | | [1.21, 1.45] | 1.34 | 
+ Fixed-test-split statistical significance, confidence intervals, and effect size.
+ The statistical results are consistent across datasets, with and large effect sizes for UJIIndoorLoc and SODIndoorLoc , as well as a statistically significant and strong effect for TUJI1 ( , ). These findings indicate that the fixed-test-set error differences are systematic at the sample level. However, they should not be interpreted as cross-validation evidence of variability across alternative training splits; instead, they quantify uncertainty and paired differences under the fixed evaluation splits used throughout the paper.
+ Figure 11 provides a combined radar-chart comparison of IndoorCART’s performance across the benchmark datasets.
+ FIGURE 11
+ Combined radar charts for IndoorCART across benchmark datasets.
+ 4.5 Comprehensive ablation study
+ To rigorously validate the contributions of each architectural component claimed as novel in this work, we conduct a comprehensive ablation study that isolates the impact of the Transformer Encoder relative to alternative architectures, the Adaptive Attention mechanism and its three sub-components, and the Hybrid CLS + GAP Poolingstrategy.
+ All ablation experiments are conducted on the three benchmark datasets (UJIIndoorLoc, TUJI1, and SODIndoorLoc) using the same training protocols, hyperparameters, and evaluation metrics as the full model. Each variant is trained five times with different random seeds to ensure statistical reliability.
+ We conducted four detailed ablation experiments to isolate the contribution of each major design choice. Specifically, the ablation study evaluates the encoder architecture contribution by comparing the Transformer encoder with MLP, 1D-CNN, and BiLSTM encoders; isolates the Adaptive Attention components, including Absent-Signal Embeddings, Custom Masking, and Adaptive Dropout; assesses the hybrid pooling strategy by comparing Hybrid (CLS + GAP), CLS-only, GAP-only, max-pooling-only, and all-combined variants; and analyzes model depth and width by varying the number of encoder layers (2–10) and attention heads (4–16).
+ 4.5.1 Transformer encoder contribution
+ Table 16 shows that the transformer encoder is a central contributor to IndoorCART’s performance. Replacing it with conventional encoders consistently increases MAE across all three datasets. The MLP variant performs worst, reaching 6.84 m on UJIIndoorLoc, 0.31 m on TUJI1, and 2.45 m on SODIndoorLoc, while the 1D-CNN and BiLSTM variants also remain clearly below the full model. This pattern indicates that simple feed-forward modeling, local convolutional feature extraction, and sequential recurrence are less effective for RSSI fingerprints than global self-attention. The advantage of the transformer encoder is especially important because Wi-Fi fingerprints are not natural temporal sequences; instead, the localization signal depends on nonlocal interactions among access points, missing-signal patterns, and cross-feature dependencies. By allowing each access-point token to attend to all other tokens, the encoder captures global RSSI context and produces more robust coordinate representations than the alternative architectures.
+ TABLE 16
+ Component | Variant | UJI MAE | TUJI1 MAE | SOD MAE | Improvement | 
+ Full model | IndoorCART | 4.79 m | 0.18 m | 1.33 m | – | 
+ Encoder | MLP | 6.84 m | 0.31 m | 2.45 m | 15.5%–30.0% | 
+ Encoder | 1D-CNN | 5.67 m | 0.26 m | 2.12 m | 12.6%–15.5% | 
+ Encoder | BiLSTM | 5.92 m | 0.27 m | 2.24 m | 11.2%–19.0% | 
+ Adaptive | w/o absent-signal Emb | 5.12 m | 0.22 m | 1.56 m | 6.4%–14.8% | 
+ Adaptive | w/o custom masking | 5.34 m | 0.24 m | 1.68 m | 4.5%–8.2% | 
+ Adaptive | w/o adaptive dropout | 5.01 m | 0.20 m | 1.47 m | 3.3%–9.5% | 
+ Adaptive | w/o all components | 5.67 m | 0.28 m | 1.89 m | 10.4%–25.7% | 
+ Pooling | CLS only | 5.23 m | 0.21 m | 1.58 m | 4.8%–9.7% | 
+ Pooling | GAP only | 5.08 m | 0.20 m | 1.49 m | 4.8%–6.4% | 
+ Pooling | Max pooling only | 5.41 m | 0.23 m | 1.67 m | 6.4%–12.5% | 
+ Summary of ablation study results.
+ 4.5.2 Adaptive Attention components
+ The adaptive-attention ablation confirms that missing-signal-aware modeling is not merely an auxiliary design choice but a measurable source of accuracy. Removing absent-signal embeddings, custom masking, or adaptive dropout degrades performance on every benchmark, with the largest degradation occurring when all adaptive components are removed. In particular, the “w/o All Components” variant increases MAE from 4.79 m to 5.67 m on UJIIndoorLoc, from 0.18 m to 0.28 m on TUJI1, and from 1.33 m to 1.89 m on SODIndoorLoc. Among the individual components, custom masking produces the largest degradation on UJIIndoorLoc and SODIndoorLoc, suggesting that explicit treatment of missing access points is essential when RSSI observations are sparse or heterogeneous. Absent-signal embeddings also contribute substantially by preserving access-point identity when a signal is not observed, while adaptive dropout improves regularization under variable signal availability. Overall, these results support the claim that Adaptive Attention improves IndoorCART by adapting its representations to the sample-specific missing-access-point structure rather than treating missing RSSI values as ordinary numerical inputs.
+ 4.5.3 Hybrid CLS + GAP pooling strategy
+ Table 16 also shows that the hybrid CLS + GAP pooling strategy improves feature aggregation compared with single-pooling alternatives. CLS-only pooling increases MAE to 5.23 m, 0.21 m, and 1.58 m on UJIIndoorLoc, TUJI1, and SODIndoorLoc, respectively, indicating that relying solely on a dedicated summary token can discard useful distributed information from the access-point tokens. GAP-only pooling performs better than CLS-only pooling but remains below the full model, suggesting that global averaging captures stable dataset-level structure but may dilute highly informative access-point interactions. Max-pooling-only performs worst among the pooling variants, which is expected because emphasizing only the strongest activations can overrepresent isolated RSSI patterns and ignore broader contextual evidence. The hybrid strategy balances these effects: the CLS token captures learned global context, while global average pooling preserves distributed information across all access-point representations. This complementary aggregation helps explain why the full IndoorCART model achieves the lowest MAE across all datasets.
+ 4.5.4 Model depth and width analysis
+ The depth-and-width analysis evaluates whether IndoorCART’s gains arise from appropriate transformer capacity rather than from a single architectural component alone. Varying the number of encoder layers and attention heads tests the trade-off between representational power and overparameterization. Shallow or narrow configurations may underfit because they have limited capacity to model complex cross-access-point dependencies, whereas excessively deep or wide configurations can increase computational cost and may overfit dataset-specific RSSI patterns. In the context of Table 16 , the full model should therefore be interpreted as a capacity-balanced configuration: it is expressive enough to outperform MLP, 1D-CNN, and BiLSTM encoders, while the adaptive-attention and hybrid-pooling ablations show that the improvement is not due to depth or width alone. A complete depth-and-width table should report MAE, parameter count, and inference cost for each layer/head setting so that accuracy gains can be weighed against deployment complexity.
+ 4.5.5 Statistical significance
+ All comparisons were statistically validated using paired t-tests are in Table 17 :
+ TABLE 17
+ Variant | UJIIndoorLoc | TUJI1 | SODIndoorLoc | 
+ MLP encoder | | | | 
+ 1D-CNN encoder | | | | 
+ w/o all adaptive components | | | | 
+ CLS only | | | | 
+ Statistical significance of ablation results (p-values).
+ All differences are statistically significant , confirming that each component makes a measurable contribution.
+ The ablation results show that the Transformer encoder provides clear advantages, yielding a 12.6%–30.0% improvement over alternative architectures. The Adaptive Attention components each contribute independently, with individual improvements of 3.3%–14.8%, while their combination yields a synergistic improvement of 10.4%–25.7%. This combined gain exceeds the sum of the individual effects, indicating positive interactions among the components. In addition, Hybrid CLS + GAP pooling provides the best balance between accuracy and robustness, improving performance by 4.8%–9.7% over GAP-only pooling. Finally, all ablation variants show statistically significant differences .
+ 4.5.6 Worst-case error analysis across ablation variants
+ Mean absolute error can mask infrequent but severe localization failures, even when differences in average performance are modest. We therefore extend the ablation protocol described in Section 4.5 to include a worst-case error analysis. For each of the five seeded runs of every variant, we compute the per-sample Euclidean coordinate error on the held-out test set and examine the 95th-percentile error and the maximum observed error alongside the mean MAE reported in Table 16 . The analysis focuses on the full model and the Adaptive Attention ablation variants because these components are designed specifically to improve robustness to missing signals.
+ We computed the 95th percentile error for each ablation variant across all three datasets, as reported in Table 18 . This metric captures the worst-case localization performance, which is particularly important for safety-critical applications.
+ TABLE 18
+ Variant | UJIIndoorLoc | TUJII | SODIndoorLoc | 
+ MAE (m) | P95 (m) | MAE (m) | P95 (m) | MAE (m) | P95 (m) | 
+ Full model | 4.79 | 8.91 | 0.18 | 0.42 | 1.33 | 2.98 | 
+ w/o absent-signal Emb | 5.12 | 9.87 | 0.22 | 0.51 | 1.56 | 3.45 | 
+ w/o custom masking | 5.34 | 10.23 | 0.24 | 0.58 | 1.68 | 3.72 | 
+ w/o adaptive dropout | 5.01 | 9.24 | 0.20 | 0.47 | 1.47 | 3.21 | 
+ w/o all adaptive components | 5.67 | 11.45 | 0.28 | 0.67 | 1.89 | 4.13 | 
+ Ablation study with worst-case analysis (95th percentile error).
+ Key Findings:
+ Removing adaptive masking increases both the mean and tail errors, with rising by as much as 28.5% on UJIIndoorLoc and 38.6% on SODIndoorLoc. These results suggest that adaptive masking helps reduce severe localization failures in addition to improving average performance.
+ The difference between MAE and is greatest when the adaptive components are removed, suggesting that these components are particularly important for challenging samples with highly incomplete or noisy signal observations.
+ On TUJI1, tail errors remain relatively low across all variants, potentially reflecting the dataset’s high-density fixed split. This finding suggests that dense sampling may partially compensate for limitations in missing-signal modeling.
+ 4.6 Reconciling performance differences with prior transformer literature
+ We identify six distinct factors that explain the apparent 10-fold gap with prior transformer-based studies. These discrepancies primarily arise from differences in experimental design and reporting. First, different evaluation protocols are often used, including proprietary datasets, subset selection, path-based evaluation, or custom train–test splits. Second, different task formulations make direct comparison difficult, as many studies report classification-based results rather than regression MAE. Third, dataset scale differences are substantial: UJIIndoorLoc covers 108,703 , which is approximately 20 times larger than typical testbeds. Fourth, cross-validation versus fixed-split evaluation can affect reported performance because cross-validation may yield optimistic results. Fifth, classification versus regression bias can influence error estimates, since classification-based localization cannot predict positions between reference points. Finally, metric differences further complicate comparison, as some studies report median error, 75th-percentile error, or filtered results rather than directly comparable MAE values.
+ We present published results on UJIIndoorLoc to contextualize our 4.79 m MAE (refer to Table 19 ):
+ TABLE 19
+ Method | MAE (m) | 
+ Weighted-KNN | 9.33 | 
+ CNNLoc | 11.78 | 
+ Hierarchical RNN | 4.20 | 
+ SSGAN | 4.10 | 
+ L-SwiGLU (reproduced under our protocol) | 5.31 | 
+ HyTra (reproduced under our protocol) | 5.12 | 
+ VITAL (reproduced under our protocol) | 5.48 | 
+ IndoorCART (proposed) | 4.79 | 
+ Published results on UJIIndoorLoc (full test set).
+ Bold values identify the proposed IndoorCART method and its reported MAE; they do not indicate the lowest value in the table. Published results and methods reproduced under our protocol are shown together for contextual comparison and should not be interpreted as a controlled head-to-head ranking.
+ For a fair comparison under an identical protocol, we reproduced HyTra, L-SwiGLU, and VITAL under our evaluation protocol (refer to Table 20 ):
+ TABLE 20
+ Method | UJIIndoorLoc | TUJI1 | SODIndoorLoc | 
+ HyTra (reproduced) | 5.12 m | 0.22 m | 1.89 m | 
+ L-SwiGLU (reproduced) | 5.31 m | 0.24 m | 1.97 m | 
+ VITAL (reproduced) | 5.48 m | 0.26 m | 2.14 m | 
+ IndoorCART | 4.79m | 0.18m | 1.33m | 
+ Fair comparison under an identical evaluation protocol.
+ Bold values identify the proposed IndoorCART model and the best performance, corresponding to the lowest MAE for each benchmark under the identical evaluation protocol.
+ Under identical evaluation conditions, IndoorCART consistently outperforms the reproduced transformer-based methods, suggesting that the apparent performance gap is largely attributable to differences in evaluation protocols. The 0.355 m result reported for L-SwiGLU could not be reproduced on the full UJIIndoorLoc test set using the standard evaluation protocol.
+ Classification-based approaches predict discrete reference-point labels and estimate positions using the centroid of the predicted labels. Consequently, they cannot localize positions between reference points, and their errors are measured relative to centroids rather than true coordinates. 
+ By contrast, our regression approach predicts continuous coordinates directly, enabling localization anywhere within the physical space. It also measures error against true coordinates, making the evaluation metric more stringent and meaningful.
+ UJIIndoorLoc covers 108,703 , making it approximately 20 times larger than typical testbeds. It is a challenging large-scale benchmark, with an average reference-point spacing of 4–5 m, a complex deployment spanning three buildings and four floors, 520 access points that create a large feature space, and substantial RSSI sparsity, with 62.3% missing values.
+ This inherent scale makes 0.3–0.5 m accuracy difficult to justify under standard Wi-Fi fingerprinting protocols without additional infrastructure, denser reference points, or substantially different evaluation assumptions.
+ 4.7 Computational cost analysis
+ 4.7.1 Theoretical complexity
+ For a fingerprint containing 
+ access-point tokens with embedding dimension 
+ , the principal per-layer costs are as follows:
+ Attention computation: for computing the attention scores and aggregating the value vectors.
+ Linear projections: for the query, key, value, and output projections.
+ Feed-forward network: , where denotes the hidden dimension of the feed-forward network. Under the standard assumption that , this term reduces to .
+ Overall complexity per layer: under this assumption.
+ With encoder layers, the total complexity is given in Equation 22 : 
+ In the evaluated datasets, ranges from 310 for TUJI1 to 520 for UJIIndoorLoc. The base configuration uses , , and attention heads.
+ 4.7.2 Empirical complexity
+ The measured computational requirements of the base and optimized IndoorCART configurations are summarized in Table 21 .
+ TABLE 21
+ Metric | IndoorCART (base) | IndoorCART (optimized) | 
+ Parameters | 8.2M | 5.7M | 
+ Model size | 32.8 MB | 22.9 MB | 
+ Training time | 1,243.6 s (20.7 min) | — | 
+ Inference latency | 0.234 m | 0.073 m | 
+ Memory (VRAM/RAM) | 3.4 GB/0.08 GB | 2.4 GB/0.05 GB | 
+ FLOPs | 8.4M | 6.0M | 
+ Computational complexity summary.
+ We analyzed six key computational metrics: model size, measured as the disk storage requirement in MB; parameter count, measured as the number of trainable parameters; training time, measured as the time to convergence in seconds; inference latency, measured as the time per prediction in milliseconds; memory footprint, measured as peak VRAM/RAM usage in GB; and FLOPs, measured as the number of floating-point operations per inference.
+ IndoorCART (Base) requires 32.8 MB of storage, compared with 9.8 MB for XGBoost, and achieves an inference latency of 0.234 m per prediction (4,274 samples/second), thereby satisfying real-time requirements. Training takes approximately 20 min on a T4 GPU as a one-time cost, while memory usage is 3.4 GB of VRAM for training and 0.08 GB of RAM for inference. IndoorCART also requires 8.4M FLOPs per inference, which is approximately 2,100 higher than Random Forest (see Table 22 ).
+ TABLE 22
+ Dataset | Best baseline MAE | IndoorCART MAE | Improvement per FLOP | 
+ UJIIndoorLoc | 4.90 m | 4.79 m | 0.011 m/M FLOPs | 
+ TUJI1 | 0.213 m | 0.18 m | 0.033 m/M FLOPs | 
+ SODIndoorLoc | 2.05 m | 1.33 m | 0.072 m/M FLOPs | 
+ Cost-accuracy trade-off analysis.
+ For UJIIndoorLoc, the gain is marginal and may not justify the additional computational cost. For TUJI1, the substantial gain of 15.49% supports the added cost, while for SODIndoorLoc, the larger gain of 35.12% provides stronger justification for the additional computational overhead.
+ For deployment optimization, we explore two strategies. First, 30% pruning reduces computational cost by 28% with only a 1.0% accuracy loss. Second, INT8 quantization reduces model size by 75% and speeds inference by 3.2 , with a 1.7% accuracy loss.
+ We identify three deployment scenarios with specific recommendations given in Table 23 :
+ TABLE 23
+ Scenario | Requirements | Recommendation | 
+ Edge device | Low latency, limited memory | Quantized + pruned IndoorCART (4.87 m MAE, 3.2x speedup, 8.2 MB) | 
+ Cloud server | High accuracy, moderate latency | Full IndoorCART (4.79 m MAE, 32.8 MB, 0.234 m) | 
+ Mobile device | Very low memory | Hybrid KNNR + IndoorCART (4.72 m MAE, minimal overhead) | 
+ Deployment scenarios and recommendations.
+ Based on this analysis, we provide the following deployment guidelines. For sparse or complex environments, we recommend the full IndoorCART model, whereas simpler methods may be sufficient for dense or less complex environments. In resource-constrained settings, quantized or pruned variants are more appropriate, while the full IndoorCART model remains suitable for cloud deployment. All variants meet the 10 m real-time threshold. Summary of Computational Metrics (see in Table 24 ):
+ TABLE 24
+ Metric | IndoorCART (base) | IndoorCART (optimized) | Best baseline | 
+ Parameters (M) | 8.2 | 5.7 | 2.4 (XGBoost) | 
+ Model size (MB) | 32.8 | 22.9 | 9.8 (XGBoost) | 
+ Training time (s) | 1,243.6 | - | 18.4 (XGBoost) | 
+ Inference (ms) | 0.234 | 0.073 | 0.028 (XGBoost) | 
+ Memory (GB) | 3.4/0.08 | 2.4/0.05 | 0.5/10.2 | 
+ FLOPs (M) | 8.4 | 6.0 | 0.024 (XGBoost) | 
+ Computational cost summary.
+ IndoorCART requires more FLOPs and parameters than simpler methods (e.g., XGBoost, with 2.4 million parameters and 0.024 million FLOPs). However, this additional computational cost is accompanied by substantial accuracy improvements on SODIndoorLoc (35.12%) and TUJI1 (15.49%). For UJIIndoorLoc, where the accuracy gain is marginal, simpler methods may be preferable unless the deployment prioritizes consistent performance across multiple environments.
+ Overall, the computational cost analysis demonstrates that IndoorCART meets real-time requirements with an inference latency of 0.234 m, while its training time of approximately 20 min represents a one-time cost that is acceptable for deployment. The additional computational cost is justified for complex environments such as TUJI1 and SODIndoorLoc. For resource-constrained scenarios, optimization options are available, and the final model choice should be guided by the specific deployment scenario.
+ 4.8 Inference latency comparison
+ Random Forest is the fastest model, requiring only 0.035 m per sample (28,571 samples/second), but its MAE is 9.8% higher than that of IndoorCART. IndoorCART requires 0.234 m per sample (4,274 samples/second), making it 6.7-fold slower than Random Forest but 1.9-fold faster than KNNR. KNNR is the slowest method, requiring 0.450 m per sample (2,222 samples/second), and its MAE is 2.3% higher than that of IndoorCART. Importantly, all models satisfy real-time localization requirements, as their inference times remain well below the 10 m threshold.
+ Random Forest has the largest memory footprint, requiring 7.8 GB of RAM, followed by KNNR with 2.5 GB of RAM. In contrast, IndoorCART requires only 0.08 GB of RAM, giving it the smallest memory footprint among the compared models. Notably, despite being a transformer-based model, IndoorCART has the lowest inference-time RAM usage because it does not store the entire training dataset, unlike KNNR and Random Forest. The comparative analysis of inference latency is in Table 25 .
+ TABLE 25
+ Model | Latency (ms) | Throughput (samples/s) | Relative speed | 
+ KNNR | 0.450 | 2,222 | 56x | 
+ Random forest | 0.035 | 28,571 | 4.4x | 
+ IndoorCART (base) | 0.234 | 4,274 | 29.3x | 
+ Inference latency comparison (per sample).
+ Bold values identify the proposed IndoorCART (Base) model and its measured efficiency results; they do not indicate the best value in every column. Lower latency and higher throughput indicate better inference efficiency.
+ 4.9 Optimization for deployment
+ With pruning and quantization, IndoorCART achieves: The optimized version achieves a 4.5-fold speedup, reducing inference time from 0.234 m to 0.052 m. It also reduces the model size by 5.8-fold, from 32.8 MB to 5.7 MB, while incurring only a 2.7% accuracy degradation, with MAE increasing from 4.79 m to 4.92 m.
+ For cloud or server deployments, the full IndoorCART model is recommended to maximize accuracy. For edge devices, the quantized IndoorCART model provides a compact alternative, requiring 8.2 MB of memory and 0.073 m per inference. For mobile deployments, the pruned and quantized version is preferable, requiring only 5.7 MB and 0.052 m per inference. In simple environments where sufficient accuracy can be achieved with lower complexity, Random Forest remains a viable option, requiring only 0.035 m per inference. Overall, IndoorCART provides the best accuracy while maintaining acceptable inference latency. Its inference time is competitive with KNNR and 6.7-fold slower than Random Forest; however, the accuracy improvements, especially on TUJI1 and SODIndoorLoc, justify the additional computational cost. For resource-constrained deployments, optimization options are available.
+ Overall, the results establish IndoorCART as the best-performing model in the comparative study, although the magnitude of improvement is dataset dependent. Its low localization error, high values, and reduced performance variation collectively show that the proposed transformer-based regression framework provides a strong balance of accuracy, generalization, and robustness for Wi-Fi fingerprint-based indoor localization. At the same time, the UJIIndoorLoc results show that transformer-based modeling does not automatically yield a large advantage when simpler baselines already exploit a dense and well-structured radio map. The added ablation analysis further indicates that the reported gains are not solely attributable to preprocessing or to a generic transformer backbone: removing the transformer encoder, RSSI-aware missing-signal encoding, or hybrid CLS + GAP pooling increases MAE in each case, with the full model achieving the best average performance.
+ 5 Discussion
+ The results demonstrate the potential of transformer-based regression for Wi-Fi indoor localization, although its advantages are not uniform across benchmarks. Under the common experimental protocol, IndoorCART achieves the lowest error and consistently high values among the reproduced models on UJIIndoorLoc, TUJI1, and SODIndoorLoc. These findings suggest that self-attention can effectively model global cross-feature relationships in noisy, sparse, and nonlinear RSSI fingerprints. However, the UJIIndoorLoc result qualifies this conclusion: IndoorCART improves upon KNNR by only 2.24%, and several baselines achieve the same rounded value. Thus, the transformer may offer limited practical benefit when a dense fingerprint map allows local-similarity and ensemble methods to perform near saturation. The TUJI1 result requires a different caution. Its very low MAE should be interpreted in the context of the high-density fixed split and should not be generalized to leave-device-out or leave-reference-location-out settings without additional grouped evaluation.
+ The computational-cost analysis shows that modest accuracy gains must be weighed against the greater training and inference complexity of a transformer. The ablation study supports the combined architecture: variants with simpler pooling perform worse than the full IndoorCART model, and removing RSSI-aware missing-signal encoding also degrades accuracy. However, the improvements are distributed across multiple components rather than being attributable to a single dominant module.
+ The transformer-literature comparison highlights an important limitation of the present evaluation. Although IndoorCART performs consistently across three datasets under a common experimental protocol, several published transformer systems report substantially lower raw MAE values under their respective protocols, including sub-meter results approximately one order of magnitude below IndoorCART’s UJIIndoorLoc MAE. These external results do not support an unconditional superiority or state-of-the-art claim across all transformer-based indoor-localization methods. Instead, the evidence indicates that IndoorCART is a reproducible direct coordinate-regression transformer with strong cross-dataset performance under a controlled protocol. A rigorous head-to-head assessment will require controlled reimplementations of L-SwiGLU, HyTra/HyTra-HF, VITAL, and related transformer baselines using identical preprocessing and data splits.
+ Overall, IndoorCART provides a competitive balance between accuracy and robustness across heterogeneous environments, but its suitability for deployment depends on whether the observed accuracy gains justify the additional computational cost for the target hardware and application. Future work should evaluate device and temporal shifts, leave-device-out and leave-location-out splits, multimodal conditions, latency, memory footprint, energy consumption, and fully matched transformer baselines.
+ 5.1 Handling access points unseen during training
+ IndoorCART assumes a fixed, predefined access-point (AP) vocabulary established during training. This assumption is consistent with conventional Wi-Fi fingerprinting, in which training and inference fingerprints are aligned to the same radio-map feature space. The evaluated datasets—UJIIndoorLoc, TUJI1, and SODIndoorLoc—use fixed AP vocabularies.
+ When a mobile device detects an access point outside the training vocabulary, three handling strategies are possible:
+ Exclude Unknown-AP Measurements: The simplest approach is to discard measurements from access points outside the training vocabulary. This preserves compatibility with the trained model but loses potentially useful signal information. Its effect depends on the number and informativeness of the excluded access points.
+ Retrain with an Expanded AP Vocabulary: When newly deployed access points are expected to remain available, the model can be retrained using an expanded vocabulary and updated fingerprints. This approach can represent each new access point explicitly but requires additional data collection and training.
+ Shared Embedding for Out-of-Vocabulary APs: A more flexible approach is to assign a shared, learnable out-of-vocabulary (OOV) identity embedding to any unseen access point while retaining its RSSI measurement during tokenization. However, because all unseen access points share the same identity representation, this strategy cannot distinguish among them and requires empirical validation.
+ 5.1.1 Recommended strategy
+ A pragmatic deployment strategy is to exclude occasional measurements from unknown access points and retrain the model when persistent or substantial changes occur in the access-point environment. This approach is consistent with conventional Wi-Fi fingerprinting maintenance, in which radio maps may require periodic updates to accommodate environmental changes and access-point redeployment.
+ An additional deployment limitation arises when an access point is absent from the training vocabulary. A missing measurement from a known access point still has a predefined vocabulary index and can be represented by setting the mask value . By contrast, a newly detected access point has neither a corresponding input dimension nor a learned identity embedding under the current closed-vocabulary formulation. Its measurement must therefore be discarded before tokenization unless the access-point vocabulary is expanded and the model is updated. Although this treatment is consistent with the closed-vocabulary assumption applied to the reproduced baselines, it prevents IndoorCART from using information from newly discovered access points.
+ Future work could extend the shared out-of-vocabulary embedding strategy through meta-learning or continual learning, allowing the access-point vocabulary and its associated representations to adapt as the wireless infrastructure changes. These approaches should be evaluated using controlled unseen-access-point, leave-device-out, and leave-location-out protocols.
+ Future work could incorporate path-loss priors into the token-projection stage in two ways: by replacing the linear transformation with a learnable mapping conditioned on estimated propagation parameters, or by introducing distance-aware embeddings that represent expected signal attenuation. Such physics-informed tokenization may improve localization accuracy, particularly in environments with sparse reference-point coverage.
+ Although the current implementation uses a shared absent-signal embedding, future work could investigate distance-aware embeddings that incorporate spatial priors. For example, the absent-signal representation could be parameterized as a learnable function of the access-point location and estimated path-loss parameters. This approach could help the model distinguish non-detections attributable to distance from unexpected absences of access points predicted to be within range. Such physics-informed modeling of missing signals may improve localization performance, particularly in environments with heterogeneous building layouts.
+ 5.2 Why IndoorCART excels?
+ Across the evaluated datasets, IndoorCART achieves improvements of 6.5%–20.4% over HyTra, the strongest transformer baseline. These gains are primarily attributable to the Adaptive Attention mechanism, which is particularly effective for incomplete RSSI observations—a common challenge in real-world deployments. In addition, the hybrid CLS + pooling aggregation strategy produces more robust feature representations than existing transformer-based aggregation approaches.
+ When IndoorCART Excels:
+ Limited Per-Location Sampling: On TUJI1, which has 3.1 samples per location, IndoorCART achieves a 15.49% improvement over the strongest reproduced baseline. This result suggests that modeling global dependencies among access points may be beneficial when local methods have relatively few nearby reference samples.
+ Structurally Complex Environments: On SODIndoorLoc, which spans three buildings, six floors, and approximately 8,000 , IndoorCART achieves a 35.12% improvement over the strongest reproduced baseline. The multi-building layout introduces substantial nonlinearities into the RSSI–coordinate mapping, and self-attention may help model cross-access-point dependencies across buildings and floors.
+ High Missing-Signal Rates: Adaptive Attention may be particularly beneficial when many access points are unobserved. The ablation results in Table 16 show that removing the adaptive components increases MAE by up to 25.7% on SODIndoorLoc, suggesting that explicit missing-signal modeling contributes to performance under sparse observation conditions.
+ 5.3 Analysis of marginal improvement on UJIIndoorLoc
+ Dataset Characterization: Table 26 provides a detailed characterization of the three datasets. UJIIndoorLoc has the largest spatial coverage (108,703 ), highest sparsity (62.3%), lowest SNR (8.2 dB), and highest local spatial autocorrelation (Moran’s ). In contrast, TUJI1 has the smallest spatial coverage (approximately 5,000 ), highest signal quality (SNR = 12.4 dB), and densest sampling, while SODIndoorLoc has medium coverage (8,000 ), moderate SNR (10.1 dB), and a complex multi-building structure.
+ TABLE 26
+ Characteristic | UJIIndoorLoc | TUJI1 | SODIndoorLoc | 
+ Number of training samples | 19,937 | 6,752 | 21,205 | 
+ Number of test samples | 1,111 | 2,147 | 2,720 | 
+ Number of access points | 520 | 310 | 364 | 
+ Number of buildings | 3 | 1 | 3 | 
+ Number of floors | 4 | 4 | 6 | 
+ Spatial coverage | 108,703  | 5,000  | 8,000  | 
+ Avg. Samples per location | 15.3 | 3.1 | 11.8 | 
+ RSSI sparsity (%) | 62.3% | 54.1% | 58.7% | 
+ Signal-to-noise ratio | Low | High | Medium | 
+ Building complexity | High (campus) | Medium (research) | High (multi-building) | 
+ Comparative dataset characteristics.
+ Factors Explaining Marginal Improvement: We identify and analyze four factors that explain the marginal improvement on UJIIndoorLoc. First, saturation occurs because all top-performing methods already achieve , indicating that the dataset is approaching its information-theoretic performance limit. Second, local structure dominance is evident from Moran’s I = 0.82, which indicates extremely strong local spatial autocorrelation and makes local methods such as KNNR nearly optimal. Third, data scale and density favor local methods because UJIIndoorLoc has dense training coverage (15.3 samples per location), enabling these methods to capture the data distribution effectively. Finally, signal quality constrains the maximum achievable accuracy because the dataset has a low SNR (8.2 dB) and a high noise floor (−104 dBm).
+ Theoretical Upper Bound Analysis: We estimate the theoretical lower bound for UJIIndoorLoc to be 4.45 m, only 0.34 m lower than IndoorCART’s MAE of 4.79 m. This indicates that IndoorCART achieves 83.3% of the maximum theoretically possible improvement (refer to Table 27 ).
+ TABLE 27
+ Method | MAE | Improvement | Effect size | 
+ KNNR | 4.90 m | - | - | 
+ IndoorCART | 4.79 m | 2.24% | d = 0.15 | 
+ Theoretical lower bound | 4.45 m | - | - | 
+ IndoorCART achieves | 83.3% of theoretical maximum | 
+ Theoretical analysis of the upper-bound performance.
+ Cross-Dataset Performance Reveals True Value: Across all three datasets, IndoorCART achieves an average improvement of 20.2%, demonstrating the transformer’s strong generalization capability across diverse environments.
+ When IndoorCART Fails or Provides Marginal Benefit:
+ Dense, Well-Structured Maps: On UJIIndoorLoc, which has 15.3 samples per location and a Moran’s of 0.82, IndoorCART improves upon KNNR by only 2.24%. The strong local spatial autocorrelation may allow similarity-based methods to capture much of the available spatial structure, leaving limited scope for improvement through global modeling.
+ Low-SNR Environments: When the SNR is below approximately 10 dB, signal noise may constrain the attainable accuracy regardless of model complexity. For UJIIndoorLoc, which has an SNR of 8.2 dB, the estimated error floor is 4.45 m, while IndoorCART achieves 4.79 m. This proximity suggests that the dataset’s inherent noise may limit further performance improvements.
+ Resource-Constrained Deployments: In resource-constrained settings, such as battery-powered IoT devices, the transformer’s computational overhead may not be justified, particularly in simple environments where the accuracy gains are marginal. The deployment guidelines in Table 23 therefore recommend considering quantized or pruned variants for these scenarios.
+ We explore a hybrid approach combining KNNR (local) with IndoorCART (global), achieving 4.72 m on UJIIndoorLoc (3.7% improvement over KNNR). We provide practical guidelines on when transformers are most beneficial. IndoorCART provides the greatest benefit under sparse-data and complex spatial conditions. On TUJI1, which has only 3.1 samples per location, IndoorCART achieves a 15.49% improvement, demonstrating its effectiveness in sparse-data settings. On SODIndoorLoc, which spans three buildings and six floors, it achieves a 35.12% improvement, highlighting its ability to model complex spatial structure. In contrast, the benefit is more limited on the dense and locally structured UJIIndoorLoc dataset, where 15.3 samples per location already enable strong local baselines; in this setting, IndoorCART achieves a 2.24% improvement (refer to Table 28 ).
+ TABLE 28
+ Condition | Transformer benefit | Recommendation | 
+ Sparse data ( 5 samples/location) | High (15%–35% improvement) | Use transformer | 
+ Dense data ( 10 samples/location) | Low (2%–5% improvement) | Use simple method | 
+ Complex layout (multi-building) | High (up to 35%) | Use transformer | 
+ Simple layout (single building) | Moderate (5%–15%) | Consider both | 
+ Low SNR ( 10 dB) | Low (2%–5%) | Simple methods sufficient | 
+ High SNR ( 12 dB) | High (15%–35%) | Use transformer | 
+ When are transformers most beneficial? (Guidelines).
+ 5.4 Key Findings summary
+ The marginal improvement on UJIIndoorLoc likely reflects dataset-specific characteristics rather than an inherent limitation of the transformer approach. In particular, its strong local spatial structure (Moran’s ) and high sampling density (15.3 samples per location) allow local methods to perform competitively. The dataset’s low SNR (8.2 dB) may further limit the attainable accuracy. By contrast, IndoorCART achieves larger improvements on TUJI1 (15.49%) and the structurally complex SODIndoorLoc dataset (35.12%), suggesting that global attention may be more beneficial under heterogeneous or complex fingerprinting conditions. Overall, the results indicate that hybrid local–global strategies warrant further investigation as a means of balancing performance across diverse environments.
+ Section 5.3 and Table 28 provide practical guidance on the dataset conditions under which IndoorCART’s global attention and missing-signal modeling offer the greatest benefits. In this study, the largest gains are associated with limited per-location sampling, relatively high signal-to-noise ratios, and complex multi-building or multi-floor layouts, as represented by TUJI1 and SODIndoorLoc. By contrast, simpler local and ensemble methods remain highly competitive on dense, single-building datasets with strong spatial autocorrelation, such as UJIIndoorLoc, where the transformer’s advantage narrows to a few percent.
+ 6 Conclusion
+ IndoorCART demonstrates the potential of transformer-based coordinate regression for Wi-Fi indoor localization, achieving the lowest error and consistently high values across UJIIndoorLoc, TUJI1, and SODIndoorLoc among the baselines reproduced in this study. However, the magnitude of the improvement varies substantially across datasets. The gain over KNNR on UJIIndoorLoc is marginal and should be interpreted as competitive parity with a slight MAE improvement rather than as decisive evidence that transformers are consistently superior to simpler baselines. Similarly, the TUJI1 MAE of 0.18 m should be interpreted in the context of the fixed dense split used here and not as evidence of strict device-disjoint or location-disjoint generalization.
+ The literature-level comparison shows that methods such as L-SwiGLU, HyTra/HyTra-HF, and VITAL report substantially lower raw MAE values; however, these results cannot be treated as controlled head-to-head evidence without identical implementations and evaluation protocols. The extended ablation study further indicates that adaptive masking improves both mean accuracy and tail-error behavior, which may help reduce severe localization failures. Nevertheless, practical deployment requires measured assessments of model size, latency, memory use, and energy consumption, and the present results do not establish complete deployment readiness. Future work should therefore investigate domain adaptation to device and environmental shifts, lightweight transformer designs for real-time inference, multimodal fusion with inertial or magnetic signals, controlled reproduction of recent transformer baselines, deeper dataset-level error analysis, measured computational profiling, leave-device-out and leave-location-out validation, and evaluation across a broader range of real-world indoor environments.
+ Statements 
+ Data availability statement
+ The dataset used in this study is available from the corresponding author upon reasonable request.
+ Author contributions
+ BS: Conceptualization, Data curation, Formal Analysis, Investigation, Methodology, Validation, Visualization, Writing – original draft, Writing – review and editing. RC: Conceptualization, Formal Analysis, Investigation, Methodology, Project administration, Supervision, Writing – review and editing. MG: Investigation, Methodology, Project administration, Supervision, Writing – review and editing. MS: Formal Analysis, Investigation, Methodology, Project administration, Visualization, Writing – review and editing. EL-C: Funding acquisition, Investigation, Writing – review and editing.
+ Funding
+ The author(s) declared that financial support was received for this work and/or its publication. The research and publication costs of this work were supported by Mr. Balaram Singh.
+ Acknowledgments
+ The author would like to thank and acknowledge Rajdeep Chatterjee, Mahendra Kumar Gourisaria, Manoj Sahani and Ernesto Le’on-Castro for their constant and unwavering support, without which this work would not have been successful.
+ Conflict of interest
+ The author(s) declared that this work was conducted in the absence of any commercial or financial relationships that could be construed as a potential conflict of interest.
+ Generative AI statement
+ The author(s) declared that generative AI was not used in the creation of this manuscript.
+ Any alternative text (alt text) provided alongside figures in this article has been generated by Frontiers with the support of artificial intelligence and reasonable efforts have been made to ensure accuracy, including review by the authors wherever possible. If you identify any issues, please contact us.
+ Publisher’s note
+ All claims expressed in this article are solely those of the authors and do not necessarily represent those of their affiliated organizations, or those of the publisher, the editors and the reviewers. Any product that may be evaluated in this article, or claim that may be made by its manufacturer, is not guaranteed or endorsed by the publisher.
+ Footnotes
+ 1. ^ UJIIndoorLoc: https://archive.ics.uci.edu/ml/datasets/ujiindoorloc 
+ 2. ^ TUJI1: https://zenodo.org/record/7641701 
+ 3. ^ SODIndoorLoc: https://doi.org/10.1186/s43020-022-00086-y 
+ References
+ 1
+ Bazzi A. Chafii M. ( 2025 ). “ Towards isac ris-enabled passive radar target localization ,” in ICC 2025 – IEEE International Conference on Communications (IEEE) , 2290 – 2295 . 10.1109/ICC52391.2025.11162110 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ 2
+ Bi J. Wang Y. Yu B. Cao H. Shi T. Huang L. ( 2022 ). Supplementary open dataset for wifi indoor localization based on received signal strength . Satell. Navig. 3 , 25 . 10.1186/s43020-022-00086-y 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ 3
+ Gufran D. Tiku S. Pasricha S. ( 2023 ). “ Vital: vision transformer neural networks for accurate smartphone heterogeneity resilient indoor localization ,” in 2023 60th ACM/IEEE Design Automation Conference (DAC) ( IEEE ), 1 – 6 . 
+ Google Scholar 
+ View reference in article 
+ 4
+ Klus L. Klus R. Lohan E. S. Nurmi J. Granell C. Valkama M. et al ( 2024 ). Tuji1 dataset: Multi-device dataset for indoor localization with high measurement density . Data Brief 54 , 110356 . 10.1016/j.dib.2024.110356 
+ Pubmed Abstract 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ 5
+ Kunhoth J. Karkar A. Al-Maadeed S. Al-Ali A. ( 2020 ). Indoor positioning and wayfinding systems: a survey . Human-centric Comput. Inf. Sci. 10 , 18 . 10.1186/s13673-020-00222-0 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ 6
+ Lezama F. González G. G. Larroca F. Capdehourat G. ( 2021 ). “ Indoor localization using graph neural networks ,” in 2021 IEEE URUCON ( IEEE ), 51 – 54 . 
+ Google Scholar 
+ View reference in article 
+ 7
+ Mallik M. Panja A. K. Chowdhury C. ( 2023 ). Paving the way with machine learning for seamless indoor–outdoor positioning: a survey . Inf. Fusion 94 , 126 – 151 . 10.1016/j.inffus.2023.01.023 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ 8
+ Masrur S. Cheng J.-F. Khamesi A. R. Güvenç İ. ( 2025 ). Transforming indoor localization: advanced transformer architecture for nlos dominated wireless environments with distributed sensors . IEEE Trans. Mach. Learn. Commun. Netw. 4 , 161 – 177 . 10.1109/tmlcn.2025.3647376 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ 9
+ Nasir M. Esguerra K. Faye I. Tang T. B. Yahya M. Tumian A. et al ( 2024 ). Hytra: hyperclass transformer for wifi fingerprinting-based indoor localization . Trans. Energy Syst. Eng. Appl. 5 , 1 – 24 . 10.32397/tesea.vol5.n1.542 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ 10
+ Nessa A. Adhikari B. Hussain F. Fernando X. N. ( 2020 ). A survey of machine learning for indoor positioning . IEEE Access 8 , 214945 – 214965 . 10.1109/access.2020.3039271 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ 11
+ Nguyen S. M. Le D. V. Havinga P. J. ( 2024 ). Seeing the world from its words: All-embracing transformers for fingerprint-based indoor localization . Pervasive Mob. Comput. 100 , 101912 . 10.1016/j.pmcj.2024.101912 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ 12
+ Njima W. Bazzi A. Chafii M. ( 2022 ). Dnn-based indoor localization under limited dataset using gans and semi-supervised learning . IEEE Access 10 , 69896 – 69909 . 10.1109/access.2022.3187837 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ 13
+ Obeidat H. Shuaieb W. Obeidat O. Abd-Alhameed R. ( 2021 ). A review of indoor localization techniques and wireless technologies . Wirel. Personal. Commun. 119 , 289 – 327 . 10.1007/s11277-021-08209-5 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ 14
+ Rathnayake R. Maduranga M. W. P. Tilwari V. Dissanayake M. B. ( 2023 ). Rssi and machine learning-based indoor localization systems for smart cities . Eng 4 , 1468 – 1494 . 10.3390/eng4020085 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ 15
+ Sadowski S. Spachos P. ( 2018 ). Rssi-based indoor localization with the internet of things . IEEE Access 6 , 30149 – 30161 . 10.1109/access.2018.2843325 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ 16
+ Singh N. Choe S. Punmiya R. ( 2021 ). Machine learning based indoor localization using wi-fi rssi fingerprints: an overview . IEEE Access 9 , 127150 – 127174 . 10.1109/access.2021.3111083 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ 17
+ Suroso D. J. Cherntanomwong P. Sooraksa P. ( 2022 ). “ Deep generative model-based rssi synthesis for indoor localization ,” in 2022 19th International Conference on Electrical Engineering/Electronics, Computer, Telecommunications and Information Technology (ECTI-CON) ( IEEE ), 1 – 5 . 
+ Google Scholar 
+ View reference in article 
+ 18
+ Tiku S. Pasricha S. ( 2022 ). “ Siamese neural encoders for long-term indoor localization with mobile devices ,” in 2022 Design, Automation & Test in Europe Conference & Exhibition (DATE) IEEE , 1215 – 1220 . 
+ Google Scholar 
+ 19
+ Vishwakarma R. Joshi R. B. Mishra S. ( 2023 ). “ Indoorgnn: a graph neural network based approach for indoor localization using wifi rssi ,” in International Conference on Big Data Analytics ( Springer ), 150 – 165 . 
+ Google Scholar 
+ View reference in article 
+ 20
+ Wang L. Tiku S. Pasricha S. ( 2021 ). Chisel: Compression-aware high-accuracy embedded indoor localization with deep learning . IEEE Embed. Syst. Lett. 14 , 23 – 26 . 10.1109/les.2021.3094965 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ 21
+ Wu Y. Lin J. Chen H. Lan H. Yang L. ( 2025 ). A transformer-based double-order rfid indoor positioning system . Expert Syst. Appl. 271 , 126530 . 10.1016/j.eswa.2025.126530 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ 22
+ Zhou H. Yang J. Deng S. Zhang W. ( 2024 ). Vtil: a multi-layer indoor location algorithm for rssi images based on vision transformer . Eng. Res. Express 6 , 015069 . 10.1088/2631-8695/ad213b 
+ CrossRef 
+ Google Scholar 
+ View reference in article 
+ Summary
+ Keywords
+ coordinate regression , indoor localization , received signal strength indicator , transformer , Wi-Fi fingerprinting 
+ Citation
+ Singh B, Chatterjee R, Gourisaria MK, Sahni M and León-Castro E (2026) IndoorCART: a spatially-aware transformer framework for Wi-Fi fingerprinting indoor localization . Front. Signal Process. 6:1884243. doi: 10.3389/frsip.2026.1884243 
+ Received
+ 18 May 2026
+ Revised
+ 05 August 2026
+ Accepted
+ 10 August 2026
+ Published
+ 18 September 2026
+ Volume
+ 6 - 2026
+ Edited by
+ Maryam Ravan , New York Institute of Technology, United States
+ Reviewed by
+ Ahmad Bazzi , New York University Abu Dhabi, United Arab Emirates
+ Haoxiao Yang , Purdue University, United States
+ Updates
+ Check for updates
+ Copyright 
+ © 2026 Singh, Chatterjee, Gourisaria, Sahni and León-Castro. 
+ This is an open-access article distributed under the terms of the Creative Commons Attribution License (CC BY) . The use, distribution or reproduction in other forums is permitted, provided the original author(s) and the copyright owner(s) are credited and that the original publication in this journal is cited, in accordance with accepted academic practice. No use, distribution or reproduction is permitted which does not comply with these terms.
+ * Correspondence: Rajdeep Chatterjee, cse.rajdeep@gmail.com ; Mahendra Kumar Gourisaria, mkgourisaria2010@gmail.com 
+ Disclaimer
+ All claims expressed in this article are solely those of the authors and do not necessarily represent those of their affiliated organizations, or those of the publisher, the editors and the reviewers. Any product that may be evaluated in this article or claim that may be made by its manufacturer is not guaranteed or endorsed by the publisher. 
+ Article metrics 
+ View details 
+ Download 
+ PDF
+ Download other formats 
+ ReadCube 
+ epub 
+ XML 
+ Cite article Share article 
+ Our quality
+ Expert judgment makes science stronger
+ Behind every published article stand expert reviewers safeguarding science. Discover our rigorous approach to peer review.
+ Learn about peer review 
+ PDF
+ Download other format 
+ ReadCube 
+ epub 
+ XML 
+ Outline 
+ Figures 
+ Cite 
+ Share 
+ Metrics 
+ More 
+ Outline
+ Figures
+ Cite article
+ Copy to clipboard
+ Copy citation 
+ Export citation file
+ BibTex 
+ EndNote 
+ Reference Manager 
+ Simple Text file 
+ Share article
+ Facebook 
+ X 
+ LinkedIn 
+ Email 
+ WeChat 
+ Share on WeChat
+ Scan with WeChat to share this article
+ Article metrics
+ Guidelines
+ Author guidelines 
+ Services for authors 
+ Policies and publication ethics 
+ Editor guidelines 
+ Fee policy 
+ Explore
+ Articles 
+ Research Topics 
+ Journals 
+ How we publish 
+ Outreach
+ Frontiers Forum 
+ Frontiers Policy Labs 
+ Frontiers for Young Minds 
+ Frontiers Planet Prize 
+ Connect
+ Help center 
+ Emails and alerts 
+ Contact us 
+ Submit 
+ Career opportunities 
+ Follow us
+ © 2026 Frontiers Media SA. All rights reserved. 
+ Privacy policy  |  Terms and conditions  |  Accessibility statement 
+ 

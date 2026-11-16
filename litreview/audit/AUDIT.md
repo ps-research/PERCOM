@@ -43,4 +43,4 @@ The control-side review also carries its own `audit_log.md`: the agent that fini
 
 ## Not in the repository
 
-The saved source files (PDFs, HTML, text) are kept outside the repository because many are publisher copies. `sources/index.csv` records the URL, fetch time and SHA-256 of each one.
+On 2026-11-16 the openly licensed source files of the Paper 1 review were added to the repository (32 sources; each still matches its recorded SHA-256). The seven that may not be redistributed are listed in `p1-tabular-localization/sources/NOT_IN_REPO.md`. The source files of the Paper 2 reviews are not in the repository. `sources/index.csv` records the URL, fetch time and SHA-256 of every source.

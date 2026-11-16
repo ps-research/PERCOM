@@ -1,0 +1,579 @@
+
+ CR-AP: A Wi-Fi fingerprint localization method based on capsule networks | Scientific Reports 
+ Skip to main content 
+ Thank you for visiting nature.com. You are using a browser version with limited support for CSS. To obtain
+ the best experience, we recommend you use a more up to date browser (or turn off compatibility mode in
+ Internet Explorer). In the meantime, to ensure continued support, we are displaying the site without styles
+ and JavaScript.
+ Advertisement
+ View all journals 
+ Saved research 
+ Search 
+ Account 
+ Log in 
+ Content 
+ Explore content 
+ About the journal 
+ Publish with us 
+ Sign up for alerts 
+ RSS feed 
+ nature 
+ scientific reports 
+ articles 
+ article 
+ CR-AP: A Wi-Fi fingerprint localization method based on capsule networks
+ Article
+ Open access 
+ Published: 09 July 2026 
+ Volume 16 , article number  31475 ( 2026 )
+ Cite this article 
+ You have full access to this open access article
+ Download PDF 
+ Save article 
+ View saved research 
+ CR-AP: A Wi-Fi fingerprint localization method based on capsule networks
+ Download PDF 
+ Yiguo Cheng 1 , 
+ Jiayao He 1 , 
+ Yu Zhou 1 & 
+ …
+ Kun Zhang 1  
+ Show authors 
+ 851 Accesses 
+ Explore all metrics 
+ Abstract
+ Balancing positioning accuracy and deployment cost in indoor environments remains challenging. RSS-based Wi-Fi fingerprinting has emerged as a popular, low-cost approach; however, RSS is highly variant due to signal attenuation and multipath effects, which substantially degrade localization accuracy. This paper proposes CR-AP (Capsule Routing on AP-Centric Heterogeneous Graphs), a novel method based on capsule network for RSS-based Wi-Fi fingerprinting. Offline, we extract three types of relations from the radio map—AP–AP cosine-similarity kNN, RP–RP co-occurrence, and RP–AP visibility—to construct a heterogeneous graph. Online, the measurement is mapped into a capsule space, followed by one round of message passing over the graph and multi-round conditional dynamic routing to produce AP soft selection and RP soft weights, which are then fed into a lightweight coordinate regressor. We further introduce a reconstruction loss to align the soft weights with the actual observation. On the SODIndoorLoc dataset, CR-AP achieves a mean error of 2.07 m and a P90 of 3.94 m. In AP-missing experiments, CR-AP maintains strong robustness when less than 50% of APs are missing. Cross-scene evaluation on CETC331 also demonstrates good generalization. Compared with multiple baselines and recent models, CR-AP consistently delivers superior performance across several metrics.
+ Similar content being viewed by others
+ Adaptive entropy-guided access point selection for robust multi-floor Wi-Fi fingerprinting
+ Article 
+ Open access 
+ 18 October 2026 
+ Compromising location privacy through Wi-Fi RSSI tracking
+ Article 
+ Open access 
+ 10 November 2025 
+ Bayesian optimized indoor positioning algorithm based on dual clustering
+ Article 
+ Open access 
+ 18 March 2025 
+ Explore related subjects
+ Discover the latest articles and news in related subjects. 
+ Engineering 
+ Mathematics and computing 
+ Indoor Localization Techniques and Systems 
+ Introduction
+ With the rapid development of the Internet of Things (IoT), location-based services (LBS) have attracted substantial attention from both industry and academia 1 . In recent years, the demand for indoor LBS has continued to grow 2 . The widespread availability of smartphones, computers, and Wi-Fi further accelerates the adoption of indoor LBS. However, the Global Positioning System (GPS) is difficult to use effectively indoors due to the lack of line-of-sight and the presence of multipath fading and occlusions 3 . As a result, a variety of indoor positioning technologies have been proposed by both research and industry communities, including Bluetooth 4 , Wi-Fi 5 , ultra-wideband (UWB), radio-frequency identification (RFID) 6 . Among these, indoor positioning based on received signal strength (RSS) is the most prevalent across Bluetooth, UWB, and Wi-Fi because of its high availability, low power consumption, and competitive accuracy; Among them, Wi-Fi has the highest availability and accuracy, which makes it possible to achieve pervasive high-precision positioning on almost any environment and device 7 .
+ Indoor wireless localization methods are generally categorized into geometric measurement and fingerprint matching. Geometric approaches estimate positions using parameters such as time of arrival (ToA), time of flight (ToF), and angle of arrival (AoA), but they are susceptible to non-line-of-sight and multipath in complex indoor environments and often require dedicated antenna arrays and strict synchronization, which limits engineering practicality. In contrast, fingerprint-based indoor localization has seen extensive use in wireless sensor networks (WSNs) due to its low cost and deployment flexibility 8 , 9 , 10 . A WSN comprises spatially distributed sensors that monitor physical or environmental conditions 11 . In a WSN, fingerprinting collects the RSS from available transmitters within an area—often using smartphones with built-in sensors—and leverages these measurements together with their associated locations to estimate target positions 12 .
+ Since the introduction of RADAR in 2000 13 , many methods have been proposed to improve accuracy, such as using random forests 14 or ensemble classifiers 15 , 16 , achieving notable results. Nevertheless, many classic machine-learning methods still struggle with limited generalization, leaving room for improvement in Wi-Fi indoor localization.
+ In this paper, we address the above issues with the following contributions:
+ 1) 
+ Heterogeneous graph modeling. To mitigate instability from correlated fingerprints and fluctuating visibility, we construct a heterogeneous graph in the offline phase. We first select a set of stably visible APs to build RP–AP observation relations. To reduce sensitivity to global drift and sporadic spikes, we construct an RP–RP graph by retaining only RPs whose co-occurrence exceeds a threshold. We also build an AP–AP kNN graph using cosine similarity so that similar APs can complement each other during message passing; when an AP is missing online, its neighbors provide contextual evidence. These AP–AP, RP–RP, and RP–AP relations are fused into a single heterogeneous graph that explicitly encodes correlation and co-occurrence as structural priors.
+ 2) 
+ Capsule routing tailored to fingerprinting. We project online measurements into a capsule space and perform one round of message passing on the heterogeneous graph followed by multi-round dynamic routing. Evidence is aggregated according to its consistency with the current observation, yielding soft weights for both APs and RPs, which are then connected to coordinate regression. Routing amplifies RPs and APs aligned with the observation while down-weighting missing or noisy APs, thereby alleviating measurement absence and transient fluctuations. Within the graph context, routing allows similar APs to reinforce one another, preventing single noisy readings from dominating.
+ 3) 
+ AP soft selection and RP soft weighting. Online, the model executes message passing and conditional capsule routing on the heterogeneous graph to convert “how much the current observation supports a node” into two types of soft weights. AP soft selection highlights access points that are reliable, stable, and most informative for localization at the moment; RP soft weights characterize the distribution over likely reference points.
+ 4) 
+ Experiments on the SODIndoorLoc dataset show that our results outperform classical baselines as well as several models proposed in recent years.
+ 5) 
+ Robustness under AP missing. AP-missing experiments demonstrate that when the missing rate is below 50%, CR-AP is more robust than most competing methods.
+ The remainder of the paper is organized as follows. Section " Theory " reviews related work on capsule networks and fingerprint localization. Section " Methodology " details the proposed heterogeneous graph and CR-AP model. Section " Experimental results and analysis " presents comparative experiments and analysis. Section " Conclusion " concludes the paper.
+ Theory
+ Wi-Fi fingerprinting
+ A typical Wi-Fi fingerprinting system consists of offline and online stages: in the offline stage, RSS from visible APs is collected at reference points (RPs) to construct a radio map with location labels; in the online stage, the system matches or regresses the real-time fingerprint against the radio map to output a position 17 . Fig. 1 . illustrates the overall procedure. Common pattern-matching methods fall into deterministic and probabilistic categories 18 . Recent studies have further explored RSS uncertainty modeling and signal-space matching from different perspectives, including adaptive Lasso Bayesian inference and convex optimization for WLAN localization, symmetrical Hölder-divergence-based fingerprint similarity measurement, and machine-learning-based RSS fingerprint localization using methods such as kNN 19 , 20 . For example, probabilistic methods (e.g., Horus) often require larger datasets than deterministic ones; deterministic methods such as k-nearest neighbors (KNN), support vector machines (SVM), and linear discriminant analysis usually distinguish target RSS values via similarity measures like Euclidean distance and then estimate the position based on the closest database entries—hence their wide adoption due to simplicity 21 , 22 . In large-scale, multi-building, multi-floor environments, fingerprinting faces multiple challenges: sparse labeled samples, signal fluctuations, device heterogeneity, and multipath effects can all degrade accuracy and robustness; meanwhile, the high-dimensional MAC feature space makes effective feature extraction and dimensionality reduction critical 23 , 24 . In principle, more labeled data leads to better performance 25 . However, collecting labels is time-consuming and costly, resulting in limited data. Indoor environments are dynamic—changes in crowd density, doors and windows, elevators and escalators, temperature and humidity, etc.—necessitating updates to the fingerprint database. Furthermore, efficient high-level feature extraction from signals is also essential. Common shallow approaches include “multi-sample averaging at the same location” 26 and Gaussian modeling when RSS follows a normal distribution 27 . Some algorithms also use the average of the top-k maximum RSS values to address environmental dynamics by analyzing the spatial resolution of signal strength 28 .
+ Fig. 1 
+ Full size image 
+ Traditional fingerprinting pipeline.
+ Deep learning and capsule networks for Wi-Fi fingerprinting
+ In recent years, machine learning and deep learning have advanced rapidly and have been applied across a wide range of domains, including security 29 and recognition 30 . Meanwhile, a growing body of machine-learning and pattern-matching approaches has been proposed for Wi-Fi fingerprinting–based localization 31 . Although these methods are easy to implement and deploy, they struggle to extract robust information from noisy Wi-Fi signals and to cope with attenuation in large-scale buildings, thus limiting accuracy in large environments 32 , 33 . To tackle these issues, deep learning has been introduced for indoor localization. For instance, Nowicki and Wietrzykowski proposed a DNN framework for building- and floor-level classification to reduce the burden of manual labeling and database construction in fingerprinting 34 .
+ More recently, various CNN variants have become a popular direction for indoor localization. Qin et al. combined a convolutional denoising auto-encoder (CDAE) with a CNN and performed three-stage estimation over building, floor, and coordinates 35 . While CNNs are a promising approach to localization, they suffer from drawbacks such as loss of fine-grained positional information during pooling and limited separability for heavily overlapping multi-target scenarios.
+ Sabour et al. introduced the concept of capsules and dynamic routing in 2017, representing pose parameters with vectors and aggregating parts into wholes via agreement-based routing 36 . The capsule network structure is shown in Fig. 2 . Fundamentally, capsule routing performs bottom-up voting and agreement: lower-level capsules predict higher-level poses through transformation matrices; when multiple predictions agree, the higher-level capsule is activated. Compared with CNNs, capsules use vector representations and learned transformations to explicitly model part-whole relationships, mapping low-level poses to high-level objects. Routing can be viewed as parallel attention: each higher-level capsule aggregates only those lower-level evidences that agree with it, thereby improving separability in highly overlapping multi-target cases. Subsequently, Hinton et al. proposed matrix capsules with EM routing, upgrading from vector to matrix capsules and performing agreement-based clustering between layers, achieving better generalization and parameter efficiency than comparable CNNs under viewpoint changes, occlusions, and adversarial perturbations 37 . Rajasegaran et al. further introduced skip connections with 3D convolutions to improve performance on complex datasets 38 . Mazzia et al. incorporated self-attention into capsule routing to enhance generalization 39 .
+ Fig. 2 
+ Full size image 
+ Sabour’s capsule network structure.
+ Both CNNs and other deep models benefit from larger training datasets; however, more data entails higher cost, motivating methods that achieve high accuracy with smaller datasets. Although CNN-based variants can perform well on floor and building classification, their performance on precise coordinate regression remains suboptimal. Therefore, this paper proposes using capsule routing for indoor localization: we explicitly inject structural priors into the routing by constructing a heterogeneous graph, and then obtain soft weights and soft selections for coordinate regression to predict precise positions.
+ Although graph-based and capsule-based models have been separately explored in localization and representation learning, their roles in Wi-Fi fingerprint localization are still limited. Existing graph-based localization methods usually focus on feature propagation, spatial smoothing, or neighborhood regularization, but they often do not explicitly model the heterogeneous interactions among APs and RPs. Meanwhile, existing capsule-based methods mainly use routing to aggregate generic feature capsules, without incorporating fingerprint-specific structural priors such as AP similarity, RP co-occurrence, and RP–AP visibility. In contrast, CR-AP integrates these two ideas into a unified framework: the heterogeneous graph provides fingerprint-specific structural priors, while capsule routing dynamically selects and aggregates AP/RP evidence according to the current RSS observation. This combination enables CR-AP to achieve robust localization under RSS fluctuation and AP-missing conditions, while also producing interpretable AP and RP soft weights.
+ Methodology
+ Overview of the localization pipeline
+ Indoor Wi-Fi fingerprinting often faces several challenges at the same time, including highly correlated fingerprints, a large number of APs, online missing measurements, and sensitivity to thresholds. To balance accuracy, robustness, and interpretability, we design a chained pipeline that begins with graph-structured fingerprint modeling, continues with capsule routing, and ends with coordinate regression. Offline, we extract AP–AP and RP–RP structural priors from the radio map and fuse them with RP–AP observation relations into a heterogeneous graph. Online, the current measurement is embedded into a capsule space; the model performs message passing and dynamic routing on the graph to obtain AP and RP soft weights consistent with the observation, and then applies coordinate regression to output the position. In contrast to hard-threshold AP selection or column-wise regression, this pipeline preserves information, avoids brittle thresholds, and turns the structural priors into constraints that are directly useful during online inference. The overall flow is illustrated in Fig. 3 .
+ Fig. 3 
+ Full size image 
+ CR-AP localization pipeline diagram.
+ Construction of the heterogeneous graph
+ To enable execution on resource-constrained devices, the localization algorithm should not rely on exhaustive matching over all RPs in the radio map or on large-scale optimization whose complexity grows with the number of RPs and can become prohibitive for real-time inference on the client. Traditional fingerprinting also suffers from hard AP pruning—which loses information and is unstable to thresholds—and from ignoring AP–AP and RP–RP structure, which makes it sensitive to correlated fingerprints, visibility missing, and temporal drift. To address these issues, we adopt soft selection combined with graph structural priors, and we connect them naturally to coordinate regression. The heterogeneous graph structure is shown in Fig. 4 .
+ Fig. 4 
+ Full size image 
+ Heterogeneous graph structure.
+ For clarity, we first define the basic notation used throughout the proposed pipeline. Let the set of reference points be denoted by \({\mathcal{P}}\) , where each reference point has a known two-dimensional coordinate. Let the set of access points be denoted by \({\mathcal{A}}\) . The localization task is to estimate the unknown coordinate of a target device from its observed RSS fingerprint.
+ $${\mathcal{P}} = \{ p_{i} \}_{i = 1}^{N} ,\quad p_{i} = (x_{i} ,y_{i} ) \in {\mathbb{R}}^{2}$$ 
+ (1)
+ $${\mathcal{A}} = \{ a_{j} \}_{j = 1}^{M}$$ 
+ (2)
+ In the offline phase, RSS measurements collected at all RPs are organized into a radio map. Specifically, the RSS fingerprint at the \(i\) -th RP is represented as an \(M\) -dimensional vector, where each element corresponds to the RSS value received from one AP. Therefore, the radio map consists of all RSS fingerprints and their associated RP coordinates.
+ $${\mathbf{x}}_{i} = [x_{i1} ,x_{i2} , \ldots ,x_{iM} ]^{{ \top }} \in {\mathbb{R}}^{M}$$ 
+ (3)
+ $${\mathcal{D}} = \{ ({\mathbf{x}}_{i} ,p_{i} )\}_{i = 1}^{N}$$ 
+ (4)
+ $${\mathbf{X}} = [{\mathbf{x}}_{1} ,{\mathbf{x}}_{2} , \ldots ,{\mathbf{x}}_{N} ]^{{ \top }} \in \mathbb{R}^{{N \times M}}$$ 
+ (5)
+ Unlike the traditional practice of comparing radio-map columns independently, we first construct an AP–AP cosine-similarity kNN graph and an RP co-occurrence graph from fingerprint statistics during radio-map construction, and then fuse them with the RP–AP observation matrix into a heterogeneous graph, thereby converting an unordered set of fingerprints into a structured radio map. Equivalently, the radio map can be written as an RSS matrix. In this matrix, each row corresponds to the RSS fingerprint of one RP, and each column corresponds to the RSS profile of one AP over all RPs. This matrix representation provides the basis for constructing AP–AP similarity, RP–RP co-occurrence, and RP–AP visibility relations. To obtain a radio map suitable for graph construction and robust to scale and outliers, we apply the robust normalization in ( 6 ), which stabilizes cosine similarity and reduces the impact of extreme readings.
+ $$\Psi _{{i,:}} = \frac{{\Psi _{{i,:}} - median(\Psi _{{i,:}} )}}{{MAD(\Psi _{{i,:}} ) + \in }}\;\;\;\;\;\;\;\;\;\; \in > 0$$ 
+ (6)
+ \(\Psi_{i,:}\) denotes the RSS row vector of the \(i\) -th access point over all reference points; \(MAD\) denotes the median absolute deviation. This procedure stabilizes the cosine similarity and mitigates the influence of outliers.
+ To construct the desired RP co-occurrence graph \({\text{W}}_{{{\text{RP}}}}\) and the RP–AP observation matrix \(V\) , we must determine offline which APs are reliably visible at each RP; therefore, we adopt ( 7 ), ( 8 ), and ( 9 ). Note, however, that in the online phase we do not perform hard deletions based on these formulas. Instead, conditioned on the current prediction \({\text{y}}\) , the model learns soft weights \(a\) for APs and \(q\) for RPs, thereby implementing soft selection. These formulas are introduced to support offline graph construction and robust modeling, so that subsequent message passing and routing operate on a clean graph structure.
+ $${\mathcal{T}}_{i} \left( p \right) = t:\;r_{i} \left( {p,t} \right) \ge \gamma$$ 
+ (7)
+ $${\text{Rel}}_{i} \left( p \right) = \left\{ {\begin{array}{*{20}c} {1,if\left( {\frac{{{\mathcal{T}}_{i} \left( p \right)}}{M} \ge \rho } \right),\rho \in \left( {0,1} \right]} \\ 0 \\ \end{array} } \right.$$ 
+ (8)
+ $${\mathcal{S}}\left( p \right) = \left\{ {\,i{\text{Rel}}_{i} \left( p \right) = 1\,} \right\}$$ 
+ (9)
+ \(r_{i} \left( {p,t} \right)\) denotes the RSS measured in the \(t\) -th offline trial; \(\gamma\) is the signal-strength threshold. By ( 7 ), at reference point \(p\) we remove the RSS entries of the \(i\) -th access point that fall below the threshold \(\gamma\) . In ( 8 ), \(M\) denotes the number of repeated measurements at each RP, and \(\rho\) is the threshold for the proportion of stable RSS occurrences. ( 9 ) converts the result of ( 8 ) into a reliability indicator. \({\mathcal{S}}\left( p \right)\) denotes the set of access points that are reliably visible at an RP. Through these steps, we statistically aggregate APs that are reliable, visible, and robust from multiple offline measurements, filtering out occasional intensity spikes and time-varying jitter; this is more robust than a one-shot threshold.
+ $$s_{ij}^{{{\text{AP}}}} = \frac{{{\Psi}_{i,:} ,{\Psi}_{j,:} }}{{\parallel {\Psi}_{i,:} \parallel_{2} \parallel {\Psi}_{j,:} \parallel_{2} }}{ }$$ 
+ (10)
+ $$({\text{W}}_{{{\text{AP}}}} )_{ij} = \left\{ {\begin{array}{*{20}c} {\exp \,\left( { - \frac{{1 - s_{ij}^{{{\text{AP}}}} }}{\tau }} \right),j \in {\text{kNN}}_{k} \left( i \right)} \\ {0,otherwise} \\ \end{array} } \right.$$ 
+ (11)
+ In ( 10 ) and ( 11 ), \(\tau > 0\) denotes temperature, and \({\text{kNN}}_{k} \left( i \right)\) denotes the operation that selects \(k\) nearest neighbors for the \(i\) -th access point. \(s_{ij}^{{{\text{AP}}}} \in \left[ { - 1,1} \right]\) ,it is used to represent the cosine similarity between the profiles of AP \(i\) and AP \(j\) When \(s_{ij}^{{{\text{AP}}}} = 1\) , the profiles have similar shapes; when \(s_{ij}^{{{\text{AP}}}} = 0\) , they are uncorrelated; when \(s_{ij}^{{{\text{AP}}}} < 0\) , strong responses of AP \(i\) tend to coincide with weak responses of AP \(j\) , and vice versa. According to ( 10 ), we connect edges between similar APs so that, during message passing, they can compensate for one another; When an AP is missing online, its RSS value is masked rather than used as reliable evidence. Since the AP–AP graph is constructed offline from the radio map, the missing AP node and its similarity edges are still retained. If similar neighboring APs are observed, their graph-propagated evidence can partially compensate for the missing AP. However, when the missing AP and most of its neighbors are simultaneously unavailable, such compensation becomes limited, and the model may suffer performance degradation. Therefore, CR-AP remains usable under partial AP missing, but its robustness depends on the number and informativeness of the remaining visible APs. Consequently, when CR-AP performs routing on this graph, the resulting AP weights \(a\) are not dominated by a single noisy reading but instead reflect the consensus among similar APs. In essence, these two equations convert the AP row vectors of the offline radio map into an AP–AP similarity graph.
+ The above equations address relationships among APs. Next, in the offline phase, we use ( 12 ) and ( 13 ) to define the similarity between pairs of RPs and, based on this similarity, construct the RP co-occurrence graph \({\text{W}}_{{{\text{RP}}}}\) .
+ $$s_{pq}^{{{\text{RP}}}} = \frac{{\,{\mathcal{S}}\left( p \right) \cap {\mathcal{S}}\left( q \right)\,}}{{\,{\mathcal{S}}\left( p \right) \cup {\mathcal{S}}\left( q \right)\,}}$$ 
+ (12)
+ $$({\text{W}}_{{{\text{RP}}}} )_{pq} = \left\{ {\begin{array}{*{20}c} {s_{pq}^{{{\text{RP}}}} ,\left( {s_{pq}^{{{\text{RP}}}} \ge \eta } \right),\eta \in \left[ {0,1} \right]} \\ {0,otherwise} \\ \end{array} } \right.$$ 
+ (13)
+ In the above formulas, \(\eta\) is the co-occurrence threshold and \({\text{W}}_{{{\text{RP}}}}\) is the RP co-occurrence graph. Using ( 12 ), we obtain the degree of overlap between the sets of reliably visible APs at locations \(p\) and \(q\) . \(s_{ij}^{{{\text{RP}}}} = 1\) indicates complete identity, whereas \(s_{ij}^{{{\text{RP}}}} = 0\) indicates complete dissimilarity. Through ( 13 ), we apply thresholding to the similarity so that only RP pairs whose overlap reaches the threshold are connected, and the edge weight is \(s_{pq}^{{{\text{RP}}}}\) . Compared with the traditional approach that relies solely on Euclidean distance, ( 12 ) ignores magnitude and considers only which APs are reliably visible, making the method less sensitive to device-gain differences, global drift, and occasional spikes.
+ To incorporate observation relations into the graph structure, we introduce the following heterogeneous graph and the corresponding visibility matrix.
+ $$V_{p,i} = \left\{ {\begin{array}{*{20}c} {1\left( {i \in {\mathcal{S}}\left( p \right)} \right)} \\ {0,otherwise} \\ \end{array} } \right.$$ 
+ (14)
+ $${\text{M}} = \left[ {\begin{array}{*{20}c} {{\text{W}}_{{{\text{RP}}}} } & {\text{V}} \\ {{\text{V}}^{{{ \top }}} } & {{\text{W}}_{{{\text{AP}}}} } \\ \end{array} } \right]$$ 
+ (15)
+ $${\mathcal{L}}_{{{\text{rec}}}} = \frac{1}{L}\parallel {\text{y}} - {\Phi }\left( {\text{a}} \right)\,{\Psi }\,{\text{q}}\parallel_{2}^{2}$$ 
+ (16)
+ In the above formulas, \({\text{V}} \in \{ 0,1\}^{N \times L}\) is the RP–AP observation matrix, and \({\text{M}}\) fuses the RP–RP, AP–AP, and RP–AP relations as the structural prior for subsequent capsule routing. Unlike treating fingerprints as independent features, this representation explicitly encodes correlation and co-occurrence in the offline stage, fundamentally mitigating instability caused by high correlation and visibility fluctuations. ( 16 ) defines the reconstruction loss: during training, it forces the AP soft weights \(a\) and RP soft weights \(q\) to reconstruct the true observation \(y\) using the weighted radio map \({\Psi }\) . This both grounds “which APs matter and which RPs match” in the signal space and suppresses degenerate solutions where coordinates are correct but the weights lack physical meaning, while alleviating mismatch and overfitting under coordinate-only supervision. The normalization factor \(L\) makes the scale comparable across different numbers of APs. ( 16 ) is used only during training, incurs no additional inference cost, and can be jointly optimized with the coordinate loss to improve robustness and convergence.
+ Capsule routing and coordinate regression
+ After obtaining the structural priors, the current measurement must genuinely drive evidence aggregation on the graph. CR-AP projects the measurement into a capsule space and, using agreement with the current observation as the coupling signal, performs one round of message passing followed by multiple rounds of dynamic routing. This process yields soft weights for APs and RPs, which then naturally feed into the coordinate regression layer. Compared with kNN, WKNN, independent probabilistic modeling, or sparse regression, CR-AP neither applies hard-threshold AP selection nor relies on large-scale optimization. As a result, it remains stable in the presence of highly correlated fingerprints and missing APs, while offering clearer interpretability. The CR-AP model is illustrated in Fig. 5 .
+ Fig. 5 
+ Full size image 
+ CR-AP localization pipeline diagram.
+ To inject the offline structural priors (namely AP–AP similarity, RP co-occurrence, and RP–AP visibility) into online inference, we perform capsule routing on the heterogeneous graph. The routing adaptively aggregates evidence according to the current measurement, producing AP soft selection and RP soft weights that suppress missing readings and noise. This yields a more robust and interpretable intermediate representation, supplying low-noise, structured features for subsequent coordinate regression. We first map a single online measurement into a low-dimensional measurement capsule that conditions the entire inference chain. In the online phase, we place primary capsules for each AP and each RP on the heterogeneous graph and conduct one round of message passing to inject graph priors into these capsules, so that they carry neighborhood semantics rather than only pointwise intensities. We then execute conditional dynamic routing. The routing converts evidence about whether the current measurement supports a node into soft weights and, under graph constraints, performs weighted aggregation and compression over candidate capsules to obtain AP capsules and RP capsules that are consistent with the measurement. The model thus produces two kinds of information: first, AP soft selection, which highlights base stations that are currently reliable, stable, and most informative for localization; second, RP soft weights, which describe the distribution over the most likely reference points. Compared with traditional hard-threshold AP selection or independent sparse regression, this routing is more robust under correlated fingerprints, multipath, and missing measurements, is easier to interpret, and provides low-noise, structured, and visualizable intermediates for the downstream coordinate regressor.
+ In the online phase, the target device observes a real-time RSS measurement vector. Each element of this vector corresponds to the RSS value received from one AP. Given this online RSS vector, CR-AP aims to learn a mapping from the RSS measurement space to the two-dimensional coordinate space. The predicted coordinate is then obtained through the learned localization function.
+ $${\mathbf{y}} = [y_{1} ,y_{2} , \ldots ,y_{M} ]^{{ \top }} \in \mathbb{R}^{M}$$ 
+ (17)
+ $$f_{\Theta } :{\mathbb{R}}^{M} \to {\mathbb{R}}^{2} ,\quad \hat{p} = f_{\Theta } ({\mathbf{y}})$$ 
+ (18)
+ To enable the current measurement \(y\) to drive information aggregation on the graph, we first project the online RSS vector \(\mathbf{y}\) into a conditioning space that has the same dimensionality as the capsules and initialize the primary capsule representations for APs and RPs. We then perform one round of message passing on the heterogeneous graph obtained offline, followed by \(\theta\) rounds of dynamic routing.
+ $${\text{z}} = {\text{W}}_{y} \,{\text{y}} \in {\mathbb{R}}^{d} ,{\text{C}}_{{{\text{AP}}}}^{\left( 0 \right)} \in {\mathbb{R}}^{L \times d} ,{\text{C}}_{{{\text{RP}}}}^{\left( 0 \right)} \in {\mathbb{R}}^{N \times d} ,{\text{W}}_{y} \in {\mathbb{R}}^{d \times L}$$ 
+ (19)
+ \({\text{y}} \in {\mathbb{R}}^{d}\) denotes the online RSS measurement vector. \({\text{W}}_{y}\) is the linear mapping from the measurement space to the capsule space, \({\text{W}}_{y} \in {\mathbb{R}}^{d \times L}\) . \({\text{C}}_{{{\text{AP}}}}^{\left( 0 \right)}\) and \({\text{C}}_{{{\text{RP}}}}^{\left( 0 \right)}\) are the initial capsule matrices for APs and RPs, respectively, and \(d\) is the capsule dimensionality. Using ( 19 ), we transform the measurement signal into a conditional vector \(z\) that lies in the same space as the node representations on the graph, which facilitates subsequent consistency scoring with the measurement. To exploit both RP–AP observations and same-type similarities, we perform one round of message passing on the heterogeneous graph, propagating information according to ( 20 ),( 21 ) , and ( 22 ).
+ $${\tilde{\text{W}}} = {\text{D}}^{{ - \frac{1}{2}}} {\text{WD}}^{{ - \frac{1}{2}}}$$ 
+ (20)
+ $${\hat{\text{C}}}_{{{\text{RP}}}} = \left( {{\text{V}}\,{\text{C}}_{{{\text{AP}}}}^{\left( 0 \right)} } \right)\underbrace {{{\text{W}}_{IA} }}_{{{\text{RP}} \leftarrow {\text{AP}}}} + \left( {{\tilde{\text{W}}}_{{{\text{RP}}}} \,{\text{C}}_{{{\text{RP}}}}^{\left( 0 \right)} } \right)\underbrace {{{\text{W}}_{RR} }}_{{{\text{RP}} \leftarrow {\text{RP}}}}$$ 
+ (21)
+ $${\hat{\text{C}}}_{{{\text{AP}}}} = \left( {{\text{V}}^{{ \top }} {\text{C}}_{{{\text{RP}}}}^{\left( 0 \right)} } \right)\underbrace {{{\text{W}}_{AI} }}_{{{\text{AP}} \leftarrow {\text{RP}}}} + \left( {{\tilde{\text{W}}}_{{{\text{AP}}}} {\kern 1pt} {\text{C}}_{{{\text{AP}}}}^{\left( 0 \right)} } \right)\underbrace {{{\text{W}}_{AA} }}_{{{\text{AP}} \leftarrow {\text{AP}}}}$$ 
+ (22)
+ In these formulas, \({\tilde{\text{W}}}\) denotes the degree-normalized adjacency. \({\text{W}}_{IA}\) projects AP information, which has been aggregated through the RP–AP observation \(V\) , into the RP capsule channel. This step learns how AP evidence contributes to the RP representation and how their relative weights should be balanced. \({\text{W}}_{RR}\) applies a channel transform to the features obtained after same-type propagation on the RP co-occurrence graph \({\tilde{\text{W}}}_{{{\text{RP}}}}\) , thereby controlling the extent and direction of smoothing among neighboring RPs within the RP representation. \({\text{W}}_{AI}\) maps the RP information aggregated by \({\text{V}}^{{{ \top }}}\) back to the AP capsules so that the AP representation can absorb RP evidence that agrees with the current measurement. \({\text{W}}_{AA}\) re-calibrates the channels of the same-type propagation result on the AP–AP similarity graph \({\tilde{\text{W}}}_{{{\text{AP}}}}\) , emphasizing agreement among APs with similar profiles and improving robustness under missing measurements. The four terms denoted by \({\text{W}}\) are learnable channel-transform matrices; during training they are optimized together with the rest of the model parameters via the coordinate loss in an end-to-end manner.
+ With these operations in place, the cross-type pathway and the same-type pathway run in parallel, which effectively injects the offline graph priors into the learned features. The intermediate results, denoted \({\hat{\text{C}}}_{{{\text{RP}}}}\) and \({\hat{\text{C}}}_{{{\text{AP}}}}\) , act as candidates. In the subsequent dynamic routing they are further refined, under graph constraints and conditioned on the current measurement, into representations that match the observation. This refinement produces robust soft weights. To condense the candidates into a representation consistent with y, we then perform dynamic routing with the coupling and compression updates defined next.
+ $$b_{p}^{\left( j \right)} = b_{p}^{{\left( {j - 1} \right)}} + \left\langle {{\hat{\text{C}}}_{{{\text{RP}},p}} ,\,{\tilde{\text{C}}}_{{{\text{RP}}}}^{\left( j \right)} \oplus {\text{z}}} \right\rangle$$ 
+ (23)
+ $${\tilde{\text{C}}}_{{{\text{AP}}}}^{\left( j \right)} = {\text{squash}}\,(\mathop \sum \nolimits_{i} c_{i}^{{\left( {j - 1} \right)}} \,{\hat{\text{C}}}_{{{\text{AP}},i}} )$$ 
+ (24)
+ $$c_{i}^{\left( j \right)} = c_{i}^{{\left( {j - 1} \right)}} + \left\langle {{\hat{\text{C}}}_{{{\text{AP}},i}} ,\,{\tilde{\text{C}}}_{{{\text{AP}}}}^{\left( j \right)} \oplus {\text{z}}} \right\rangle$$ 
+ (25)
+ $${\text{squash}}\left( {\text{v}} \right) = \frac{{\parallel {\text{v}}\parallel^{2} }}{{1 + \parallel {\text{v}}\parallel^{2} }}\frac{{\text{v}}}{{\parallel {\text{v}}\parallel }}$$ 
+ (26)
+ In these formulas, ( 26 ) applies a squashing operation that constrains the vector length to the range [0,1]. \(\oplus\) is a gating term that makes the notion of “agreement” depend on the current measurement. \(b_{p} ,c_{i}\) are the coupling coefficients for a given routing iteration and are initialized to zero. Through 23 )–( 25 ), the routing uses measurement agreement as the coupling signal to adaptively update \(b_{p} ,c_{i}\) . This amplifies RPs and APs that are consistent with the observation and attenuates the influence of sporadically missing or noisy APs. The graph structure supplies contextual information so that evidence from correlated fingerprints can reinforce one another, which yields greater stability than approaches based on hard thresholds or independent regression. This idea of routing from primary capsules is consistent with graph capsule networks in prior work, but here the node types are APs and RPs and the routing is instantiated on a Wi-Fi fingerprint graph to fit the localization task.
+ This section starts from the routed capsules and converts the resulting reliable information into a position estimate. The model first assigns a soft weight to each access point according to its agreement with the current measurement and the capsule representation. These weights act as adaptive gates that filter unstable or missing signals and focus attention on APs that contribute most to localization. At the same time, the model generates soft weights for each reference point to form a probability distribution over candidate locations, which avoids the jitter and abrupt jumps caused by hard matching. The reference-point capsules are then aggregated according to this distribution to obtain a “position capsule” that reflects both global and local geometric information. Finally, a lightweight coordinate regression head maps this representation to continuous two-dimensional coordinates in a robust manner.
+ To quantify the APs that best agree with the current measurement as differentiable soft weights and feed them back into the measurement model, we first compute a compatibility score between the routed AP capsules and the conditional embedding. We then apply a temperature-scaled softmax to obtain probabilistic weights, as given by the following equations.
+ $$s_{i} = \langle C_{AP,i} ,\left. z \right\rangle ,C_{AP,i} \in {\mathbb{R}}^{d}$$ 
+ (27)
+ $$a_{i} = \frac{{{\text{exp}}\left( {s_{i} /\sigma } \right)\,m_{i} }}{{\mathop \sum \nolimits_{{k = 1}}^{L} {\text{exp}}\left( {s_{k} /\sigma } \right)\,m_{k} + }},a = [a_{1} , \ldots ,a_{L} ]^{{ \top }}$$ 
+ (28)
+ In these equations, \(C_{AP,i}\) is the routed output for the \(i\) -th access point. \(s_{i}\) measures the agreement between that AP representation and the current measurement. \(\sigma > 0\) controls how peaked or diffuse the resulting distribution is. \(m_{i} \in \left\{ {0,1} \right\}\) is a visibility mask; during online inference, APs that are not observed are masked out by setting \(m_{i} = 0\) , \(\, > \,0\) to avoid division by zero. \({\Phi }\left( a \right)\) serves as a soft gate that reweights the rows of the dictionary on a per-row basis. Unlike hard thresholding that deletes columns, \(a\) implements a continuous, differentiable soft selection that preserves information while suppressing unstable or missing APs. Because \(s_{i}\) is computed from the agreement between the “graph-routed representation \({\tilde{\text{C}}}\) ” and the “measurement \(z\) ,” it adapts to the scene and uses AP–AP and RP–AP context to counteract single-point noise as well as device- or time-varying drift. The final measurement model is given by ( 29 ). Using ( 29 ), we reconstruct the RSS vector \(y\) from the selected reliable APs and RPs. During training, the reconstructed vector \(\hat{y}\) and the ground-truth vector \(y\) are fed into ( 16 ) to compute the reconstruction loss.
+ $$\hat{y} = \Phi (a)\Psi q$$ 
+ (29)
+ Using ( 30 ) and ( 31 ), the RP representations on the graph are converted into a “soft neighborhood consistent with \({\text{y}}\) ,” followed by the output of continuous coordinates. The procedure first computes soft weights over RPs and then performs coordinate regression.
+ $$u_{j} = \langle C_{RP,j} ,\left. z \right\rangle$$ 
+ (30)
+ $$q_{j} = \frac{{{\text{exp}}\left( {u_{j} /\tau } \right)}}{{\sum\nolimits_{m = 1}^{N} {{\text{exp}}} \left( {u_{m} /\tau } \right)}},{\text{q}} = [q_{1} , \ldots ,q_{N} ]^{{ \top }}$$ 
+ (31)
+ $$\hat{p} = W_{p}^{{ \top }} (\sum\limits_{j = 1}^{N} {q_{j} C_{RP,j} )}$$ 
+ (32)
+ In these equations, \({\tilde{\text{C}}}_{{{\text{RP}},j}} \in {\mathbb{R}}^{d}\) denotes the routed output for the \(j\) -th reference point. \(u_{j}\) measures the consistency between that RP and the current measurement. \(\tau > 0\) controls how sharp or diffuse the resulting distribution is. \(q_{j} \in {\mathbb{R}}^{2}\) denotes the RP coordinates.
+ During training, CR-AP is optimized using supervised coordinate labels. For each training sample, the model predicts a two-dimensional coordinate from the corresponding online RSS vector. The coordinate regression loss measures the discrepancy between the predicted coordinate and the ground-truth coordinate.
+ $${\mathcal{L}}_{{{\text{loc}}}} = \frac{1}{S}\sum\limits_{s = 1}^{S} {\left\| {\hat{p}^{(s)} - p^{(s)} } \right\|_{2}^{2} }$$ 
+ (33)
+ $${\mathcal{L}}_{{{\text{rec}}}} = \frac{1}{S}\sum\limits_{s = 1}^{S} {\left\| {\widehat{{\mathbf{y}}}^{(s)} - {\mathbf{y}}^{(s)} } \right\|_{2}^{2} }$$ 
+ (34)
+ In addition to the coordinate regression loss, the RSS reconstruction loss introduced earlier is jointly used to constrain the AP soft-selection weights and RP soft weights in the signal space. Therefore, the final training objective consists of the coordinate regression loss, the RSS reconstruction loss, and a regularization term.
+ $$\min_{\Theta } {\mathcal{L}} = {\mathcal{L}}_{{{\text{loc}}}} + \lambda_{{{\text{rec}}}} {\mathcal{L}}_{{{\text{rec}}}} + \lambda_{{{\text{reg}}}} \Theta_{2}^{2}$$ 
+ (35)
+ Here, \(\Theta\) denotes all learnable parameters of CR-AP. The coefficient \(\lambda_{rec}\) controls the contribution of the RSS reconstruction loss, and \(\lambda_{reg}\) controls the strength of the regularization term. The reconstruction loss is used only during training and does not introduce additional computational cost during inference. The AP soft-selection weights and RP soft weights are constrained by softmax normalization, satisfying \({\alpha}_{j}\ge 0\) , \({\sum}_{j=1}^{M}{\alpha}_{j}=1\) , \({\beta}_{i}\ge 0\) , and \({\sum}_{i=1}^{N}{\beta}_{i}=1\) . For missing APs, the visibility mask enforces \({\alpha}_{j}=0\) when \({m}_{j}=0\) .
+ Experimental results and analysis
+ Datasets and setup
+ We use the public SODIndoorLoc dataset, which covers three multi-story office buildings with a total area of approximately 8,000 m 2 . In total there are 1,802 sampling points, including 1,630 reference points (RPs) and 272 test points, with 23,925 samples recorded. Among them, 21,205 samples are used for training and 2,720 for testing. Our hardware configuration is an AMD Ryzen 7 7800X3D CPU and an NVIDIA GeForce RTX 5080 GPU.
+ Localization on SODIndoorLoc
+ In this experiment, CR-AP model will be used to compare with Alex Net 40 , Bagged Trees 41 , KNN, WKNN 42 , RiFi 43 , Subspace Discriminant 44 , Subspace KNN 45 , SVM 46 , WiFiNet 47 . In order to ensure the fairness of the experiment, most of the parameters adopt the optimal results mentioned in the paper. The HCXY topographic map in SODIndoorLoc is in Fig. 6 .
+ Fig. 6 
+ Full size image 
+ HCXY floor plan in SODIndoorLoc.
+ Our model parameters are listed in Table 1 .
+ Table 1 Model parameters. 
+ Full size table 
+ Fig. 7 . presents the cumulative distribution of localization error for all methods. Overall, the CR-AP curve consistently lies farthest to the left and rises most steeply: under the same error threshold it covers a larger fraction of test samples, and under the same coverage it achieves a smaller error threshold. By contrast, the curves of SVM, Bagged Trees, Subspace Discriminant, and Subspace KNN are clearly shifted to the right and rise more slowly, revealing heavier error tails and indicating weaker robustness.
+ Fig. 7 
+ Full size image 
+ CDF curves of all models on HCXY.
+ As shown in Fig. 8 . CR-AP exhibits the most compact box with markedly shorter upper whiskers and fewer, less extreme outliers. The distribution is the most concentrated overall, indicating minimal error fluctuation across test samples and the strongest robustness. In comparison, Subspace KNN and Subspace Discriminant display taller, more dispersed boxes and whiskers with dense outliers, suggesting higher sensitivity to RSS temporal variation and multipath in complex settings. Bagged Trees and SVM fall in between. This figure provides a direct, visual confirmation of CR-AP’s advantage in reducing mid-to-high quantile errors.
+ Fig. 8 
+ Full size image 
+ Box plots of all models on HCXY.
+ From Fig. 9 . and Table 2 , CR-AP attains the smallest mean error at 2.07 m, showing a clear reduction relative to nearest-neighbor–based methods such as WKNN, KNN, and RiFi. Compared with the next-best WKNN, the mean error of CR-AP decreases by approximately 24%. Ensemble methods (SVM and Bagged Trees) and subspace approaches (Subspace Discriminant and Subspace KNN) exhibit substantially higher errors. Overall, CR-AP is the best performer on the mean error, which is a comprehensive indicator of accuracy. RMSE further captures the impact of large-error samples on overall performance.
+ Fig. 9 
+ Full size image 
+ Mean localization error of all models on HCXY.
+ Table 2 Detailed localization results of all models on HCXY 
+ Full size table 
+ To make the evaluation metrics explicit, we define the localization error of the \(s\) -th test sample as the Euclidean distance between the predicted coordinate and the ground-truth coordinate. Based on this error, the root mean square error (RMSE) is computed as follows.
+ $$e_{s} = \left\| {\hat{p}^{(s)} - p^{(s)} } \right\|_{2}$$ 
+ (36)
+ $${\text{RMSE}} = \sqrt {\frac{1}{{S_{{{\text{test}}}} }}\sum\limits_{s = 1}^{{S_{{{\text{test}}}} }} {\left\| {\hat{p}^{(s)} - p^{(s)} } \right\|_{2}^{2} } }$$ 
+ (37)
+ Here, \({S}_{\text{t}\text{e}\text{s}\text{t}}\) denotes the number of test samples, \({\widehat{p}}^{\left(s\right)}\) is the predicted coordinate of the \(s\) -th sample, \({p}^{\left(s\right)}\) is the corresponding ground-truth coordinate, and \({e}_{s}\) is the localization error. As shown in Fig. 10 . CR-AP achieves the lowest RMSE, consistent with its lead on mean error. Baselines such as KNN and WKNN follow, whereas SVM, Bagged Trees, Subspace Discriminant, and Subspace KNN have higher RMSE, indicating heavier error tails. Together with the P90 metric, these results show that CR-AP is particularly effective at suppressing long-tail errors, which aligns with the shorter upper whiskers and fewer extreme outliers in the box plots.
+ Fig. 10 
+ Full size image 
+ RMSE of all models on HCXY.
+ Overall, CR-AP delivers the best and most stable performance across all metrics. The mean and median errors are 2.07 m and 1.64 m, respectively, and the RMSE is the lowest. Compared with KNN, WKNN, and RiFi, the average error is reduced by about 25%. The box plots show the tightest box, the shortest upper whiskers, and the fewest outliers, reflecting strong robustness to RSS fluctuations and scene variations. The CDF further confirms this advantage: the CR-AP curve lies farthest to the left and rises the fastest, with a high-quantile error P90=3.95 m, which is significantly better than the 6.36–6.46 m range of KNN, WKNN, and RiFi. In contrast, SVM, Bagged Trees, and subspace methods exhibit noticeably higher mean error and RMSE with heavier tails.
+ To further evaluate the computational cost of CR-AP, we measured the training time, inference time, and parameter count under the same hardware platform. The complete CR-AP model contains 222,387 trainable parameters, corresponding to approximately 0.222M parameters, and the saved checkpoint size is about 1.17 MB. The wall-clock training time for 300 epochs is 15 min 30.0 s. During inference, CR-AP takes 0.077 s to process 860 test samples, corresponding to 0.0898 ms per sample. Since the heterogeneous graph is constructed in the offline phase, online localization only requires a single forward pass through the capsule routing and coordinate regression modules. These results indicate that CR-AP remains lightweight and efficient for online Wi-Fi fingerprint localization.
+ Robustness experiments under AP missing
+ In this section, we further evaluate the robustness of our method through AP-missing experiments. A proportion of originally available APs is randomly masked as missing. To ensure fairness, all models use the same settings as in Section " Localization on SODIndoorLoc ".
+ For CR-AP with a 10% AP-missing rate, the heatmap shows the largest proportion within the <2 m region and the smallest proportion at ≥6 m; as the missing rate increases, the distribution shifts outward the most slowly. In the line plots, the mean and median curves remain the lowest, and the P90 curve remains relatively low up to 50% missing, with a rise only at 60%. At 10% missing, the mean and median errors are 2.17 m and 1.82 m, respectively; relative to the no-missing case, the mean increases by 4% and the median by 10%. Overall, CR-AP strikes the best balance between accuracy and robustness, showing low sensitivity to fluctuations in visible APs and to RSS noise. Although Alex Net’s curves are not highly volatile and even rise less than CR-AP at 60% missing—suggesting strong anti-interference capability—its errors remain larger than those of CR-AP. Bagged Trees exhibits multi-modal heatmaps that move outward rapidly as missing increases; in the line plots, RMSE and mean grow more quickly with a notably heavy tail, indicating that tree-based partitioning is unstable for high-dimensional, sparse RSS features Fig. 11 .
+ Fig. 11 
+ Full size image 
+ Error-distribution heatmaps and metric line plots for all models under AP-missing rates from 10% to 60%.
+ When the missing rate exceeds 40%, KNN surpasses CR-AP on several metrics. This occurs because the AP-reliability priors of CR-AP are estimated under more complete visibility; when missing becomes severe, these priors can be systematically misleading. Moreover, CR-AP obtains probabilistic weights via softmax. In very low effective dimensionality, random fluctuations in distances are amplified, yielding overly sharp weights that may emphasize a few accidental yet unreliable neighbors and thus raise \({P}_{90}\) and RMSE. By contrast, equal-weight KNN is less precise but avoids extreme errors. Even so, CR-AP remains among the strongest methods under AP missing.
+ Subspace Discriminant and Subspace KNN show pronounced error growth under missing; their line plots become less informative due to large errors and are omitted from further discussion. WKNN and RiFi display a degree of robustness; intriguingly, their average errors even decrease slightly at a 60% missing rate. Combined with the heatmaps, this suggests that although errors rise in most regions, some originally high-error points become smaller.
+ In summary, CR-AP achieves the best overall accuracy and robustness under mild-to-moderate AP-missing conditions, especially when the missing rate is below 50%. Under severe AP loss, KNN can outperform CR-AP on some metrics, which reveals a limitation of CR-AP when the graph priors and AP soft-selection weights become unreliable due to insufficient observations Table 3 . Detailed data can be found in the Table 3 .
+ Table 3 Metrics of all models under AP-missing rates from 10%. 
+ Full size table 
+ Cross-scene experiments
+ The experiments are conducted on the CETC331 subset of the SODIndoorLoc dataset. To ensure fairness, all model hyperparameters are kept identical to those used in the previous experiments.
+ From Fig. 12 . the curves of CR-AP and Subspace KNN lie farthest to the left and approach 1 the fastest, indicating the best overall accuracy. RiFi follows closely, and Alex Net performs near the first tier. The curves of Bagged Trees and SVM shift slightly to the right, implying a higher proportion of moderate errors; Subspace Discriminant is farther to the right. WKNN falls between KNN and Bagged Trees. WiFiNet shows a pronounced rightward shift with the most significant long tail, reflecting many large-error samples. In summary, CR-AP and KNN are the top performers; RiFi, Subspace KNN, and AlexNet are robust; SVM, Bagged Trees, and Subspace Discriminant are mid-tier; and WiFiNet is comparatively weaker.
+ Fig. 12 
+ Full size image 
+ CDF curves of all models on CETC331.
+ By combining Fig. 12 . with Table 4 , we first observe from a robustness standpoint that CR-AP attains the lowest mean error at 2.78 m, with a median of just 2.20 m and a P90 of 5.47 m; its CDF lies to the left. Subspace KNN achieves slightly better median and P90 errors than CR-AP on CETC331. This can be attributed to the characteristics of the CETC331 subset and the behavior of subspace-based nearest-neighbor matching. CETC331 has a relatively more compact scene distribution, and many test samples can be well matched by local neighbors after projecting high-dimensional RSS fingerprints into a discriminative subspace. The subspace projection can suppress redundant or noisy AP dimensions and preserve the dominant neighborhood structure for most samples. Therefore, Subspace KNN obtains lower median and P90 errors, indicating that it performs well for the majority of test samples.
+ Table 4 Localization metrics of all models on CETC331. 
+ Full size table 
+ However, Subspace KNN still has a higher mean error than CR-AP. This suggests that although Subspace KNN performs well on most samples, it may produce larger errors on a small number of difficult samples, such as points located in ambiguous RSS regions or areas with strong fingerprint similarity. These outliers increase the mean error. In contrast, CR-AP uses AP–AP, RP–RP, and RP–AP structural priors together with capsule routing to aggregate evidence more adaptively, which helps reduce the overall average error. Therefore, Subspace KNN shows an advantage in median and P90 on CETC331, while CR-AP remains better in terms of mean localization accuracy. Overall, on the CETC331 subset, CR-AP and Subspace KNN show complementary advantages. Subspace KNN achieves slightly better median and P90 errors, indicating stronger performance for the majority of samples and fewer errors within the 90th percentile. CR-AP achieves the lowest mean error, showing better overall average localization accuracy and stronger suppression of severe outliers. This indicates that the graph-guided capsule routing of CR-AP is more effective in reducing the overall error level, while Subspace KNN benefits from subspace projection and local neighbor matching in this specific compact scene.
+ Ablation experiment
+ To further verify the contribution of each key module in CR-AP to localization performance, we conduct ablation experiments under the same dataset, training settings, and evaluation metrics. Specifically, four degraded variants are constructed: removing the AP–AP graph, removing the RP–RP graph, removing the reconstruction loss, and removing the capsule routing mechanism. The experimental results are shown in Table 5 . In addition, the CDF curves, box plots, RMSE bar charts, and mean localization error bar charts further illustrate the differences among different models in terms of error distribution and stability.
+ Table 5 Localization metrics of each ablation experiment on HCXY. 
+ Full size table 
+ As shown in Table 5 , the complete CR-AP model achieves the lowest mean localization error of 2.07 m, indicating that the joint use of all modules leads to the best overall localization accuracy. After removing the AP–AP graph, the mean error increases to 2.42 m, and the P90 error rises from 3.95 m to 4.67 m. This demonstrates that modeling the similarity among APs can effectively exploit the complementary information between access points with similar RSS distributions. When some APs are affected by noise or unstable observations, the AP–AP graph can enhance model robustness by introducing contextual information from similar APs. Therefore, after removing this structure, the model becomes less capable of suppressing AP signal fluctuations, resulting in a noticeable increase in high-percentile errors Figs .13 - 15 .
+ Fig. 13 
+ Full size image 
+ Mean error bar chart of each ablation experiment on HCXY.
+ Fig. 14 
+ Full size image 
+ RMSE bar chart of each ablation experiment on HCXY.
+ Fig. 15 
+ Full size image 
+ CDF curves of each ablation experiment on HCXY.
+ As shown in Figs. 13 - 15 . After removing the RP–RP graph, the mean error becomes 2.15 m, and the P90 error is 4.17 m. Although the median error is close to that of the complete model, both the mean error and P90 error increase, indicating that the RP–RP co-occurrence relationship mainly contributes to improving the overall error distribution and the stability of high-error samples. By modeling the overlap relationship of reliable AP sets among reference points, the RP–RP graph enables the model to utilize structural priors from neighboring or similar RPs during graph propagation, thereby alleviating the instability caused by matching a single reference point. After removing this graph, the model can still maintain a certain level of localization capability, but its ability to distinguish similar fingerprints in complex areas is reduced.
+ For the model without reconstruction loss, the mean error is 2.19 m, and the median error is 1.77 m. Compared with the complete CR-AP model, both the mean and median errors increase, indicating that the reconstruction loss can impose additional constraints on AP soft-selection weights and RP soft weights. These constraints allow the weights to not only serve the coordinate regression objective, but also remain consistent with the real RSS observations. This helps prevent the model from relying solely on coordinate supervision and producing intermediate weights that lack physical meaning. It should be noted that the P90 error of this variant is 3.65 m, which is slightly lower than that of the complete model, suggesting that some high-error samples are alleviated in this experiment. However, from the perspective of mean and median errors, the complete model still achieves better overall localization performance and a more stable central error distribution.
+ The most significant degradation occurs after removing the capsule routing mechanism. The mean error of this model sharply increases to 12.75 m, the median error reaches 10.16 m, and the P90 error rises to 26.32 m, which are much higher than those of all other models. This indicates that capsule routing is one of the most critical components in CR-AP. Capsule routing can adaptively adjust the coupling relationship between APs and RPs according to the current online observation. It strengthens node evidence that is consistent with the observation while weakening the influence of missing APs, noisy APs, and unreliable reference points. After removing this mechanism, the model struggles to effectively perform dynamic aggregation from graph-structured features to localization weights, causing the error distribution to shift significantly to the right and leading to a substantial decline in localization performance.
+ The CDF curves further support these observations. The curve of CR-AP is generally located toward the left and rises rapidly in the small-error region, indicating that the complete model covers more test samples under lower error thresholds. In contrast, the curves of the models without the AP–AP graph, RP–RP graph, and reconstruction loss all shift to the right to varying degrees, showing that these modules each contribute to improving the error distribution. Among them, the curve of the model without the AP–AP graph exhibits a more obvious rightward shift, suggesting that the AP-level structural prior plays an important role in reducing medium- and high-error samples. The CDF curve of the model without capsule routing is the farthest to the right and rises much more slowly, indicating that a large number of samples are concentrated in a higher localization error range. This further verifies the importance of capsule routing for robust localization.
+ The RMSE bar chart and mean error bar chart lead to consistent conclusions. The complete CR-AP model obtains the lowest mean error and the lowest RMSE, indicating that it can not only reduce the overall localization error, but also effectively suppress large-error samples. After removing the AP–AP graph, RP–RP graph, and reconstruction loss, the RMSE values all increase, suggesting that the model becomes less capable of controlling abnormal errors and long-tail errors. When capsule routing is removed, the RMSE increases dramatically, indicating the presence of severe large-error samples and insufficient stability in localization results.
+ In summary, the ablation experiments verify the effectiveness of each component in CR-AP. The AP–AP graph enhances complementary modeling among APs, the RP–RP graph introduces co-occurrence structural priors among reference points, the reconstruction loss constrains the soft weights to remain consistent with real RSS observations, and the capsule routing mechanism serves as the core component for dynamic evidence aggregation and robust localization. The complete CR-AP model achieves the best performance in terms of mean error, error distribution, and overall stability, demonstrating that the joint modeling of multiple structural priors and capsule routing can effectively improve Wi-Fi fingerprint localization performance.
+ Conclusion
+ This study addresses several key challenges in indoor RSS fingerprinting, including inter-fingerprint correlation, unstable AP visibility, RSS fluctuation, and the brittleness of hard AP selection. To alleviate these issues, we propose CR-AP, which combines heterogeneous graph modeling with observation-conditioned capsule routing. In the offline phase, AP–AP similarity, RP–RP co-occurrence, and RP–AP visibility are extracted from the radio map to construct fingerprint-specific structural priors. In the online phase, the current RSS measurement is projected into a capsule space, and message passing with conditional dynamic routing is performed to generate AP soft-selection weights and RP soft weights for coordinate regression.
+ Experimental results on SODIndoorLoc show that CR-AP achieves strong overall localization performance, with a mean error of 2.07 m, a median error of 1.64 m, and a P90 error of 3.94 m. The ablation experiments further demonstrate the effectiveness of the AP–AP graph, RP–RP graph, reconstruction loss, and capsule routing mechanism. In particular, removing capsule routing causes the most significant performance degradation, indicating that dynamic evidence aggregation is critical for robust localization. The computational cost evaluation also shows that CR-AP remains lightweight, with 222,387 trainable parameters and an inference time of 0.0898 ms per sample on the tested hardware platform.
+ Nevertheless, the experiments also reveal several limitations. First, under severe AP-missing conditions, especially when the missing rate exceeds 50%, KNN can outperform CR-AP on some metrics. This suggests that the graph priors estimated from relatively complete offline visibility may become less reliable when the online RSS observation is extremely sparse. Second, in the CETC331 cross-scene experiment, Subspace KNN achieves better median and P90 errors, indicating that local subspace matching can be more effective for the majority of samples in compact scenes. Third, although CR-AP shows low inference overhead on the tested GPU platform, its actual deployment performance on resource-constrained mobile devices still requires further validation.
+ Future work will focus on these limitations. We plan to develop adaptive graph priors that can be adjusted according to online AP visibility, and introduce temperature scheduling or entropy regularization to avoid overly sharp AP/RP soft weights under severe AP loss. We will also explore hybrid strategies that combine graph-guided capsule routing with local subspace matching to improve cross-scene stability. In addition, repeated random AP-masking experiments with standard deviations and real mobile-device deployment tests will be conducted to further evaluate robustness and practical real-time performance.
+ Data availability
+ The datasets supporting the results of this study are publicly available. We used the dataset provided by Bi et al., which can be accessed at: GitHub - bijingxue/SODIndoorLoc .
+ References
+ Uphaus, P. O. et al. Location-based services–the market: Success factors and emerging trends from an exploratory approach. J. Locat. Based Serv. 15 (1), 1–26 (2021).
+ Article  
+ Google Scholar  
+ Basiri, A. et al. Indoor location based services challenges, requirements and usability of current solutions. Comput. Sci. Rev. 24 , 1–12 (2017).
+ Article  
+ Google Scholar  
+ Sithole, G. & Zlatanova, S. Position, location, place and area: An indoor perspective[J]. ISPRS Ann. Photogramm. Remote Sens. Spatial Inform. Sci. 3 , 89–96 (2016).
+ Google Scholar  
+ Ayyalasomayajula R, Vasisht D, Bharadia D. BLoc: CSI-based accurate localization for BLE tags[C]//Proc. of the 14th International Conference on emerging Networking EXperiments and Technologies. 126-138. (2018).
+ Wang, X. et al. CSI-based fingerprinting for indoor localization: a deep learning approach. IEEE Trans. Veh. Technol. 66 (1), 763–776 (2016).
+ Article  
+ ADS  
+ Google Scholar  
+ Calderoni, L. et al. Indoor localization in a hospital environment using random forest classifiers. Expert Syst. Appl. 42 (1), 125–134 (2015).
+ Article  
+ Google Scholar  
+ Sadowski, S. & Spachos, P. RSSI-based indoor localization with the internet of things. IEEE Access 6 , 30149–30161 (2018).
+ Article  
+ Google Scholar  
+ Fang, X. et al. Fingerprint localisation algorithm for noisy wireless sensor network based on multi-objective evolutionary model. IET Commun. 11 (8), 1297–1304 (2017).
+ Article  
+ Google Scholar  
+ Bshara, M. et al. Fingerprinting localization in wireless networks based on received-signal-strength measurements: a case study on WiMAX networks. IEEE Trans. Veh. Technol. 59 (1), 283–294 (2009).
+ Article  
+ ADS  
+ Google Scholar  
+ Long, K. et al. Augmenting multidimensional fingerprint with wavelet transform for indoor localization. IEEE Sens. J. https://doi.org/10.1109/JSEN.2024.3486097 (2024).
+ Article  
+ Google Scholar  
+ Hajihoseini Gazestani, A., Shahbazian, R. & Ghorashi, S. A. Decentralized consensus based target localization in wireless sensor networks. Wirel. Pers. Commun. 97 (3), 3587–3599 (2017).
+ Article  
+ Google Scholar  
+ Zhang, A. et al. Wireless localization based on RSSI fingerprint feature vector. Int. J. Distrib. Sens. Netw. 11 (11), 528747 (2015).
+ Article  
+ Google Scholar  
+ Bahl P, Padmanabhan V N. RADAR: An in-building RF-based user location and tracking system[C]//Proc. IEEE INFOCOM 2000. Conference on computer communications. Nineteenth annual joint conference of the IEEE computer and communications societies (Cat. No. 00CH37064). Ieee, 2: 775-784 (2000).
+ Jedari E, Wu Z, Rashidzadeh R, et al. Wi-Fi based indoor location positioning employing random forest classifier[C]//2015 International conference on indoor positioning and indoor navigation (IPIN). IEEE1-5 (2015).
+ Torres-Sospedra J, Mendoza-Silva G M, Montoliu R, et al. Ensembles of indoor positioning systems based on fingerprinting: Simplifying parameter selection and obtaining robust systems[C]//2016 International Conference on Indoor Positioning and Indoor Navigation (IPIN). IEEE 1-8. (2016).
+ Hernández, N., Alonso, J. M. & Ocaña, M. Fuzzy classifier ensembles for hierarchical WiFi-based semantic indoor localization[J]. Expert Syst. Appl. 90 , 394–404 (2017).
+ Article  
+ Google Scholar  
+ Khalajmehrabadi, A., Gatsis, N. & Akopian, D. Modern WLAN fingerprinting indoor positioning methods and deployment challenges[J]. IEEE Commun. Surv. Tutor. 19 (3), 1974–2002 (2017).
+ Article  
+ Google Scholar  
+ He, S. & Chan, S. H. G. Wi-Fi fingerprint-based indoor positioning: Recent advances and comparisons[J]. IEEE Commun. Surv. Tutor. 18 (1), 466–490 (2015).
+ Article  
+ Google Scholar  
+ Abdullah, O. A., Aal-Nouman, M. & Al-Joudi, A. Indoor WLAN localization via adaptive Lasso Bayesian inference and convex optimization. Cogent Eng. https://doi.org/10.1080/23311916.2020.1813677 (2020).
+ Article  
+ Google Scholar  
+ Abdullah, O. Convex optimization via symmetrical Hölder divergence for a WLAN indoor positioning system. Entropy 20 (9), 639 (2018).
+ Article  
+ ADS  
+ PubMed  
+ PubMed Central  
+ Google Scholar  
+ Youssef, M. & Agrawala, A. Handling samples correlation in the horus system[C]//IEEE infocom 2004. IEEE 2 , 1023–1031 (2004).
+ Google Scholar  
+ Khatab Z E, Moghtadaiee V, Ghorashi S A. A fingerprint-based technique for indoor localization using fuzzy Least Squares Support Vector Machine[C]//2017 Iranian Conference on Electrical Engineering (ICEE). IEEE 1944-1949 (2017).
+ Zhu, X. et al. Indoor intelligent fingerprint-based localization: principles, approaches and challenges[J]. IEEE Commun. Surv. Tutor. 22 (4), 2634–2657 (2020).
+ Article  
+ Google Scholar  
+ Raitoharju, M. et al. Gaussian mixture models for signal mapping and positioning[J]. Signal Process. 168 , 107330 (2020).
+ Article  
+ Google Scholar  
+ Gu, Y. et al. Semi-supervised deep extreme learning machine for Wi-Fi based localization[J]. Neurocomputing 166 , 282–293 (2015).
+ Article  
+ Google Scholar  
+ Chen Y C, Chiang J R, Chu H, et al. Sensor-assisted wi-fi indoor location system for adapting to environmental dynamics[C]//Proc. of the 8th ACM international symposium on Modeling, analysis and simulation of wireless and mobile systems. 118-125 (2005).
+ Zhu, J. et al. Equilateral triangle localization algorithm based on average RSSI[J]. J. Northeastern Univ. (Nat. Sci.) 28 (8), 1094 (2007).
+ Google Scholar  
+ Xue, W. et al. Improved Wi-Fi RSSI measurement for indoor localization[J]. IEEE Sens. J. 17 (7), 2224–2230 (2017).
+ Article  
+ ADS  
+ Google Scholar  
+ Zhang, K. et al. A novel semi-local centrality to identify influential nodes in complex networks by integrating multidimensional factors[J]. Eng. Appl. Artif. Intell. 145 , 110177 (2025).
+ Article  
+ Google Scholar  
+ Zhang, K. et al. Leveraging machine learning to proactively identify phishing campaigns before they strike. J. Big Data 12 (1), 124 (2025).
+ Article  
+ Google Scholar  
+ Singh, N., Choe, S. & Punmiya, R. Machine learning based indoor localization using Wi-Fi RSSI fingerprints: an overview. IEEE Access 9 , 127150–127174 (2021).
+ Article  
+ Google Scholar  
+ Feng, X., Nguyen, K. A. & Luo, Z. A survey of deep learning approaches for WiFi-based indoor positioning. J. Inform. Telecommun. 6 (2), 163–216 (2022).
+ Article  
+ Google Scholar  
+ Alhomayani, F. & Mahoor, M. H. Deep learning methods for fingerprint-based indoor positioning: a review. J. Locat. Based Serv. 14 (3), 129–200 (2020).
+ Article  
+ Google Scholar  
+ Nowicki, M. & Wietrzykowski, J. Low-effort place recognition with WiFi fingerprints using deep learning[C]//International Conference Automation 575–584 (Springer International Publishing, 2017).
+ Google Scholar  
+ Qin, F., Zuo, T. & Wang, X. Ccpos: Wifi fingerprint indoor positioning system based on cdae-cnn[J]. Sensors 21 (4), 1114 (2021).
+ Article  
+ ADS  
+ MathSciNet  
+ PubMed  
+ PubMed Central  
+ Google Scholar  
+ Sabour S, Frosst N, Hinton G E. Dynamic routing between capsules[J]. Advances in neural information processing systems 30 (2017).
+ Hinton G E, Sabour S, Frosst N. Matrix capsules with EM routing[C]//International conference on learning representations. (2018).
+ Rajasegaran J, Jayasundara V, Jayasekara S, et al. Deepcaps: Going deeper with capsule networks[C]//Proc. of the IEEE/CVF conference on computer vision and pattern recognition. 10725-10733 (2019).
+ Mazzia, V., Salvetti, F. & Chiaberge, M. Efficient-capsnet: capsule network with self-attention routing. Sci. Rep. 11 (1), 14634 (2021).
+ Article  
+ ADS  
+ PubMed  
+ PubMed Central  
+ CAS  
+ Google Scholar  
+ Krizhevsky A, Sutskever I, Hinton G E. Imagenet classification with deep convolutional neural networks[J]. Advances in neural information processing systems 25 (2012).
+ Lee, S., Kim, J. & Moon, N. Random forest and WiFi fingerprint-based indoor location recognition system using smart watch. Hum. Cent. Comput. Inf. Sci. 9 (1), 6 (2019).
+ Article  
+ Google Scholar  
+ Hu, J. et al. Experimental Analysis on Weight ${K} $-nearest neighbor indoor fingerprint positioning[J]. IEEE Internet Things J. 6 (1), 891–897 (2018).
+ Article  
+ Google Scholar  
+ Liu, W., Niu, M. & Han, Y. S. RIFi: Robust and iterative indoor localization based on Wi-Fi RSS fingerprints. J. Inform. Intell. 3 (1), 1–18 (2025).
+ Google Scholar  
+ Hernández, N., Alonso, J. M. & Ocaña, M. Fuzzy classifier ensembles for hierarchical WiFi-based semantic indoor localization. Expert Syst. Appl. 90 , 394–404 (2017).
+ Article  
+ Google Scholar  
+ Hernández, N. et al. Continuous space estimation: Increasing WiFi-based indoor localization resolution without increasing the site-survey effort. Sensors 17 (1), 147 (2017).
+ Article  
+ ADS  
+ PubMed  
+ PubMed Central  
+ Google Scholar  
+ Wei Y, Hwang S H, Lee S M. IoT-aided fingerprint indoor positioning using support vector classification[C]//2018 International Conference on Information and Communication Technology Convergence (ICTC). IEEE 973-975 (2018).
+ Hernández, N. et al. WiFiNet: WiFi-based indoor localisation using CNNs. Expert Syst. Appl. 177 , 114906 (2021).
+ Article  
+ Google Scholar  
+ Download references 
+ Funding
+ This work was supported by the Hainan Province Science and Technology Special Fund (Fund No. ZDYF2024GXJS034); The Innovation Platform for Academicians of Hainan Province (Fund No. YSPTZX202036); the Hainan Provincial Foreign Experts Project of the Hainan Provincial Department of Science and Technology, China (No. Y20260407071E).
+ Author information
+ Authors and Affiliations
+ School of Artificial Intelligence, Hainan Normal University, Haikou, 571158, Hainan, China
+ Yiguo Cheng, Jiayao He, Yu Zhou & Kun Zhang
+ Authors Yiguo Cheng View author publications 
+ Search author on: PubMed   Google Scholar 
+ Jiayao He View author publications 
+ Search author on: PubMed   Google Scholar 
+ Yu Zhou View author publications 
+ Search author on: PubMed   Google Scholar 
+ Kun Zhang View author publications 
+ Search author on: PubMed   Google Scholar 
+ Contributions
+ Yiguo Cheng is responsible for writing the paper and conducting experiments,Jiayao He is responsible for organizing data.Yu Zhou and Kun Zhang are responsible for checking the paper and completing experiments.
+ Corresponding author
+ Correspondence to
+ Kun Zhang .
+ Ethics declarations
+ Competing interests
+ The authors declare no competing interests.
+ Additional information
+ Publisher’s note
+ Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+ Rights and permissions
+ Open Access This article is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License, which permits any non-commercial use, sharing, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if you modified the licensed material. You do not have permission under this licence to share adapted material derived from this article or parts of it. The images or other third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit http://creativecommons.org/licenses/by-nc-nd/4.0/ .
+ Reprints and permissions 
+ About this article
+ Cite this article
+ Cheng, Y., He, J., Zhou, Y. et al. CR-AP: A Wi-Fi fingerprint localization method based on capsule networks.
+ Sci Rep 16 , 31475 (2026). https://doi.org/10.1038/s41598-026-59813-z
+ Download citation 
+ Received : 25 March 2026 
+ Accepted : 23 June 2026 
+ Published : 09 July 2026 
+ Version of record : 08 October 2026 
+ DOI : https://doi.org/10.1038/s41598-026-59813-z 
+ Share this article
+ Anyone you share the following link with will be able to read this content:
+ Get shareable link Sorry, a shareable link is not currently available for this article.
+ Copy shareable link to clipboard 
+ Provided by the Springer Nature SharedIt content-sharing initiative
+ Keywords
+ Fingerprint localization 
+ RSS 
+ Capsule networks 
+ Heterogeneous graphs 
+ Capsule routing 
+ CR-AP 
+ Advertisement
+ Explore content
+ Research articles
+ News & Comment
+ Collections
+ Subjects
+ Follow us on Facebook
+ Follow us on X
+ Sign up for alerts 
+ RSS feed 
+ About the journal
+ About Scientific Reports
+ Contact
+ Editors
+ Journal policies
+ Guide to referees
+ Calls for Papers
+ Editor's Choice
+ Journal highlights
+ Open Access Fees and Funding
+ Publish with us
+ For authors
+ Language editing services
+ Open access funding 
+ Submit manuscript 
+ Search
+ Search articles by subject, keyword or author 
+ Show results from 
+ All journals 
+ This journal 
+ Search 
+ Advanced search
+ Quick links
+ Explore articles by subject 
+ Find a job 
+ Guide to authors 
+ Editorial policies 
+ Scientific Reports
+ ( Sci Rep )
+ ISSN 2045-2322 (online)
+ nature.com footer links
+ About Nature Portfolio
+ About us 
+ Press releases 
+ Press office 
+ Contact us 
+ Discover content
+ Journals A-Z 
+ Articles by subject 
+ protocols.io 
+ Nature Index 
+ Publishing policies
+ Nature portfolio policies 
+ Open access 
+ Author & Researcher services
+ Reprints & permissions 
+ Research data 
+ Language editing 
+ Scientific editing 
+ Nature Masterclasses 
+ Research Solutions 
+ Libraries & institutions
+ Librarian service & tools 
+ Librarian portal 
+ Open research 
+ Recommend to library 
+ Advertising & partnerships
+ Advertising 
+ Partnerships & Services 
+ Media kits 
+ Branded
+ content 
+ Professional development
+ Nature Awards 
+ Nature Careers 
+ Nature 
+ Conferences 
+ Regional websites
+ Nature Africa 
+ Nature China 
+ Nature India 
+ Nature Japan 
+ Nature Middle East 
+ Privacy
+ Policy 
+ Use
+ of cookies 
+ Your privacy choices/Manage cookies
+ Legal
+ notice 
+ Accessibility
+ statement 
+ Terms & Conditions 
+ Your US state privacy rights 
+ © 2026 Springer Nature Limited
+ Close banner 
+ Close 
+ Sign up for the Nature Briefing: AI and Robotics newsletter — what matters in AI and robotics research, free to your inbox weekly.
+ Email address 
+ Sign up 
+ I agree my information will be processed in accordance with the Nature and Springer Nature Limited Privacy Policy . 
+ Close banner 
+ Close 
+ Get the most important science stories of the day, free in your inbox. 
+ Sign up for Nature Briefing: AI and Robotics
+ 

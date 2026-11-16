@@ -1,0 +1,11 @@
+Source: arXiv API entry (abstract only) https://export.arxiv.org/api/query?id_list=2605.10004
+Title: Environment-Conditioned Diffusion Meta-Learning for Data-Efficient WiFi Localization
+Authors: Jun Gao, Zheng Xing, Wenliang Lin, Weibing Zhao, Xuhui Zhang, Junting Chen, Zhongliang Deng, Shuguang Cui
+Published: 2026-05-11T05:28:35Z
+arXiv: 2605.10004
+Journal-ref: 
+DOI: 
+Comment: The dataset used in this paper is publicly available at: https://drive.google.com/file/d/1GWUFExgJl3SYyIm-sUYedy9gjC_Bvq0q/view?usp=sharing
+
+Abstract:
+Fingerprinting-based localization often suffers from poor cross-environment generalization, especially when only a few labeled samples are available in the target environment. Existing methods mitigate distribution shifts through domain adaptation or improved signal representations, but they usually ignore environmental geometry or use it in a deterministic manner, limiting their ability to capture diverse multipath variations in complex propagation conditions. To address this issue, we propose EnvCoLoc, an environment-conditioned diffusion meta-learning framework for few-shot fingerprinting localization. EnvCoLoc extracts structured descriptors from 3D point clouds and uses them to condition a latent diffusion generator, which produces environment-specific parameter offsets to modulate a shared meta-learned initialization. This design injects geometry-aware priors into the adaptation process and provides more informative initializations for new environments. To learn the stochastic mapping from coarse environmental descriptors to high-dimensional parameter corrections under limited data, the diffusion generator and localization network are jointly optimized within a two-loop meta-learning framework. The generated offsets capture systematic environment-dependent variations, while gradient-based inner-loop adaptation further refines the model to reduce residual task-specific mismatch. We also provide an excess-loss analysis for finite-step adaptation, theoretically supporting the benefit of geometry-aware initialization. Real-world experiments show that EnvCoLoc consistently improves localization accuracy over baseline methods, achieving up to a 20.0% reduction in mean localization error in NLOS scenarios with only 10 support samples.

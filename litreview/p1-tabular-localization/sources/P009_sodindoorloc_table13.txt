@@ -1,0 +1,134 @@
+ 
+ Table 13 | Supplementary open dataset for WiFi indoor localization based on received signal strength | Satellite Navigation | Springer Nature Link 
+ Skip to main content 
+ Log in 
+ Menu 
+ Find a journal
+ Publish with us
+ Track your research
+ Search 
+ Saved research 
+ Cart 
+ Home 
+ Satellite Navigation 
+ Article 
+ Table 13 
+ Table 13 Statistics of regression methods based on the training sheet in the CETC331 building
+ From: Supplementary open dataset for WiFi indoor localization based on received signal strength 
+ Case
+ | Methods
+ | MAE (m)
+ | RMSE (m)
+ | 50th percentiles error (m)
+ | 75th percentiles error (m)
+ | 95th percentiles error (m)
+ | Elapsed time (s)
+ | 
+ 1
+ | KNR
+ | 2.876
+ | 2.757
+ | 2.316
+ | 3.803
+ | 6.307
+ | 0.036
+ | 
+ SVR
+ | 3.522
+ | 3.009
+ | 3.084
+ | 4.304
+ | 8.834
+ | 0.829
+ | 
+ RFR
+ | 3.740
+ | 4.171
+ | 2.561
+ | 4.099
+ | 11.667
+ | 1.890
+ | 
+ MLPR
+ | 5.152
+ | 3.626
+ | 4.379
+ | 6.166
+ | 11.837
+ | 1.274
+ | 
+ 2
+ | KNR
+ | 2.876
+ | 2.757
+ | 2.316
+ | 3.804
+ | 6.306
+ | 0.016
+ | 
+ SVR
+ | 3.567
+ | 2.991
+ | 3.143
+ | 4.421
+ | 8.643
+ | 0.274
+ | 
+ RFR
+ | 3.579
+ | 3.631
+ | 2.683
+ | 4.265
+ | 9.241
+ | 1.922
+ | 
+ MLPR
+ | 5.124
+ | 3.360
+ | 4.516
+ | 6.327
+ | 11.212
+ | 3.374
+ | 
+ Back to article page 
+ Search
+ Search by keyword or author 
+ Search 
+ Navigation
+ Find a journal
+ Publish with us
+ Track your research
+ Footer Navigation
+ Discover content
+ Journals A-Z 
+ Books A-Z 
+ Subjects A-Z 
+ Publish with us
+ Journal finder 
+ Publish your research 
+ Language editing 
+ Open access publishing 
+ Products and services
+ Our products 
+ Librarians 
+ Societies 
+ Partners and advertisers 
+ Our brands
+ Springer 
+ Nature Portfolio 
+ BMC 
+ Palgrave Macmillan 
+ Apress 
+ Discover 
+ Corporate Navigation
+ Your privacy choices/Manage cookies 
+ Your US state privacy rights 
+ Accessibility statement 
+ Terms and conditions 
+ Privacy policy 
+ Help and support 
+ Legal notice 
+ Cancel contracts here 
+ 160.79.106.145 
+ Not affiliated
+ © 2026 Springer Nature

@@ -20,4 +20,4 @@ Each review comes with its search log, an index of the sources it relied on, and
 | `refs.bib` | BibTeX built from registry metadata. |
 | `unverified.md` | What could not be checked, and where sources disagree. |
 
-The saved source files themselves are not in the repository, because many are publisher copies.
+For Paper 1, the openly licensed source files are in `p1-tabular-localization/sources/`. The seven that may not be redistributed are listed in `sources/NOT_IN_REPO.md`, and `fetch_sources.py` downloads four of them from arXiv. The source files of the Paper 2 reviews are not in the repository.

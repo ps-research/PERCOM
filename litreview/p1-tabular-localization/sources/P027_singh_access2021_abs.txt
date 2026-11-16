@@ -1,0 +1,7 @@
+Source: Consensus search result record (abstract only), retrieved 2026-11-14 via the Consensus MCP search tool; search-log S020,S024.
+URL: https://consensus.app/papers/details/w:adeb76e6-00aa-4654-8cf7-cad17d57d4fa/
+Title: Machine Learning Based Indoor Localization Using Wi-Fi RSSI Fingerprints: An Overview
+Listing: Navneet Singh et al., 2021, IEEE Access (DOI 10.1109/access.2021.3111083 via Crossref)
+
+Abstract:
+In the era of the Internet of Things (IoT) and Industry 4.0, the indoor usage of smart devices is expected to increase, thereby making their location information more important. Based on various practical issues related to large delays, high design cost, and limited performance, conventional localization techniques are not practical for indoor IoT applications. In recent years, many researchers have proposed a wide range of machine learning (ML)-based indoor localization approaches using Wi-Fi received signal strength indicator (RSSI) fingerprints. This survey attempts to provide a summarized investigation of ML-based Wi-Fi RSSI fingerprinting schemes, including data preprocessing, data augmentation, ML prediction models for indoor localization, and postprocessing in ML, and compare their performance. Any ML-based study is heavily reliant on datasets. Therefore, we dedicate a significant portion of this survey to the discussion of dataset collection and open-source datasets. To provide good direction for future research, we discuss the current challenges and potential solutions related to ML-based indoor localization systems.

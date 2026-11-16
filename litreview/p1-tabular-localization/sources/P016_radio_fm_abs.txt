@@ -1,0 +1,11 @@
+Source: arXiv API entry (abstract only) https://export.arxiv.org/api/query?id_list=2410.00617
+Title: Radio Foundation Models: Pre-training Transformers for 5G-based Indoor Localization
+Authors: Jonathan Ott, Jonas Pirkl, Maximilian Stahlke, Tobias Feigl, Christopher Mutschler
+Published: 2024-10-01T12:03:32Z
+arXiv: 2410.00617
+Journal-ref: 
+DOI: 
+Comment: 
+
+Abstract:
+Artificial Intelligence (AI)-based radio fingerprinting (FP) outperforms classic localization methods in propagation environments with strong multipath effects. However, the model and data orchestration of FP are time-consuming and costly, as it requires many reference positions and extensive measurement campaigns for each environment. Instead, modern unsupervised and self-supervised learning schemes require less reference data for localization, but either their accuracy is low or they require additional sensor information, rendering them impractical. In this paper we propose a self-supervised learning framework that pre-trains a general transformer (TF) neural network on 5G channel measurements that we collect on-the-fly without expensive equipment. Our novel pretext task randomly masks and drops input information to learn to reconstruct it. So, it implicitly learns the spatiotemporal patterns and information of the propagation environment that enable FP-based localization. Most interestingly, when we optimize this pre-trained model for localization in a given environment, it achieves the accuracy of state-of-the-art methods but requires ten times less reference data and significantly reduces the time from training to operation.

@@ -1,0 +1,11 @@
+Source: arXiv API entry (abstract only) https://export.arxiv.org/api/query?id_list=2211.04258
+Title: MetaLoc: Learning to Learn Wireless Localization
+Authors: Jun Gao, Dongze Wu, Feng Yin, Qinglei Kong, Lexi Xu, Shuguang Cui
+Published: 2022-11-08T14:06:40Z
+arXiv: 2211.04258
+Journal-ref: 
+DOI: 
+Comment: to be published in IEEE JSAC (Special Issue: 5G/6G Precise Positioning on Cooperative Intelligent Transportation Systems (C-ITS) and Connected Automated Vehicles (CAV))
+
+Abstract:
+Existing localization methods that intensively leverage the environment-specific received signal strength (RSS) or channel state information (CSI) of wireless signals are rather accurate in certain environments. However, these methods, whether based on pure statistical signal processing or data-driven approaches, often struggle to generalize to new environments, which results in considerable time and effort being wasted. To address this challenge, we propose MetaLoc, which is the first fingerprinting-based localization framework that leverages the Model-Agnostic Meta-Learning (MAML). Specifically, built on a deep neural network with strong representation capabilities, MetaLoc is trained on historical data sourced from well-calibrated environments, employing a two-loop optimization mechanism to obtain the meta-parameters. These meta-parameters act as the initialization for quick adaptation in new environments, reducing the need for much human effort. The framework introduces two paradigms for the optimization of meta-parameters: a centralized paradigm that simplifies the process by sharing data from all historical environments, and a distributed paradigm that maintains data privacy by training meta-parameters for each specific environment separately. Furthermore, the advanced distributed paradigm modifies the vanilla MAML loss function to ensure that the reduction of loss occurs in a consistent direction across various training domains, thus facilitating faster convergence during training. Our experiments on both synthetic and real datasets demonstrate that MetaLoc outperforms baseline methods in terms of localization accuracy, robustness, and cost-effectiveness. The code and datasets used in this study are publicly available.

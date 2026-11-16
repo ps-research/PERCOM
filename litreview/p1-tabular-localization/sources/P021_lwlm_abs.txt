@@ -1,0 +1,11 @@
+Source: arXiv API entry (abstract only) https://export.arxiv.org/api/query?id_list=2505.10134
+Title: Large Wireless Localization Model (LWLM): A Foundation Model for Positioning in 6G Networks
+Authors: Guangjin Pan, Kaixuan Huang, Hui Chen, Shunqing Zhang, Christian Häger, Henk Wymeersch
+Published: 2025-05-15T10:04:44Z
+arXiv: 2505.10134
+Journal-ref: 
+DOI: 
+Comment: 13 pages,16 figures.This work has been submitted to the IEEE for possible publication
+
+Abstract:
+Accurate and robust localization is a critical enabler for emerging 5G and 6G applications, including autonomous driving, extended reality (XR), and smart manufacturing. While data-driven approaches have shown promise, most existing models require large amounts of labeled data and struggle to generalize across deployment scenarios and wireless configurations. To address these limitations, we propose a foundation-model-based solution tailored for wireless localization. We first analyze how different self-supervised learning (SSL) tasks acquire general-purpose and task-specific semantic features based on information bottleneck (IB) theory. Building on this foundation, we design a pretraining methodology for the proposed Large Wireless Localization Model (LWLM). Specifically, we propose an SSL framework that jointly optimizes three complementary objectives: (i) spatial-frequency masked channel modeling (SF-MCM), (ii) domain-transformation invariance (DTI), and (iii) position-invariant contrastive learning (PICL). These objectives jointly capture the underlying semantics of wireless channel from multiple perspectives. We further design lightweight decoders for key downstream tasks, including time-of-arrival (ToA) estimation, angle-of-arrival (AoA) estimation, single base station (BS) localization, and multiple BS localization. Comprehensive experimental results confirm that LWLM consistently surpasses both model-based and supervised learning baselines across all localization tasks. In particular, LWLM achieves 26.0%--87.5% improvement over transformer models without pretraining, and exhibits strong generalization under label-limited fine-tuning and unseen BS configurations, confirming its potential as a foundation model for wireless localization.

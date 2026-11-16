@@ -1,0 +1,7 @@
+Source: Consensus search result record (abstract only), retrieved 2026-11-14 via the Consensus MCP search tool; search-log S034.
+URL: https://consensus.app/papers/details/w:91d68ed8-9970-436b-9e4e-819d3c163757/
+Title: UJIIndoorLoc: A new multi-building and multi-floor database for WLAN fingerprint-based indoor localization problems
+Listing: Joaquin Torres-Sospedra et al., 2014, IPIN (DOI 10.1109/ipin.2014.7275492 via Crossref)
+
+Abstract:
+Although indoor localization is a key topic for mobile computing, it is still very difficult for the mobile sensing community to compare state-of-art localization algorithms due to the scarcity of databases. Thus, a multi-building and multi-floor localization database based on WLAN fingerprinting is presented in this work, being its public access granted for the research community. The here proposed database not only is the biggest database in the literature but it is also the first publicly available database. Among other comprehensively described features, full raw information taken by more than 20 users and by means of 25 devices is provided.

@@ -1,0 +1,7 @@
+Source: Consensus search result record (abstract only), retrieved 2026-11-14 via the Consensus MCP search tool; search-log S033.
+URL: https://consensus.app/papers/details/w:3b1e35d7-71b5-4928-97da-cf72168b93d9/
+Title: Gaussian Processes for Signal Strength-Based Location Estimation
+Listing: Brian Ferris et al., 2006, Robotics: Science and Systems (DOI 10.15607/rss.2006.ii.039 via Crossref)
+
+Abstract:
+Estimating the location of a mobile device or a robot from wireless signal strength has become an area of highly active research. The key problem in this context stems from the complexity of how signals propagate through space, especially in the presence of obstacles such as buildings, walls or people. In this paper we show how Gaussian processes can be used to generate a likelihood model for signal strength measurements. We also show how parameters of the model, such as signal noise and spatial correlation between measurements, can be learned from data via hyperparameter estimation. Experiments using WiFi indoor data and GSM cellphone connectivity demonstrate the superior performance of our approach.
