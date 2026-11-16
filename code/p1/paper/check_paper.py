@@ -178,7 +178,10 @@ def check_source(src: Path, rep: Report, stage: str, max_refs: int, allow: list[
 
     m = re.search(r"\\title\{", body)
     title = braced(body, m.end() - 1) if m else ""
-    bad_title = [s for s in ("$", "\\footnote", "\\\\") if s in title]
+    # "\\" alone only balances title lines (HOWTO); the template's banned subtitle is "\\{\footnotesize ...}"
+    bad_title = [s for s in ("$", "\\footnote{") if s in title]
+    if re.search(r"\\\\\s*\{?\\(footnotesize|small|scriptsize)", title):
+        bad_title.append("subtitle")
     rep.add("FAIL" if bad_title else "PASS", "title has no math, footnotes or subtitle", ", ".join(bad_title) or (title.strip()[:80] or "no title"))
     am = re.search(r"\\begin\{abstract\}(.*?)\\end\{abstract\}", body, flags=re.S)
     if am:
