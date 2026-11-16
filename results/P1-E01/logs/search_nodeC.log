@@ -1,0 +1,20 @@
+2026-11-14T23:55:44 search: 18 units, workers=3, threads per unit=6, trials=30
+2026-11-14T23:56:48 done CETC331 mlp best=1.6314 in 63s
+2026-11-14T23:58:20 done SYL-AP mlp best=2.5367 in 155s
+2026-11-14T23:59:37 done HCXY-AP mlp best=2.7648 in 232s
+2026-11-15T00:38:30 done HCXY-AP lgbm-ph best=2.4885 in 2410s
+2026-11-15T00:39:46 done CETC331 lgbm-ph best=1.2710 in 2578s
+2026-11-15T00:48:59 done SYL-AP lgbm-ph best=2.0836 in 2961s
+2026-11-15T01:10:09 done HCXY-AP lgbm-nan best=2.5293 in 1823s
+2026-11-15T01:10:16 done CETC331 svr best=1.4141 in 7s
+2026-11-15T01:11:04 done CETC331 lgbm-nan best=1.2854 in 1954s
+2026-11-15T01:12:00 done SYL-AP svr best=2.7015 in 57s
+2026-11-15T01:12:35 done CETC331 rf best=1.4433 in 35s
+2026-11-15T01:14:12 done HCXY-AP rf best=2.3839 in 97s
+2026-11-15T01:14:46 done HCXY-AP svr best=3.0461 in 270s
+2026-11-15T01:14:51 done CETC331 knn best=1.0354 in 5s
+2026-11-15T01:15:00 done HCXY-AP knn best=2.5480 in 9s
+2026-11-15T01:15:06 done SYL-AP knn best=2.3856 in 6s
+2026-11-15T01:15:19 done SYL-AP rf best=2.0206 in 67s
+2026-11-15T01:19:16 done SYL-AP lgbm-nan best=2.0677 in 1818s
+2026-11-15T01:19:16 search: all units finished

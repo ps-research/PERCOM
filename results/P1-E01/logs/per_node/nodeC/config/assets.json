@@ -1,0 +1,55 @@
+{
+  "dataset": {
+    "commit": "bfe8f63f55957cc25b23ba91c408ae345a3fb0b7",
+    "url": "https://github.com/bijingxue/SODIndoorLoc"
+  },
+  "packages": {
+    "huggingface-hub": "2.4.0",
+    "joblib": "1.6.0",
+    "lightgbm": "4.7.0",
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.4",
+    "optuna": "5.0.0",
+    "pandas": "3.1.1",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "tabicl": "2.2.0",
+    "tabpfn": "10.0.0",
+    "threadpoolctl": "3.8.0",
+    "torch": "2.15.0"
+  },
+  "tabicl": {
+    "bytes": 114324594,
+    "file": "tabicl-regressor-v2-20260212.ckpt",
+    "gated": false,
+    "licence": {
+      "license": "bsd-3-clause"
+    },
+    "licence_allowed": true,
+    "model": "TabICLv2 (regressor)",
+    "package": "tabicl==2.2.0",
+    "package_licence": "BSD 3-Clause License",
+    "path": "/home/marimo/.cache/huggingface/hub/models--jingang--TabICL/snapshots/4dcd344ece2c00be9e831fdd35bed57b5ad83e19/tabicl-regressor-v2-20260212.ckpt",
+    "repo": "jingang/TabICL",
+    "repo_revision": "4dcd344ece2c00be9e831fdd35bed57b5ad83e19",
+    "sha256": "0db9cb538f114e79026bf08f45f41ad8dd7ad2de2aaca9a5ca8cd3bd9748ae7a"
+  },
+  "tabpfn": {
+    "bytes": 44390977,
+    "file": "tabpfn-v2-regressor.ckpt",
+    "gated": false,
+    "licence": {
+      "license": "other",
+      "license_link": "https://huggingface.co/Prior-Labs/TabPFN-v2-reg/blob/main/LICENSE.txt",
+      "license_name": "priorlabs-1-1"
+    },
+    "licence_file": "/home/marimo/.cache/huggingface/hub/models--Prior-Labs--TabPFN-v2-reg/snapshots/02a44705ff7790b50cded404bc59adb94da456a1/LICENSE.txt",
+    "model": "TabPFN v2 (regressor)",
+    "package": "tabpfn==10.0.0",
+    "path": "/home/marimo/.cache/tabpfn/tabpfn-v2-regressor.ckpt",
+    "repo": "Prior-Labs/TabPFN-v2-reg",
+    "repo_revision": "02a44705ff7790b50cded404bc59adb94da456a1",
+    "sha256": "2ab5a07d5c41dfe6db9aa7ae106fc6de898326c2765be66505a07e2868c10736"
+  },
+  "written_utc": "2026-11-14T23:50:45Z"
+}

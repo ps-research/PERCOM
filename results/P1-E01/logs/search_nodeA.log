@@ -1,0 +1,8 @@
+2026-11-14T23:59:06 search: 6 units, workers=3, threads per unit=6, trials=30
+2026-11-15T00:03:49 done HCXY-All mlp best=3.0789 in 283s
+2026-11-15T00:24:54 done HCXY-All svr best=3.5309 in 1264s
+2026-11-15T00:30:25 done HCXY-All rf best=1.7121 in 331s
+2026-11-15T00:30:55 done HCXY-All knn best=1.7436 in 29s
+2026-11-15T00:36:38 done HCXY-All lgbm-nan best=1.7187 in 2252s
+2026-11-15T00:40:04 done HCXY-All lgbm-ph best=1.8045 in 2458s
+2026-11-15T00:40:04 search: all units finished

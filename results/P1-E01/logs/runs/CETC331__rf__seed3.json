@@ -1,0 +1,43 @@
+{
+  "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+  "config": "CETC331",
+  "cost": {
+    "fit_s": 0.460106309999901,
+    "peak_gpu_mem_mb": null,
+    "peak_gpu_reserved_mb": null,
+    "predict_s": 0.1349505570005931
+  },
+  "device": "cpu",
+  "encoding": "placeholder",
+  "finished_utc": "2026-11-15T01:19:19Z",
+  "info": {},
+  "model": "rf",
+  "n_features": 52,
+  "node": "nodeC",
+  "notes": [],
+  "params": {
+    "max_depth": 20,
+    "max_features": 0.3,
+    "min_samples_leaf": 1,
+    "n_estimators": 500
+  },
+  "run_id": "CETC331__rf__seed3",
+  "seed": 3,
+  "single_run": false,
+  "started_utc": "2026-11-15T01:19:18Z",
+  "stats": {
+    "mean": 3.48664155237512,
+    "median": 2.417246064068099,
+    "p75": 3.8993191851576317,
+    "p95": 9.557169338250764,
+    "rmse": 5.059483355595895
+  },
+  "test_rows": 840,
+  "threads": {
+    "blas": 4,
+    "lgbm": 4,
+    "n_jobs": 20,
+    "svr_cache_mb": 1000
+  },
+  "train_rows": 955
+}

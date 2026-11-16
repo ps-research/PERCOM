@@ -1,0 +1,642 @@
+{
+  "CETC331": {
+    "knn": {
+      "best_trial": 10,
+      "best_value": 1.035441872436269,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T01:14:51Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 5.242812507999588,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T01:14:46Z",
+      "threads": 6
+    },
+    "lgbm-nan": {
+      "best_trial": 23,
+      "best_value": 1.2853796473340464,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "missing",
+      "finished_utc": "2026-11-15T01:11:04Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 1953.6281563340003,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T00:38:30Z",
+      "threads": 6
+    },
+    "lgbm-ph": {
+      "best_trial": 24,
+      "best_value": 1.2709747028922014,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T00:39:46Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 2577.693106721,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-14T23:56:48Z",
+      "threads": 6
+    },
+    "mlp": {
+      "best_trial": 3,
+      "best_value": 1.6313871281727612,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-14T23:56:48Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 63.28002761499988,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-14T23:55:45Z",
+      "threads": 6
+    },
+    "rf": {
+      "best_trial": 12,
+      "best_value": 1.4432525489833476,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T01:12:35Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 34.627050764999694,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T01:12:00Z",
+      "threads": 6
+    },
+    "svr": {
+      "best_trial": 29,
+      "best_value": 1.4141124833397758,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T01:10:16Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 6.5550555359996,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T01:10:09Z",
+      "threads": 6
+    }
+  },
+  "HCXY-AP": {
+    "knn": {
+      "best_trial": 17,
+      "best_value": 2.548020455733234,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T01:15:00Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 8.553553273000034,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T01:14:51Z",
+      "threads": 6
+    },
+    "lgbm-nan": {
+      "best_trial": 22,
+      "best_value": 2.5292854078872624,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "missing",
+      "finished_utc": "2026-11-15T01:10:09Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 1823.3905090899998,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T00:39:46Z",
+      "threads": 6
+    },
+    "lgbm-ph": {
+      "best_trial": 25,
+      "best_value": 2.488533922590201,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T00:38:30Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 2410.1495118989997,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-14T23:58:20Z",
+      "threads": 6
+    },
+    "mlp": {
+      "best_trial": 25,
+      "best_value": 2.7647892827726337,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-14T23:59:37Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 232.38141019600005,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-14T23:55:45Z",
+      "threads": 6
+    },
+    "rf": {
+      "best_trial": 12,
+      "best_value": 2.3839321785880427,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T01:14:12Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 97.15187285800039,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T01:12:35Z",
+      "threads": 6
+    },
+    "svr": {
+      "best_trial": 7,
+      "best_value": 3.046106001999883,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T01:14:46Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 269.9929683800001,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T01:10:16Z",
+      "threads": 6
+    }
+  },
+  "HCXY-All": {
+    "knn": {
+      "best_trial": 17,
+      "best_value": 1.743633338420863,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T00:30:55Z",
+      "n_trials": 30,
+      "node": "nodeA",
+      "search_seconds": 29.185310314999697,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T00:30:26Z",
+      "threads": 6
+    },
+    "lgbm-nan": {
+      "best_trial": 15,
+      "best_value": 1.7187343124295886,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "missing",
+      "finished_utc": "2026-11-15T00:36:38Z",
+      "n_trials": 30,
+      "node": "nodeA",
+      "search_seconds": 2252.0958950449995,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-14T23:59:06Z",
+      "threads": 6
+    },
+    "lgbm-ph": {
+      "best_trial": 12,
+      "best_value": 1.8045320898540282,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T00:40:04Z",
+      "n_trials": 30,
+      "node": "nodeA",
+      "search_seconds": 2457.527928984,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-14T23:59:06Z",
+      "threads": 6
+    },
+    "mlp": {
+      "best_trial": 28,
+      "best_value": 3.0789110112811855,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T00:03:49Z",
+      "n_trials": 30,
+      "node": "nodeA",
+      "search_seconds": 282.97566360300016,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-14T23:59:06Z",
+      "threads": 6
+    },
+    "rf": {
+      "best_trial": 21,
+      "best_value": 1.7121205243605797,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T00:30:25Z",
+      "n_trials": 30,
+      "node": "nodeA",
+      "search_seconds": 331.28197474299986,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T00:24:54Z",
+      "threads": 6
+    },
+    "svr": {
+      "best_trial": 14,
+      "best_value": 3.5308905983991536,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T00:24:54Z",
+      "n_trials": 30,
+      "node": "nodeA",
+      "search_seconds": 1264.109390658,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T00:03:50Z",
+      "threads": 6
+    }
+  },
+  "SYL-AP": {
+    "knn": {
+      "best_trial": 8,
+      "best_value": 2.385552601172526,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T01:15:06Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 6.348160106999785,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T01:15:00Z",
+      "threads": 6
+    },
+    "lgbm-nan": {
+      "best_trial": 25,
+      "best_value": 2.0677479567416284,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "missing",
+      "finished_utc": "2026-11-15T01:19:16Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 1817.6037834419994,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T00:48:59Z",
+      "threads": 6
+    },
+    "lgbm-ph": {
+      "best_trial": 8,
+      "best_value": 2.08358127777397,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T00:48:59Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 2961.3105402379997,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-14T23:59:37Z",
+      "threads": 6
+    },
+    "mlp": {
+      "best_trial": 18,
+      "best_value": 2.5367180046269664,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-14T23:58:20Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 155.00048516200002,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-14T23:55:45Z",
+      "threads": 6
+    },
+    "rf": {
+      "best_trial": 10,
+      "best_value": 2.020625092505582,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T01:15:19Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 66.75120697999955,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T01:14:12Z",
+      "threads": 6
+    },
+    "svr": {
+      "best_trial": 13,
+      "best_value": 2.7015016450161915,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T01:12:00Z",
+      "n_trials": 30,
+      "node": "nodeC",
+      "search_seconds": 56.562142787000084,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T01:11:04Z",
+      "threads": 6
+    }
+  },
+  "SYL-All": {
+    "knn": {
+      "best_trial": 3,
+      "best_value": 1.9391582655149209,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T00:04:56Z",
+      "n_trials": 30,
+      "node": "nodeB",
+      "search_seconds": 19.42679084099973,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T00:04:36Z",
+      "threads": 6
+    },
+    "lgbm-nan": {
+      "best_trial": 15,
+      "best_value": 1.8842352589699203,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "missing",
+      "finished_utc": "2026-11-15T00:43:02Z",
+      "n_trials": 30,
+      "node": "nodeB",
+      "search_seconds": 2759.7558803519996,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-14T23:57:02Z",
+      "threads": 6
+    },
+    "lgbm-ph": {
+      "best_trial": 25,
+      "best_value": 1.8598527228130963,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T00:49:37Z",
+      "n_trials": 30,
+      "node": "nodeB",
+      "search_seconds": 3154.138134054,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-14T23:57:02Z",
+      "threads": 6
+    },
+    "mlp": {
+      "best_trial": 29,
+      "best_value": 2.662661613895304,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-14T23:59:55Z",
+      "n_trials": 30,
+      "node": "nodeB",
+      "search_seconds": 172.10922946000005,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-14T23:57:02Z",
+      "threads": 6
+    },
+    "rf": {
+      "best_trial": 23,
+      "best_value": 1.8519137173973128,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T00:04:36Z",
+      "n_trials": 30,
+      "node": "nodeB",
+      "search_seconds": 130.79879621100008,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-15T00:02:25Z",
+      "threads": 6
+    },
+    "svr": {
+      "best_trial": 20,
+      "best_value": 3.2568473722030906,
+      "code_commit": "1f61e59bad6645d38d0fcf7799aaeb50e24bfec1",
+      "encoding": "placeholder",
+      "finished_utc": "2026-11-15T00:02:25Z",
+      "n_trials": 30,
+      "node": "nodeB",
+      "search_seconds": 150.43449204299986,
+      "settings": {
+        "cv": "GroupKFold by reference point",
+        "model_seed_in_search": 0,
+        "n_folds": 3,
+        "n_trials": 30,
+        "objective": "mean positioning error averaged over folds",
+        "sampler": "TPESampler",
+        "sampler_seed": 0
+      },
+      "started_utc": "2026-11-14T23:59:55Z",
+      "threads": 6
+    }
+  }
+}
