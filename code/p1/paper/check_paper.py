@@ -99,7 +99,7 @@ def build(src: Path, work: Path, texmf: Path | None = None) -> tuple[Path, Path]
     if texmf:  # extra TeX Live packages the local install lacks (Overleaf has them)
         env["TEXINPUTS"] = f"{texmf}//:" + env.get("TEXINPUTS", "")
         env["BSTINPUTS"] = f"{texmf}//:" + env.get("BSTINPUTS", "")
-    run = lambda *cmd: subprocess.run(cmd, cwd=work, capture_output=True, text=True, env=env)
+    run = lambda *cmd: subprocess.run(cmd, cwd=work, capture_output=True, text=True, errors="replace", env=env)
     latex = ("pdflatex", "-interaction=nonstopmode", "-file-line-error", "main.tex")
     run(*latex)
     aux = (work / "main.aux").read_text(errors="replace") if (work / "main.aux").exists() else ""
