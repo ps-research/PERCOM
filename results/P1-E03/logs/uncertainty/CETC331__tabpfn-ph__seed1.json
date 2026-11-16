@@ -1,0 +1,52 @@
+{
+  "code_commit": "6d16af4904e8c14cdf1ca77346939c375ab3c10e",
+  "config": "CETC331",
+  "encoding": "placeholder",
+  "finished_utc": "2026-11-15T00:39:01Z",
+  "info": {
+    "context_capped": false,
+    "context_rows": 955,
+    "model_path": "/home/marimo/.cache/tabpfn/tabpfn-v2-regressor.ckpt"
+  },
+  "model": "tabpfn-ph",
+  "node": "nodeC",
+  "quantiles": [
+    0.025,
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9,
+    0.95,
+    0.975
+  ],
+  "seconds": 3.289820205000069,
+  "seed": 1,
+  "stats": {
+    "cover50_E": 0.4666666666666667,
+    "cover50_N": 0.3345238095238095,
+    "cover50_both": 0.17023809523809524,
+    "cover80_E": 0.7416666666666667,
+    "cover80_N": 0.575,
+    "cover80_both": 0.42738095238095236,
+    "cover90_E": 0.8857142857142857,
+    "cover90_N": 0.6845238095238095,
+    "cover90_both": 0.6107142857142858,
+    "cover95_E": 0.9142857142857143,
+    "cover95_N": 0.7547619047619047,
+    "cover95_both": 0.6857142857142857,
+    "error_least_confident_10pct_m": 2.726815386621835,
+    "error_most_confident_10pct_m": 1.7211869922171728,
+    "mean": 2.6624235236239904,
+    "median": 2.0860295137842098,
+    "p75": 3.366356921604602,
+    "p95": 6.517688627214358,
+    "rmse": 3.7739812944776983,
+    "spearman_spread80_error": 0.24472010990686183,
+    "width50_m": 1.6960763698804862,
+    "width80_m": 3.2420988549130048,
+    "width90_m": 4.229966547759893,
+    "width95_m": 5.197511497008764
+  }
+}

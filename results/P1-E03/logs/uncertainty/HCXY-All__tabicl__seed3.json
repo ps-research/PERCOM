@@ -1,0 +1,52 @@
+{
+  "code_commit": "6d16af4904e8c14cdf1ca77346939c375ab3c10e",
+  "config": "HCXY-All",
+  "encoding": "missing",
+  "finished_utc": "2026-11-15T01:06:21Z",
+  "info": {
+    "checkpoint": "tabicl-regressor-v2-20260212.ckpt",
+    "context_capped": false,
+    "context_rows": 11370
+  },
+  "model": "tabicl",
+  "node": "nodeA",
+  "quantiles": [
+    0.025,
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9,
+    0.95,
+    0.975
+  ],
+  "seconds": 27.822978716999387,
+  "seed": 3,
+  "stats": {
+    "cover50_E": 0.4,
+    "cover50_N": 0.4662790697674419,
+    "cover50_both": 0.21976744186046512,
+    "cover80_E": 0.7104651162790697,
+    "cover80_N": 0.7406976744186047,
+    "cover80_both": 0.5348837209302325,
+    "cover90_E": 0.8127906976744186,
+    "cover90_N": 0.858139534883721,
+    "cover90_both": 0.7,
+    "cover95_E": 0.8930232558139535,
+    "cover95_N": 0.9104651162790698,
+    "cover95_both": 0.8058139534883721,
+    "error_least_confident_10pct_m": 3.3401931424975437,
+    "error_most_confident_10pct_m": 1.1524189012445611,
+    "mean": 1.8103541482138885,
+    "median": 1.3203371309241283,
+    "p75": 2.2142284569376853,
+    "p95": 4.417022045625757,
+    "rmse": 2.64490192863059,
+    "spearman_spread80_error": 0.20199695603531656,
+    "width50_m": 1.4152882099151611,
+    "width80_m": 2.7252893447875977,
+    "width90_m": 3.5664467811584473,
+    "width95_m": 4.4249348640441895
+  }
+}

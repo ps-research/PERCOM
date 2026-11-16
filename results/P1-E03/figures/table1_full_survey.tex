@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering
+\caption{Mean positioning error (m) with the full survey as training data or context; mean with $\pm$sd over 5 seeds as subscript (one run for kNN, SVR, GP). Best per column in bold.}
+\label{tab:full}
+\setlength{\tabcolsep}{3pt}
+\footnotesize
+\begin{tabular}{@{}lcccccr@{}}
+\toprule
+Model & CETC & HCXY & SYL & Avg. & 95th & Time (s) \\
+\midrule
+TabPFN v2, NaN & 2.68\textsubscript{$\pm$.02} & 1.83\textsubscript{$\pm$.30} & 3.40\textsubscript{$\pm$.07} & 2.64 & 6.3 & 27.6 \\
+TabPFN v2, $-$105 & 2.69\textsubscript{$\pm$.02} & \textbf{1.56\textsubscript{$\pm$.07}} & \textbf{3.22\textsubscript{$\pm$.05}} & \textbf{2.49} & 5.8 & 28.5 \\
+TabICLv2, NaN & \textbf{2.60\textsubscript{$\pm$.02}} & 1.78\textsubscript{$\pm$.05} & 3.26\textsubscript{$\pm$.02} & 2.55 & \textbf{5.3} & 9.3 \\
+\midrule
+kNN & 2.91 & 1.80 & 4.09 & 2.94 & 6.7 & 0.3 \\
+Random forest & 3.52\textsubscript{$\pm$.03} & 1.87\textsubscript{$\pm$.02} & 3.57\textsubscript{$\pm$.03} & 2.99 & 7.6 & 0.8 \\
+LightGBM, NaN & 3.44\textsubscript{$\pm$.04} & 2.10\textsubscript{$\pm$.04} & 3.66\textsubscript{$\pm$.07} & 3.07 & 8.0 & 30.8 \\
+LightGBM, $-$105 & 3.34\textsubscript{$\pm$.04} & 2.19\textsubscript{$\pm$.06} & 3.54\textsubscript{$\pm$.06} & 3.02 & 7.9 & 25.9 \\
+SVR & 3.64 & 4.93 & 6.89 & 5.15 & 15.3 & 6.1 \\
+MLP & 3.36\textsubscript{$\pm$.15} & 4.45\textsubscript{$\pm$.98} & 4.46\textsubscript{$\pm$.40} & 4.09 & 10.4 & 3.9 \\
+Gaussian process & 3.06 & 7.59 & 6.27 & 5.64 & 17.8 & 4.2 \\
+\bottomrule
+\end{tabular}
+\end{table}

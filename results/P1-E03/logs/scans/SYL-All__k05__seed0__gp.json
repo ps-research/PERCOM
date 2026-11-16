@@ -1,0 +1,31 @@
+{
+  "code_commit": "6d16af4904e8c14cdf1ca77346939c375ab3c10e",
+  "config": "SYL-All",
+  "context_rows": 1480,
+  "cost": {
+    "fit_s": 2.7972846580005353,
+    "peak_gpu_mem_mb": null,
+    "peak_gpu_reserved_mb": null,
+    "predict_s": 0.11562882999987778
+  },
+  "finished_utc": "2026-11-15T01:27:40Z",
+  "info": {
+    "fitted_rows": 296,
+    "kernels": [
+      "0.689**2 * RBF(length_scale=27.4) + WhiteKernel(noise_level=0.00232)",
+      "1.07**2 * RBF(length_scale=24.5) + WhiteKernel(noise_level=0.0172)"
+    ]
+  },
+  "model": "gp",
+  "node": "nodeB",
+  "params": {},
+  "scans_per_point": 5,
+  "seed": 0,
+  "stats": {
+    "mean": 6.309053041737009,
+    "median": 4.494063386907552,
+    "p75": 7.686882412562483,
+    "p95": 16.984891302323003,
+    "rmse": 9.213825346919874
+  }
+}

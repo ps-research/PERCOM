@@ -1,0 +1,130 @@
+{
+  "fig2_stress": {
+    "group": "paper",
+    "slot": "Fig. 2 \u00b7 two columns \u00b7 P1-E02",
+    "panels": true,
+    "title": "Survey effort and missing access points",
+    "alt": "Two panels: error relative to tuned kNN against share of reference points surveyed, and mean error against share of access points switched off.",
+    "shows": [
+      "(a) Mean error relative to tuned kNN on the full survey of the same building, averaged over CETC331, HCXY and SYL; band from the lowest to the highest of the 10 draws. Large markers sit where each foundation model reaches the kNN level; the legend gives that share overall and per building.",
+      "(b) Mean error in metres averaged over the three buildings against the share of MAC columns switched off in the test file, 30 draws (0 to 9 from P1-E02, 10 to 29 from P1-E03); the shaded areas are the gap between the -105 and the NaN version of TabPFN and of LightGBM.",
+      "Six measured series per panel at most (FIGURE_TASTE II, B3); the models not drawn are printed by the generator."
+    ],
+    "fixed": [
+      "Panel (a) legend was wider than the panel and ran off its left edge: rows rebuilt as two short lines, per-building crossings on the second line as rounded percentages.",
+      "Legends covered the 5% band and the LightGBM band: limits now come from the band extremes and the legends sit in head room I checked on the render.",
+      "The two x-axis labels collided in the middle of the figure: shorter labels and wider panel spacing.",
+      "Two legend boxes in (b) overlapped each other: merged into one box above every band.",
+      "kNN's row printed 'nan' while its 5% runs were missing: the row now prints n/a until the data exist.",
+      "On the final data the baselines legend in (a) covered the 10% to 25% curves: rebuilt as a compact box (5% to 100% ratios) stacked under the foundation-model box, with head room set from the band maximum.",
+      "A hyphen stood in for a minus sign in the shaded-gap row: replaced by a true minus."
+    ],
+    "limits": [
+      "The corner between the baselines legend and the RF band at 10% was cropped and enlarged 2x on the final render: clear gap, glyphs intact. The other text regions were read at review resolution only.",
+      "Panel (a) averages ratios over three buildings; per-building crossing shares are in the legend and in P1-E02 metrics/e2_crossing.csv."
+    ],
+    "source": "results/P1-E02/metrics/e2_summary.csv, e2_crossing.csv; results/P1-E03/metrics/d_e3_more.csv (30 draws)"
+  },
+  "table1_full_survey": {
+    "group": "paper",
+    "slot": "Table I \u00b7 drawn as a figure \u00b7 P1-E01",
+    "title": "Full-survey comparison in five configurations",
+    "alt": "Table of mean positioning error for ten models in five configurations, with bars, ranks, cost and a bootstrap row.",
+    "shows": [
+      "Mean error over seeds for every model and configuration, with the standard deviation over seeds and the 95th percentile underneath; the bar is the cell's error relative to the column's worst; the best cell of each column is bold.",
+      "Mean rank over the five configurations, fit plus predict seconds (median over configurations) and the median search time of the tuned baselines.",
+      "Bottom row: best foundation model minus best baseline, seed 0 of each, with the 95% bootstrap interval over test points (bold where the interval excludes zero)."
+    ],
+    "fixed": [
+      "Value bars overlapped the second line of each cell: bars moved under the text.",
+      "The last three column headers collided: wider columns and shorter headers.",
+      "The tuning column now says it is an upper bound (searches shared the nodes with other jobs)."
+    ],
+    "limits": [
+      "Search times were measured while other jobs shared the node; they are upper bounds (see P1-E01 RESULTS.md)."
+    ],
+    "source": "results/P1-E01/metrics/e1_summary.csv, e1_bootstrap.csv, config/search_runs.json"
+  },
+  "typeset_tables": {
+    "group": "paper",
+    "slot": "Tables I and II \u00b7 one column each \u00b7 LaTeX (booktabs)",
+    "title": "The two LaTeX tables as typeset in the IEEE template",
+    "alt": "Table I (mean error per model in the three main buildings, average, 95th percentile, time) and Table II (pipeline check and foundation-model cost) as they print in an IEEE two-column page.",
+    "shows": [
+      "Table I: mean positioning error with the full survey, three main buildings, mean with the standard deviation over 5 seeds as subscript, the average, the average 95th percentile and the median fit plus predict time; best per column in bold.",
+      "Table II: the pipeline check against the dataset paper (mean and 95th percentile) and what the foundation models cost on HCXY (fit, predict, GPU memory).",
+      "Both are generated from the result files by code/p1/figs/tables.py; this image is a crop of the IEEE conference template page at 220 dpi."
+    ],
+    "fixed": [
+      "Table I was 34.9 pt and Table II 6.2 pt wider than the 252 pt column: set in footnotesize, standard deviations as subscripts, tighter column separation (fixed in the generator, not in the emitted .tex).",
+      "Checked in the real IEEEtran class (textwidth 516 pt, columnwidth 252 pt): zero overfull boxes with every figure placed."
+    ],
+    "limits": [
+      "Built with this machine's TeX Live fonts; the venue's authoritative build may shift widths slightly, and both tables keep some margin."
+    ],
+    "source": "results/P1-E01/metrics/e1_summary.csv, e0_check.csv (tables.py); figures/table1_full_survey.tex, table_setup.tex"
+  },
+  "fig_cost_accuracy": {
+    "group": "candidate",
+    "slot": "Candidate \u00b7 one column \u00b7 P1-E01",
+    "title": "What a fix costs and what it buys",
+    "alt": "Scatter of mean error relative to tuned kNN against fit plus predict time, with tuning time for the baselines.",
+    "shows": [
+      "Every model in every configuration as a small mark (mean over seeds): seconds to fit and predict one test file against mean error relative to tuned kNN in that configuration, both on log axes.",
+      "Large haloed marks: each model's median over the five configurations. Tuned baselines also carry an open mark joined by a dotted line at the same error with their median search time added, the training step a foundation model does not have."
+    ],
+    "fixed": [
+      "The LightGBM marker was clipped at the top edge: limits now padded from the data.",
+      "Tuning arrows were invisible (kNN's lay on the reference line, LightGBM's ran off the axis): replaced by open markers and the x range widened to include them.",
+      "The lower legend hid the TabPFN -105 point: room added below the data for that legend.",
+      "Rebuilt from scratch on the final data: range whiskers stretched to 4.2x (one configuration) and squeezed the data into a band; replaced by every configuration as its own mark on log axes.",
+      "Two legend boxes overlapped each other and then the data: merged into one box in head room above every mark."
+    ],
+    "limits": [
+      "Search times are upper bounds (shared nodes)."
+    ],
+    "source": "results/P1-E01/metrics/e1_summary.csv, config/search_runs.json"
+  },
+  "fig_uncertainty": {
+    "group": "candidate",
+    "slot": "Candidate \u00b7 two columns \u00b7 P1-E03 A",
+    "panels": true,
+    "title": "Are the predictive distributions calibrated?",
+    "alt": "Coverage of central predictive intervals against nominal level, and error by decile of predicted spread.",
+    "shows": [
+      "(a) Share of test rows inside the central predictive interval against its nominal level, averaged over the two coordinates, seeds and five configurations; band: range over configurations.",
+      "(b) Mean error of the test rows in each decile of predicted spread, relative to the model's mean error; Spearman correlation between spread and error in the legend."
+    ],
+    "fixed": [
+      "Panel (a) legend ran past the panel and hid the 95% points: moved under the curves with shorter rows.",
+      "Panel (b) legend covered the decile 9 and 10 bands and the y label: head room added above the bands."
+    ],
+    "limits": [
+      "GP coverage comes from one run per configuration; the foundation models from five seeds.",
+      "Coverage is per coordinate; the joint coverage of both coordinates is in the Uncertainty table."
+    ],
+    "source": "results/P1-E03/metrics/a_uncertainty.csv and predictions/uncertainty/*.csv.gz"
+  },
+  "fig_scans_cost": {
+    "group": "candidate",
+    "slot": "Candidate \u00b7 two columns \u00b7 P1-E03 B",
+    "panels": true,
+    "title": "How many scans per point, and what the context costs",
+    "alt": "Error against scans per reference point, and fit plus predict time against context rows.",
+    "shows": [
+      "(a) Mean error against scans per reference point, relative to the same model with all 30 scans, averaged over HCXY and SYL; the dotted guide marks the 26-scan cap used for TabPFN on HCXY in P1-E01.",
+      "(b) Fit plus predict seconds against context rows for the foundation models; marker shape is the building, marker area the peak GPU memory; the dotted guide is TabPFN v2's 10,000-row limit."
+    ],
+    "fixed": [
+      "The reference was 30 scans, which on HCXY is 11,370 rows, past TabPFN v2's 10,000-row limit, where TabPFN with NaN gets worse; the reference is now 26 scans, inside the limit in both buildings (and identical to the P1-E01 HCXY context).",
+      "Tick labels 26 and 30 collided: 26 is now marked by the dotted guide only.",
+      "The legend in (a) covered the top of the kNN band, and the legend in (b) a TabPFN point: head room added above the data.",
+      "The time axis printed 6x10^1 style labels: plain seconds; memory markers scaled down so TabICL's 52 GB squares no longer hide the line."
+    ],
+    "limits": [
+      "kNN and GP use the seed-0 scan draw only (they have no randomness); the foundation models average five draws.",
+      "Timings were measured while other jobs shared the node; they show the trend with context size, not clean costs."
+    ],
+    "source": "results/P1-E03/metrics/b_scans.csv"
+  }
+}

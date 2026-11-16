@@ -1,0 +1,12 @@
+2026-11-15T00:47:28 own: configs=['HCXY-All'] parts=['A', 'B', 'C'] node=nodeA
+2026-11-15T00:58:10 done D HCXY-All__tabpfn-nan share60_mean=3.997
+2026-11-15T01:08:35 done D HCXY-All__tabpfn-ph share60_mean=7.947
+2026-11-15T01:12:11 done D HCXY-All__tabicl share60_mean=3.973
+2026-11-15T01:12:45 done D HCXY-All__knn share60_mean=8.465
+2026-11-15T01:12:52 done D HCXY-All__rf share60_mean=17.722
+2026-11-15T01:13:53 done D HCXY-All__lgbm-ph share60_mean=18.241
+2026-11-15T01:14:53 done D HCXY-All__lgbm-nan share60_mean=18.426
+2026-11-15T01:25:53 done D HCXY-All__svr share60_mean=14.904
+2026-11-15T01:26:03 done D HCXY-All__mlp share60_mean=12.427
+2026-11-15T01:26:25 done D HCXY-All__gp share60_mean=20.310
+2026-11-15T01:26:25 own: finished

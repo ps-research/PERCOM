@@ -1,0 +1,29 @@
+{
+  "code_commit": "6d16af4904e8c14cdf1ca77346939c375ab3c10e",
+  "config": "HCXY-All",
+  "context_rows": 7580,
+  "cost": {
+    "fit_s": 0.008836173999952734,
+    "peak_gpu_mem_mb": null,
+    "peak_gpu_reserved_mb": null,
+    "predict_s": 0.12897198400060006
+  },
+  "finished_utc": "2026-11-15T01:50:59Z",
+  "info": {},
+  "model": "knn",
+  "node": "nodeA",
+  "params": {
+    "metric": "manhattan",
+    "n_neighbors": 30,
+    "weights": "distance"
+  },
+  "scans_per_point": 20,
+  "seed": 0,
+  "stats": {
+    "mean": 1.795038926107119,
+    "median": 1.359530761857481,
+    "p75": 2.2462669611017207,
+    "p95": 5.274331889042478,
+    "rmse": 2.3789412665682828
+  }
+}

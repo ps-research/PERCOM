@@ -1,0 +1,54 @@
+{
+  "code_commit": "6d16af4904e8c14cdf1ca77346939c375ab3c10e",
+  "config": "HCXY-All",
+  "encoding": "placeholder",
+  "finished_utc": "2026-11-15T01:06:56Z",
+  "info": {
+    "fitted_rows": 379,
+    "kernels": [
+      "0.694**2 * RBF(length_scale=35.6) + WhiteKernel(noise_level=0.00325)",
+      "0.603**2 * RBF(length_scale=28.9) + WhiteKernel(noise_level=0.00277)"
+    ]
+  },
+  "model": "gp",
+  "node": "nodeA",
+  "quantiles": [
+    0.025,
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9,
+    0.95,
+    0.975
+  ],
+  "seconds": 7.188845321000372,
+  "seed": 0,
+  "stats": {
+    "cover50_E": 0.5976744186046512,
+    "cover50_N": 0.5511627906976744,
+    "cover50_both": 0.3569767441860465,
+    "cover80_E": 0.8523255813953489,
+    "cover80_N": 0.922093023255814,
+    "cover80_both": 0.7883720930232558,
+    "cover90_E": 0.9209302325581395,
+    "cover90_N": 0.9488372093023256,
+    "cover90_both": 0.8802325581395349,
+    "cover95_E": 0.977906976744186,
+    "cover95_N": 0.9848837209302326,
+    "cover95_both": 0.9627906976744186,
+    "error_least_confident_10pct_m": 21.40270843700867,
+    "error_most_confident_10pct_m": 3.7771005813063545,
+    "mean": 7.585128853305359,
+    "median": 5.5051854340964805,
+    "p75": 9.383947824925867,
+    "p95": 23.883620711487197,
+    "rmse": 9.898426889341861,
+    "spearman_spread80_error": 0.49235493630579336,
+    "width50_m": 10.047928461191942,
+    "width80_m": 19.09137751341249,
+    "width90_m": 24.503517759811476,
+    "width95_m": 29.197742289554476
+  }
+}

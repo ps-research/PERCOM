@@ -1,0 +1,14 @@
+command: /tmp/uv-venv/bin/python -m p1.e3x own --out /tmp/percom/out/P1-E03 --e1-out /tmp/percom/out/P1-E01 --data /tmp/percom/PERCOM/data/SODIndoorLoc --configs CETC331
+2026-11-15T01:33:48 own: configs=['CETC331'] parts=['A', 'B', 'C'] node=nodeC
+2026-11-15T01:34:46 done D CETC331__tabpfn-nan share60_mean=5.627
+2026-11-15T01:35:50 done D CETC331__tabpfn-ph share60_mean=8.501
+2026-11-15T01:36:48 done D CETC331__tabicl share60_mean=5.419
+2026-11-15T01:36:48 done D CETC331__knn share60_mean=8.595
+2026-11-15T01:36:56 done D CETC331__rf share60_mean=10.780
+2026-11-15T01:38:41 done D CETC331__lgbm-ph share60_mean=10.113
+2026-11-15T01:40:39 done D CETC331__lgbm-nan share60_mean=10.441
+2026-11-15T01:40:50 done D CETC331__svr share60_mean=13.864
+2026-11-15T01:40:53 done D CETC331__mlp share60_mean=11.019
+2026-11-15T01:41:44 done D CETC331__gp share60_mean=11.505
+2026-11-15T01:41:44 own: finished
+exit code: 0

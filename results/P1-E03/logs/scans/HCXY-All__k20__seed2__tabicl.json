@@ -1,0 +1,29 @@
+{
+  "code_commit": "6d16af4904e8c14cdf1ca77346939c375ab3c10e",
+  "config": "HCXY-All",
+  "context_rows": 7580,
+  "cost": {
+    "fit_s": 7.171782955998424,
+    "peak_gpu_mem_mb": 32746.435546875,
+    "peak_gpu_reserved_mb": 48220.0,
+    "predict_s": 6.704703552000865
+  },
+  "finished_utc": "2026-11-15T01:53:53Z",
+  "info": {
+    "checkpoint": "tabicl-regressor-v2-20260212.ckpt",
+    "context_capped": false,
+    "context_rows": 7580
+  },
+  "model": "tabicl",
+  "node": "nodeA",
+  "params": {},
+  "scans_per_point": 20,
+  "seed": 2,
+  "stats": {
+    "mean": 1.7538611273881124,
+    "median": 1.4105514627601095,
+    "p75": 2.2550721499415616,
+    "p95": 3.9906250583516942,
+    "rmse": 2.454950198355902
+  }
+}
