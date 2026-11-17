@@ -106,6 +106,21 @@ def build_spec():
         if rows % rps:
             raise SystemExit(f"{config}: {rows} survey scans do not divide evenly over {rps} reference points")
         add(f"num{short}ScansPerPoint", fmt_int(rows // rps), counts, f"config={config}: train_rows / ref_points = {rows} / {rps}")
+    # Test scans per test point, derived; must divide exactly.
+    for short, config in BUILDINGS.items():
+        rows = as_int(csv_cell(counts, {"config": config, "quantity": "test_rows"}, "found")[0])
+        pts = as_int(csv_cell(counts, {"config": config, "quantity": "test_points"}, "found")[0])
+        if rows % pts:
+            raise SystemExit(f"{config}: {rows} test scans do not divide evenly over {pts} test points")
+        add(f"num{short}TestScansPerPoint", fmt_int(rows // pts), counts, f"config={config}: test_rows / test_points = {rows} / {pts}")
+    # Phones and users in the test files, from the phone and user breakdown.
+    pu = "results/P1-E03/metrics/e_phone_user.csv"
+    with (ROOT / pu).open(newline="") as f:
+        pu_rows = list(csv.DictReader(f))
+    for short in ("HCXY", "SYL"):
+        for group, label in (("PhoneID", "Phones"), ("UserID", "Users")):
+            ids = {r["id"] for r in pu_rows if r["config"] == BUILDINGS[short] and r["group"] == group}
+            add(f"num{short}{label}", fmt_int(len(ids)), pu, f"distinct {group} in config={BUILDINGS[short]}")
     for short, config in PREINSTALLED.items():
         raw, src, sel = csv_cell(counts, {"config": config, "quantity": "rss_cols"}, "found")
         add(f"num{short}PreinstalledAPs", fmt_int(as_int(raw)), src, sel)
@@ -162,6 +177,10 @@ def build_spec():
 PUBLISHED = [
     ("numTabPFNApplications", "200", "P006",
      "we have collected more than 200 published research applications of TabPFN"),
+    ("numDatasetArea", "8,000", "P003", "The total covering area is about 8000 square meters"),
+    ("numSpacingSingleFloor", "1.2", "P003",
+     "The sampling distance between two adjacent points is about 1.2 meters in two buildings"),
+    ("numSpacingCETC", "0.5", "P003", "the distance is about 0.5 meters in a three-story building"),
 ]
 
 
