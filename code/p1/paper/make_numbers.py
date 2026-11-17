@@ -280,6 +280,26 @@ def build_spec():
     add("numSeedSpreadTabICL", f"{math.ceil(max(spreads) * 100) / 100:.2f}", cs,
         f"max over buildings of (max - min) of TabICLv2's mean error over its seeds ({max(spreads):.4f}), rounded up")
 
+    # Missing access points: building averages (30 draws) at 0% and at the largest share.
+    def bavg(model, share):
+        vals = []
+        for config in BUILDINGS.values():
+            v = [float(r["mean"]) for r in rows if r["config"] == config and r["model"] == model and int(float(r["share"])) == share]
+            vals.append(sum(v) / len(v))
+        return sum(vals) / len(vals)
+    for model, name in (("tabicl", "TabICL"), ("tabpfn-nan", "TabPFN"), ("tabpfn-ph", "TabPFNPh"), ("knn", "KNN"),
+                        ("lgbm-nan", "LGBMNaN"), ("lgbm-ph", "LGBMPh")):
+        add(f"numMissingAvg{name}", f"{bavg(model, top):.2f}", e3, f"{model}: mean over buildings of the 30-draw mean at {top}%")
+    add("numZeroAvgTabPFNPh", f"{bavg('tabpfn-ph', 0):.2f}", e3, "tabpfn-ph: mean over buildings at 0%")
+    base_avgs = {m: bavg(m, top) for m in ("knn", "rf", "lgbm-nan", "lgbm-ph", "svr", "mlp", "gp")}
+    if min(base_avgs, key=base_avgs.get) != "knn":
+        raise SystemExit(f"{e3}: kNN is not the strongest baseline on average at {top}%: {base_avgs}")
+    zero_avgs = {m: bavg(m, 0) for m in ("tabpfn-nan", "tabpfn-ph", "tabicl", "knn", "rf", "lgbm-nan", "lgbm-ph", "svr", "mlp", "gp")}
+    if min(zero_avgs, key=zero_avgs.get) != "tabpfn-ph":
+        raise SystemExit(f"{e3}: TabPFN with -105 is not the most accurate model at 0%: {zero_avgs}")
+    if not bavg("lgbm-nan", top) >= bavg("lgbm-ph", top):
+        raise SystemExit(f"{e3}: LightGBM with NaN beats -105 at {top}%; the text says it gains nothing")
+
     # Numbers from published papers: quoted as reported, only from sources read in full
     # (CONTEXT.md). The hash is the source's SHA-256 recorded in the review's index.
     index = ROOT / "litreview" / "p1-tabular-localization" / "sources" / "index.csv"
