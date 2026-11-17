@@ -179,6 +179,41 @@ def build_spec():
     add("numPipelineRawDiffMax", f"{math.ceil(max(raw) * 10) / 10:.1f}", e0,
         f"max |mean - paper mean| over buildings with +100 left in place ({max(raw):.4f}), rounded up")
 
+    # Stress-test protocols, read from the result files.
+    def as_list(values):
+        vals = [fmt_int(v) for v in values]
+        return ", ".join(vals[:-1]) + " and " + vals[-1]
+    shares_e3 = sorted({int(float(r["share"])) for r in rows})
+    steps = {b - a for a, b in zip(shares_e3, shares_e3[1:])}
+    if len(steps) != 1:
+        raise SystemExit(f"{e3}: shares are not evenly spaced: {shares_e3}")
+    add("numMissingStep", str(steps.pop()), e3, f"spacing of the shares {shares_e3}")
+    n_draws = {len({r["draw"] for r in rows if r["config"] == c and r["model"] == m and int(float(r["share"])) == sh})
+               for c in BUILDINGS.values() for m in ("tabpfn-nan", "knn") for sh in shares_e3 if sh > 0}
+    if len(n_draws) != 1:
+        raise SystemExit(f"{e3}: draws differ across shares: {sorted(n_draws)}")
+    add("numMissingDraws", str(n_draws.pop()), e3, "draws per share above 0%")
+    chk3 = "results/P1-E02/metrics/e3_check_against_e1.csv"
+    with (ROOT / chk3).open(newline="") as f:
+        d3 = max(abs(float(r["abs_diff"])) for r in csv.DictReader(f))
+    add("numMissingZeroCheck", f"{math.ceil(d3 * 100) / 100:.2f}", chk3,
+        f"max |error at 0% - full-survey seed-0 error| ({d3:.4f}), rounded up")
+    e2 = "results/P1-E02/metrics/e2_summary.csv"
+    with (ROOT / e2).open(newline="") as f:
+        r2 = list(csv.DictReader(f))
+    add("numRPShareList", as_list(sorted({int(r["share"]) for r in r2})), e2, "shares of reference points kept")
+    add("numRPDraws", str(len({r["draw"] for r in r2 if r["share"] != "100"})), e2, "draws per share below 100%")
+    bs = "results/P1-E03/metrics/b_scans.csv"
+    with (ROOT / bs).open(newline="") as f:
+        rb = list(csv.DictReader(f))
+    add("numScanList", as_list(sorted({int(r["scans_per_point"]) for r in rb})), bs, "scans per reference point kept")
+    tfm_draws = {len({r["seed"] for r in rb if r["config"] == c and r["model"] == m and r["scans_per_point"] == k})
+                 for c in ("HCXY-All", "SYL-All") for m in ("tabpfn-nan", "tabpfn-ph", "tabicl")
+                 for k in {r["scans_per_point"] for r in rb}}
+    if len(tfm_draws) != 1:
+        raise SystemExit(f"{bs}: foundation-model draws differ: {sorted(tfm_draws)}")
+    add("numScanDraws", str(tfm_draws.pop()), bs, "draws per scan count for the foundation models")
+
     # Numbers from published papers: quoted as reported, only from sources read in full
     # (CONTEXT.md). The hash is the source's SHA-256 recorded in the review's index.
     index = ROOT / "litreview" / "p1-tabular-localization" / "sources" / "index.csv"
