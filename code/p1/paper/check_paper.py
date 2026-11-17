@@ -38,7 +38,7 @@ LAYOUT_COMMANDS = [
 ]
 LETTER = (612.0, 792.0)
 # Names that contain digits but are not numbers: models and the building CETC331.
-NAMES_WITH_DIGITS = [r"TabPFN v2", r"TabICLv2", r"CETC331", r"5G", r"2-D", r"RTX PRO 6000", r"\b\d+(st|nd|rd|th)\b", r"\bseed \d+\b", r"\{(tabpfn|tabicl)\} \d+\.\d+\.\d+"]  # library versions, after \texttt is stripped
+NAMES_WITH_DIGITS = [r"\(C[12]\)", r"TabPFN v2", r"TabICLv2", r"CETC331", r"5G", r"2-D", r"RTX PRO 6000", r"\b\d+(st|nd|rd|th)\b", r"\bseed \d+\b", r"\{(tabpfn|tabicl)\} \d+\.\d+\.\d+"]  # library versions, after \texttt is stripped
 
 
 class Report:
