@@ -161,6 +161,24 @@ def build_spec():
     value, src, sel = code_constant("code/p1/data.py", "PLACEHOLDER")
     add("numPlaceholder", f"$-${abs(value)}", src, sel)
 
+    # Tuning protocol of the baselines.
+    value, src, sel = code_constant("code/p1/tuning.py", "N_TRIALS")
+    add("numTuningTrials", fmt_int(value), src, sel)
+    value, src, sel = code_constant("code/p1/tuning.py", "N_FOLDS")
+    add("numTuningFolds", fmt_int(value), src, sel)
+    # Pipeline check against the dataset paper (untuned kNN), rounded outward.
+    e0 = "results/P1-E01/metrics/e0_check.csv"
+    with (ROOT / e0).open(newline="") as f:
+        chk = list(csv.DictReader(f))
+    ph = [abs(float(r["diff_mean_m"])) for r in chk if r["not_detected"].startswith("placeholder")]
+    raw = [abs(float(r["diff_mean_m"])) for r in chk if r["not_detected"].startswith("left as")]
+    if len(ph) != 3 or len(raw) != 3:
+        raise SystemExit(f"{e0}: expected three buildings per encoding")
+    add("numPipelineDiffMax", f"{math.ceil(max(ph) * 100) / 100:.2f}", e0,
+        f"max |mean - paper mean| over buildings with -105 ({max(ph):.4f}), rounded up")
+    add("numPipelineRawDiffMax", f"{math.ceil(max(raw) * 10) / 10:.1f}", e0,
+        f"max |mean - paper mean| over buildings with +100 left in place ({max(raw):.4f}), rounded up")
+
     # Numbers from published papers: quoted as reported, only from sources read in full
     # (CONTEXT.md). The hash is the source's SHA-256 recorded in the review's index.
     index = ROOT / "litreview" / "p1-tabular-localization" / "sources" / "index.csv"
