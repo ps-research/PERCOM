@@ -132,7 +132,24 @@ def build_spec():
     add("numTabPFNMaxRows", fmt_int(value), src, sel)
     value, src, sel = code_constant("code/p1/data.py", "TABPFN_SCANS_KEPT")
     add("numTabPFNScansKept", fmt_int(value), src, sel)
+
+    # Numbers from published papers: quoted as reported, only from sources read in full
+    # (CONTEXT.md). The hash is the source's SHA-256 recorded in the review's index.
+    index = ROOT / "litreview" / "p1-tabular-localization" / "sources" / "index.csv"
+    with index.open(newline="") as f:
+        sha = {r["pid"]: (r["sha256"], r["access_level"]) for r in csv.DictReader(f)}
+    for name, value, pid, quote in PUBLISHED:
+        digest, level = sha[pid]
+        if level != "FULLTEXT":
+            raise SystemExit(f"{name}: {pid} was read at {level} level; published numbers need a full-text source")
+        out.append((name, value, f"litreview {pid}", f'quote: "{quote}"', digest[:12]))
     return out
+
+
+PUBLISHED = [
+    ("numTabPFNApplications", "200", "P006",
+     "we have collected more than 200 published research applications of TabPFN"),
+]
 
 
 def render(spec) -> str:
