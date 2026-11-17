@@ -171,10 +171,10 @@ def main():
                bbox_to_anchor=(0.5, 0.995), handlelength=2.2, columnspacing=1.1, handletextpad=0.5, borderpad=0.45)
     fig.subplots_adjust(top=0.74, bottom=0.17, left=0.065, right=0.99)
     args.out.mkdir(parents=True, exist_ok=True)
-    fig.savefig(args.out / "fig2_stress.pdf")
+    fig.savefig(args.out / "fig2_stress.pdf", bbox_inches="tight", pad_inches=0.03)  # no white padding (PI ruling)
     if args.preview:
         args.preview.mkdir(parents=True, exist_ok=True)
-        fig.savefig(args.preview / "fig2_stress.png", dpi=S.PNG_DPI)
+        fig.savefig(args.preview / "fig2_stress.png", dpi=S.PNG_DPI, bbox_inches="tight", pad_inches=0.03)
     print(f"wrote {args.out / 'fig2_stress.pdf'}; legend: {labels}")
 
 
