@@ -219,6 +219,12 @@ def check_source(src: Path, rep: Report, stage: str, max_refs: int, allow: list[
         if "/ASSETS/" in f.as_posix():
             continue  # generated tables and macros
         text = t.split("\\begin{document}", 1)[-1] if "\\begin{document}" in t else t
+        # inside math, subscripts and superscripts are notation (indices, dimensions), not numbers to
+        # trace; drop them and still scan the rest, so a result typed inside math is still caught
+        def _strip_scripts(m):
+            return re.sub(r"[_^](\{[^{}]*\}|\\?[A-Za-z0-9])", " ", m.group(0))
+        text = re.sub(r"\\begin\{(equation|align)\*?\}.*?\\end\{\1\*?\}", _strip_scripts, text, flags=re.S)
+        text = re.sub(r"(?<!\\)\$[^$]*\$", _strip_scripts, text)
         for n, line in enumerate(text.splitlines(), 1):
             clean = re.sub(r"\\(cite|ref|eqref|label|input|include|includegraphics|bibliography|bibliographystyle|IEEEtriggeratref|begin|end|orcidlink|href|url)\*?(\[[^\]]*\])?\{[^}]*\}", " ", line)
             clean = re.sub(r"\\[A-Za-z]+", " ", clean)
