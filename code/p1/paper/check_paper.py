@@ -174,10 +174,16 @@ def check_source(src: Path, rep: Report, stage: str, max_refs: int, allow: list[
     rep.add(hard if left else "PASS", "template text removed", "; ".join(left) or "none")
     held = {p: joined.count(p) for p in PLACEHOLDERS if p in joined}
     rep.add(hard if held else "PASS", "placeholders", ", ".join(f"'{p}' x{n}" for p, n in held.items()) or "none")
-    blocks = re.findall(r"\\IEEEauthorblockA\{(.*?)\}\s*(?:\\and|\})", body, flags=re.S)
-    if blocks:  # call: "include all authors' information"; template: "email address or ORCID"
-        no_email = sum(1 for b in blocks if "@" not in b)
-        rep.add(hard if no_email else "PASS", "author emails", f"missing for {no_email} of {len(blocks)} authors" if no_email else "all authors")
+    # Template, "email address or ORCID" for each author; call: "include all authors' information".
+    # Authors are counted by their ORCID links in the name blocks; one shared affiliation block may carry one email.
+    names = " ".join(re.findall(r"\\IEEEauthorblockN\{(.*?)\}\s*\\IEEEauthorblockA", body, flags=re.S))
+    ids = re.findall(r"\\orcidlink\{([^}]*)\}", names)
+    if ids:
+        real = sum(1 for i in ids if i != "0000-0000-0000-0000")
+        emails = len(re.findall(r"[\w.+-]+@[\w-]+\.[\w.]+", " ".join(re.findall(r"\\IEEEauthorblockA\{(.*?)\}\s*(?:\\and|\})", body, flags=re.S))))
+        short = len(ids) - real - emails
+        rep.add(hard if short > 0 else "PASS", "author email or ORCID",
+                f"{len(ids)} authors: {real} ORCID iDs, {emails} email(s); {short} without either" if short > 0 else f"{len(ids)} authors covered")
 
     m = re.search(r"\\title\{", body)
     title = braced(body, m.end() - 1) if m else ""
