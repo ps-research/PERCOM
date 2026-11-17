@@ -19,6 +19,7 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 import re
 from pathlib import Path
 
@@ -104,6 +105,29 @@ def build_spec():
     value, src, sel, digest = run_log_field("P1-E01/logs/runs/HCXY-*__tabpfn-*__seed*.json",
                                             ("info", "context_rows"))
     add("numHCXYTabPFNContextRows", fmt_int(int(value)), src, sel, digest)
+    # Missing access points, all 30 draws (the data of Fig. 2), at the largest share switched off.
+    # Bounds are rounded outward so the sentence that uses them stays true: up for the foundation
+    # models, down for the baselines.
+    e3 = "results/P1-E03/metrics/d_e3_more.csv"
+    with (ROOT / e3).open(newline="") as f:
+        rows = [r for r in csv.DictReader(f) if r["config"] in BUILDINGS.values()]
+    top = max(int(float(r["share"])) for r in rows)
+    means = {}
+    for r in rows:
+        if int(float(r["share"])) == top:
+            means.setdefault((r["config"], r["model"]), []).append(float(r["mean"]))
+    draws = {len(v) for v in means.values()}
+    if draws != {30}:
+        raise SystemExit(f"{e3}: expected 30 draws per model at {top}%, found {sorted(draws)}")
+    avg = {k: sum(v) / len(v) for k, v in means.items()}
+    tfm = [v for (c, m), v in avg.items() if m in ("tabpfn-nan", "tabicl")]
+    base = [v for (c, m), v in avg.items() if not m.startswith("tab")]
+    add("numMissingMaxShare", str(top), e3, "largest share of access points switched off")
+    add("numMissingTFMBelow", f"{math.ceil(max(tfm) * 10) / 10:.1f}", e3,
+        f"max over buildings of the 30-draw mean at {top}% for tabpfn-nan and tabicl ({max(tfm):.3f}), rounded up")
+    add("numMissingBaseAbove", f"{math.floor(min(base) * 10) / 10:.1f}", e3,
+        f"min over buildings and baselines of the 30-draw mean at {top}% ({min(base):.3f}), rounded down")
+
     value, src, sel = code_constant("code/p1/data.py", "TABPFN_MAX_ROWS")
     add("numTabPFNMaxRows", fmt_int(value), src, sel)
     value, src, sel = code_constant("code/p1/data.py", "TABPFN_SCANS_KEPT")

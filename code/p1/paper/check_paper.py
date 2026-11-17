@@ -37,6 +37,8 @@ LAYOUT_COMMANDS = [
     r"\\(set|addto)length\{?\\\w*skip\b", r"\\enlargethispage\b",
 ]
 LETTER = (612.0, 792.0)
+# Names that contain digits but are not numbers: models and the building CETC331.
+NAMES_WITH_DIGITS = [r"TabPFN v2", r"TabICLv2", r"CETC331"]
 
 
 class Report:
@@ -111,7 +113,7 @@ def build(src: Path, work: Path, texmf: Path | None = None) -> tuple[Path, Path]
     return work / "main.pdf", work / "main.log"
 
 
-def check_log(log: Path, rep: Report):
+def check_log(log: Path, rep: Report, stage: str = "draft"):
     if not log.exists():
         rep.add("FAIL", "LaTeX log", "missing")
         return
@@ -122,7 +124,8 @@ def check_log(log: Path, rep: Report):
     cites = sorted(set(re.findall(r"Citation `([^']+)' on page", text)))
     refs = sorted(set(re.findall(r"Reference `([^']+)' on page", text)))
     rep.add("FAIL" if cites else "PASS", "undefined citations", ", ".join(cites) or "none")
-    rep.add("FAIL" if refs else "PASS", "undefined references", ", ".join(refs) or "none")
+    # sections enter one by one, so a cross-reference to a section not yet written is a warning until submission
+    rep.add(("FAIL" if stage == "submission" else "WARN") if refs else "PASS", "undefined references", ", ".join(refs) or "none")
     overfull = [l for l in lines if l.startswith("Overfull \\hbox")]
     rep.add("FAIL" if overfull else "PASS", "overfull boxes", f"{len(overfull)}" + (f", first: {overfull[0][:100]}" if overfull else ""))
     if "Label(s) may have changed" in text:
@@ -219,7 +222,7 @@ def check_source(src: Path, rep: Report, stage: str, max_refs: int, allow: list[
         for n, line in enumerate(text.splitlines(), 1):
             clean = re.sub(r"\\(cite|ref|eqref|label|input|include|includegraphics|bibliography|bibliographystyle|IEEEtriggeratref|begin|end|orcidlink|href|url)\*?(\[[^\]]*\])?\{[^}]*\}", " ", line)
             clean = re.sub(r"\\[A-Za-z]+", " ", clean)
-            for a in allow:
+            for a in NAMES_WITH_DIGITS + allow:
                 clean = re.sub(a, " ", clean)
             for m in re.finditer(r"\d[\d.,]*", clean):
                 typed.append(f"{f.name}:{n} '{m.group(0)}'")
@@ -246,7 +249,7 @@ def main():
     args = ap.parse_args()
     pdf, log = build(args.src.resolve(), args.work.resolve(), args.texmf.resolve() if args.texmf else None)
     rep = Report()
-    check_log(log, rep)
+    check_log(log, rep, args.stage)
     check_pdf(pdf, rep, args.max_pages)
     check_source(args.work.resolve(), rep, args.stage, args.max_refs, args.allow)
     raise SystemExit(1 if rep.show() else 0)
