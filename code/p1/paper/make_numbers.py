@@ -245,6 +245,41 @@ def build_spec():
     add("numGPUMemoryGB", str(round(mib / 1024)), "results/P1-E01/env.txt", f"gpu memory {mib} MiB / 1024, rounded")
     add("numCPUCores", str(cpus), "results/P1-E01/env.txt", "usable_cpus")
 
+    # Full survey: paired bootstrap of best foundation model against best baseline (seed 0).
+    by_cfg = {r["config"]: r for r in rbt}
+    for short, config in BUILDINGS.items():
+        r = by_cfg[config]
+        lo, hi, diff = float(r["ci95_low"]), float(r["ci95_high"]), float(r["diff_tfm_minus_baseline"])
+        if not hi < 0:
+            raise SystemExit(f"{bt}: the interval for {config} does not exclude zero ({lo}, {hi})")
+        add(f"numBootGain{short}", f"{-diff:.2f}", bt, f"config={config}: -(diff_tfm_minus_baseline) = {-diff:.4f}, interval [{lo:.3f}, {hi:.3f}]")
+    ap_diffs = []
+    for config in ("HCXY-AP", "SYL-AP"):
+        r = by_cfg[config]
+        lo, hi = float(r["ci95_low"]), float(r["ci95_high"])
+        if not lo < 0 < hi:
+            raise SystemExit(f"{bt}: the interval for {config} excludes zero; the text says it does not")
+        ap_diffs.append(abs(float(r["diff_tfm_minus_baseline"])))
+    add("numAPDiffMax", f"{math.ceil(max(ap_diffs) * 100) / 100:.2f}", bt,
+        f"max |diff| on the installed-access-point files ({max(ap_diffs):.4f}), rounded up; both intervals include zero")
+    # Twenty seeds: spread of TabICLv2's mean error per building.
+    spreads = []
+    for config in BUILDINGS.values():
+        vals = [float(r["mean"]) for r in rc if r["config"] == config and r["model"] == "tabicl"]
+        spreads.append(max(vals) - min(vals))
+    # The text says TabICLv2's average over all its seeds stays below every baseline in each building.
+    for config in BUILDINGS.values():
+        tab = [float(r["mean"]) for r in rc if r["config"] == config and r["model"] == "tabicl"]
+        base = {}
+        for r in rs:
+            if r["config"] == config and not r["model"].startswith("tab"):
+                base.setdefault(r["model"], []).append(float(r["mean"]))
+        best_base = min(sum(v) / len(v) for v in base.values())
+        if not sum(tab) / len(tab) < best_base:
+            raise SystemExit(f"{config}: TabICLv2's seed average {sum(tab) / len(tab):.3f} is not below the best baseline {best_base:.3f}")
+    add("numSeedSpreadTabICL", f"{math.ceil(max(spreads) * 100) / 100:.2f}", cs,
+        f"max over buildings of (max - min) of TabICLv2's mean error over its seeds ({max(spreads):.4f}), rounded up")
+
     # Numbers from published papers: quoted as reported, only from sources read in full
     # (CONTEXT.md). The hash is the source's SHA-256 recorded in the review's index.
     index = ROOT / "litreview" / "p1-tabular-localization" / "sources" / "index.csv"
