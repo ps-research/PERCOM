@@ -67,9 +67,10 @@ def table1(R: Results) -> str:
 
     lines = [
         r"\begin{table}[t]",
-        r"\caption{Mean positioning error (m) with the full survey. Subscripts give the standard deviation over "
-        r"\numSeedsMain{} seeds; kNN, SVR and the Gaussian process run once. Avg.: mean over the three buildings. "
-        r"95th: 95th percentile, averaged over the buildings. Best value per column in bold.}",
+        # IEEEtran sets table captions in small caps; units go in \upshape (IEEEtran HOWTO, table captions)
+        r"\caption{Mean positioning error ({\upshape m}) with the full survey. Subscripts: standard deviation over "
+        r"\numSeedsMain{} seeds. Avg.: mean of the three buildings. 95th: 95th-percentile error averaged over the "
+        r"buildings. Best in bold.}",
         r"\label{tab:full}",
         r"\centering",
         r"\setlength{\tabcolsep}{3.4pt}",
