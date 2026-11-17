@@ -300,6 +300,46 @@ def build_spec():
     if not bavg("lgbm-nan", top) >= bavg("lgbm-ph", top):
         raise SystemExit(f"{e3}: LightGBM with NaN beats -105 at {top}%; the text says it gains nothing")
 
+    # Fewer reference points (10 draws) and fewer scans (V-C), each claim checked.
+    shares_e2 = sorted({int(r["share"]) for r in r2})
+    low = shares_e2[1]
+    def e2mean(config, model, share):
+        v = [float(r["mean"]) for r in r2 if r["config"] == config and r["model"] == model and int(r["share"]) == share]
+        return sum(v) / len(v)
+    for config in BUILDINGS.values():
+        knn = e2mean(config, "knn", low)
+        if not e2mean(config, "tabicl", low) < knn:
+            raise SystemExit(f"{e2}: TabICLv2 is not below kNN at {low}% in {config}")
+        for m in ("rf", "lgbm-ph", "lgbm-nan"):
+            if not e2mean(config, m, low) > knn:
+                raise SystemExit(f"{e2}: {m} is not behind kNN at {low}% in {config}")
+    add("numRPLowShare", str(low), e2, f"share at which TabICLv2 beats kNN in every building (checked)")
+    crs = "results/P1-E02/metrics/e2_crossing.csv"
+    with (ROOT / crs).open(newline="") as f:
+        rcr = {(r["config"], r["model"]): r for r in csv.DictReader(f)}
+    for short, config in (("CETC", "CETC331"), ("SYL", "SYL-All")):
+        add(f"numCross{short}", f"{float(rcr[(config, 'tabicl')]['crossing_share_pct']):.0f}", crs,
+            f"config={config}, tabicl: crossing_share_pct = {float(rcr[(config, 'tabicl')]['crossing_share_pct']):.2f}")
+    if not float(rcr[("HCXY-All", "tabicl")]["crossing_share_pct"]) > 50:
+        raise SystemExit(f"{crs}: HCXY crossing is not above 50%; 'two of the three buildings' would understate")
+    def bscan(config, model, k):
+        v = [float(r["mean"]) for r in rb if r["config"] == config and r["model"] == model and int(r["scans_per_point"]) == k]
+        return sum(v) / len(v)
+    kmin = min(int(r["scans_per_point"]) for r in rb)
+    knn_full = {}
+    for r in rs:
+        if r["model"] == "knn":
+            knn_full[r["config"]] = float(r["mean"])
+    rel_knn = []
+    for config in ("HCXY-All", "SYL-All"):
+        for m in ("tabpfn-nan", "tabpfn-ph", "tabicl"):
+            if not bscan(config, m, kmin) < knn_full[config]:
+                raise SystemExit(f"{bs}: {m} with {kmin} scan is not below full-survey kNN in {config}")
+        rel_knn.append(bscan(config, "knn", kmin) / knn_full[config])
+    if not sum(rel_knn) / len(rel_knn) > 1:
+        raise SystemExit(f"{bs}: kNN with {kmin} scan does not lose accuracy on average")
+    add("numScanMin", str(kmin), bs, f"fewest scans per point; every foundation model below full-survey kNN there (checked)")
+
     # Numbers from published papers: quoted as reported, only from sources read in full
     # (CONTEXT.md). The hash is the source's SHA-256 recorded in the review's index.
     index = ROOT / "litreview" / "p1-tabular-localization" / "sources" / "index.csv"
