@@ -340,6 +340,30 @@ def build_spec():
         raise SystemExit(f"{bs}: kNN with {kmin} scan does not lose accuracy on average")
     add("numScanMin", str(kmin), bs, f"fewest scans per point; every foundation model below full-survey kNN there (checked)")
 
+    # Section VI claims: a foundation model has the lowest error at every level of the three stress
+    # tests in every building, and every phone in the test scans also took part in the survey.
+    tfms = {"tabpfn-nan", "tabpfn-ph", "tabicl"}
+    for rows, key, src in ((list(csv.DictReader((ROOT / e3).open(newline=""))), "share", e3),
+                           (r2, "share", e2), (rb, "scans_per_point", bs)):
+        cells = {}
+        for r in rows:
+            if r["config"] in BUILDINGS.values():
+                cells.setdefault((r["config"], r[key], r["model"]), []).append(float(r["mean"]))
+        levels = {(c, k) for c, k, _ in cells}
+        for c, k in levels:
+            means = {m: sum(v) / len(v) for (cc, kk, m), v in cells.items() if (cc, kk) == (c, k)}
+            if min(means, key=means.get) not in tfms:
+                raise SystemExit(f"{src}: no foundation model has the lowest error at {key}={k} in {c}")
+    import pandas as pd
+    pairs = {"CETC331": ("CETC331/Training_CETC331.csv", "CETC331/Testing_CETC331.csv"),
+             "HCXY": ("HCXY/Training_HCXY_All_30.csv", "HCXY/Testing_HCXY_All.csv"),
+             "SYL": ("SYL/Training_SYL_All_30.csv", "SYL/Testing_SYL_All.csv")}
+    for b, (tr, te) in pairs.items():
+        survey = set(pd.read_csv(ROOT / "data/SODIndoorLoc" / tr, usecols=["PhoneID"]).PhoneID)
+        test = set(pd.read_csv(ROOT / "data/SODIndoorLoc" / te, usecols=["PhoneID"]).PhoneID)
+        if not test <= survey:
+            raise SystemExit(f"{b}: test phones {sorted(test - survey)} are absent from the survey; Section VI says otherwise")
+
     # Numbers from published papers: quoted as reported, only from sources read in full
     # (CONTEXT.md). The hash is the source's SHA-256 recorded in the review's index.
     index = ROOT / "litreview" / "p1-tabular-localization" / "sources" / "index.csv"
