@@ -62,12 +62,13 @@ def run_log_field(pattern: str, keys: tuple[str, ...]):
 
 
 def code_constant(rel: str, name: str):
-    """An integer constant assigned at module level, e.g. ``NAME = 10_000``."""
+    """A numeric constant assigned at module level, e.g. ``NAME = 10_000`` or ``NAME = -105.0``."""
     text = (ROOT / rel).read_text()
-    m = re.search(rf"^{name}\s*=\s*([0-9_]+)\s*$", text, flags=re.M)
+    m = re.search(rf"^{name}\s*=\s*(-?[0-9_]+(?:\.[0-9]+)?)\s*$", text, flags=re.M)
     if not m:
         raise SystemExit(f"{rel}: constant {name} not found")
-    return int(m.group(1).replace("_", "")), rel, f"constant {name}"
+    value = float(m.group(1).replace("_", ""))
+    return (int(value) if value == int(value) else value), rel, f"constant {name}"
 
 
 def as_int(text) -> int:
@@ -98,6 +99,13 @@ def build_spec():
             add(f"num{short}{label}", fmt_int(as_int(raw)), src, sel)
         raw, src, sel = csv_cell(shared, {"config": config}, "shared_with_floor")
         add(f"num{short}SharedTestPoints", fmt_int(as_int(raw)), src, sel)
+    # Scans per reference point, derived from the two counts above; must divide exactly.
+    for short, config in BUILDINGS.items():
+        rows = as_int(csv_cell(counts, {"config": config, "quantity": "train_rows"}, "found")[0])
+        rps = as_int(csv_cell(counts, {"config": config, "quantity": "ref_points"}, "found")[0])
+        if rows % rps:
+            raise SystemExit(f"{config}: {rows} survey scans do not divide evenly over {rps} reference points")
+        add(f"num{short}ScansPerPoint", fmt_int(rows // rps), counts, f"config={config}: train_rows / ref_points = {rows} / {rps}")
     for short, config in PREINSTALLED.items():
         raw, src, sel = csv_cell(counts, {"config": config, "quantity": "rss_cols"}, "found")
         add(f"num{short}PreinstalledAPs", fmt_int(as_int(raw)), src, sel)
@@ -132,6 +140,11 @@ def build_spec():
     add("numTabPFNMaxRows", fmt_int(value), src, sel)
     value, src, sel = code_constant("code/p1/data.py", "TABPFN_SCANS_KEPT")
     add("numTabPFNScansKept", fmt_int(value), src, sel)
+    # How the dataset writes "not detected", and the number the baselines get instead.
+    value, src, sel = code_constant("code/p1/data.py", "NOT_DETECTED")
+    add("numNotDetected", f"{value:+d}", src, sel)
+    value, src, sel = code_constant("code/p1/data.py", "PLACEHOLDER")
+    add("numPlaceholder", f"$-${abs(value)}", src, sel)
 
     # Numbers from published papers: quoted as reported, only from sources read in full
     # (CONTEXT.md). The hash is the source's SHA-256 recorded in the review's index.
