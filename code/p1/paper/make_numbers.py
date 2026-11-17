@@ -214,6 +214,37 @@ def build_spec():
         raise SystemExit(f"{bs}: foundation-model draws differ: {sorted(tfm_draws)}")
     add("numScanDraws", str(tfm_draws.pop()), bs, "draws per scan count for the foundation models")
 
+    # Seeds, bootstrap and hardware.
+    summ = "results/P1-E01/metrics/e1_summary.csv"
+    with (ROOT / summ).open(newline="") as f:
+        rs = list(csv.DictReader(f))
+    seeded = {len({r["seed"] for r in rs if r["model"] == m}) for m in ("tabpfn-nan", "tabicl", "rf", "lgbm-ph", "mlp")}
+    if len(seeded) != 1:
+        raise SystemExit(f"{summ}: seeded models differ in seed count: {sorted(seeded)}")
+    add("numSeedsMain", str(seeded.pop()), summ, "seeds per model with randomness")
+    cs = "results/P1-E03/metrics/c_seeds.csv"
+    with (ROOT / cs).open(newline="") as f:
+        rc = list(csv.DictReader(f))
+    tfm_seeds = {len({r["seed"] for r in rc if r["model"] == m}) for m in ("tabpfn-nan", "tabpfn-ph", "tabicl")}
+    if len(tfm_seeds) != 1:
+        raise SystemExit(f"{cs}: foundation models differ in seed count: {sorted(tfm_seeds)}")
+    add("numSeedsTFM", str(tfm_seeds.pop()), cs, "seeds per foundation model")
+    bt = "results/P1-E01/metrics/e1_bootstrap.csv"
+    with (ROOT / bt).open(newline="") as f:
+        reader = csv.DictReader(f)
+        rbt = list(reader)
+        level = [c for c in reader.fieldnames if re.fullmatch(r"ci\d+_low", c)][0][2:-4]
+    n_res = {r["n_resamples"] for r in rbt}
+    if len(n_res) != 1:
+        raise SystemExit(f"{bt}: resample counts differ")
+    add("numBootstrapResamples", fmt_int(int(n_res.pop())), bt, "n_resamples")
+    add("numBootstrapLevel", level, bt, "interval level, from the column names")
+    env = (ROOT / "results/P1-E01/env.txt").read_text()
+    mib = int(re.search(r"^gpu: .*?, (\d+) MiB", env, flags=re.M).group(1))
+    cpus = int(re.search(r"^usable_cpus: (\d+)", env, flags=re.M).group(1))
+    add("numGPUMemoryGB", str(round(mib / 1024)), "results/P1-E01/env.txt", f"gpu memory {mib} MiB / 1024, rounded")
+    add("numCPUCores", str(cpus), "results/P1-E01/env.txt", "usable_cpus")
+
     # Numbers from published papers: quoted as reported, only from sources read in full
     # (CONTEXT.md). The hash is the source's SHA-256 recorded in the review's index.
     index = ROOT / "litreview" / "p1-tabular-localization" / "sources" / "index.csv"
