@@ -69,8 +69,8 @@ def table1(R: Results) -> str:
         r"\begin{table}[t]",
         # IEEEtran sets table captions in small caps; units go in \upshape (IEEEtran HOWTO, table captions)
         r"\caption{Mean positioning error ({\upshape m}) with the full survey. Subscripts: standard deviation over "
-        r"\numSeedsMain{} seeds. Avg.: mean of the three buildings. 95th: 95th-percentile error averaged over the "
-        r"buildings. Best in bold.}",
+        r"\numSeedsMain{} seeds. kNN, SVR and the Gaussian process run once. Avg.: mean of the three buildings. "
+        r"95th: 95th-percentile error, averaged likewise. Best in bold.}",
         r"\label{tab:full}",
         r"\centering",
         r"\setlength{\tabcolsep}{3.4pt}",
