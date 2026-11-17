@@ -314,6 +314,7 @@ def build_spec():
             if not e2mean(config, m, low) > knn:
                 raise SystemExit(f"{e2}: {m} is not behind kNN at {low}% in {config}")
     add("numRPLowShare", str(low), e2, f"share at which TabICLv2 beats kNN in every building (checked)")
+    add("numRPMinShare", str(shares_e2[0]), e2, "smallest share of reference points tested")
     crs = "results/P1-E02/metrics/e2_crossing.csv"
     with (ROOT / crs).open(newline="") as f:
         rcr = {(r["config"], r["model"]): r for r in csv.DictReader(f)}
