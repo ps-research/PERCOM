@@ -156,6 +156,10 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--out", required=True, type=Path)
     args = ap.parse_args()
+    # The PI updated and validated the paper's REFERENCES.bib by hand on 2026-11-18 and ruled that it must not be
+    # touched [D-072]. This generator would overwrite it, so it refuses to write there.
+    if args.out.resolve().name == "REFERENCES.bib" and "overleaf" in args.out.resolve().parts:
+        raise SystemExit("REFERENCES.bib on Overleaf is PI-validated since 2026-11-18 [D-072]; this generator must not overwrite it.")
     text = SOURCE.read_text(encoding="utf-8")
     entries = parse(text)
     if len(entries) != text.count("\n@") + text.startswith("@"):
