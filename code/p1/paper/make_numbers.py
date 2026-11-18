@@ -294,6 +294,13 @@ def build_spec():
     base_avgs = {m: bavg(m, top) for m in ("knn", "rf", "lgbm-nan", "lgbm-ph", "svr", "mlp", "gp")}
     if min(base_avgs, key=base_avgs.get) != "knn":
         raise SystemExit(f"{e3}: kNN is not the strongest baseline on average at {top}%: {base_avgs}")
+    # Abstract headline: both foundation models average below a whole number of metres, and below half
+    # the average error of the best tuned baseline (checked; the build fails if either stops holding).
+    tfm_top = max(bavg("tabicl", top), bavg("tabpfn-nan", top))
+    if not tfm_top < 0.5 * min(base_avgs.values()):
+        raise SystemExit(f"{e3}: the foundation models are not below half the best baseline at {top}%: {tfm_top:.2f} vs {min(base_avgs.values()):.2f}")
+    add("numMissingAvgTFMBelow", str(math.ceil(tfm_top)), e3,
+        f"max of the tabicl and tabpfn-nan building averages at {top}% ({tfm_top:.2f}), rounded up; also below half the best baseline average ({min(base_avgs.values()):.2f})")
     zero_avgs = {m: bavg(m, 0) for m in ("tabpfn-nan", "tabpfn-ph", "tabicl", "knn", "rf", "lgbm-nan", "lgbm-ph", "svr", "mlp", "gp")}
     if min(zero_avgs, key=zero_avgs.get) != "tabpfn-ph":
         raise SystemExit(f"{e3}: TabPFN with -105 is not the most accurate model at 0%: {zero_avgs}")
