@@ -245,8 +245,8 @@ def check_source(src: Path, rep: Report, stage: str, max_refs: int, allow: list[
         n = bbl.read_text(errors="replace").count("\\bibitem")
         rep.add("FAIL" if n > max_refs else "PASS", "reference count", f"{n} of at most {max_refs}")
 
-    if "\\section*{Acknowledgment}" not in body:
-        rep.add(hard, "Acknowledgment with the AI-use disclosure", "not written yet")
+    # The PI ruled on 2026-11-18 that the paper has no Acknowledgment section [D-073]; the check only reports it.
+    rep.add("PASS", "Acknowledgment", "present" if "\\section*{Acknowledgment}" in body else "none, by the PI's ruling [D-073]")
 
 
 def main():
