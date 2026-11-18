@@ -232,7 +232,7 @@ def check_source(src: Path, rep: Report, stage: str, max_refs: int, allow: list[
         text = re.sub(r"\\begin\{(equation|align)\*?\}.*?\\end\{\1\*?\}", _strip_scripts, text, flags=re.S)
         text = re.sub(r"(?<!\\)\$[^$]*\$", _strip_scripts, text)
         for n, line in enumerate(text.splitlines(), 1):
-            clean = re.sub(r"\\(cite|ref|eqref|label|input|include|includegraphics|bibliography|bibliographystyle|IEEEtriggeratref|begin|end|orcidlink|href|url)\*?(\[[^\]]*\])?\{[^}]*\}", " ", line)
+            clean = re.sub(r"\\(cite|ref|eqref|label|input|include|includegraphics|bibliography|bibliographystyle|IEEEtriggeratref|begin|end|orcidlink|IEEEauthorrefmark|bstctlcite|href|url)\*?(\[[^\]]*\])?\{[^}]*\}", " ", line)
             clean = re.sub(r"\\[A-Za-z]+", " ", clean)
             for a in NAMES_WITH_DIGITS + allow:
                 clean = re.sub(a, " ", clean)
