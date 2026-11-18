@@ -156,7 +156,7 @@ def main():
     args = ap.parse_args()
     style()
     R = Results()
-    fig, axes = plt.subplots(1, 3, figsize=(S.TWO_COL_W, 5.6), gridspec_kw=dict(wspace=0.30))
+    fig, axes = plt.subplots(1, 3, figsize=(S.TWO_COL_W, 4.7), gridspec_kw=dict(wspace=0.30))
     used = set()
     for ax, fn, tag in zip(axes, (panel_missing, panel_refpoints, panel_scans), "abc"):
         used |= fn(ax, R, print)
@@ -169,7 +169,7 @@ def main():
     labels += ["tuned kNN, full survey", "$-$105 against NaN"]
     fig.legend(handles, labels, loc="upper center", ncol=5, frameon=True, fancybox=False, edgecolor="#b9b7b0",
                bbox_to_anchor=(0.5, 0.995), handlelength=2.2, columnspacing=1.1, handletextpad=0.5, borderpad=0.45)
-    fig.subplots_adjust(top=0.74, bottom=0.17, left=0.065, right=0.99)
+    fig.subplots_adjust(top=0.70, bottom=0.20, left=0.065, right=0.99)  # shorter canvas for the page budget [D-068]
     args.out.mkdir(parents=True, exist_ok=True)
     fig.savefig(args.out / "fig2_stress.pdf", bbox_inches="tight", pad_inches=0.03)  # no white padding (PI ruling)
     if args.preview:

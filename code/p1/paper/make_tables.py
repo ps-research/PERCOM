@@ -96,9 +96,9 @@ def table1(R: Results) -> str:
         rf"Locaris$^{{\mathrm{{a}}}}$~\cite{{bhatia2026locaris}} & -- & -- & -- & {fmt(LOCARIS['avg'], 2)} & {fmt(LOCARIS['p95'], 1)} \\",
         r"\bottomrule",
         # P004 (long version): "appending valid RSSI values together with vendor identifiers, scene descriptions, and building labels"
-        r"\multicolumn{6}{@{}p{0.97\columnwidth}@{}}{\scriptsize $^{\mathrm{a}}$Average over the three buildings as "
-        r"reported in~\cite{bhatia2026locaris}, from a fine-tuned language model whose input also includes vendor "
-        r"identifiers, scene descriptions and building labels as text~\cite{bhatia2025locaris_arxiv}.} \\",
+        r"\multicolumn{6}{@{}p{0.97\columnwidth}@{}}{\scriptsize $^{\mathrm{a}}$As reported in~\cite{bhatia2026locaris} "
+        r"for a fine-tuned language model whose input also includes vendor, scene and building descriptions as "
+        r"text~\cite{bhatia2025locaris_arxiv}.} \\",
         r"\end{tabular}",
         r"\end{table}",
     ]

@@ -35,6 +35,11 @@ OVERRIDES = {
     # Article number 25: publisher page metadata citation_firstpage="25", citation_volume="3"
     # (litreview/p1-tabular-localization/sources/P009_sodindoorloc_paper.html); CONTEXT.md cites "Satellite Navigation 3:25 (2022)".
     "bi2022sodindoorloc": {"pages": "25"},
+    # Year 2000: the proceedings title itself, "Proceedings IEEE INFOCOM 2000" (refs.bib booktitle).
+    "bahl2000radar": {"year": "2000"},
+    # Family name "Le Morvan" (two words), as in the paper's byline "Marine Le Morvan"; the braces keep BibTeX
+    # from reading "Le" as a middle name ("M. L. Morvan").
+    "qu2026tabiclv2": {"author": 'Jingang Qu and David Holzm{\\"u}ller and Ga{\\"e}l Varoquaux and Marine {Le Morvan}'},
 }
 ACCENTS = {"́": "'", "̀": "`", "̈": '"', "̂": "^", "̃": "~", "̧": "c", "̌": "v"}
 PLAIN = {"–": "--", "—": "---", "’": "'", "‘": "`"}
